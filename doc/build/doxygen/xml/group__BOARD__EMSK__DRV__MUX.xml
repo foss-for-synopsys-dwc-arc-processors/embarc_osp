@@ -1,0 +1,820 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="group__BOARD__EMSK__DRV__MUX" kind="group">
+    <compoundname>BOARD_EMSK_DRV_MUX</compoundname>
+    <title>EMSK Mux Driver</title>
+    <innerfile refid="emsk_2drivers_2mux_2mux_8c">mux.c</innerfile>
+    <innerfile refid="emsk_2drivers_2mux_2mux_8h">mux.h</innerfile>
+      <sectiondef kind="user-defined">
+      <header>Mux Control Register Index</header>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga4d35210978aabf96b9198d753bddcf77" prot="public" static="no">
+        <name>PMOD_MUX_CTRL</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>32-bits, offset 0x0, This register controls mapping of the peripheral device signals on Pmod connectors </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="50" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1gaf6292d2ca82caea2f0c018716b6bc1d4" prot="public" static="no">
+        <name>I2C_MAP_CTRL</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>32-bits, offset 0x4 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="52" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga850031942d708e94f93c3399e58917f9" prot="public" static="no">
+        <name>SPI_MAP_CTRL</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>32-bits, offset 0x8, SPI_MAP_CTRL[0] selects the mode of operation of the SPI Slave:<itemizedlist>
+<listitem><para>Normal operation, SPI_MAP_CTRL[0]=0: SPI Slave is connected to Pmod1 at connector J1.</para></listitem><listitem><para>Loop-back mode, SPI_MAP_CTRL[0]=1: SPI Slave is connected to the SPI Master inside the FPGA using CS4. </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="58" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga6532dcdafba6b20ce40aa06495a79fc6" prot="public" static="no">
+        <name>UART_MAP_CTRL</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>32-bits, offset 0x8, This register controls the mapping of the UART signals on the Pmod1 connector. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="61" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Default pin muxer settings</header>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga4c9c0eb890da3157523cacb1092eddbc" prot="public" static="no">
+        <name>PMOD_MUX_CTRL_DEFAULT</name>
+        <initializer>(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>all pins are configured as GPIO inputs </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="94" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga5eb7f84cdeb8a0f092b11e5c238b88b0" prot="public" static="no">
+        <name>SPI_MAP_CTRL_DEFAULT</name>
+        <initializer>(<ref refid="group__BOARD__EMSK__DRV__MUX_ga58ba88a29b6d0fe0a5719d24e2654daa_1ga58ba88a29b6d0fe0a5719d24e2654daa" kindref="member">SPI_MAP_NORMAL</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>normal SPI mode </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="95" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga98b1debfeed8daf9056378946e66b6b6" prot="public" static="no">
+        <name>UART_MAP_CTRL_DEFAULT</name>
+        <initializer>(<ref refid="group__BOARD__EMSK__DRV__MUX_gaf5e4292983c99d8ba978298b21734d1e_1gaf5e4292983c99d8ba978298b21734d1e" kindref="member">UART_MAP_TYPE4</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>TYPE4 PMOD compatible </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="96" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>PMOD 1 Multiplexor</header>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga7752fbbf2f08432a3c0869767ea8f9a1" prot="public" static="no">
+        <name>PM1_UR_GPIO_C</name>
+        <initializer>((0 &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_gad4d43f8748b542bce39e18790f845ecc_1gad4d43f8748b542bce39e18790f845ecc" kindref="member">BIT0</ref>) &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_gad7ae27c76d646f46cc6c117d7792011f_1gad7ae27c76d646f46cc6c117d7792011f" kindref="member">PM1_OFFSET</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pmod1[4:1] are connected to DW GPIO Port C[11:8] </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="103" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga4e9e9b308d70c9fe3e4a012376520b21" prot="public" static="no">
+        <name>PM1_UR_UART_0</name>
+        <initializer>((1 &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_gad4d43f8748b542bce39e18790f845ecc_1gad4d43f8748b542bce39e18790f845ecc" kindref="member">BIT0</ref>) &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_gad7ae27c76d646f46cc6c117d7792011f_1gad7ae27c76d646f46cc6c117d7792011f" kindref="member">PM1_OFFSET</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pmod1[4:1] are connected to DW UART0 signals </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="104" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1gad8e54756e21619a92f75a02f69e00577" prot="public" static="no">
+        <name>PM1_LR_GPIO_A</name>
+        <initializer>((0 &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_ga9c9560bccccb00174801c728f1ed1399_1ga9c9560bccccb00174801c728f1ed1399" kindref="member">BIT2</ref>) &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_gad7ae27c76d646f46cc6c117d7792011f_1gad7ae27c76d646f46cc6c117d7792011f" kindref="member">PM1_OFFSET</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pmod1[10:7] are connected to DW GPIO Port A[11:8] </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="106" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1gaba0ff4df68cf401eea282652138f0a4a" prot="public" static="no">
+        <name>PM1_LR_SPI_S</name>
+        <initializer>((1 &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_ga9c9560bccccb00174801c728f1ed1399_1ga9c9560bccccb00174801c728f1ed1399" kindref="member">BIT2</ref>) &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_gad7ae27c76d646f46cc6c117d7792011f_1gad7ae27c76d646f46cc6c117d7792011f" kindref="member">PM1_OFFSET</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pmod1[10:7] are connected to DW SPI Slave signals </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="107" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>PMOD 2 Multiplexor</header>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1gaa7fcfad85a6e80594c6e3eef39224732" prot="public" static="no">
+        <name>PM2_GPIO_AC</name>
+        <initializer>((0 &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_gad4d43f8748b542bce39e18790f845ecc_1gad4d43f8748b542bce39e18790f845ecc" kindref="member">BIT0</ref>) &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_gaab1bd3ac0050f0fab37032750fb3f7df_1gaab1bd3ac0050f0fab37032750fb3f7df" kindref="member">PM2_OFFSET</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pmod2[4:1] are connected to DW GPIO Port C[15:12], Pmod2[10:7] are connected to DW GPIO Port A[15:12] </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="115" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga800fd20d486dd68269d1441cfa980723" prot="public" static="no">
+        <name>PM2_I2C_HRI</name>
+        <initializer>((1 &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_gad4d43f8748b542bce39e18790f845ecc_1gad4d43f8748b542bce39e18790f845ecc" kindref="member">BIT0</ref>) &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_gaab1bd3ac0050f0fab37032750fb3f7df_1gaab1bd3ac0050f0fab37032750fb3f7df" kindref="member">PM2_OFFSET</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>connect I2C to Pmod2[4:1] and halt/run interface to Pmod2[10:7] </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="117" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>PMOD 3 Multiplexor</header>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1gaaeb318d7a272ed577229d37a4d7712d8" prot="public" static="no">
+        <name>PM3_GPIO_AC</name>
+        <initializer>((0 &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_gad4d43f8748b542bce39e18790f845ecc_1gad4d43f8748b542bce39e18790f845ecc" kindref="member">BIT0</ref>) &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_gaad624fc9e1a9daa634a632548ff22116_1gaad624fc9e1a9daa634a632548ff22116" kindref="member">PM3_OFFSET</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pmod3[4:1] are connected to DW GPIO Port C[19:16], Pmod3[10:7] are connected to DW GPIO Port A[19:16] </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="125" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga724e6ca2f412048967b237c0796c3f07" prot="public" static="no">
+        <name>PM3_I2C_GPIO_D</name>
+        <initializer>((1 &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_gad4d43f8748b542bce39e18790f845ecc_1gad4d43f8748b542bce39e18790f845ecc" kindref="member">BIT0</ref>) &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_gaad624fc9e1a9daa634a632548ff22116_1gaad624fc9e1a9daa634a632548ff22116" kindref="member">PM3_OFFSET</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pmod3[4:3] are connected to DW I2C signals, Pmod3[2:1] are connected to DW GPIO Port D[1:0], Pmod3[10:7] are connected to DW GPIO Port D[3:2] </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="129" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>PMOD 4 Multiplexor</header>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1gaeec5b2ae9fb69a95b1ec9e93cf785574" prot="public" static="no">
+        <name>PM4_GPIO_AC</name>
+        <initializer>((0 &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_gad4d43f8748b542bce39e18790f845ecc_1gad4d43f8748b542bce39e18790f845ecc" kindref="member">BIT0</ref>) &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_ga8e42cd8138d98cf039180338277c357b_1ga8e42cd8138d98cf039180338277c357b" kindref="member">PM4_OFFSET</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pmod4[4:1] are connected to DW GPIO Port C[23:20], Pmod4[10:7] are connected to DW GPIO Port A[23:20] </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="137" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga0a801370d7b24fe67c9f2af40b018949" prot="public" static="no">
+        <name>PM4_I2C_GPIO_D</name>
+        <initializer>((1 &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_gad4d43f8748b542bce39e18790f845ecc_1gad4d43f8748b542bce39e18790f845ecc" kindref="member">BIT0</ref>) &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_ga8e42cd8138d98cf039180338277c357b_1ga8e42cd8138d98cf039180338277c357b" kindref="member">PM4_OFFSET</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pmod4[4:3] are connected to DW I2C signals, Pmod4[2:1] are connected to DW GPIO Port D[5:4], Pmod4[10:7] are connected to DW GPIO Port D[7:6] </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="141" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>PMOD 5 Multiplexor</header>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga0acdf61bb0fe49269aec1279ea907033" prot="public" static="no">
+        <name>PM5_UR_GPIO_C</name>
+        <initializer>((0 &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_gad4d43f8748b542bce39e18790f845ecc_1gad4d43f8748b542bce39e18790f845ecc" kindref="member">BIT0</ref>) &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_ga447c07e5615e4bad0d982529901ea2c3_1ga447c07e5615e4bad0d982529901ea2c3" kindref="member">PM5_OFFSET</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pmod5[4:1] are connected to DW GPIO Port C[27:24] </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="148" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga6d0d0ed66635d7cb86adef808dd37b3e" prot="public" static="no">
+        <name>PM5_UR_SPI_M1</name>
+        <initializer>((1 &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_gad4d43f8748b542bce39e18790f845ecc_1gad4d43f8748b542bce39e18790f845ecc" kindref="member">BIT0</ref>) &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_ga447c07e5615e4bad0d982529901ea2c3_1ga447c07e5615e4bad0d982529901ea2c3" kindref="member">PM5_OFFSET</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pmod5[4:1] are connected to DW SPI Master signals using CS1_N </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="149" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga6d6a44b48160468bda1a1b5bd846413e" prot="public" static="no">
+        <name>PM5_LR_GPIO_A</name>
+        <initializer>((0 &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_ga9c9560bccccb00174801c728f1ed1399_1ga9c9560bccccb00174801c728f1ed1399" kindref="member">BIT2</ref>) &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_ga447c07e5615e4bad0d982529901ea2c3_1ga447c07e5615e4bad0d982529901ea2c3" kindref="member">PM5_OFFSET</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pmod5[10:7] are connected to DW GPIO Port A[27:24] </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="151" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga516015d4756e0c6fddd642e6434764bd" prot="public" static="no">
+        <name>PM5_LR_SPI_M2</name>
+        <initializer>((1 &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_ga9c9560bccccb00174801c728f1ed1399_1ga9c9560bccccb00174801c728f1ed1399" kindref="member">BIT2</ref>) &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_ga447c07e5615e4bad0d982529901ea2c3_1ga447c07e5615e4bad0d982529901ea2c3" kindref="member">PM5_OFFSET</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pmod5[10:7] are connected to DW SPI Master signals using CS2_N </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="152" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>PMOD 6 Multiplexor</header>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1gace1a4332a5364557879ec9cdf25a0ba3" prot="public" static="no">
+        <name>PM6_UR_GPIO_C</name>
+        <initializer>((0 &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_gad4d43f8748b542bce39e18790f845ecc_1gad4d43f8748b542bce39e18790f845ecc" kindref="member">BIT0</ref>) &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_ga3010b754031bf248baa6d2a0c8bdd0c1_1ga3010b754031bf248baa6d2a0c8bdd0c1" kindref="member">PM6_OFFSET</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pmod6[4:1] are connected to DW GPIO Port C[31:28] </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="159" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="172" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1gac2a55fd4964c1e65a7ceec8eef8aacac" prot="public" static="no">
+        <name>PM6_UR_SPI_M0</name>
+        <initializer>((1 &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_gad4d43f8748b542bce39e18790f845ecc_1gad4d43f8748b542bce39e18790f845ecc" kindref="member">BIT0</ref>) &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_ga3010b754031bf248baa6d2a0c8bdd0c1_1ga3010b754031bf248baa6d2a0c8bdd0c1" kindref="member">PM6_OFFSET</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pmod6[4:1] are connected to DW SPI Master signals using CS0_N </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="160" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="173" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga12efa7dd4ca8cd27ffc675e4e9acfbc3" prot="public" static="no">
+        <name>PM6_LR_GPIO_A</name>
+        <initializer>((0 &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_ga9c9560bccccb00174801c728f1ed1399_1ga9c9560bccccb00174801c728f1ed1399" kindref="member">BIT2</ref>) &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_ga3010b754031bf248baa6d2a0c8bdd0c1_1ga3010b754031bf248baa6d2a0c8bdd0c1" kindref="member">PM6_OFFSET</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pmod6[10:7] are connected to DW GPIO Port A[31:28] </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="162" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga8ca92cbdeb138e0294d4b99b752b1172" prot="public" static="no">
+        <name>PM6_LR_CSS_STAT</name>
+        <initializer>((1 &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_ga9c9560bccccb00174801c728f1ed1399_1ga9c9560bccccb00174801c728f1ed1399" kindref="member">BIT2</ref>) &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_ga3010b754031bf248baa6d2a0c8bdd0c1_1ga3010b754031bf248baa6d2a0c8bdd0c1" kindref="member">PM6_OFFSET</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pmod6[8:7] are connected to the DW SPI Master chip select signals CS1_N and CS2_N, Pmod6[6:5] are connected to the ARC EM halt and sleep status signals </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="165" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>PMOD 7 Multiplexor</header>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga844929859a1e2fc74b6ddbeda0d1f34d" prot="public" static="no">
+        <name>PM7_GPIO_D</name>
+        <initializer>((0 &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_gad4d43f8748b542bce39e18790f845ecc_1gad4d43f8748b542bce39e18790f845ecc" kindref="member">BIT0</ref>) &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_ga89cb54b4a011b5d42cbfee1d0c0042d4_1ga89cb54b4a011b5d42cbfee1d0c0042d4" kindref="member">PM7_OFFSET</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pmod7[4:1] are connected to DW GPIO Port D[11:8] </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="172" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="186" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1gae4344445edd3cce894cad6488d164698" prot="public" static="no">
+        <name>PM7_STAT</name>
+        <initializer>((1 &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_gad4d43f8748b542bce39e18790f845ecc_1gad4d43f8748b542bce39e18790f845ecc" kindref="member">BIT0</ref>) &lt;&lt; <ref refid="group__BOARD__EMSK__DRV__MUX_ga89cb54b4a011b5d42cbfee1d0c0042d4_1ga89cb54b4a011b5d42cbfee1d0c0042d4" kindref="member">PM7_OFFSET</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pmod7[4:1] are connected to the ARC EM sleep status signals </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="173" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="187" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__BOARD__EMSK__DRV__MUX_1gadb6a049de6f630ea98ff720638d684a6" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>typedef volatile uint32_t MUX_REG</definition>
+        <argsstring></argsstring>
+        <name>MUX_REG</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="189" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__BOARD__EMSK__DRV__MUX_1gab0e269517bb2fb6c308d7d7a55ff8d41" prot="public" static="yes" mutable="no">
+        <type><ref refid="emsdp_2drivers_2mux_2mux_8h_adb6a049de6f630ea98ff720638d684a6_1adb6a049de6f630ea98ff720638d684a6" kindref="member">MUX_REG</ref> *</type>
+        <definition>MUX_REG* mux_regs</definition>
+        <argsstring></argsstring>
+        <name>mux_regs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" line="54" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__BOARD__EMSK__DRV__MUX_1ga8356bee63484f5b67a7995fbde693d11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void set_pmod_mux</definition>
+        <argsstring>(uint32_t val)</argsstring>
+        <name>set_pmod_mux</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>set PMOD muxer scheme </para>        </detaileddescription>
+        <inbodydescription>
+<para>&lt; 32-bits, offset 0x0, This register controls mapping of the peripheral device signals on Pmod connectors </para>        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" line="57" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="57" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BOARD__EMSK__DRV__MUX_1gab7f64addda6f60359e9382320e696861" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t get_pmod_mux</definition>
+        <argsstring>(void)</argsstring>
+        <name>get_pmod_mux</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get PMOD muxer scheme </para>        </detaileddescription>
+        <inbodydescription>
+<para>&lt; 32-bits, offset 0x0, This register controls mapping of the peripheral device signals on Pmod connectors </para>        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" line="63" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="63" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BOARD__EMSK__DRV__MUX_1gab1edc41eb546dfce3d1f6c23636540fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void set_spi_map</definition>
+        <argsstring>(uint32_t val)</argsstring>
+        <name>set_spi_map</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>set SPI connection scheme </para>        </detaileddescription>
+        <inbodydescription>
+<para>&lt; 32-bits, offset 0x8, SPI_MAP_CTRL[0] selects the mode of operation of the SPI Slave: - Normal operation, SPI_MAP_CTRL[0]=0: SPI Slave is connected to Pmod1 at connector J1. - Loop-back mode, SPI_MAP_CTRL[0]=1: SPI Slave is connected to the SPI Master inside the FPGA using CS4. </para>        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" line="69" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="69" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BOARD__EMSK__DRV__MUX_1gaa1c11b77b7888c47cf5b107eb7ee15a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void set_uart_map</definition>
+        <argsstring>(uint32_t val)</argsstring>
+        <name>set_uart_map</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>set UART connection scheme </para>        </detaileddescription>
+        <inbodydescription>
+<para>&lt; 32-bits, offset 0x8, This register controls the mapping of the UART signals on the Pmod1 connector. </para>        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" line="75" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="75" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BOARD__EMSK__DRV__MUX_1gaea9c8745e17c7340aac1b83ca78f0bd4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t io_mikro_config</definition>
+        <argsstring>(uint32_t config)</argsstring>
+        <name>io_mikro_config</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>&lt; Default Arduino mode </para>        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" line="80" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="80" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BOARD__EMSK__DRV__MUX_1gaed6d84e2f298582850bade46596b82fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t io_arduino_config_spi</definition>
+        <argsstring>(uint32_t config)</argsstring>
+        <name>io_arduino_config_spi</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" line="86" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="86" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BOARD__EMSK__DRV__MUX_1gaf4d73821b689e641fe3bea3c1ee3666d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t io_arduino_config_uart</definition>
+        <argsstring>(uint32_t config)</argsstring>
+        <name>io_arduino_config_uart</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" line="92" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="92" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BOARD__EMSK__DRV__MUX_1ga89a57c39917f80eb6379d0d353780729" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t io_arduino_config_i2c</definition>
+        <argsstring>(uint32_t config)</argsstring>
+        <name>io_arduino_config_i2c</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" line="98" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="98" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BOARD__EMSK__DRV__MUX_1ga8981ef574064d7afe0b09b193834773c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t io_arduino_config</definition>
+        <argsstring>(uint32_t pin_num, uint32_t type, uint32_t config)</argsstring>
+        <name>io_arduino_config</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>pin_num</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" line="104" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="104" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BOARD__EMSK__DRV__MUX_1ga8fc8550242f1a2dee25a8b1612f6bce1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t io_pmod_config</definition>
+        <argsstring>(uint32_t pmod, uint32_t type, uint32_t config)</argsstring>
+        <name>io_pmod_config</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>pmod</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>&lt; Pmod1[4:1] are connected to DW UART0 signals</para><para>&lt; Pmod1[10:7] are connected to DW SPI Slave signals</para><para>&lt; Pmod1[4:1] are connected to DW UART0 signals</para><para>&lt; Pmod5[4:1] are connected to DW SPI Master signals using CS1_N</para><para>&lt; Pmod5[4:1] are connected to DW SPI Master signals using CS1_N</para><para>&lt; Pmod6[4:1] are connected to DW SPI Master signals using CS0_N</para><para>&lt; Pmod6[4:1] are connected to DW SPI Master signals using CS0_N </para>        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" line="110" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="110" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BOARD__EMSK__DRV__MUX_1gadbb2990c863c9961339946c92f2fc2d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void io_mux_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>io_mux_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>&lt; 32-bits, offset 0x0, This register controls mapping of the peripheral device signals on Pmod connectors</para><para>&lt; all pins are configured as GPIO inputs</para><para>&lt; 32-bits, offset 0x8, SPI_MAP_CTRL[0] selects the mode of operation of the SPI Slave: - Normal operation, SPI_MAP_CTRL[0]=0: SPI Slave is connected to Pmod1 at connector J1. - Loop-back mode, SPI_MAP_CTRL[0]=1: SPI Slave is connected to the SPI Master inside the FPGA using CS4.</para><para>&lt; normal SPI mode</para><para>&lt; 32-bits, offset 0x8, This register controls the mapping of the UART signals on the Pmod1 connector.</para><para>&lt; TYPE4 PMOD compatible</para><para><itemizedlist>
+<listitem><para>Please refer to corresponding EMSK User Guide for detailed information -&gt; Appendix: A Hardware Functional Description -&gt; Pmods Configuration summary</para></listitem><listitem><para>Set up pin-multiplexer of all PMOD connections<itemizedlist>
+<listitem><para>PM1 J1: Upper row as UART 0, lower row as SPI Slave</para></listitem><listitem><para>PM2 J2: IIC 0 and run/halt signals</para></listitem><listitem><para>PM3 J3: GPIO Port A and Port C</para></listitem><listitem><para>PM4 J4: IIC 1 and Port D</para></listitem><listitem><para>PM5 J5: Upper row as SPI Master, lower row as Port A</para></listitem><listitem><para>PM6 J6: Upper row as SPI Master, lower row as Port A</para></listitem></itemizedlist>
+</para></listitem></itemizedlist>
+</para><para>&lt; Pmod1[4:1] are connected to DW UART0 signals</para><para>&lt; Pmod1[10:7] are connected to DW SPI Slave signals</para><para>&lt; connect I2C to Pmod2[4:1] and halt/run interface to Pmod2[10:7]</para><para>&lt; Pmod3[4:1] are connected to DW GPIO Port C[19:16], Pmod3[10:7] are connected to DW GPIO Port A[19:16]</para><para>&lt; Pmod4[4:3] are connected to DW I2C signals, Pmod4[2:1] are connected to DW GPIO Port D[5:4], Pmod4[10:7] are connected to DW GPIO Port D[7:6]</para><para>&lt; Pmod5[4:1] are connected to DW SPI Master signals using CS1_N</para><para>&lt; Pmod5[10:7] are connected to DW GPIO Port A[27:24]</para><para>&lt; Pmod6[4:1] are connected to DW SPI Master signals using CS0_N</para><para>&lt; Pmod6[10:7] are connected to DW GPIO Port A[31:28]</para><para>PM1 upper row as UART UM4:RXD, UM3:TXD UM2:RTS_N, UM1:CTS_N</para>        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" line="164" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="164" bodyend="197"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1gad4d43f8748b542bce39e18790f845ecc" prot="public" static="no">
+        <name>BIT0</name>
+        <initializer>(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="64" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga601923eba46784638244c1ebf2622a2a" prot="public" static="no">
+        <name>BIT1</name>
+        <initializer>(1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="65" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga9c9560bccccb00174801c728f1ed1399" prot="public" static="no">
+        <name>BIT2</name>
+        <initializer>(2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="66" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga8e44574a8a8becc885b05f3bc367ef6a" prot="public" static="no">
+        <name>BIT3</name>
+        <initializer>(3)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="67" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1gad7ae27c76d646f46cc6c117d7792011f" prot="public" static="no">
+        <name>PM1_OFFSET</name>
+        <initializer>(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="68" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1gaab1bd3ac0050f0fab37032750fb3f7df" prot="public" static="no">
+        <name>PM2_OFFSET</name>
+        <initializer>(4)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="69" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1gaad624fc9e1a9daa634a632548ff22116" prot="public" static="no">
+        <name>PM3_OFFSET</name>
+        <initializer>(8)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="70" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga8e42cd8138d98cf039180338277c357b" prot="public" static="no">
+        <name>PM4_OFFSET</name>
+        <initializer>(12)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="71" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga447c07e5615e4bad0d982529901ea2c3" prot="public" static="no">
+        <name>PM5_OFFSET</name>
+        <initializer>(16)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="72" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga3010b754031bf248baa6d2a0c8bdd0c1" prot="public" static="no">
+        <name>PM6_OFFSET</name>
+        <initializer>(20)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="73" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga89cb54b4a011b5d42cbfee1d0c0042d4" prot="public" static="no">
+        <name>PM7_OFFSET</name>
+        <initializer>(24)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="74" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1gaaea82a566e2ce9ddb1c2109f4b8f5ab2" prot="public" static="no">
+        <name>PM1_MASK</name>
+        <initializer>(0xf &lt;&lt; PM1_OFFSET)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="76" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1gab15fca5be68d3277b8cfb1ae829ccfc6" prot="public" static="no">
+        <name>PM2_MASK</name>
+        <initializer>(0xf &lt;&lt; PM2_OFFSET)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="77" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga00377bac287616a62d67b1bafb5ab631" prot="public" static="no">
+        <name>PM3_MASK</name>
+        <initializer>(0xf &lt;&lt; PM3_OFFSET)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="78" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1gaf3d3b950966144e371bd01a078d0ccc9" prot="public" static="no">
+        <name>PM4_MASK</name>
+        <initializer>(0xf &lt;&lt; PM4_OFFSET)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="79" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1gac59b5d976b73aaadd69b89f4dd919bda" prot="public" static="no">
+        <name>PM5_MASK</name>
+        <initializer>(0xf &lt;&lt; PM5_OFFSET)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="80" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1gab049fb2d980545c1c4992c8ad512e13a" prot="public" static="no">
+        <name>PM6_MASK</name>
+        <initializer>(0xf &lt;&lt; PM6_OFFSET)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="81" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga13a5cc8f28afc96e9bcd5a04c67b65d6" prot="public" static="no">
+        <name>PM7_MASK</name>
+        <initializer>(0xf &lt;&lt; PM7_OFFSET)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="82" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga58ba88a29b6d0fe0a5719d24e2654daa" prot="public" static="no">
+        <name>SPI_MAP_NORMAL</name>
+        <initializer>(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="84" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga2896ec6b153444f4462fce88a5b73bda" prot="public" static="no">
+        <name>SPI_MAP_LOOPBACK</name>
+        <initializer>(1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="85" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1gaf5e4292983c99d8ba978298b21734d1e" prot="public" static="no">
+        <name>UART_MAP_TYPE4</name>
+        <initializer>(0xE4)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="87" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__EMSK__DRV__MUX_1ga4314d7e2656c79fbbacf420d57cb7162" prot="public" static="no">
+        <name>UART_MAP_TYPE3</name>
+        <initializer>(0x6C)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="88" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>EMSK Mux Controller Driver. </para>    </briefdescription>
+    <detaileddescription>
+<para>Mux controller is the hardware external PMOD port pin connection controller, it can distribute the external port pins into different functions like general input/output, spi, iic, uart and so on. </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

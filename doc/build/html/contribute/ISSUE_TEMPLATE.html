@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>&lt;no title&gt; &mdash; embARC 2019.06 documentation</title>
+  <title>Issue Template &mdash; embARC OSP Project Documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="PULL_REQUEST_TEMPLATE.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="CODE_OF_CONDUCT.html" /> 
+    <link rel="next" title="Pull Request Template" href="PULL_REQUEST_TEMPLATE.html" />
+    <link rel="prev" title="Contributor Covenant Code of Conduct" href="CODE_OF_CONDUCT.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,7 +86,7 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arc/arc.html">ARC Processors</a></li>
@@ -98,7 +98,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../example/example.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer/developer_guides.html">Developer Guides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq/faq.html">Usage Guide FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contribute to embARC OSP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="contribute.html">Contribute to embARC OSP</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="CONTRIBUTING.html">Contributing to embARC OSP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CODE_OF_CONDUCT.html">Contributor Covenant Code of Conduct</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Issue Template</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bug">Bug</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#development-environment">Development Environment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bug-description">Bug Description</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#enhancement">Enhancement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#question">Question</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="PULL_REQUEST_TEMPLATE.html">Pull Request Template</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Change Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bsp/bsp.html">embARC BSP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license/license.html">License</a></li>
@@ -149,14 +164,12 @@
         
           <li><a href="contribute.html">Contribute to embARC OSP</a> &raquo;</li>
         
-      <li>&lt;no title&gt;</li>
+      <li>Issue Template</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/contribute/ISSUE_TEMPLATE.md.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -168,18 +181,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p># Issue Template
-- <strong>Type</strong>: <em>Bug</em> | <em>Enhancement</em> | <em>Question</em>
-- <strong>Category</strong>: <em>ARC HAL</em> | <em>Device HAL</em> | <em>BSP</em> | <em>OS</em> | <em>Middleware</em> | <em>Library</em> | <em>Example</em> | <em>Build System</em> | <em>Tools</em> | <em>Documentation</em> | <em>Installation</em> | <em>Usability</em>
-- <strong>Priority</strong>: <em>Urgent</em> | <em>High</em> | <em>Medium</em> | <em>Low</em>
-- <strong>Release Version</strong>: Specified version such as 2016.05 or All</p>
-<p>## Development Environment
-- <strong>HOST OS</strong></p>
-<blockquote>
-<div><p>Input the host os name and its version.
-For example, Windows 7, 64Bit | Debian Linux 8.6, 64Bit</p>
-</div></blockquote>
+  <div class="section" id="issue-template">
+<span id="issue-guidelines"></span><h1>Issue Template<a class="headerlink" href="#issue-template" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
+<li><p><strong>Type</strong>: <em>Bug</em> | <em>Enhancement</em> | <em>Question</em></p></li>
+<li><p><strong>Category</strong>: <em>ARC HAL</em> | <em>Device HAL</em> | <em>BSP</em> | <em>OS</em> | <em>Middleware</em> | <em>Library</em> | <em>Example</em> | <em>Build System</em> | <em>Tools</em> | <em>Documentation</em> | <em>Installation</em> | <em>Usability</em></p></li>
+<li><p><strong>Priority</strong>: <em>Urgent</em> | <em>High</em> | <em>Medium</em> | <em>Low</em></p></li>
+<li><p><strong>Release Version</strong>: Specified version such as 2016.05 or All</p></li>
+</ul>
+<hr class="docutils" />
+<div class="section" id="bug">
+<h2>Bug<a class="headerlink" href="#bug" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="development-environment">
+<h2>Development Environment<a class="headerlink" href="#development-environment" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>HOST OS</strong></dt><dd><p>Input the host os name and its version.
+For example, Windows 7, 64Bit | Debian Linux 8.6, 64Bit</p>
+</dd>
+</dl>
+</li>
 <li><dl class="simple">
 <dt><strong>TOOLCHAIN</strong></dt><dd><p>Input the toolchain name and its version.
 For example, MWDT L-2016.06 | ARC GNU 2016.03.
@@ -199,16 +221,32 @@ For example, EMSK 2.2 | AXS 103 | nSIM</p>
 </dl>
 </li>
 </ul>
-<dl class="simple">
-<dt>### Bug Description</dt><dd><p>Describe the bug you met in details, and tell us how to reproduce it.
+<div class="section" id="bug-description">
+<h3>Bug Description<a class="headerlink" href="#bug-description" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Describe the bug you met in details, and tell us how to reproduce it.
 If you want to put some log information here, you can post it here or in github gist.
 If there are some screenshots, you can post outside of github, and provide links here.</p>
-</dd>
-</dl>
+</div></blockquote>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="enhancement">
+<h2>Enhancement<a class="headerlink" href="#enhancement" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Explain why you want this enhancement to be added, what are the pros and cons?
+<div><p>Describe the enhancement you suggest to add in details.
+Explain why you want this enhancement to be added, what are the pros and cons?
 Do you have any initial implementation about this enhancement, if yes, post link here.</p>
 </div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="question">
+<h2>Question<a class="headerlink" href="#question" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Input your question in details here.</p>
+</div></blockquote>
+</div>
+</div>
 
 
            </div>
@@ -216,25 +254,18 @@ Do you have any initial implementation about this enhancement, if yes, post link
           </div>
           <footer>
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="PULL_REQUEST_TEMPLATE.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="CODE_OF_CONDUCT.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
         &copy; Copyright 2019, Synopsys
+      <span class="lastupdated">
+        Last updated on Aug 04, 2021.
+      </span>
 
     </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
 

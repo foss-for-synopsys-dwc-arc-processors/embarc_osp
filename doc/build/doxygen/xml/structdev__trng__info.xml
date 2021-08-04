@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="structdev__trng__info" kind="struct" prot="public">
+    <compoundname>dev_trng_info</compoundname>
+    <includes refid="dev__trng_8h" local="no">dev_trng.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structdev__trng__info_af0427239462a9bf31739e150aa5ecc30_1af0427239462a9bf31739e150aa5ecc30" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* dev_trng_info::trng_ctrl</definition>
+        <argsstring></argsstring>
+        <name>trng_ctrl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>trng control related pointer, implemented by bsp developer, and this should be set during trng object implementation </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_trng.h" line="81" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_trng.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdev__trng__info_a5199fd332e6405d0bb220dad31f4a112_1a5199fd332e6405d0bb220dad31f4a112" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t dev_trng_info::opn_cnt</definition>
+        <argsstring></argsstring>
+        <name>opn_cnt</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>trng open count, open it will increase 1, close it will decrease 1, 0 for close, &gt;0 for open </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_trng.h" line="82" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_trng.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdev__trng__info_ac60db977e3c7943f3461b61b3a21d4e7_1ac60db977e3c7943f3461b61b3a21d4e7" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t dev_trng_info::length</definition>
+        <argsstring></argsstring>
+        <name>length</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>output length </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_trng.h" line="83" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_trng.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdev__trng__info_a689a6e6ba94bec773c8c1831fb7213e6_1a689a6e6ba94bec773c8c1831fb7213e6" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t dev_trng_info::byte_generated</definition>
+        <argsstring></argsstring>
+        <name>byte_generated</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>count the bytes generated since last reseed, can be a reference and a reminder for next reseed operation </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_trng.h" line="84" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_trng.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdev__trng__info_aaacbcf14d2df135d871a8e0b27bdd056_1aaacbcf14d2df135d871a8e0b27bdd056" prot="public" static="no" mutable="no">
+        <type><ref refid="group__DEVICE__HAL__COMMON_ga1e2d2bd78cfc19bba910da7448cc6fdc_1ga1e2d2bd78cfc19bba910da7448cc6fdc" kindref="member">DEV_BUFFER</ref></type>
+        <definition>DEV_BUFFER dev_trng_info::in_buf</definition>
+        <argsstring></argsstring>
+        <name>in_buf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>input buffer via interrupt, this should be all zero for first open </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_trng.h" line="85" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_trng.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdev__trng__info_afd5b2fc259a627ef433d3918dbebe9d8_1afd5b2fc259a627ef433d3918dbebe9d8" prot="public" static="no" mutable="no">
+        <type><ref refid="group__DEVICE__HAL__COMMON_ga1e2d2bd78cfc19bba910da7448cc6fdc_1ga1e2d2bd78cfc19bba910da7448cc6fdc" kindref="member">DEV_BUFFER</ref></type>
+        <definition>DEV_BUFFER dev_trng_info::out_buf</definition>
+        <argsstring></argsstring>
+        <name>out_buf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>output buffer via interrupt, this should be all zero for first open </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_trng.h" line="86" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_trng.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdev__trng__info_a47dff79ede7a3b510ce4e7e79d230c3c_1a47dff79ede7a3b510ce4e7e79d230c3c" prot="public" static="no" mutable="no">
+        <type><ref refid="group__DEVICE__HAL__TRNG_ga29fc09c4ec70ac24f173d02547fc5091_1ga29fc09c4ec70ac24f173d02547fc5091" kindref="member">DEV_TRNG_CBS</ref></type>
+        <definition>DEV_TRNG_CBS dev_trng_info::trng_cbs</definition>
+        <argsstring></argsstring>
+        <name>trng_cbs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_trng.h" line="87" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_trng.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdev__trng__info_ac4b8b3d2f5328c6cc2ff8311460f4a34_1ac4b8b3d2f5328c6cc2ff8311460f4a34" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* dev_trng_info::extra</definition>
+        <argsstring></argsstring>
+        <name>extra</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>a extra pointer to get hook to applications which should not used by bsp developer, this should be NULL for first open and you can <ref refid="group__DEVICE__HAL__TRNG__DEVSTRUCT_gab09960371ab78fc25db2c0c3271f2dfb_1gab09960371ab78fc25db2c0c3271f2dfb" kindref="member">set</ref> or <ref refid="group__DEVICE__HAL__TRNG__DEVSTRUCT_ga3e1b027e9e19df14f940828cd2eacac3_1ga3e1b027e9e19df14f940828cd2eacac3" kindref="member">get</ref> the extra information pointer </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_trng.h" line="88" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_trng.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>TRNG information struct definition. </para>    </briefdescription>
+    <detaileddescription>
+<para>informations about trng open count, working status, baudrate, trng registers and ctrl structure, trng dps format </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="150">
+        <label>dev_trng_info</label>
+        <link refid="structdev__trng__info"/>
+        <childnode refid="151" relation="usage">
+          <edgelabel>out_buf</edgelabel>
+          <edgelabel>in_buf</edgelabel>
+        </childnode>
+        <childnode refid="152" relation="usage">
+          <edgelabel>trng_cbs</edgelabel>
+        </childnode>
+      </node>
+      <node id="151">
+        <label>dev_buffer</label>
+        <link refid="structdev__buffer"/>
+      </node>
+      <node id="152">
+        <label>dev_trng_cbs</label>
+        <link refid="structdev__trng__cbs"/>
+      </node>
+    </collaborationgraph>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_trng.h" line="80" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_trng.h" bodystart="80" bodyend="91"/>
+    <listofallmembers>
+      <member refid="structdev__trng__info_a689a6e6ba94bec773c8c1831fb7213e6_1a689a6e6ba94bec773c8c1831fb7213e6" prot="public" virt="non-virtual"><scope>dev_trng_info</scope><name>byte_generated</name></member>
+      <member refid="structdev__trng__info_ac4b8b3d2f5328c6cc2ff8311460f4a34_1ac4b8b3d2f5328c6cc2ff8311460f4a34" prot="public" virt="non-virtual"><scope>dev_trng_info</scope><name>extra</name></member>
+      <member refid="structdev__trng__info_aaacbcf14d2df135d871a8e0b27bdd056_1aaacbcf14d2df135d871a8e0b27bdd056" prot="public" virt="non-virtual"><scope>dev_trng_info</scope><name>in_buf</name></member>
+      <member refid="structdev__trng__info_ac60db977e3c7943f3461b61b3a21d4e7_1ac60db977e3c7943f3461b61b3a21d4e7" prot="public" virt="non-virtual"><scope>dev_trng_info</scope><name>length</name></member>
+      <member refid="structdev__trng__info_a5199fd332e6405d0bb220dad31f4a112_1a5199fd332e6405d0bb220dad31f4a112" prot="public" virt="non-virtual"><scope>dev_trng_info</scope><name>opn_cnt</name></member>
+      <member refid="structdev__trng__info_afd5b2fc259a627ef433d3918dbebe9d8_1afd5b2fc259a627ef433d3918dbebe9d8" prot="public" virt="non-virtual"><scope>dev_trng_info</scope><name>out_buf</name></member>
+      <member refid="structdev__trng__info_a47dff79ede7a3b510ce4e7e79d230c3c_1a47dff79ede7a3b510ce4e7e79d230c3c" prot="public" virt="non-virtual"><scope>dev_trng_info</scope><name>trng_cbs</name></member>
+      <member refid="structdev__trng__info_af0427239462a9bf31739e150aa5ecc30_1af0427239462a9bf31739e150aa5ecc30" prot="public" virt="non-virtual"><scope>dev_trng_info</scope><name>trng_ctrl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

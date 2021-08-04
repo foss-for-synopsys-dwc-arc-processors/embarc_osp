@@ -14,7 +14,7 @@ I/O functions and fast math (trigonometric) accelerator.
 See also this URL for details about the board: `The ARC IoT Development Kit
 (IoTDK) <https://www.synopsys.com/dw/ipdir.php?ds=arc_iot_development_kit>`_
 
-.. image:: /pic/iotdk_board.jpg
+.. image:: /pic/iotdk_board.png
     :alt: DesignWare ARC IoT Development Kit
 
 Components:
@@ -44,10 +44,10 @@ Components:
       - PMOD_C (support GPIO and UART)
     - Extension header (2x 18 pin)
 
-.. image:: /pic/iotdk_block_diagram.jpg
+.. image:: /pic/iotdk_block_diagram.png
     :alt: ARC IoTDK Diagram
 
-.. image:: /pic/iotdk_chip.jpg
+.. image:: /pic/iotdk_chip.png
     :alt: ARC IoTDK Chip Block Diagram
 
 Features:
@@ -92,13 +92,13 @@ The ARC IoT ASIC uses a single 16MHz reference clock from which all the main sys
 The clock generation is centralized in the SYSCONFIG module. The SYSCONFIG module implements a single PLL
 and integer dividers which allows for accurate fine-tuning of the system clocks to the desired frequency.
 
-.. image:: /pic/iotdk_clock_architecture.jpg
+.. image:: /pic/iotdk_clock_architecture.png
     :alt: ARC IoTDK Clock Architecture
 
 Configuration switches
 ----------------------
 
-.. image:: /pic/iotdk_board_switch.jpg
+.. image:: /pic/iotdk_board_switch.png
     :alt: ARC IoTDK switches
 
 The "On" and "Off" position for all four switches are depicted in the figure above, please see details below for function of each switch:
@@ -126,7 +126,7 @@ Extension Interfaces
 
 To bring your application context around the ARC IoTDK, the following peripheral module standards are supported:
 
-.. image:: /pic/iotdk_extension_interfaces.jpg
+.. image:: /pic/iotdk_extension_interfaces.png
     :alt: ARC IoTDK Extension Interfaces
 
 **Digilent PMOD™ (2x)**
@@ -137,7 +137,7 @@ is programmable and includes GPIO and SPI for PMOD_B and GPIO and UART for PMOD_
 After a reset, all ports are configured as GPIO inputs.
 The location of the pins on the PMOD connectors is shown:
 
-.. image:: /pic/iotdk_pinout_diagram_of_pmod.jpg
+.. image:: /pic/iotdk_pinout_diagram_of_pmod.png
     :alt: ARC IoTDK Pinout Diagram of PMOD
 
 =====  ============  ============       =====  ============  ============
@@ -175,7 +175,7 @@ and miscellaneous modules and accessories, See `MikroElektronica <https://www.mi
 get the right function assignment on the MikroBUS headers is controlled by software using the
 ARDUINO_MUX register
 
-.. image:: /pic/iotdk_mikrobus_headers.jpg
+.. image:: /pic/iotdk_mikrobus_headers.png
     :alt: ARC IoTDK MikroBUS Headers
 
 **Arduino (1x)**
@@ -186,7 +186,7 @@ The Arduino shield interface is compatible with the Arduino UNO R3 with the foll
 the IOREF voltage on the ARC IoTDK board is fixed to 3V3. Note that the ICSP header is also not available.
 Most shields do not require this ICSP header as the SPI master interface on this ICSP header is also available on the IO10 to IO13 pins.
 
-.. image:: /pic/iotdk_arduino_shield_interface.jpg
+.. image:: /pic/iotdk_arduino_shield_interface.png
     :alt: ARC IoTDK Arduino Shield Interface
 
 ====== ============ ===================== ============ ============
@@ -219,7 +219,7 @@ IO13   Bit 1	    gpio8b_3[1]	           spi2_clk    gpio8b_3[1]
 **2x18 Pin Extension Header**
 
 
-.. image:: /pic/iotdk_2x18_pin_extension_header.jpg
+.. image:: /pic/iotdk_2x18_pin_extension_header.png
     :alt: ARC IoTDK 2x18 Pin Extension Header
 
 

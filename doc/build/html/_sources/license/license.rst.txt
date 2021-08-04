@@ -62,7 +62,7 @@ FOSS Packages
 embARC
 ******
 
-:Project homepage:	https://embarc.org/
+:Project homepage:	https://foss-for-synopsys-dwc-arc-processors.github.io/
 
 :Project licensing:
 			| Copyright (c) 2017, Synopsys, Inc. All rights reserved.

@@ -2,338 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="emsk__sdcard__spi_8c" kind="file">
     <compoundname>emsk_sdcard_spi.c</compoundname>
-    <includes local="no">stddef.h</includes>
-    <includes local="no">string.h</includes>
-    <includes local="yes">arc/arc.h</includes>
-    <includes local="yes">arc/arc_builtin.h</includes>
-    <includes local="yes">embARC_toolchain.h</includes>
-    <includes local="yes">embARC_error.h</includes>
-    <includes local="yes">arc/arc_exception.h</includes>
-    <includes local="yes">device/ip_hal/dev_spi.h</includes>
-    <includes refid="board_8h" local="yes">board.h</includes>
-    <includes refid="os__hal__inc_8h" local="yes">os_hal_inc.h</includes>
-    <includes local="yes">ff_diskio.h</includes>
-    <includes local="yes">ff_sdcard.h</includes>
-    <includes refid="emsk__sdcard__spi_8h" local="yes">emsk_sdcard_spi.h</includes>
-    <incdepgraph>
-      <node id="2205">
-        <label>arc/arc_exception.h</label>
-      </node>
-      <node id="2202">
-        <label>arc/arc_builtin.h</label>
-      </node>
-      <node id="2199">
-        <label>stddef.h</label>
-      </node>
-      <node id="2204">
-        <label>embARC_error.h</label>
-      </node>
-      <node id="2198">
-        <label>emsk_sdcard_spi.c</label>
-        <link refid="emsk_sdcard_spi.c"/>
-        <childnode refid="2199" relation="include">
-        </childnode>
-        <childnode refid="2200" relation="include">
-        </childnode>
-        <childnode refid="2201" relation="include">
-        </childnode>
-        <childnode refid="2202" relation="include">
-        </childnode>
-        <childnode refid="2203" relation="include">
-        </childnode>
-        <childnode refid="2204" relation="include">
-        </childnode>
-        <childnode refid="2205" relation="include">
-        </childnode>
-        <childnode refid="2206" relation="include">
-        </childnode>
-        <childnode refid="2207" relation="include">
-        </childnode>
-        <childnode refid="2208" relation="include">
-        </childnode>
-        <childnode refid="2209" relation="include">
-        </childnode>
-        <childnode refid="2210" relation="include">
-        </childnode>
-        <childnode refid="2211" relation="include">
-        </childnode>
-      </node>
-      <node id="2211">
-        <label>emsk_sdcard_spi.h</label>
-        <link refid="emsk__sdcard__spi_8h"/>
-        <childnode refid="2209" relation="include">
-        </childnode>
-      </node>
-      <node id="2200">
-        <label>string.h</label>
-      </node>
-      <node id="2210">
-        <label>ff_sdcard.h</label>
-      </node>
-      <node id="2206">
-        <label>device/ip_hal/dev_spi.h</label>
-      </node>
-      <node id="2203">
-        <label>embARC_toolchain.h</label>
-      </node>
-      <node id="2209">
-        <label>ff_diskio.h</label>
-      </node>
-      <node id="2208">
-        <label>os_hal_inc.h</label>
-        <link refid="os__hal__inc_8h"/>
-      </node>
-      <node id="2201">
-        <label>arc/arc.h</label>
-      </node>
-      <node id="2207">
-        <label>board.h</label>
-        <link refid="board_8h"/>
-      </node>
-    </incdepgraph>
-      <sectiondef kind="define">
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga03714ac31fad2550c63cd48628ca97a3" prot="public" static="no">
-        <name>EMSK_SDCARD_SPI_0_ID</name>
-        <initializer>(<ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j_1ga906ed6ea818fb3ea7b3b52f174751ec2" kindref="member">DW_SPI_0_ID</ref>)</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="74" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="74" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1gae731bd3eee8f7317075a201578cd2298" prot="public" static="no">
-        <name>EMSK_SDCARD_SPI_0_LINE</name>
-        <initializer>BOARD_SDCARD_SPI_LINE</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="75" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="75" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga7a378b99881cd3645c5698b3887f3686" prot="public" static="no">
-        <name>EMSK_SDCARD_SPI_0_FREQ</name>
-        <initializer>BOARD_SPI_FREQ</initializer>
-        <briefdescription>
-<para>SDCARD SPI FREQ &amp; CLK MODE SETTINGS. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="78" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="78" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga4f987d693a48d388b7794e049702c1e3" prot="public" static="no">
-        <name>EMSK_SDCARD_SPI_0_CLKMODE</name>
-        <initializer>SPI_CLK_MODE_0</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="79" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="79" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="var">
-      <memberdef kind="variable" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga76053ce6e596a9089a4130ffe422c26e" prot="public" static="yes" mutable="no">
-        <type>FS_SDCARD_SPI_CTRL</type>
-        <definition>FS_SDCARD_SPI_CTRL sdcard_spi_0_ctrl</definition>
-        <argsstring></argsstring>
-        <name>sdcard_spi_0_ctrl</name>
-        <initializer>= {
-	0, 0, 0,
-	<ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga3614bb104e3fc23881bd3f96f9f47efc" kindref="member">SDCARD_SPI_FREQ_400K</ref>, <ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga7a378b99881cd3645c5698b3887f3686" kindref="member">EMSK_SDCARD_SPI_0_FREQ</ref>, EMSK_SDCARD_SPI_0_CLKMODE,
-	<ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j_1ga906ed6ea818fb3ea7b3b52f174751ec2" kindref="member">DW_SPI_0_ID</ref>, BOARD_SDCARD_SPI_LINE,
-	sdcard_spi_card_is_writeprotect,
-	sdcard_spi_card_is_inserted
-}</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="121" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="121" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga6dc3a92c5832ccaf220e95c1e7b7c7dc" prot="public" static="no" mutable="no">
-        <type>FATFS_DISKIO</type>
-        <definition>FATFS_DISKIO sdcard_spi_0_diskio</definition>
-        <argsstring></argsstring>
-        <name>sdcard_spi_0_diskio</name>
-        <initializer>= {
-	(void *)&amp;sdcard_spi_0_ctrl,
-	sdcard_spi_0_diskio_initialize,
-	sdcard_spi_0_diskio_status,
-	sdcard_spi_0_diskio_read,
-	sdcard_spi_0_diskio_write,
-	sdcard_spi_0_diskio_ioctl,
-	sdcard_spi_0_diskio_timerproc
-}</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="129" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="129" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="func">
-      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1gaf7ef0459e19ce1cd61d70576b61c3128" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>static int32_t sdcard_spi_card_is_writeprotect</definition>
-        <argsstring>(void)</argsstring>
-        <name>sdcard_spi_card_is_writeprotect</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="81" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="81" bodyend="84"/>
-      </memberdef>
-      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1gaf90d5d49e0bdb463451a52dacf2eef37" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>static int32_t sdcard_spi_card_is_inserted</definition>
-        <argsstring>(void)</argsstring>
-        <name>sdcard_spi_card_is_inserted</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="86" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="86" bodyend="89"/>
-      </memberdef>
-      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga8eef1686df4be6dd1bc8dd80723c97f3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>static int32_t sdcard_spi_0_diskio_initialize</definition>
-        <argsstring>(void)</argsstring>
-        <name>sdcard_spi_0_diskio_initialize</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="91" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="91" bodyend="94"/>
-      </memberdef>
-      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1gaeb5b16ba3a527fbeeaee1abf50fd644c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>static int32_t sdcard_spi_0_diskio_status</definition>
-        <argsstring>(void)</argsstring>
-        <name>sdcard_spi_0_diskio_status</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="96" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="96" bodyend="99"/>
-      </memberdef>
-      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga130977899860bcdcc251b06c5cea0de8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>static int32_t sdcard_spi_0_diskio_read</definition>
-        <argsstring>(void *buf, uint32_t sector, uint32_t count)</argsstring>
-        <name>sdcard_spi_0_diskio_read</name>
-        <param>
-          <type>void *</type>
-          <declname>buf</declname>
-        </param>
-        <param>
-          <type>uint32_t</type>
-          <declname>sector</declname>
-        </param>
-        <param>
-          <type>uint32_t</type>
-          <declname>count</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="101" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="101" bodyend="104"/>
-      </memberdef>
-      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga1f74d818dfa8f9d759282ac162fbca80" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>static int32_t sdcard_spi_0_diskio_write</definition>
-        <argsstring>(const void *buf, uint32_t sector, uint32_t count)</argsstring>
-        <name>sdcard_spi_0_diskio_write</name>
-        <param>
-          <type>const void *</type>
-          <declname>buf</declname>
-        </param>
-        <param>
-          <type>uint32_t</type>
-          <declname>sector</declname>
-        </param>
-        <param>
-          <type>uint32_t</type>
-          <declname>count</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="106" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="106" bodyend="109"/>
-      </memberdef>
-      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga611b5cd343778505a5de15618d8c70d5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>static int32_t sdcard_spi_0_diskio_ioctl</definition>
-        <argsstring>(uint32_t cmd, void *buf)</argsstring>
-        <name>sdcard_spi_0_diskio_ioctl</name>
-        <param>
-          <type>uint32_t</type>
-          <declname>cmd</declname>
-        </param>
-        <param>
-          <type>void *</type>
-          <declname>buf</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="111" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="111" bodyend="114"/>
-      </memberdef>
-      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga367b6e28e65be7dc88382143e34c9175" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>static void sdcard_spi_0_diskio_timerproc</definition>
-        <argsstring>(void)</argsstring>
-        <name>sdcard_spi_0_diskio_timerproc</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="116" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="116" bodyend="119"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>sdcard driver using spi interface for fatfs </para>    </briefdescription>
     <detaileddescription>
@@ -373,13 +41,13 @@
 <codeline lineno="51"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc_builtin.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;embARC_toolchain.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;embARC_error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc_exception.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc_8h" kindref="compound">arc/arc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__builtin_8h" kindref="compound">arc/arc_builtin.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="embARC__toolchain_8h" kindref="compound">embARC_toolchain.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="embARC__error_8h" kindref="compound">embARC_error.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__exception_8h" kindref="compound">arc/arc_exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;device/ip_hal/dev_spi.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dev__spi_8h" kindref="compound">device/ip_hal/dev_spi.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="board_8h" kindref="compound">board.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="62"><highlight class="normal"></highlight></codeline>
 <codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>ENABLE_OS</highlight></codeline>
@@ -396,65 +64,65 @@
 <codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EMSK_SDCARD_SPI_0_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(DW_SPI_0_ID)</highlight></codeline>
 <codeline lineno="75"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>EMSK_SDCARD_SPI_0_LINE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOARD_SDCARD_SPI_LINE</highlight></codeline>
 <codeline lineno="76"><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="78" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga7a378b99881cd3645c5698b3887f3686" refkind="member"><highlight class="preprocessor">#define<sp/>EMSK_SDCARD_SPI_0_FREQ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOARD_SPI_FREQ</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor">#define<sp/>EMSK_SDCARD_SPI_0_FREQ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOARD_SPI_FREQ</highlight></codeline>
 <codeline lineno="79"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>EMSK_SDCARD_SPI_0_CLKMODE<sp/><sp/><sp/><sp/><sp/><sp/><sp/>SPI_CLK_MODE_0</highlight></codeline>
 <codeline lineno="80"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="81"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>sdcard_spi_card_is_writeprotect(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="82"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="84"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight></codeline>
 <codeline lineno="86"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>sdcard_spi_card_is_inserted(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="87"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
 <codeline lineno="89"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"></highlight></codeline>
 <codeline lineno="91"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>sdcard_spi_0_diskio_initialize(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="92"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sdcard_spi_diskio_initialize(&amp;sdcard_spi_0_diskio);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sdcard_spi_diskio_initialize(&amp;sdcard_spi_0_diskio);</highlight></codeline>
 <codeline lineno="94"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight></codeline>
 <codeline lineno="96"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>sdcard_spi_0_diskio_status(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="97"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sdcard_spi_diskio_status(&amp;sdcard_spi_0_diskio);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sdcard_spi_diskio_status(&amp;sdcard_spi_0_diskio);</highlight></codeline>
 <codeline lineno="99"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"></highlight></codeline>
 <codeline lineno="101"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>sdcard_spi_0_diskio_read(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*buf,<sp/>uint32_t<sp/>sector,<sp/>uint32_t<sp/>count)</highlight></codeline>
 <codeline lineno="102"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sdcard_spi_diskio_read(&amp;sdcard_spi_0_diskio,<sp/>buf,<sp/>sector,<sp/>count);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sdcard_spi_diskio_read(&amp;sdcard_spi_0_diskio,<sp/>buf,<sp/>sector,<sp/>count);</highlight></codeline>
 <codeline lineno="104"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
 <codeline lineno="106"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>sdcard_spi_0_diskio_write(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*buf,<sp/>uint32_t<sp/>sector,<sp/>uint32_t<sp/>count)</highlight></codeline>
 <codeline lineno="107"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sdcard_spi_diskio_write(&amp;sdcard_spi_0_diskio,<sp/>buf,<sp/>sector,<sp/>count);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sdcard_spi_diskio_write(&amp;sdcard_spi_0_diskio,<sp/>buf,<sp/>sector,<sp/>count);</highlight></codeline>
 <codeline lineno="109"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"></highlight></codeline>
 <codeline lineno="111"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>sdcard_spi_0_diskio_ioctl(uint32_t<sp/>cmd,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*buf)</highlight></codeline>
 <codeline lineno="112"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sdcard_spi_diskio_ioctl(&amp;sdcard_spi_0_diskio,<sp/>cmd,<sp/>buf);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sdcard_spi_diskio_ioctl(&amp;sdcard_spi_0_diskio,<sp/>cmd,<sp/>buf);</highlight></codeline>
 <codeline lineno="114"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"></highlight></codeline>
 <codeline lineno="116"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>sdcard_spi_0_diskio_timerproc(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="117"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sdcard_spi_diskio_timerproc(&amp;sdcard_spi_0_diskio);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>sdcard_spi_diskio_timerproc(&amp;sdcard_spi_0_diskio);</highlight></codeline>
 <codeline lineno="119"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"></highlight></codeline>
 <codeline lineno="121"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>FS_SDCARD_SPI_CTRL<sp/>sdcard_spi_0_ctrl<sp/>=<sp/>{</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/>0,<sp/>0,</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga3614bb104e3fc23881bd3f96f9f47efc" kindref="member">SDCARD_SPI_FREQ_400K</ref>,<sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga7a378b99881cd3645c5698b3887f3686" kindref="member">EMSK_SDCARD_SPI_0_FREQ</ref>,<sp/>EMSK_SDCARD_SPI_0_CLKMODE,</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j_1ga906ed6ea818fb3ea7b3b52f174751ec2" kindref="member">DW_SPI_0_ID</ref>,<sp/>BOARD_SDCARD_SPI_LINE,</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sdcard_spi_card_is_writeprotect,</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sdcard_spi_card_is_inserted</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>0,<sp/>0,<sp/>0,</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>SDCARD_SPI_FREQ_400K,<sp/>EMSK_SDCARD_SPI_0_FREQ,<sp/>EMSK_SDCARD_SPI_0_CLKMODE,</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="emsdp_2drivers_2ip_2designware_2spi_2dw__spi__obj_8h_a906ed6ea818fb3ea7b3b52f174751ec2_1a906ed6ea818fb3ea7b3b52f174751ec2" kindref="member">DW_SPI_0_ID</ref>,<sp/><ref refid="group__BOARD__EMSK__COMMON__INIT_ga18d726b68df14d3a5d5f3467a565c8db_1ga18d726b68df14d3a5d5f3467a565c8db" kindref="member">BOARD_SDCARD_SPI_LINE</ref>,</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>sdcard_spi_card_is_writeprotect,</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>sdcard_spi_card_is_inserted</highlight></codeline>
 <codeline lineno="127"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"></highlight></codeline>
 <codeline lineno="129"><highlight class="normal">FATFS_DISKIO<sp/>sdcard_spi_0_diskio<sp/>=<sp/>{</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)&amp;sdcard_spi_0_ctrl,</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sdcard_spi_0_diskio_initialize,</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sdcard_spi_0_diskio_status,</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sdcard_spi_0_diskio_read,</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sdcard_spi_0_diskio_write,</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sdcard_spi_0_diskio_ioctl,</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sdcard_spi_0_diskio_timerproc</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)&amp;sdcard_spi_0_ctrl,</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>sdcard_spi_0_diskio_initialize,</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>sdcard_spi_0_diskio_status,</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>sdcard_spi_0_diskio_read,</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>sdcard_spi_0_diskio_write,</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>sdcard_spi_0_diskio_ioctl,</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>sdcard_spi_0_diskio_timerproc</highlight></codeline>
 <codeline lineno="137"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="138"><highlight class="normal"></highlight></codeline>
 <codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>USE_EMSK_SDCARD_SPI_0<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>

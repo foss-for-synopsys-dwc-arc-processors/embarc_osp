@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>&lt;no title&gt; &mdash; embARC 2019.06 documentation</title>
+  <title>OpenThread CLI Reference &mdash; embARC OSP Project Documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../../../../../_static/style_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="OT_DIAG.html" />
+    <link rel="next" title="OpenThread Diagnostics Module Reference" href="OT_DIAG.html" />
     <link rel="prev" title="OpenThread Examples" href="../README.html" /> 
 </head>
 
@@ -86,7 +86,7 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../../../introduction/introduction.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../getting_started/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../arc/arc.html">ARC Processors</a></li>
@@ -95,7 +95,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../../os/os.html">Operating Systems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../middleware/middleware.html">Middleware Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../lib/library.html">Libraries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../example.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../example.html">Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../../example.html#overview">Overview</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../../example.html">Examples and Demos</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../../baremetal_based_example.html">Baremetal examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../freertos/os_based_example.html">OS Based Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../example.html#application-note">Application Note</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../developer/developer_guides.html">Developer Guides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../faq/faq.html">Usage Guide FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../contribute/contribute.html">Contribute to embARC OSP</a></li>
@@ -155,14 +166,12 @@
         
           <li><a href="../README.html">OpenThread Examples</a> &raquo;</li>
         
-      <li>&lt;no title&gt;</li>
+      <li>OpenThread CLI Reference</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../../../_sources/example/example/baremetal/openthread/cli/OT_CLI.md.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -174,201 +183,238 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p># OpenThread CLI Reference</p>
+  <div class="section" id="openthread-cli-reference">
+<h1>OpenThread CLI Reference<a class="headerlink" href="#openthread-cli-reference" title="Permalink to this headline">¶</a></h1>
 <p>The OpenThread CLI exposes configuration and management APIs via a
 command line interface. Use the CLI to play with OpenThread, which
 can also be used with additional application code. The
 OpenThread test scripts use the CLI to execute test cases.</p>
-<p>## OpenThread Command List</p>
+<div class="section" id="openthread-command-list">
+<h2>OpenThread Command List<a class="headerlink" href="#openthread-command-list" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>[autostart](#autostart)</p></li>
-<li><p>[bufferinfo](#bufferinfo)</p></li>
-<li><p>[channel](#channel)</p></li>
-<li><p>[child](#child-list)</p></li>
-<li><p>[childmax](#childmax)</p></li>
-<li><p>[childtimeout](#childtimeout)</p></li>
-<li><p>[coap](#coap-start)</p></li>
-<li><p>[commissioner](#commissioner-start-provisioningurl)</p></li>
-<li><p>[contextreusedelay](#contextreusedelay)</p></li>
-<li><p>[counter](#counter)</p></li>
-<li><p>[dataset](#dataset-help)</p></li>
-<li><p>[delaytimermin](#delaytimermin)</p></li>
-<li><p>[discover](#discover-channel)</p></li>
-<li><p>[dns](#dns-resolve-hostname-dns-server-ip-dns-server-port)</p></li>
-<li><p>[eidcache](#eidcache)</p></li>
-<li><p>[eui64](#eui64)</p></li>
-<li><p>[extaddr](#extaddr)</p></li>
-<li><p>[extpanid](#extpanid)</p></li>
-<li><p>[factoryreset](#factoryreset)</p></li>
-<li><p>[hashmacaddr](#hashmacaddr)</p></li>
-<li><p>[ifconfig](#ifconfig)</p></li>
-<li><p>[ipaddr](#ipaddr)</p></li>
-<li><p>[ipmaddr](#ipmaddr)</p></li>
-<li><p>[joiner](#joiner-start-pskd-provisioningurl)</p></li>
-<li><p>[joinerport](#joinerport-port)</p></li>
-<li><p>[keysequence](#keysequence-counter)</p></li>
-<li><p>[leaderdata](#leaderdata)</p></li>
-<li><p>[leaderpartitionid](#leaderpartitionid)</p></li>
-<li><p>[leaderweight](#leaderweight)</p></li>
-<li><p>[linkquality](#linkquality-extaddr)</p></li>
-<li><p>[macfilter](#macfilter)</p></li>
-<li><p>[masterkey](#masterkey)</p></li>
-<li><p>[mode](#mode)</p></li>
-<li><p>[netdataregister](#netdataregister)</p></li>
-<li><p>[networkdiagnostic](#networkdiagnostic-get-addr-type-)</p></li>
-<li><p>[networkidtimeout](#networkidtimeout)</p></li>
-<li><p>[networkname](#networkname)</p></li>
-<li><p>[panid](#panid)</p></li>
-<li><p>[parent](#parent)</p></li>
-<li><p>[parentpriority](#parentpriority)</p></li>
-<li><p>[ping](#ping-ipaddr-size-count-interval)</p></li>
-<li><p>[pollperiod](#pollperiod-pollperiod)</p></li>
-<li><p>[prefix](#prefix-add-prefix-pvdcsr-prf)</p></li>
-<li><p>[promiscuous](#promiscuous)</p></li>
-<li><p>[releaserouterid](#releaserouterid-routerid)</p></li>
-<li><p>[reset](#reset)</p></li>
-<li><p>[rloc16](#rloc16)</p></li>
-<li><p>[route](#route-add-prefix-s-prf)</p></li>
-<li><p>[router](#router-list)</p></li>
-<li><p>[routerdowngradethreshold](#routerdowngradethreshold)</p></li>
-<li><p>[routerrole](#routerrole)</p></li>
-<li><p>[routerselectionjitter](#routerselectionjitter)</p></li>
-<li><p>[routerupgradethreshold](#routerupgradethreshold)</p></li>
-<li><p>[scan](#scan-channel)</p></li>
-<li><p>[singleton](#singleton)</p></li>
-<li><p>[state](#state)</p></li>
-<li><p>[thread](#thread-start)</p></li>
-<li><p>[txpowermax](#txpowermax)</p></li>
-<li><p>[version](#version)</p></li>
-<li><p>[diag](#diag)</p></li>
+<li><p><a class="reference external" href="#autostart">autostart</a></p></li>
+<li><p><a class="reference external" href="#bufferinfo">bufferinfo</a></p></li>
+<li><p><a class="reference external" href="#channel">channel</a></p></li>
+<li><p><a class="reference external" href="#child-list">child</a></p></li>
+<li><p><a class="reference external" href="#childmax">childmax</a></p></li>
+<li><p><a class="reference external" href="#childtimeout">childtimeout</a></p></li>
+<li><p><a class="reference external" href="#coap-start">coap</a></p></li>
+<li><p><a class="reference external" href="#commissioner-start-provisioningurl">commissioner</a></p></li>
+<li><p><a class="reference external" href="#contextreusedelay">contextreusedelay</a></p></li>
+<li><p><a class="reference external" href="#counter">counter</a></p></li>
+<li><p><a class="reference external" href="#dataset-help">dataset</a></p></li>
+<li><p><a class="reference external" href="#delaytimermin">delaytimermin</a></p></li>
+<li><p><a class="reference external" href="#discover-channel">discover</a></p></li>
+<li><p><a class="reference external" href="#dns-resolve-hostname-dns-server-ip-dns-server-port">dns</a></p></li>
+<li><p><a class="reference external" href="#eidcache">eidcache</a></p></li>
+<li><p><a class="reference external" href="#eui64">eui64</a></p></li>
+<li><p><a class="reference external" href="#extaddr">extaddr</a></p></li>
+<li><p><a class="reference external" href="#extpanid">extpanid</a></p></li>
+<li><p><a class="reference external" href="#factoryreset">factoryreset</a></p></li>
+<li><p><a class="reference external" href="#hashmacaddr">hashmacaddr</a></p></li>
+<li><p><a class="reference external" href="#ifconfig">ifconfig</a></p></li>
+<li><p><a class="reference external" href="#ipaddr">ipaddr</a></p></li>
+<li><p><a class="reference external" href="#ipmaddr">ipmaddr</a></p></li>
+<li><p><a class="reference external" href="#joiner-start-pskd-provisioningurl">joiner</a></p></li>
+<li><p><a class="reference external" href="#joinerport-port">joinerport</a></p></li>
+<li><p><a class="reference external" href="#keysequence-counter">keysequence</a></p></li>
+<li><p><a class="reference external" href="#leaderdata">leaderdata</a></p></li>
+<li><p><a class="reference external" href="#leaderpartitionid">leaderpartitionid</a></p></li>
+<li><p><a class="reference external" href="#leaderweight">leaderweight</a></p></li>
+<li><p><a class="reference external" href="#linkquality-extaddr">linkquality</a></p></li>
+<li><p><a class="reference external" href="#macfilter">macfilter</a></p></li>
+<li><p><a class="reference external" href="#masterkey">masterkey</a></p></li>
+<li><p><a class="reference external" href="#mode">mode</a></p></li>
+<li><p><a class="reference external" href="#netdataregister">netdataregister</a></p></li>
+<li><p><a class="reference external" href="#networkdiagnostic-get-addr-type-">networkdiagnostic</a></p></li>
+<li><p><a class="reference external" href="#networkidtimeout">networkidtimeout</a></p></li>
+<li><p><a class="reference external" href="#networkname">networkname</a></p></li>
+<li><p><a class="reference external" href="#panid">panid</a></p></li>
+<li><p><a class="reference external" href="#parent">parent</a></p></li>
+<li><p><a class="reference external" href="#parentpriority">parentpriority</a></p></li>
+<li><p><a class="reference external" href="#ping-ipaddr-size-count-interval">ping</a></p></li>
+<li><p><a class="reference external" href="#pollperiod-pollperiod">pollperiod</a></p></li>
+<li><p><a class="reference external" href="#prefix-add-prefix-pvdcsr-prf">prefix</a></p></li>
+<li><p><a class="reference external" href="#promiscuous">promiscuous</a></p></li>
+<li><p><a class="reference external" href="#releaserouterid-routerid">releaserouterid</a></p></li>
+<li><p><a class="reference external" href="#reset">reset</a></p></li>
+<li><p><a class="reference external" href="#rloc16">rloc16</a></p></li>
+<li><p><a class="reference external" href="#route-add-prefix-s-prf">route</a></p></li>
+<li><p><a class="reference external" href="#router-list">router</a></p></li>
+<li><p><a class="reference external" href="#routerdowngradethreshold">routerdowngradethreshold</a></p></li>
+<li><p><a class="reference external" href="#routerrole">routerrole</a></p></li>
+<li><p><a class="reference external" href="#routerselectionjitter">routerselectionjitter</a></p></li>
+<li><p><a class="reference external" href="#routerupgradethreshold">routerupgradethreshold</a></p></li>
+<li><p><a class="reference external" href="#scan-channel">scan</a></p></li>
+<li><p><a class="reference external" href="#singleton">singleton</a></p></li>
+<li><p><a class="reference external" href="#state">state</a></p></li>
+<li><p><a class="reference external" href="#thread-start">thread</a></p></li>
+<li><p><a class="reference external" href="#txpowermax">txpowermax</a></p></li>
+<li><p><a class="reference external" href="#version">version</a></p></li>
+<li><p><a class="reference external" href="#diag">diag</a></p></li>
 </ul>
-<p>## OpenThread Command Details</p>
-<p>### autostart true</p>
+</div>
+<div class="section" id="openthread-command-details">
+<h2>OpenThread Command Details<a class="headerlink" href="#openthread-command-details" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="autostart-true">
+<h3>autostart true<a class="headerlink" href="#autostart-true" title="Permalink to this headline">¶</a></h3>
 <p>Automatically start Thread on initialization.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">autostart</span> <span class="pre">true</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### autostart false</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; autostart <span class="nb">true</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="autostart-false">
+<h3>autostart false<a class="headerlink" href="#autostart-false" title="Permalink to this headline">¶</a></h3>
 <p>Don’t automatically start Thread on initialization.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">autostart</span> <span class="pre">false</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### autostart</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; autostart <span class="nb">false</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>autostart<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>Show the status of automatically starting Thread on initialization.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">autostart</span>
-<span class="pre">false</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### bufferinfo</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; autostart
+<span class="nb">false</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>bufferinfo<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>Show the current message buffer information.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">bufferinfo</span>
-<span class="pre">total:</span> <span class="pre">40</span>
-<span class="pre">free:</span> <span class="pre">40</span>
-<span class="pre">6lo</span> <span class="pre">send:</span> <span class="pre">0</span> <span class="pre">0</span>
-<span class="pre">6lo</span> <span class="pre">reas:</span> <span class="pre">0</span> <span class="pre">0</span>
-<span class="pre">ip6:</span> <span class="pre">0</span> <span class="pre">0</span>
-<span class="pre">mpl:</span> <span class="pre">0</span> <span class="pre">0</span>
-<span class="pre">mle:</span> <span class="pre">0</span> <span class="pre">0</span>
-<span class="pre">arp:</span> <span class="pre">0</span> <span class="pre">0</span>
-<span class="pre">coap:</span> <span class="pre">0</span> <span class="pre">0</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### channel</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; bufferinfo
+total: <span class="m">40</span>
+free: <span class="m">40</span>
+6lo send: <span class="m">0</span> <span class="m">0</span>
+6lo reas: <span class="m">0</span> <span class="m">0</span>
+ip6: <span class="m">0</span> <span class="m">0</span>
+mpl: <span class="m">0</span> <span class="m">0</span>
+mle: <span class="m">0</span> <span class="m">0</span>
+arp: <span class="m">0</span> <span class="m">0</span>
+coap: <span class="m">0</span> <span class="m">0</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>channel<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>Get the IEEE 802.15.4 Channel value.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">channel</span>
-<span class="pre">11</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### channel &lt;channel&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; channel
+<span class="m">11</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="channel-channel-gt">
+<h3>channel &lt;channel&amp;gt;<a class="headerlink" href="#channel-channel-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the IEEE 802.15.4 Channel value.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">channel</span> <span class="pre">11</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### child list</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; channel <span class="m">11</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="child-list">
+<h3>child list<a class="headerlink" href="#child-list" title="Permalink to this headline">¶</a></h3>
 <p>List attached Child IDs.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">child</span> <span class="pre">list</span>
-<span class="pre">1</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">6</span> <span class="pre">7</span> <span class="pre">8</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### child table</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; child list
+<span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">6</span> <span class="m">7</span> <span class="m">8</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="child-table">
+<h3>child table<a class="headerlink" href="#child-table" title="Permalink to this headline">¶</a></h3>
 <p>Print table of attached children.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">child</span> <span class="pre">table</span>
-<span class="pre">|</span> <span class="pre">ID</span>&#160; <span class="pre">|</span> <span class="pre">RLOC16</span> <span class="pre">|</span> <span class="pre">Timeout</span>&#160;&#160;&#160; <span class="pre">|</span> <span class="pre">Age</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">|</span> <span class="pre">LQ</span> <span class="pre">In</span> <span class="pre">|</span> <span class="pre">C_VN</span> <span class="pre">|R|S|D|N|</span> <span class="pre">Extended</span> <span class="pre">MAC</span>&#160;&#160;&#160;&#160; <span class="pre">|</span>
-<span class="pre">+-----+--------+------------+------------+-------+------+-+-+-+-+------------------+</span>
-<span class="pre">|</span>&#160;&#160; <span class="pre">1</span> <span class="pre">|</span> <span class="pre">0xe001</span> <span class="pre">|</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">240</span> <span class="pre">|</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">44</span> <span class="pre">|</span>&#160;&#160;&#160;&#160; <span class="pre">3</span> <span class="pre">|</span>&#160; <span class="pre">237</span> <span class="pre">|1|1|1|1|</span> <span class="pre">d28d7f875888fccb</span> <span class="pre">|</span>
-<span class="pre">|</span>&#160;&#160; <span class="pre">2</span> <span class="pre">|</span> <span class="pre">0xe002</span> <span class="pre">|</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">240</span> <span class="pre">|</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">27</span> <span class="pre">|</span>&#160;&#160;&#160;&#160; <span class="pre">3</span> <span class="pre">|</span>&#160; <span class="pre">237</span> <span class="pre">|0|1|0|1|</span> <span class="pre">e2b3540590b0fd87</span> <span class="pre">|</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### child &lt;id&gt;</p>
-<p>Print diagnostic information for an attached Thread Child.  The <cite>id</cite> may be a Child ID or an RLOC16.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">child</span> <span class="pre">1</span>
-<span class="pre">Child</span> <span class="pre">ID:</span> <span class="pre">1</span>
-<span class="pre">Rloc:</span> <span class="pre">9c01</span>
-<span class="pre">Ext</span> <span class="pre">Addr:</span> <span class="pre">e2b3540590b0fd87</span>
-<span class="pre">Mode:</span> <span class="pre">rsn</span>
-<span class="pre">Net</span> <span class="pre">Data:</span> <span class="pre">184</span>
-<span class="pre">Timeout:</span> <span class="pre">100</span>
-<span class="pre">Age:</span> <span class="pre">0</span>
-<span class="pre">Link</span> <span class="pre">Quality</span> <span class="pre">In:</span> <span class="pre">3</span>
-<span class="pre">RSSI:</span> <span class="pre">-20</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### childmax</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; child table
+<span class="p">|</span> ID  <span class="p">|</span> RLOC16 <span class="p">|</span> Timeout    <span class="p">|</span> Age        <span class="p">|</span> LQ In <span class="p">|</span> C_VN <span class="p">|</span>R<span class="p">|</span>S<span class="p">|</span>D<span class="p">|</span>N<span class="p">|</span> Extended MAC     <span class="p">|</span>
++-----+--------+------------+------------+-------+------+-+-+-+-+------------------+
+<span class="p">|</span>   <span class="m">1</span> <span class="p">|</span> 0xe001 <span class="p">|</span>        <span class="m">240</span> <span class="p">|</span>         <span class="m">44</span> <span class="p">|</span>     <span class="m">3</span> <span class="p">|</span>  <span class="m">237</span> <span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span> d28d7f875888fccb <span class="p">|</span>
+<span class="p">|</span>   <span class="m">2</span> <span class="p">|</span> 0xe002 <span class="p">|</span>        <span class="m">240</span> <span class="p">|</span>         <span class="m">27</span> <span class="p">|</span>     <span class="m">3</span> <span class="p">|</span>  <span class="m">237</span> <span class="p">|</span><span class="m">0</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">0</span><span class="p">|</span><span class="m">1</span><span class="p">|</span> e2b3540590b0fd87 <span class="p">|</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="child-id-gt">
+<h3>child &lt;id&amp;gt;<a class="headerlink" href="#child-id-gt" title="Permalink to this headline">¶</a></h3>
+<p>Print diagnostic information for an attached Thread Child.  The <code class="docutils literal notranslate"><span class="pre">id</span></code> may be a Child ID or an RLOC16.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; child <span class="m">1</span>
+Child ID: <span class="m">1</span>
+Rloc: 9c01
+Ext Addr: e2b3540590b0fd87
+Mode: rsn
+Net Data: <span class="m">184</span>
+Timeout: <span class="m">100</span>
+Age: <span class="m">0</span>
+Link Quality In: <span class="m">3</span>
+RSSI: -20
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>childmax<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>Get the Thread maximum number of allowed children.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">childmax</span>
-<span class="pre">5</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### childmax &lt;count&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; childmax
+<span class="m">5</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="childmax-count-gt">
+<h3>childmax &lt;count&amp;gt;<a class="headerlink" href="#childmax-count-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the Thread maximum number of allowed children.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">childmax</span> <span class="pre">2</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### childtimeout</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; childmax <span class="m">2</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>childtimeout<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>Get the Thread Child Timeout value.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">childtimeout</span>
-<span class="pre">300</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### childtimeout &lt;timeout&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; childtimeout
+<span class="m">300</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="childtimeout-timeout-gt">
+<h3>childtimeout &lt;timeout&amp;gt;<a class="headerlink" href="#childtimeout-timeout-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the Thread Child Timeout value.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">childtimeout</span> <span class="pre">300</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### coap start</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; childtimeout <span class="m">300</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="coap-start">
+<h3>coap start<a class="headerlink" href="#coap-start" title="Permalink to this headline">¶</a></h3>
 <p>Starts the application coap service.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">coap</span> <span class="pre">start</span>
-<span class="pre">Coap</span> <span class="pre">service</span> <span class="pre">started:</span> <span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### coap stop</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; coap start
+Coap service started: Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="coap-stop">
+<h3>coap stop<a class="headerlink" href="#coap-stop" title="Permalink to this headline">¶</a></h3>
 <p>Stops the application coap service.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">coap</span> <span class="pre">start</span>
-<span class="pre">Coap</span> <span class="pre">service</span> <span class="pre">stopped:</span> <span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### coap resource [uri-path]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; coap start
+Coap service stopped: Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="coap-resource-uri-path">
+<h3>coap resource [uri-path]<a class="headerlink" href="#coap-resource-uri-path" title="Permalink to this headline">¶</a></h3>
 <p>Sets the URI-Path for the test resource.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">coap</span> <span class="pre">resource</span> <span class="pre">test</span>
-<span class="pre">Resource</span> <span class="pre">name</span> <span class="pre">is</span> <span class="pre">'test':</span> <span class="pre">Done</span>
-<span class="pre">&gt;</span> <span class="pre">coap</span> <span class="pre">resource</span>
-<span class="pre">Resource</span> <span class="pre">name</span> <span class="pre">is</span> <span class="pre">'test':</span> <span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### coap &lt;method&gt; &lt;address&gt; &lt;uri&gt; [payload] [type]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; coap resource <span class="nb">test</span>
+Resource name is <span class="s1">&#39;test&#39;</span>: Done
+&gt; coap resource
+Resource name is <span class="s1">&#39;test&#39;</span>: Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="coap-method-gt-address-gt-uri-gt-payload-type">
+<h3>coap &lt;method&amp;gt; &lt;address&amp;gt; &lt;uri&amp;gt; [payload] [type]<a class="headerlink" href="#coap-method-gt-address-gt-uri-gt-payload-type" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>method: CoAP method to be used (GET/PUT/POST/DELETE).</p></li>
 <li><p>address: IP address of the CoAP server to query.</p></li>
@@ -376,64 +422,76 @@ OpenThread test scripts use the CLI to execute test cases.</p>
 <li><p>payload: In case of PUT/POST/DELETE a payload can be encapsulated.</p></li>
 <li><p>type: Switch between confirmable (“con”) and non-confirmable (default).</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">coap</span> <span class="pre">get</span> <span class="pre">fdde:ad00:beef:0:dbaa:f1d0:8afb:30dc</span> <span class="pre">test</span>
-<span class="pre">Sending</span> <span class="pre">coap</span> <span class="pre">message:</span> <span class="pre">Done</span>
-<span class="pre">Received</span> <span class="pre">coap</span> <span class="pre">request</span> <span class="pre">from</span> <span class="pre">[fdde:ad00:beef:0:dbaa:f1d0:8afb:30dc]:</span> <span class="pre">GET</span>
-<span class="pre">coap</span> <span class="pre">response</span> <span class="pre">sent</span> <span class="pre">successfully!</span>
-<span class="pre">Received</span> <span class="pre">coap</span> <span class="pre">response</span> <span class="pre">with</span> <span class="pre">payload:</span> <span class="pre">30</span>
-<span class="pre">&gt;</span> <span class="pre">coap</span> <span class="pre">put</span> <span class="pre">fdde:ad00:beef:0:dbaa:f1d0:8afb:30dc</span> <span class="pre">test</span> <span class="pre">non-con</span> <span class="pre">somePayload</span>
-<span class="pre">Sending</span> <span class="pre">coap</span> <span class="pre">message:</span> <span class="pre">Done</span>
-<span class="pre">Received</span> <span class="pre">coap</span> <span class="pre">request</span> <span class="pre">from</span> <span class="pre">[fdde:ad00:beef:0:dbaa:f1d0:8afb:30dc]:</span> <span class="pre">PUT</span> <span class="pre">with</span> <span class="pre">payload:</span> <span class="pre">73</span> <span class="pre">6f</span> <span class="pre">6d</span> <span class="pre">65</span> <span class="pre">50</span> <span class="pre">61</span> <span class="pre">79</span> <span class="pre">6c</span> <span class="pre">6f</span> <span class="pre">61</span> <span class="pre">64</span>
-<span class="pre">&gt;</span> <span class="pre">coap</span> <span class="pre">put</span> <span class="pre">fdde:ad00:beef:0:dbaa:f1d0:8afb:30dc</span> <span class="pre">test</span> <span class="pre">con</span> <span class="pre">123</span>
-<span class="pre">Sending</span> <span class="pre">coap</span> <span class="pre">message:</span> <span class="pre">Done</span>
-<span class="pre">Received</span> <span class="pre">coap</span> <span class="pre">request</span> <span class="pre">from</span> <span class="pre">[fdde:ad00:beef:0:dbaa:f1d0:8afb:30dc]:</span> <span class="pre">PUT</span> <span class="pre">with</span> <span class="pre">payload:</span> <span class="pre">31</span> <span class="pre">32</span> <span class="pre">33</span>
-<span class="pre">coap</span> <span class="pre">response</span> <span class="pre">sent</span> <span class="pre">successfully!</span>
-<span class="pre">Received</span> <span class="pre">coap</span> <span class="pre">response</span>
-<span class="pre">`</span></code></p>
-<p>### commissioner start &lt;provisioningUrl&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; coap get fdde:ad00:beef:0:dbaa:f1d0:8afb:30dc <span class="nb">test</span>
+Sending coap message: Done
+Received coap request from <span class="o">[</span>fdde:ad00:beef:0:dbaa:f1d0:8afb:30dc<span class="o">]</span>: GET
+coap response sent successfully!
+Received coap response with payload: <span class="m">30</span>
+&gt; coap put fdde:ad00:beef:0:dbaa:f1d0:8afb:30dc <span class="nb">test</span> non-con somePayload
+Sending coap message: Done
+Received coap request from <span class="o">[</span>fdde:ad00:beef:0:dbaa:f1d0:8afb:30dc<span class="o">]</span>: PUT with payload: <span class="m">73</span> 6f 6d <span class="m">65</span> <span class="m">50</span> <span class="m">61</span> <span class="m">79</span> 6c 6f <span class="m">61</span> <span class="m">64</span>
+&gt; coap put fdde:ad00:beef:0:dbaa:f1d0:8afb:30dc <span class="nb">test</span> con <span class="m">123</span>
+Sending coap message: Done
+Received coap request from <span class="o">[</span>fdde:ad00:beef:0:dbaa:f1d0:8afb:30dc<span class="o">]</span>: PUT with payload: <span class="m">31</span> <span class="m">32</span> <span class="m">33</span>
+coap response sent successfully!
+Received coap response
+</pre></div>
+</div>
+</div>
+<div class="section" id="commissioner-start-provisioningurl-gt">
+<h3>commissioner start &lt;provisioningUrl&amp;gt;<a class="headerlink" href="#commissioner-start-provisioningurl-gt" title="Permalink to this headline">¶</a></h3>
 <p>Start the Commissioner role.</p>
 <ul class="simple">
 <li><p>provisioningUrl: Provisioning URL for the Joiner (optional).</p></li>
 </ul>
 <p>This command will cause the device to send LEAD_PET and LEAD_KA messages.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">commissioner</span> <span class="pre">start</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### commissioner stop</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; commissioner start
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="commissioner-stop">
+<h3>commissioner stop<a class="headerlink" href="#commissioner-stop" title="Permalink to this headline">¶</a></h3>
 <p>Stop the Commissioner role.</p>
 <p>This command will cause the device to send LEAD_KA[Reject] messages.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">commissioner</span> <span class="pre">stop</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### commissioner joiner add &lt;hashmacaddr&gt; &lt;psdk&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; commissioner stop
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="commissioner-joiner-add-hashmacaddr-gt-psdk-gt">
+<h3>commissioner joiner add &lt;hashmacaddr&amp;gt; &lt;psdk&amp;gt;<a class="headerlink" href="#commissioner-joiner-add-hashmacaddr-gt-psdk-gt" title="Permalink to this headline">¶</a></h3>
 <p>Add a Joiner entry.</p>
 <ul class="simple">
 <li><p>hashmacaddr: The Extended Address of the Joiner or ‘*’ to match any Joiner.</p></li>
 <li><p>pskd: Pre-Shared Key for the Joiner.</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">commissioner</span> <span class="pre">joiner</span> <span class="pre">add</span> <span class="pre">d45e64fa83f81cf7</span> <span class="pre">PSK</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### commissioner joiner remove &lt;hashmacaddr&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; commissioner joiner add d45e64fa83f81cf7 PSK
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="commissioner-joiner-remove-hashmacaddr-gt">
+<h3>commissioner joiner remove &lt;hashmacaddr&amp;gt;<a class="headerlink" href="#commissioner-joiner-remove-hashmacaddr-gt" title="Permalink to this headline">¶</a></h3>
 <p>Remove a Joiner entry.</p>
 <ul class="simple">
 <li><p>hashmacaddr: The Extended Address of the Joiner or ‘*’ to match any Joiner.</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">commissioner</span> <span class="pre">joiner</span> <span class="pre">remove</span> <span class="pre">d45e64fa83f81cf7</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### commissioner provisioningurl &lt;provisioningUrl&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; commissioner joiner remove d45e64fa83f81cf7
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="commissioner-provisioningurl-provisioningurl-gt">
+<h3>commissioner provisioningurl &lt;provisioningUrl&amp;gt;<a class="headerlink" href="#commissioner-provisioningurl-provisioningurl-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the Provisioning URL.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">commissioner</span> <span class="pre">provisioningurl</span> <span class="pre">http://github.com/openthread/openthread</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### commissioner energy &lt;mask&gt; &lt;count&gt; &lt;period&gt; &lt;scanDuration&gt; &lt;destination&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; commissioner provisioningurl http://github.com/openthread/openthread
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="commissioner-energy-mask-gt-count-gt-period-gt-scanduration-gt-destination-gt">
+<h3>commissioner energy &lt;mask&amp;gt; &lt;count&amp;gt; &lt;period&amp;gt; &lt;scanDuration&amp;gt; &lt;destination&amp;gt;<a class="headerlink" href="#commissioner-energy-mask-gt-count-gt-period-gt-scanduration-gt-destination-gt" title="Permalink to this headline">¶</a></h3>
 <p>Send a MGMT_ED_SCAN message.</p>
 <ul class="simple">
 <li><p>mask: Bitmask identifying channsl to perform IEEE 802.15.4 ED Scans.</p></li>
@@ -444,12 +502,14 @@ OpenThread test scripts use the CLI to execute test cases.</p>
 </ul>
 <p>The contents of MGMT_ED_REPORT messages (i.e. Channel Mask and Energy
 List) are printed as they are received.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">commissioner</span> <span class="pre">energy</span> <span class="pre">0x00050000</span> <span class="pre">2</span> <span class="pre">32</span> <span class="pre">1000</span> <span class="pre">fdde:ad00:beef:0:0:ff:fe00:c00</span>
-<span class="pre">Done</span>
-<span class="pre">Energy:</span> <span class="pre">00050000</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span>
-<span class="pre">`</span></code></p>
-<p>### commissioner panid &lt;panid&gt; &lt;mask&gt; &lt;destination&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; commissioner energy 0x00050000 <span class="m">2</span> <span class="m">32</span> <span class="m">1000</span> fdde:ad00:beef:0:0:ff:fe00:c00
+Done
+Energy: <span class="m">00050000</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="commissioner-panid-panid-gt-mask-gt-destination-gt">
+<h3>commissioner panid &lt;panid&amp;gt; &lt;mask&amp;gt; &lt;destination&amp;gt;<a class="headerlink" href="#commissioner-panid-panid-gt-mask-gt-destination-gt" title="Permalink to this headline">¶</a></h3>
 <p>Send a MGMT_PANID_QUERY message.</p>
 <ul class="simple">
 <li><p>panid: PAN ID to check for conflicts.</p></li>
@@ -458,219 +518,267 @@ List) are printed as they are received.</p>
 </ul>
 <p>The contents of MGMT_PANID_CONFLICT messages (i.e. PAN ID and Channel
 Mask) are printed as they are received.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">commissioner</span> <span class="pre">panid</span> <span class="pre">0xdead</span> <span class="pre">0x7fff800</span> <span class="pre">fdde:ad00:beef:0:0:ff:fe00:c00</span>
-<span class="pre">Done</span>
-<span class="pre">Conflict:</span> <span class="pre">dead,</span> <span class="pre">00000800</span>
-<span class="pre">`</span></code></p>
-<p>### commissioner sessionid</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; commissioner panid 0xdead 0x7fff800 fdde:ad00:beef:0:0:ff:fe00:c00
+Done
+Conflict: dead, <span class="m">00000800</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="commissioner-sessionid">
+<h3>commissioner sessionid<a class="headerlink" href="#commissioner-sessionid" title="Permalink to this headline">¶</a></h3>
 <p>Get current commissioner session id.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">commissioner</span> <span class="pre">sessionid</span>
-<span class="pre">0</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### contextreusedelay</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; commissioner sessionid
+<span class="m">0</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>contextreusedelay<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>Get the CONTEXT_ID_REUSE_DELAY value.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">contextreusedelay</span>
-<span class="pre">11</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### contextreusedelay &lt;delay&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; contextreusedelay
+<span class="m">11</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="contextreusedelay-delay-gt">
+<h3>contextreusedelay &lt;delay&amp;gt;<a class="headerlink" href="#contextreusedelay-delay-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the CONTEXT_ID_REUSE_DELAY value.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">contextreusedelay</span> <span class="pre">11</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### counter</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; contextreusedelay <span class="m">11</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>counter<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>Get the supported counter names.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;counter</span>
-<span class="pre">mac</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### counter &lt;countername&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;counter
+mac
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="counter-countername-gt">
+<h3>counter &lt;countername&amp;gt;<a class="headerlink" href="#counter-countername-gt" title="Permalink to this headline">¶</a></h3>
 <p>Get the counter value.</p>
-<p><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>bash
-&gt;counter mac
-TxTotal: 10</p>
-<blockquote>
-<div><p>TxUnicast: 3
-TxBroadcast: 7
-TxAckRequested: 3
-TxAcked: 3
-TxNoAckRequested: 7
-TxData: 10
-TxDataPoll: 0
-TxBeacon: 0
-TxBeaconRequest: 0
-TxOther: 0
-TxRetry: 0
-TxErrCca: 0</p>
-</div></blockquote>
-<dl class="simple">
-<dt>RxTotal: 2</dt><dd><p>RxUnicast: 1
-RxBroadcast: 1
-RxData: 2
-RxDataPoll: 0
-RxBeacon: 0
-RxBeaconRequest: 0
-RxOther: 0
-RxWhitelistFiltered: 0
-RxDestAddrFiltered: 0
-RxDuplicated: 0
-RxErrNoFrame: 0
-RxErrNoUnknownNeighbor: 0
-RxErrInvalidSrcAddr: 0
-RxErrSec: 0
-RxErrFcs: 0
-RxErrOther: 0</p>
-</dd>
-</dl>
-<p><a href="#id5"><span class="problematic" id="id6">``</span></a><a href="#id7"><span class="problematic" id="id8">`</span></a></p>
-<p>### dataset help</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;counter mac
+TxTotal: <span class="m">10</span>
+    TxUnicast: <span class="m">3</span>
+    TxBroadcast: <span class="m">7</span>
+    TxAckRequested: <span class="m">3</span>
+    TxAcked: <span class="m">3</span>
+    TxNoAckRequested: <span class="m">7</span>
+    TxData: <span class="m">10</span>
+    TxDataPoll: <span class="m">0</span>
+    TxBeacon: <span class="m">0</span>
+    TxBeaconRequest: <span class="m">0</span>
+    TxOther: <span class="m">0</span>
+    TxRetry: <span class="m">0</span>
+    TxErrCca: <span class="m">0</span>
+RxTotal: <span class="m">2</span>
+    RxUnicast: <span class="m">1</span>
+    RxBroadcast: <span class="m">1</span>
+    RxData: <span class="m">2</span>
+    RxDataPoll: <span class="m">0</span>
+    RxBeacon: <span class="m">0</span>
+    RxBeaconRequest: <span class="m">0</span>
+    RxOther: <span class="m">0</span>
+    RxWhitelistFiltered: <span class="m">0</span>
+    RxDestAddrFiltered: <span class="m">0</span>
+    RxDuplicated: <span class="m">0</span>
+    RxErrNoFrame: <span class="m">0</span>
+    RxErrNoUnknownNeighbor: <span class="m">0</span>
+    RxErrInvalidSrcAddr: <span class="m">0</span>
+    RxErrSec: <span class="m">0</span>
+    RxErrFcs: <span class="m">0</span>
+    RxErrOther: <span class="m">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-help">
+<h3>dataset help<a class="headerlink" href="#dataset-help" title="Permalink to this headline">¶</a></h3>
 <p>Print meshcop dataset help menu.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">dataset</span> <span class="pre">help</span>
-<span class="pre">help</span>
-<span class="pre">active</span>
-<span class="pre">activetimestamp</span>
-<span class="pre">channel</span>
-<span class="pre">channelmask</span>
-<span class="pre">clear</span>
-<span class="pre">commit</span>
-<span class="pre">delay</span>
-<span class="pre">extpanid</span>
-<span class="pre">masterkey</span>
-<span class="pre">meshlocalprefix</span>
-<span class="pre">mgmtgetcommand</span>
-<span class="pre">mgmtsetcommand</span>
-<span class="pre">networkname</span>
-<span class="pre">panid</span>
-<span class="pre">pending</span>
-<span class="pre">pendingtimestamp</span>
-<span class="pre">pskc</span>
-<span class="pre">securitypolicy</span>
-<span class="pre">Done</span>
-<span class="pre">&gt;</span>
-<span class="pre">`</span></code></p>
-<p>### dataset active</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; dataset <span class="nb">help</span>
+<span class="nb">help</span>
+active
+activetimestamp
+channel
+channelmask
+clear
+commit
+delay
+extpanid
+masterkey
+meshlocalprefix
+mgmtgetcommand
+mgmtsetcommand
+networkname
+panid
+pending
+pendingtimestamp
+pskc
+securitypolicy
+Done
+&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-active">
+<h3>dataset active<a class="headerlink" href="#dataset-active" title="Permalink to this headline">¶</a></h3>
 <p>Print meshcop active operational dataset.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">dataset</span> <span class="pre">active</span>
-<span class="pre">Active</span> <span class="pre">Timestamp:</span> <span class="pre">0</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### dataset activetimestamp &lt;activetimestamp&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; dataset active
+Active Timestamp: <span class="m">0</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-activetimestamp-activetimestamp-gt">
+<h3>dataset activetimestamp &lt;activetimestamp&amp;gt;<a class="headerlink" href="#dataset-activetimestamp-activetimestamp-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set active timestamp.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">dataset</span> <span class="pre">activestamp</span> <span class="pre">123456789</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### dataset channel &lt;channel&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; dataset activestamp <span class="m">123456789</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-channel-channel-gt">
+<h3>dataset channel &lt;channel&amp;gt;<a class="headerlink" href="#dataset-channel-channel-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set channel.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">dataset</span> <span class="pre">channel</span> <span class="pre">12</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### dataset channelmask &lt;channelmask&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; dataset channel <span class="m">12</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-channelmask-channelmask-gt">
+<h3>dataset channelmask &lt;channelmask&amp;gt;<a class="headerlink" href="#dataset-channelmask-channelmask-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set channel mask.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">dataset</span> <span class="pre">channelmask</span> <span class="pre">e0ff1f00</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### dataset clear</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; dataset channelmask e0ff1f00
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-clear">
+<h3>dataset clear<a class="headerlink" href="#dataset-clear" title="Permalink to this headline">¶</a></h3>
 <p>Reset operational dataset buffer.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">dataset</span> <span class="pre">clear</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### dataset commit &lt;dataset&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; dataset clear
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-commit-dataset-gt">
+<h3>dataset commit &lt;dataset&amp;gt;<a class="headerlink" href="#dataset-commit-dataset-gt" title="Permalink to this headline">¶</a></h3>
 <p>Commit operational dataset buffer to active/pending operational dataset.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">dataset</span> <span class="pre">commit</span> <span class="pre">active</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### dataset delay &lt;delay&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; dataset commit active
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-delay-delay-gt">
+<h3>dataset delay &lt;delay&amp;gt;<a class="headerlink" href="#dataset-delay-delay-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set delay timer value.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">dataset</span> <span class="pre">delay</span> <span class="pre">1000</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### dataset extpanid &lt;extpanid&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; dataset delay <span class="m">1000</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-extpanid-extpanid-gt">
+<h3>dataset extpanid &lt;extpanid&amp;gt;<a class="headerlink" href="#dataset-extpanid-extpanid-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set extended panid.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">dataset</span> <span class="pre">extpanid</span> <span class="pre">000db80123456789</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### dataset masterkey &lt;masterkey&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; dataset extpanid 000db80123456789
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-masterkey-masterkey-gt">
+<h3>dataset masterkey &lt;masterkey&amp;gt;<a class="headerlink" href="#dataset-masterkey-masterkey-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set master key.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">dataset</span> <span class="pre">master</span> <span class="pre">1234567890123456</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### dataset meshlocalprefix &lt;meshlocalprefix&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; dataset master <span class="m">1234567890123456</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-meshlocalprefix-meshlocalprefix-gt">
+<h3>dataset meshlocalprefix &lt;meshlocalprefix&amp;gt;<a class="headerlink" href="#dataset-meshlocalprefix-meshlocalprefix-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set mesh local prefix.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">dataset</span> <span class="pre">meshlocalprefix</span> <span class="pre">fd00:db8::</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### dataset mgmtgetcommand active [address &lt;destination&gt;] [TLVs list] [binary]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; dataset meshlocalprefix fd00:db8::
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-mgmtgetcommand-active-address-destination-gt-tlvs-list-binary">
+<h3>dataset mgmtgetcommand active [address &lt;destination&amp;gt;] [TLVs list] [binary]<a class="headerlink" href="#dataset-mgmtgetcommand-active-address-destination-gt-tlvs-list-binary" title="Permalink to this headline">¶</a></h3>
 <p>Send MGMT_ACTIVE_GET.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">dataset</span> <span class="pre">mgmtgetcommand</span> <span class="pre">active</span> <span class="pre">address</span> <span class="pre">fdde:ad00:beef:0:558:f56b:d688:799</span> <span class="pre">activetimestamp</span> <span class="pre">123</span> <span class="pre">binary</span> <span class="pre">0001</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### dataset mgmtsetcommand active [TLV Types list] [binary]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; dataset mgmtgetcommand active address fdde:ad00:beef:0:558:f56b:d688:799 activetimestamp <span class="m">123</span> binary <span class="m">0001</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-mgmtsetcommand-active-tlv-types-list-binary">
+<h3>dataset mgmtsetcommand active [TLV Types list] [binary]<a class="headerlink" href="#dataset-mgmtsetcommand-active-tlv-types-list-binary" title="Permalink to this headline">¶</a></h3>
 <p>Send MGMT_ACTIVE_SET.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">dataset</span> <span class="pre">mgmtsetcommand</span> <span class="pre">active</span> <span class="pre">activetimestamp</span> <span class="pre">binary</span> <span class="pre">820155</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### dataset mgmtgetcommand pending [address &lt;destination&gt;] [TLVs list] [binary]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; dataset mgmtsetcommand active activetimestamp binary <span class="m">820155</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-mgmtgetcommand-pending-address-destination-gt-tlvs-list-binary">
+<h3>dataset mgmtgetcommand pending [address &lt;destination&amp;gt;] [TLVs list] [binary]<a class="headerlink" href="#dataset-mgmtgetcommand-pending-address-destination-gt-tlvs-list-binary" title="Permalink to this headline">¶</a></h3>
 <p>Send MGMT_PENDING_GET.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">dataset</span> <span class="pre">mgmtgetcommand</span> <span class="pre">pending</span> <span class="pre">address</span> <span class="pre">fdde:ad00:beef:0:558:f56b:d688:799</span> <span class="pre">activetimestamp</span> <span class="pre">binary</span> <span class="pre">0001</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### dataset mgmtsetcommand pending [TLV Types list] [binary]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; dataset mgmtgetcommand pending address fdde:ad00:beef:0:558:f56b:d688:799 activetimestamp binary <span class="m">0001</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-mgmtsetcommand-pending-tlv-types-list-binary">
+<h3>dataset mgmtsetcommand pending [TLV Types list] [binary]<a class="headerlink" href="#dataset-mgmtsetcommand-pending-tlv-types-list-binary" title="Permalink to this headline">¶</a></h3>
 <p>Send MGMT_PENDING_SET.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">dataset</span> <span class="pre">mgmtsetcommand</span> <span class="pre">pending</span> <span class="pre">activetimestamp</span> <span class="pre">binary</span> <span class="pre">820155</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### dataset networkname &lt;networkname&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; dataset mgmtsetcommand pending activetimestamp binary <span class="m">820155</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-networkname-networkname-gt">
+<h3>dataset networkname &lt;networkname&amp;gt;<a class="headerlink" href="#dataset-networkname-networkname-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set network name.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">dataset</span> <span class="pre">networkname</span> <span class="pre">openthread</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### dataset panid &lt;panid&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; dataset networkname openthread
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-panid-panid-gt">
+<h3>dataset panid &lt;panid&amp;gt;<a class="headerlink" href="#dataset-panid-panid-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set panid.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">dataset</span> <span class="pre">panid</span> <span class="pre">0x1234</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### dataset pending</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; dataset panid 0x1234
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-pending">
+<h3>dataset pending<a class="headerlink" href="#dataset-pending" title="Permalink to this headline">¶</a></h3>
 <p>Print meshcop pending operational dataset.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">dataset</span> <span class="pre">pending</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### dataset pendingtimestamp &lt;pendingtimestamp&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; dataset pending
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-pendingtimestamp-pendingtimestamp-gt">
+<h3>dataset pendingtimestamp &lt;pendingtimestamp&amp;gt;<a class="headerlink" href="#dataset-pendingtimestamp-pendingtimestamp-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set pending timestamp.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">dataset</span> <span class="pre">pendingtimestamp</span> <span class="pre">123456789</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### dataset pskc &lt;pskc&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; dataset pendingtimestamp <span class="m">123456789</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-pskc-pskc-gt">
+<h3>dataset pskc &lt;pskc&amp;gt;<a class="headerlink" href="#dataset-pskc-pskc-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set pskc with hex format.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">dataset</span> <span class="pre">pskc</span> <span class="pre">67c0c203aa0b042bfb5381c47aef4d9e</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### dataset securitypolicy &lt;rotationtime&gt; [onrcb]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; dataset pskc 67c0c203aa0b042bfb5381c47aef4d9e
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataset-securitypolicy-rotationtime-gt-onrcb">
+<h3>dataset securitypolicy &lt;rotationtime&amp;gt; [onrcb]<a class="headerlink" href="#dataset-securitypolicy-rotationtime-gt-onrcb" title="Permalink to this headline">¶</a></h3>
 <p>Set security policy.</p>
 <ul class="simple">
 <li><p>o: Obtaining the Master Key for out-of-band commissioning is enabled.</p></li>
@@ -679,183 +787,231 @@ RxErrOther: 0</p>
 <li><p>c: External Commissioner authentication is allowed using PSKc.</p></li>
 <li><p>b: Thread 1.x Beacons are enabled.</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">dataset</span> <span class="pre">securitypolicy</span> <span class="pre">672</span> <span class="pre">onrcb</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### delaytimermin</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; dataset securitypolicy <span class="m">672</span> onrcb
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>delaytimermin<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>Get the minimal delay timer (in seconds).</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">delaytimermin</span>
-<span class="pre">30</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### delaytimermin &lt;delaytimermin&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; delaytimermin
+<span class="m">30</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="delaytimermin-delaytimermin-gt">
+<h3>delaytimermin &lt;delaytimermin&amp;gt;<a class="headerlink" href="#delaytimermin-delaytimermin-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the minimal delay timer (in seconds).</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">delaytimermin</span> <span class="pre">60</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### discover [channel]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; delaytimermin <span class="m">60</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="discover-channel">
+<h3>discover [channel]<a class="headerlink" href="#discover-channel" title="Permalink to this headline">¶</a></h3>
 <p>Perform an MLE Discovery operation.</p>
 <ul class="simple">
 <li><p>channel: The channel to discover on.  If no channel is provided, the discovery will cover all valid channels.</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">discover</span>
-<span class="pre">|</span> <span class="pre">J</span> <span class="pre">|</span> <span class="pre">Network</span> <span class="pre">Name</span>&#160;&#160;&#160;&#160; <span class="pre">|</span> <span class="pre">Extended</span> <span class="pre">PAN</span>&#160;&#160;&#160;&#160; <span class="pre">|</span> <span class="pre">PAN</span>&#160; <span class="pre">|</span> <span class="pre">MAC</span> <span class="pre">Address</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">|</span> <span class="pre">Ch</span> <span class="pre">|</span> <span class="pre">dBm</span> <span class="pre">|</span> <span class="pre">LQI</span> <span class="pre">|</span>
-<span class="pre">+---+------------------+------------------+------+------------------+----+-----+-----+</span>
-<span class="pre">|</span> <span class="pre">0</span> <span class="pre">|</span> <span class="pre">OpenThread</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">|</span> <span class="pre">dead00beef00cafe</span> <span class="pre">|</span> <span class="pre">ffff</span> <span class="pre">|</span> <span class="pre">f1d92a82c8d8fe43</span> <span class="pre">|</span> <span class="pre">11</span> <span class="pre">|</span> <span class="pre">-20</span> <span class="pre">|</span>&#160;&#160; <span class="pre">0</span> <span class="pre">|</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### dns resolve &lt;hostname&gt; [DNS server IP] [DNS server port]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; discover
+<span class="p">|</span> J <span class="p">|</span> Network Name     <span class="p">|</span> Extended PAN     <span class="p">|</span> PAN  <span class="p">|</span> MAC Address      <span class="p">|</span> Ch <span class="p">|</span> dBm <span class="p">|</span> LQI <span class="p">|</span>
++---+------------------+------------------+------+------------------+----+-----+-----+
+<span class="p">|</span> <span class="m">0</span> <span class="p">|</span> OpenThread       <span class="p">|</span> dead00beef00cafe <span class="p">|</span> ffff <span class="p">|</span> f1d92a82c8d8fe43 <span class="p">|</span> <span class="m">11</span> <span class="p">|</span> -20 <span class="p">|</span>   <span class="m">0</span> <span class="p">|</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="dns-resolve-hostname-gt-dns-server-ip-dns-server-port">
+<h3>dns resolve &lt;hostname&amp;gt; [DNS server IP] [DNS server port]<a class="headerlink" href="#dns-resolve-hostname-gt-dns-server-ip-dns-server-port" title="Permalink to this headline">¶</a></h3>
 <p>Send DNS Query to obtain IPv6 address for given hostname.
 The latter two parameters have following default values:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p>DNS server IP: 2001:4860:4860::8888 (Google DNS Server)</p></li>
 <li><p>DNS server port: 53</p></li>
 </ul>
-</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">dns</span> <span class="pre">resolve</span> <span class="pre">ipv6.google.com</span>
-<span class="pre">&gt;</span> <span class="pre">DNS</span> <span class="pre">response</span> <span class="pre">for</span> <span class="pre">ipv6.google.com</span> <span class="pre">-</span> <span class="pre">[2a00:1450:401b:801:0:0:0:200e]</span> <span class="pre">TTL:</span> <span class="pre">300</span>
-<span class="pre">`</span></code></p>
-<p>### eidcache</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; dns resolve ipv6.google.com
+&gt; DNS response <span class="k">for</span> ipv6.google.com - <span class="o">[</span>2a00:1450:401b:801:0:0:0:200e<span class="o">]</span> TTL: <span class="m">300</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>eidcache<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>Print the EID-to-RLOC cache entries.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">eidcache</span>
-<span class="pre">fdde:ad00:beef:0:bb1:ebd6:ad10:f33</span> <span class="pre">ac00</span>
-<span class="pre">fdde:ad00:beef:0:110a:e041:8399:17cd</span> <span class="pre">6000</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### eui64</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; eidcache
+fdde:ad00:beef:0:bb1:ebd6:ad10:f33 ac00
+fdde:ad00:beef:0:110a:e041:8399:17cd <span class="m">6000</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>eui64<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>Get the factory-assigned IEEE EUI-64.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">eui64</span>
-<span class="pre">0615aae900124b00</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### extaddr</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; eui64
+0615aae900124b00
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h3>extaddr<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <p>Get the IEEE 802.15.4 Extended Address.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">extaddr</span>
-<span class="pre">dead00beef00cafe</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### extaddr &lt;extaddr&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; extaddr
+dead00beef00cafe
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="extaddr-extaddr-gt">
+<h3>extaddr &lt;extaddr&amp;gt;<a class="headerlink" href="#extaddr-extaddr-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the IEEE 802.15.4 Extended Address.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">extaddr</span> <span class="pre">dead00beef00cafe</span>
-<span class="pre">dead00beef00cafe</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### extpanid</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; extaddr dead00beef00cafe
+dead00beef00cafe
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h3>extpanid<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <p>Get the Thread Extended PAN ID value.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">extpanid</span>
-<span class="pre">dead00beef00cafe</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### extpanid &lt;extpanid&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; extpanid
+dead00beef00cafe
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="extpanid-extpanid-gt">
+<h3>extpanid &lt;extpanid&amp;gt;<a class="headerlink" href="#extpanid-extpanid-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the Thread Extended PAN ID value.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">extpanid</span> <span class="pre">dead00beef00cafe</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### factoryreset
-Delete all stored settings, and signal a platform reset.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">factoryreset</span>
-<span class="pre">`</span></code></p>
-<p>### hashmacaddr</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; extpanid dead00beef00cafe
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h3>factoryreset<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<p>Delete all stored settings, and signal a platform reset.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; factoryreset
+</pre></div>
+</div>
+</div>
+<div class="section" id="id14">
+<h3>hashmacaddr<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <p>Get the HashMac address.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">hashmacaddr</span>
-<span class="pre">e0b220eb7d8dda7e</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### ifconfig</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; hashmacaddr
+e0b220eb7d8dda7e
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id15">
+<h3>ifconfig<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <p>Show the status of the IPv6 interface.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">ifconfig</span>
-<span class="pre">down</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### ifconfig up</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; ifconfig
+down
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="ifconfig-up">
+<h3>ifconfig up<a class="headerlink" href="#ifconfig-up" title="Permalink to this headline">¶</a></h3>
 <p>Bring up the IPv6 interface.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">ifconfig</span> <span class="pre">up</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### ifconfig down</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; ifconfig up
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="ifconfig-down">
+<h3>ifconfig down<a class="headerlink" href="#ifconfig-down" title="Permalink to this headline">¶</a></h3>
 <p>Bring down the IPv6 interface.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">ifconfig</span> <span class="pre">down</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### ipaddr</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; ifconfig down
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id16">
+<h3>ipaddr<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <p>List all IPv6 addresses assigned to the Thread interface.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">ipaddr</span>
-<span class="pre">fdde:ad00:beef:0:0:ff:fe00:0</span>
-<span class="pre">fdde:ad00:beef:0:558:f56b:d688:799</span>
-<span class="pre">fe80:0:0:0:f3d9:2a82:c8d8:fe43</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### ipaddr add &lt;ipaddr&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; ipaddr
+fdde:ad00:beef:0:0:ff:fe00:0
+fdde:ad00:beef:0:558:f56b:d688:799
+fe80:0:0:0:f3d9:2a82:c8d8:fe43
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="ipaddr-add-ipaddr-gt">
+<h3>ipaddr add &lt;ipaddr&amp;gt;<a class="headerlink" href="#ipaddr-add-ipaddr-gt" title="Permalink to this headline">¶</a></h3>
 <p>Add an IPv6 address to the Thread interface.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">ipaddr</span> <span class="pre">add</span> <span class="pre">2001::dead:beef:cafe</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### ipaddr del &lt;ipaddr&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; ipaddr add <span class="m">2001</span>::dead:beef:cafe
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="ipaddr-del-ipaddr-gt">
+<h3>ipaddr del &lt;ipaddr&amp;gt;<a class="headerlink" href="#ipaddr-del-ipaddr-gt" title="Permalink to this headline">¶</a></h3>
 <p>Delete an IPv6 address from the Thread interface.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">ipaddr</span> <span class="pre">del</span> <span class="pre">2001::dead:beef:cafe</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### ipmaddr</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; ipaddr del <span class="m">2001</span>::dead:beef:cafe
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id17">
+<h3>ipmaddr<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <p>List all IPv6 multicast addresses subscribed to the Thread interface.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">ipmaddr</span>
-<span class="pre">ff05:0:0:0:0:0:0:1</span>
-<span class="pre">ff33:40:fdde:ad00:beef:0:0:1</span>
-<span class="pre">ff32:40:fdde:ad00:beef:0:0:1</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### ipmaddr add &lt;ipaddr&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; ipmaddr
+ff05:0:0:0:0:0:0:1
+ff33:40:fdde:ad00:beef:0:0:1
+ff32:40:fdde:ad00:beef:0:0:1
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="ipmaddr-add-ipaddr-gt">
+<h3>ipmaddr add &lt;ipaddr&amp;gt;<a class="headerlink" href="#ipmaddr-add-ipaddr-gt" title="Permalink to this headline">¶</a></h3>
 <p>Subscribe the Thread interface to the IPv6 multicast address.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">ipmaddr</span> <span class="pre">add</span> <span class="pre">ff05::1</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### ipmaddr del &lt;ipaddr&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; ipmaddr add ff05::1
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="ipmaddr-del-ipaddr-gt">
+<h3>ipmaddr del &lt;ipaddr&amp;gt;<a class="headerlink" href="#ipmaddr-del-ipaddr-gt" title="Permalink to this headline">¶</a></h3>
 <p>Unsubscribe the Thread interface to the IPv6 multicast address.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">ipmaddr</span> <span class="pre">del</span> <span class="pre">ff05::1</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### ipmaddr promiscuous</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; ipmaddr del ff05::1
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="ipmaddr-promiscuous">
+<h3>ipmaddr promiscuous<a class="headerlink" href="#ipmaddr-promiscuous" title="Permalink to this headline">¶</a></h3>
 <p>Get multicast promiscuous mode.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">ipmaddr</span> <span class="pre">promiscuous</span>
-<span class="pre">Disabled</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### ipmaddr promiscuous enable</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; ipmaddr promiscuous
+Disabled
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="ipmaddr-promiscuous-enable">
+<h3>ipmaddr promiscuous enable<a class="headerlink" href="#ipmaddr-promiscuous-enable" title="Permalink to this headline">¶</a></h3>
 <p>Enable multicast promiscuous mode.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">ipmaddr</span> <span class="pre">promiscuous</span> <span class="pre">enable</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### ipmaddr promiscuous disable</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; ipmaddr promiscuous <span class="nb">enable</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="ipmaddr-promiscuous-disable">
+<h3>ipmaddr promiscuous disable<a class="headerlink" href="#ipmaddr-promiscuous-disable" title="Permalink to this headline">¶</a></h3>
 <p>Disable multicast promiscuous mode.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">ipmaddr</span> <span class="pre">promiscuous</span> <span class="pre">disable</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### joiner start &lt;pskd&gt; &lt;provisioningUrl&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; ipmaddr promiscuous disable
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="joiner-start-pskd-gt-provisioningurl-gt">
+<h3>joiner start &lt;pskd&amp;gt; &lt;provisioningUrl&amp;gt;<a class="headerlink" href="#joiner-start-pskd-gt-provisioningurl-gt" title="Permalink to this headline">¶</a></h3>
 <p>Start the Joiner role.</p>
 <ul class="simple">
 <li><p>pskd: Pre-Shared Key for the Joiner.</p></li>
@@ -863,113 +1019,145 @@ Delete all stored settings, and signal a platform reset.</p>
 </ul>
 <p>This command will cause the device to perform an MLE Discovery and
 initiate the Thread Commissioning process.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">joiner</span> <span class="pre">start</span> <span class="pre">PSK</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### joiner stop</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; joiner start PSK
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="joiner-stop">
+<h3>joiner stop<a class="headerlink" href="#joiner-stop" title="Permalink to this headline">¶</a></h3>
 <p>Stop the Joiner role.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">joiner</span> <span class="pre">stop</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### joinerport &lt;port&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; joiner stop
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="joinerport-port-gt">
+<h3>joinerport &lt;port&amp;gt;<a class="headerlink" href="#joinerport-port-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the Joiner port.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">joinerport</span> <span class="pre">1000</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### keysequence counter</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; joinerport <span class="m">1000</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="keysequence-counter">
+<h3>keysequence counter<a class="headerlink" href="#keysequence-counter" title="Permalink to this headline">¶</a></h3>
 <p>Get the Thread Key Sequence Counter.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">keysequence</span> <span class="pre">counter</span>
-<span class="pre">10</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### keysequence counter &lt;counter&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; keysequence counter
+<span class="m">10</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="keysequence-counter-counter-gt">
+<h3>keysequence counter &lt;counter&amp;gt;<a class="headerlink" href="#keysequence-counter-counter-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the Thread Key Sequence Counter.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">keysequence</span> <span class="pre">counter</span> <span class="pre">10</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### keysequence guardtime</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; keysequence counter <span class="m">10</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="keysequence-guardtime">
+<h3>keysequence guardtime<a class="headerlink" href="#keysequence-guardtime" title="Permalink to this headline">¶</a></h3>
 <p>Get Thread Key Switch Guard Time (in hours)</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">keysequence</span> <span class="pre">guardtime</span>
-<span class="pre">0</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### keysequence guardtime &lt;guardtime&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; keysequence guardtime
+<span class="m">0</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="keysequence-guardtime-guardtime-gt">
+<h3>keysequence guardtime &lt;guardtime&amp;gt;<a class="headerlink" href="#keysequence-guardtime-guardtime-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set Thread Key Switch Guard Time (in hours)
 0 means Thread Key Switch imediately if key index match</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">keysequence</span> <span class="pre">guardtime</span> <span class="pre">0</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### leaderpartitionid</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; keysequence guardtime <span class="m">0</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id18">
+<h3>leaderpartitionid<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <p>Get the Thread Leader Partition ID.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">leaderpartitionid</span>
-<span class="pre">4294967295</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### leaderpartitionid &lt;partitionid&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; leaderpartitionid
+<span class="m">4294967295</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="leaderpartitionid-partitionid-gt">
+<h3>leaderpartitionid &lt;partitionid&amp;gt;<a class="headerlink" href="#leaderpartitionid-partitionid-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the Thread Leader Partition ID.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">leaderpartitionid</span> <span class="pre">0xffffffff</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### leaderdata</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; leaderpartitionid 0xffffffff
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id19">
+<h3>leaderdata<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
 <p>Show the Thread Leader Data.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">leaderdata</span>
-<span class="pre">Partition</span> <span class="pre">ID:</span> <span class="pre">1077744240</span>
-<span class="pre">Weighting:</span> <span class="pre">64</span>
-<span class="pre">Data</span> <span class="pre">Version:</span> <span class="pre">109</span>
-<span class="pre">Stable</span> <span class="pre">Data</span> <span class="pre">Version:</span> <span class="pre">211</span>
-<span class="pre">Leader</span> <span class="pre">Router</span> <span class="pre">ID:</span> <span class="pre">60</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### leaderweight</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; leaderdata
+Partition ID: <span class="m">1077744240</span>
+Weighting: <span class="m">64</span>
+Data Version: <span class="m">109</span>
+Stable Data Version: <span class="m">211</span>
+Leader Router ID: <span class="m">60</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id20">
+<h3>leaderweight<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
 <p>Get the Thread Leader Weight.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">leaderweight</span>
-<span class="pre">128</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### leaderweight &lt;weight&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; leaderweight
+<span class="m">128</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="leaderweight-weight-gt">
+<h3>leaderweight &lt;weight&amp;gt;<a class="headerlink" href="#leaderweight-weight-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the Thread Leader Weight.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">leaderweight</span> <span class="pre">128</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### linkquality &lt;extaddr&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; leaderweight <span class="m">128</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="linkquality-extaddr-gt">
+<h3>linkquality &lt;extaddr&amp;gt;<a class="headerlink" href="#linkquality-extaddr-gt" title="Permalink to this headline">¶</a></h3>
 <p>Get the link quality on the link to a given extended address.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">linkquality</span> <span class="pre">36c1dd7a4f5201ff</span>
-<span class="pre">3</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### linkquality &lt;extaddr&gt; &lt;linkquality&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; linkquality 36c1dd7a4f5201ff
+<span class="m">3</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="linkquality-extaddr-gt-linkquality-gt">
+<h3>linkquality &lt;extaddr&amp;gt; &lt;linkquality&amp;gt;<a class="headerlink" href="#linkquality-extaddr-gt-linkquality-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the link quality on the link to a given extended address.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">linkquality</span> <span class="pre">36c1dd7a4f5201ff</span> <span class="pre">3</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### masterkey</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; linkquality 36c1dd7a4f5201ff <span class="m">3</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id21">
+<h3>masterkey<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <p>Get the Thread Master Key value.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">masterkey</span>
-<span class="pre">00112233445566778899aabbccddeeff</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### masterkey &lt;key&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; masterkey
+00112233445566778899aabbccddeeff
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="masterkey-key-gt">
+<h3>masterkey &lt;key&amp;gt;<a class="headerlink" href="#masterkey-key-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the Thread Master Key value.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">masterkey</span> <span class="pre">00112233445566778899aabbccddeeff</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### mode</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; masterkey 00112233445566778899aabbccddeeff
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id22">
+<h3>mode<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
 <p>Get the Thread Device Mode value.</p>
 <ul class="simple">
 <li><p>r: rx-on-when-idle</p></li>
@@ -977,12 +1165,14 @@ initiate the Thread Commissioning process.</p>
 <li><p>d: Full Function Device</p></li>
 <li><p>n: Full Network Data</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">mode</span>
-<span class="pre">rsdn</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### mode [rsdn]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; mode
+rsdn
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="mode-rsdn">
+<h3>mode [rsdn]<a class="headerlink" href="#mode-rsdn" title="Permalink to this headline">¶</a></h3>
 <p>Set the Thread Device Mode value.</p>
 <ul class="simple">
 <li><p>r: rx-on-when-idle</p></li>
@@ -990,122 +1180,157 @@ initiate the Thread Commissioning process.</p>
 <li><p>d: Full Function Device</p></li>
 <li><p>n: Full Network Data</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">mode</span> <span class="pre">rsdn</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### netdataregister</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; mode rsdn
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id23">
+<h3>netdataregister<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
 <p>Register local network data with Thread Leader.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">netdataregister</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### networkdiagnostic get &lt;addr&gt; &lt;type&gt; ..</p>
-<p>Send network diagnostic request to retrieve tlv of &lt;type&gt;s.</p>
-<p>If &lt;addr&gt; is unicast address, <cite>Diagnostic Get</cite> will be sent.
-if &lt;addr&gt; is multicast address, <cite>Diagnostic Query</cite> will be sent.</p>
-<p><a href="#id9"><span class="problematic" id="id10">``</span></a><a href="#id11"><span class="problematic" id="id12">`</span></a>bash
-&gt; networkdiagnostic get fdde:ad00:beef:0:0:ff:fe00:f400 0 1 6
-DIAG_GET.rsp: 00088e18ad17a24b0b740102f400060841dcb82d40bac63d</p>
-<p>&gt; networkdiagnostic get ff02::1 0 1
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; netdataregister
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="networkdiagnostic-get-addr-gt-type-gt">
+<h3>networkdiagnostic get &lt;addr&amp;gt; &lt;type&amp;gt; ..<a class="headerlink" href="#networkdiagnostic-get-addr-gt-type-gt" title="Permalink to this headline">¶</a></h3>
+<p>Send network diagnostic request to retrieve tlv of &lt;type&amp;gt;s.</p>
+<p>If &lt;addr&amp;gt; is unicast address, <code class="docutils literal notranslate"><span class="pre">Diagnostic</span> <span class="pre">Get</span></code> will be sent.
+if &lt;addr&amp;gt; is multicast address, <code class="docutils literal notranslate"><span class="pre">Diagnostic</span> <span class="pre">Query</span></code> will be sent.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; networkdiagnostic get fdde:ad00:beef:0:0:ff:fe00:f400 <span class="m">0</span> <span class="m">1</span> <span class="m">6</span>
+DIAG_GET.rsp: 00088e18ad17a24b0b740102f400060841dcb82d40bac63d
+
+&gt; networkdiagnostic get ff02::1 <span class="m">0</span> <span class="m">1</span>
 DIAG_GET.rsp: 0008567e31a79667a8cc0102f000
 DIAG_GET.rsp: 0008aaa7e584759e4e6401025400
-<a href="#id13"><span class="problematic" id="id14">``</span></a><a href="#id15"><span class="problematic" id="id16">`</span></a></p>
-<p>### networkdiagnostic reset &lt;addr&gt; &lt;type&gt; ..</p>
-<p>Send network diagnostic request to reset &lt;addr&gt;’s tlv of &lt;type&gt;s. Currently only <a href="#id17"><span class="problematic" id="id18">`</span></a>MAC Counters`(9) is supported.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">diagnostic</span> <span class="pre">reset</span> <span class="pre">fd00:db8::ff:fe00:0</span> <span class="pre">9</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### networkidtimeout</p>
+</pre></div>
+</div>
+</div>
+<div class="section" id="networkdiagnostic-reset-addr-gt-type-gt">
+<h3>networkdiagnostic reset &lt;addr&amp;gt; &lt;type&amp;gt; ..<a class="headerlink" href="#networkdiagnostic-reset-addr-gt-type-gt" title="Permalink to this headline">¶</a></h3>
+<p>Send network diagnostic request to reset &lt;addr&amp;gt;’s tlv of &lt;type&amp;gt;s. Currently only <code class="docutils literal notranslate"><span class="pre">MAC</span> <span class="pre">Counters</span></code>(9) is supported.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; diagnostic reset fd00:db8::ff:fe00:0 <span class="m">9</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id24">
+<h3>networkidtimeout<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
 <p>Get the NETWORK_ID_TIMEOUT parameter used in the Router role.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">networkidtimeout</span>
-<span class="pre">120</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### networkidtimeout &lt;timeout&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; networkidtimeout
+<span class="m">120</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="networkidtimeout-timeout-gt">
+<h3>networkidtimeout &lt;timeout&amp;gt;<a class="headerlink" href="#networkidtimeout-timeout-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the NETWORK_ID_TIMEOUT parameter used in the Router role.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">networkidtimeout</span> <span class="pre">120</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### networkname</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; networkidtimeout <span class="m">120</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id25">
+<h3>networkname<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
 <p>Get the Thread Network Name.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">networkname</span>
-<span class="pre">OpenThread</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### networkname &lt;name&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; networkname
+OpenThread
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="networkname-name-gt">
+<h3>networkname &lt;name&amp;gt;<a class="headerlink" href="#networkname-name-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the Thread Network Name.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">networkname</span> <span class="pre">OpenThread</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### panid</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; networkname OpenThread
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id26">
+<h3>panid<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
 <p>Get the IEEE 802.15.4 PAN ID value.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">panid</span>
-<span class="pre">0xdead</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### panid &lt;panid&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; panid
+0xdead
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="panid-panid-gt">
+<h3>panid &lt;panid&amp;gt;<a class="headerlink" href="#panid-panid-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the IEEE 802.15.4 PAN ID value.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">panid</span> <span class="pre">0xdead</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### parent</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; panid 0xdead
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id27">
+<h3>parent<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
 <p>Get the diagnostic information for a Thread Router as parent.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">parent</span>
-<span class="pre">Ext</span> <span class="pre">Addr:</span> <span class="pre">be1857c6c21dce55</span>
-<span class="pre">Rloc:</span> <span class="pre">5c00</span>
-<span class="pre">Link</span> <span class="pre">Quality</span> <span class="pre">In:</span> <span class="pre">3</span>
-<span class="pre">Link</span> <span class="pre">Quality</span> <span class="pre">Out:</span> <span class="pre">3</span>
-<span class="pre">Age:</span> <span class="pre">20</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### parentpriority</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; parent
+Ext Addr: be1857c6c21dce55
+Rloc: 5c00
+Link Quality In: <span class="m">3</span>
+Link Quality Out: <span class="m">3</span>
+Age: <span class="m">20</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id28">
+<h3>parentpriority<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
 <p>Get the assigned parent priority value, -2 means not assigned.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">parentpriority</span>
-<span class="pre">1</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### parentpriority &lt;parentpriority&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; parentpriority
+<span class="m">1</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="parentpriority-parentpriority-gt">
+<h3>parentpriority &lt;parentpriority&amp;gt;<a class="headerlink" href="#parentpriority-parentpriority-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the assigned parent priority value: 1, 0, -1 or -2.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">parentpriority</span> <span class="pre">1</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### ping &lt;ipaddr&gt; [size] [count] [interval]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; parentpriority <span class="m">1</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="ping-ipaddr-gt-size-count-interval">
+<h3>ping &lt;ipaddr&amp;gt; [size] [count] [interval]<a class="headerlink" href="#ping-ipaddr-gt-size-count-interval" title="Permalink to this headline">¶</a></h3>
 <p>Send an ICMPv6 Echo Request.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">ping</span> <span class="pre">fdde:ad00:beef:0:558:f56b:d688:799</span>
-<span class="pre">16</span> <span class="pre">bytes</span> <span class="pre">from</span> <span class="pre">fdde:ad00:beef:0:558:f56b:d688:799:</span> <span class="pre">icmp_seq=1</span> <span class="pre">hlim=64</span> <span class="pre">time=28ms</span>
-<span class="pre">`</span></code></p>
-<p>### ping stop</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; ping fdde:ad00:beef:0:558:f56b:d688:799
+<span class="m">16</span> bytes from fdde:ad00:beef:0:558:f56b:d688:799: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">hlim</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>28ms
+</pre></div>
+</div>
+</div>
+<div class="section" id="ping-stop">
+<h3>ping stop<a class="headerlink" href="#ping-stop" title="Permalink to this headline">¶</a></h3>
 <p>Stop sending ICMPv6 Echo Requests.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">ping</span> <span class="pre">stop</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### pollperiod</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; ping stop
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id29">
+<h3>pollperiod<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
 <p>Get the customized data poll period of sleepy end device (seconds). Only for certification test</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">pollperiod</span>
-<span class="pre">0</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### pollperiod &lt;pollperiod&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; pollperiod
+<span class="m">0</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="pollperiod-pollperiod-gt">
+<h3>pollperiod &lt;pollperiod&amp;gt;<a class="headerlink" href="#pollperiod-pollperiod-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the customized data poll period for sleepy end device (seconds). Only for certification test</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">pollperiod</span> <span class="pre">10</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### prefix add &lt;prefix&gt; [pvdcsr] [prf]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; pollperiod <span class="m">10</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="prefix-add-prefix-gt-pvdcsr-prf">
+<h3>prefix add &lt;prefix&amp;gt; [pvdcsr] [prf]<a class="headerlink" href="#prefix-add-prefix-gt-pvdcsr-prf" title="Permalink to this headline">¶</a></h3>
 <p>Add a valid prefix to the Network Data.</p>
 <ul class="simple">
 <li><p>p: Preferred flag</p></li>
@@ -1117,352 +1342,442 @@ DIAG_GET.rsp: 0008aaa7e584759e4e6401025400
 <li><p>s: Stable flag</p></li>
 <li><p>prf: Default router preference, which may be ‘high’, ‘med’, or ‘low’.</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">prefix</span> <span class="pre">add</span> <span class="pre">2001:dead:beef:cafe::/64</span> <span class="pre">paros</span> <span class="pre">med</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### prefix remove &lt;prefix&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; prefix add <span class="m">2001</span>:dead:beef:cafe::/64 paros med
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="prefix-remove-prefix-gt">
+<h3>prefix remove &lt;prefix&amp;gt;<a class="headerlink" href="#prefix-remove-prefix-gt" title="Permalink to this headline">¶</a></h3>
 <p>Invalidate a prefix in the Network Data.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">prefix</span> <span class="pre">remove</span> <span class="pre">2001:dead:beef:cafe::/64</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### promiscuous</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; prefix remove <span class="m">2001</span>:dead:beef:cafe::/64
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id30">
+<h3>promiscuous<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
 <p>Get radio promiscuous property.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">promiscuous</span>
-<span class="pre">Disabled</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### promiscuous enable</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; promiscuous
+Disabled
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="promiscuous-enable">
+<h3>promiscuous enable<a class="headerlink" href="#promiscuous-enable" title="Permalink to this headline">¶</a></h3>
 <p>Enable radio promiscuous operation and print raw packet content.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">promiscuous</span> <span class="pre">enable</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### promiscuous disable</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; promiscuous <span class="nb">enable</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="promiscuous-disable">
+<h3>promiscuous disable<a class="headerlink" href="#promiscuous-disable" title="Permalink to this headline">¶</a></h3>
 <p>Disable radio promiscuous operation.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">promiscuous</span> <span class="pre">disable</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### releaserouterid &lt;routerid&gt;
-Release a Router ID that has been allocated by the device in the Leader role.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">releaserouterid</span> <span class="pre">16</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### reset
-Signal a platform reset.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">reset</span>
-<span class="pre">`</span></code></p>
-<p>### rloc16</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; promiscuous disable
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="releaserouterid-routerid-gt">
+<h3>releaserouterid &lt;routerid&amp;gt;<a class="headerlink" href="#releaserouterid-routerid-gt" title="Permalink to this headline">¶</a></h3>
+<p>Release a Router ID that has been allocated by the device in the Leader role.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; releaserouterid <span class="m">16</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id31">
+<h3>reset<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
+<p>Signal a platform reset.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; reset
+</pre></div>
+</div>
+</div>
+<div class="section" id="id32">
+<h3>rloc16<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
 <p>Get the Thread RLOC16 value.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">rloc16</span>
-<span class="pre">0xdead</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### route add &lt;prefix&gt; [s] [prf]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; rloc16
+0xdead
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="route-add-prefix-gt-s-prf">
+<h3>route add &lt;prefix&amp;gt; [s] [prf]<a class="headerlink" href="#route-add-prefix-gt-s-prf" title="Permalink to this headline">¶</a></h3>
 <p>Add a valid prefix to the Network Data.</p>
 <ul class="simple">
 <li><p>s: Stable flag</p></li>
 <li><p>prf: Default Router Preference, which may be: ‘high’, ‘med’, or ‘low’.</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">route</span> <span class="pre">add</span> <span class="pre">2001:dead:beef:cafe::/64</span> <span class="pre">s</span> <span class="pre">med</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### route remove &lt;prefix&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; route add <span class="m">2001</span>:dead:beef:cafe::/64 s med
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="route-remove-prefix-gt">
+<h3>route remove &lt;prefix&amp;gt;<a class="headerlink" href="#route-remove-prefix-gt" title="Permalink to this headline">¶</a></h3>
 <p>Invalidate a prefix in the Network Data.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">route</span> <span class="pre">remove</span> <span class="pre">2001:dead:beef:cafe::/64</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### router list</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; route remove <span class="m">2001</span>:dead:beef:cafe::/64
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="router-list">
+<h3>router list<a class="headerlink" href="#router-list" title="Permalink to this headline">¶</a></h3>
 <p>List allocated Router IDs.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">router</span> <span class="pre">list</span>
-<span class="pre">8</span> <span class="pre">24</span> <span class="pre">50</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### router table</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; router list
+<span class="m">8</span> <span class="m">24</span> <span class="m">50</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="router-table">
+<h3>router table<a class="headerlink" href="#router-table" title="Permalink to this headline">¶</a></h3>
 <p>Print table of routers.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">router</span> <span class="pre">table</span>
-<span class="pre">|</span> <span class="pre">ID</span> <span class="pre">|</span> <span class="pre">RLOC16</span> <span class="pre">|</span> <span class="pre">Next</span> <span class="pre">Hop</span> <span class="pre">|</span> <span class="pre">Path</span> <span class="pre">Cost</span> <span class="pre">|</span> <span class="pre">LQ</span> <span class="pre">In</span> <span class="pre">|</span> <span class="pre">LQ</span> <span class="pre">Out</span> <span class="pre">|</span> <span class="pre">Age</span> <span class="pre">|</span> <span class="pre">Extended</span> <span class="pre">MAC</span>&#160;&#160;&#160;&#160; <span class="pre">|</span>
-<span class="pre">+----+--------+----------+-----------+-------+--------+-----+------------------+</span>
-<span class="pre">|</span> <span class="pre">21</span> <span class="pre">|</span> <span class="pre">0x5400</span> <span class="pre">|</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">21</span> <span class="pre">|</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0</span> <span class="pre">|</span>&#160;&#160;&#160;&#160; <span class="pre">3</span> <span class="pre">|</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">3</span> <span class="pre">|</span>&#160;&#160; <span class="pre">5</span> <span class="pre">|</span> <span class="pre">d28d7f875888fccb</span> <span class="pre">|</span>
-<span class="pre">|</span> <span class="pre">56</span> <span class="pre">|</span> <span class="pre">0xe000</span> <span class="pre">|</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">56</span> <span class="pre">|</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0</span> <span class="pre">|</span>&#160;&#160;&#160;&#160; <span class="pre">0</span> <span class="pre">|</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">0</span> <span class="pre">|</span> <span class="pre">182</span> <span class="pre">|</span> <span class="pre">f2d92a82c8d8fe43</span> <span class="pre">|</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### router &lt;id&gt;</p>
-<p>Print diagnostic information for a Thread Router.  The <cite>id</cite> may be a Router ID or an RLOC16.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">router</span> <span class="pre">50</span>
-<span class="pre">Alloc:</span> <span class="pre">1</span>
-<span class="pre">Router</span> <span class="pre">ID:</span> <span class="pre">50</span>
-<span class="pre">Rloc:</span> <span class="pre">c800</span>
-<span class="pre">Next</span> <span class="pre">Hop:</span> <span class="pre">c800</span>
-<span class="pre">Link:</span> <span class="pre">1</span>
-<span class="pre">Ext</span> <span class="pre">Addr:</span> <span class="pre">e2b3540590b0fd87</span>
-<span class="pre">Cost:</span> <span class="pre">0</span>
-<span class="pre">Link</span> <span class="pre">Quality</span> <span class="pre">In:</span> <span class="pre">3</span>
-<span class="pre">Link</span> <span class="pre">Quality</span> <span class="pre">Out:</span> <span class="pre">3</span>
-<span class="pre">Age:</span> <span class="pre">3</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">router</span> <span class="pre">0xc800</span>
-<span class="pre">Alloc:</span> <span class="pre">1</span>
-<span class="pre">Router</span> <span class="pre">ID:</span> <span class="pre">50</span>
-<span class="pre">Rloc:</span> <span class="pre">c800</span>
-<span class="pre">Next</span> <span class="pre">Hop:</span> <span class="pre">c800</span>
-<span class="pre">Link:</span> <span class="pre">1</span>
-<span class="pre">Ext</span> <span class="pre">Addr:</span> <span class="pre">e2b3540590b0fd87</span>
-<span class="pre">Cost:</span> <span class="pre">0</span>
-<span class="pre">Link</span> <span class="pre">Quality</span> <span class="pre">In:</span> <span class="pre">3</span>
-<span class="pre">Link</span> <span class="pre">Quality</span> <span class="pre">Out:</span> <span class="pre">3</span>
-<span class="pre">Age:</span> <span class="pre">7</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### routerdowngradethreshold</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; router table
+<span class="p">|</span> ID <span class="p">|</span> RLOC16 <span class="p">|</span> Next Hop <span class="p">|</span> Path Cost <span class="p">|</span> LQ In <span class="p">|</span> LQ Out <span class="p">|</span> Age <span class="p">|</span> Extended MAC     <span class="p">|</span>
++----+--------+----------+-----------+-------+--------+-----+------------------+
+<span class="p">|</span> <span class="m">21</span> <span class="p">|</span> 0x5400 <span class="p">|</span>       <span class="m">21</span> <span class="p">|</span>         <span class="m">0</span> <span class="p">|</span>     <span class="m">3</span> <span class="p">|</span>      <span class="m">3</span> <span class="p">|</span>   <span class="m">5</span> <span class="p">|</span> d28d7f875888fccb <span class="p">|</span>
+<span class="p">|</span> <span class="m">56</span> <span class="p">|</span> 0xe000 <span class="p">|</span>       <span class="m">56</span> <span class="p">|</span>         <span class="m">0</span> <span class="p">|</span>     <span class="m">0</span> <span class="p">|</span>      <span class="m">0</span> <span class="p">|</span> <span class="m">182</span> <span class="p">|</span> f2d92a82c8d8fe43 <span class="p">|</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="router-id-gt">
+<h3>router &lt;id&amp;gt;<a class="headerlink" href="#router-id-gt" title="Permalink to this headline">¶</a></h3>
+<p>Print diagnostic information for a Thread Router.  The <code class="docutils literal notranslate"><span class="pre">id</span></code> may be a Router ID or an RLOC16.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; router <span class="m">50</span>
+Alloc: <span class="m">1</span>
+Router ID: <span class="m">50</span>
+Rloc: c800
+Next Hop: c800
+Link: <span class="m">1</span>
+Ext Addr: e2b3540590b0fd87
+Cost: <span class="m">0</span>
+Link Quality In: <span class="m">3</span>
+Link Quality Out: <span class="m">3</span>
+Age: <span class="m">3</span>
+Done
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; router 0xc800
+Alloc: <span class="m">1</span>
+Router ID: <span class="m">50</span>
+Rloc: c800
+Next Hop: c800
+Link: <span class="m">1</span>
+Ext Addr: e2b3540590b0fd87
+Cost: <span class="m">0</span>
+Link Quality In: <span class="m">3</span>
+Link Quality Out: <span class="m">3</span>
+Age: <span class="m">7</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id33">
+<h3>routerdowngradethreshold<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
 <p>Get the ROUTER_DOWNGRADE_THRESHOLD value.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">routerdowngradethreshold</span>
-<span class="pre">23</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### routerdowngradethreshold &lt;threshold&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; routerdowngradethreshold
+<span class="m">23</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="routerdowngradethreshold-threshold-gt">
+<h3>routerdowngradethreshold &lt;threshold&amp;gt;<a class="headerlink" href="#routerdowngradethreshold-threshold-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the ROUTER_DOWNGRADE_THRESHOLD value.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">routerdowngradethreshold</span> <span class="pre">23</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### routerrole</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; routerdowngradethreshold <span class="m">23</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id34">
+<h3>routerrole<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
 <p>Indicates whether the router role is enabled or disabled.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">routerrole</span>
-<span class="pre">Enabled</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### routerrole enable</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; routerrole
+Enabled
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="routerrole-enable">
+<h3>routerrole enable<a class="headerlink" href="#routerrole-enable" title="Permalink to this headline">¶</a></h3>
 <p>Enable the router role.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">routerrole</span> <span class="pre">enable</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### routerrole disable</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; routerrole <span class="nb">enable</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="routerrole-disable">
+<h3>routerrole disable<a class="headerlink" href="#routerrole-disable" title="Permalink to this headline">¶</a></h3>
 <p>Disable the router role.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">routerrole</span> <span class="pre">disable</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### routerselectionjitter</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; routerrole disable
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id35">
+<h3>routerselectionjitter<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
 <p>Get the ROUTER_SELECTION_JITTER value.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">routerselectionjitter</span>
-<span class="pre">120</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### routerselectionjitter &lt;jitter&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; routerselectionjitter
+<span class="m">120</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="routerselectionjitter-jitter-gt">
+<h3>routerselectionjitter &lt;jitter&amp;gt;<a class="headerlink" href="#routerselectionjitter-jitter-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the ROUTER_SELECTION_JITTER value.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">routerselectionjitter</span> <span class="pre">120</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### routerupgradethreshold</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; routerselectionjitter <span class="m">120</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id36">
+<h3>routerupgradethreshold<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
 <p>Get the ROUTER_UPGRADE_THRESHOLD value.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">routerupgradethreshold</span>
-<span class="pre">16</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### routerupgradethreshold &lt;threshold&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; routerupgradethreshold
+<span class="m">16</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="routerupgradethreshold-threshold-gt">
+<h3>routerupgradethreshold &lt;threshold&amp;gt;<a class="headerlink" href="#routerupgradethreshold-threshold-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the ROUTER_UPGRADE_THRESHOLD value.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">routerupgradethreshold</span> <span class="pre">16</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### scan [channel]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; routerupgradethreshold <span class="m">16</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="scan-channel">
+<h3>scan [channel]<a class="headerlink" href="#scan-channel" title="Permalink to this headline">¶</a></h3>
 <p>Perform an IEEE 802.15.4 Active Scan.</p>
 <ul class="simple">
 <li><p>channel: The channel to scan on.  If no channel is provided, the active scan will cover all valid channels.</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">scan</span>
-<span class="pre">|</span> <span class="pre">J</span> <span class="pre">|</span> <span class="pre">Network</span> <span class="pre">Name</span>&#160;&#160;&#160;&#160; <span class="pre">|</span> <span class="pre">Extended</span> <span class="pre">PAN</span>&#160;&#160;&#160;&#160; <span class="pre">|</span> <span class="pre">PAN</span>&#160; <span class="pre">|</span> <span class="pre">MAC</span> <span class="pre">Address</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">|</span> <span class="pre">Ch</span> <span class="pre">|</span> <span class="pre">dBm</span> <span class="pre">|</span> <span class="pre">LQI</span> <span class="pre">|</span>
-<span class="pre">+---+------------------+------------------+------+------------------+----+-----+-----+</span>
-<span class="pre">|</span> <span class="pre">0</span> <span class="pre">|</span> <span class="pre">OpenThread</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">|</span> <span class="pre">dead00beef00cafe</span> <span class="pre">|</span> <span class="pre">ffff</span> <span class="pre">|</span> <span class="pre">f1d92a82c8d8fe43</span> <span class="pre">|</span> <span class="pre">11</span> <span class="pre">|</span> <span class="pre">-20</span> <span class="pre">|</span>&#160;&#160; <span class="pre">0</span> <span class="pre">|</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### singleton
-Return true when there are no other nodes in the network, otherwise return false.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">singleton</span>
-<span class="pre">true</span> <span class="pre">or</span> <span class="pre">false</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### state
-Return state of current state.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">state</span>
-<span class="pre">offline,</span> <span class="pre">disabled,</span> <span class="pre">detached,</span> <span class="pre">child,</span> <span class="pre">router</span> <span class="pre">or</span> <span class="pre">leader</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### state &lt;state&gt;
-Try to switch to state <cite>detached</cite>, <cite>child</cite>, <cite>router</cite> or <cite>leader</cite>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">state</span> <span class="pre">leader</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### thread start</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; scan
+<span class="p">|</span> J <span class="p">|</span> Network Name     <span class="p">|</span> Extended PAN     <span class="p">|</span> PAN  <span class="p">|</span> MAC Address      <span class="p">|</span> Ch <span class="p">|</span> dBm <span class="p">|</span> LQI <span class="p">|</span>
++---+------------------+------------------+------+------------------+----+-----+-----+
+<span class="p">|</span> <span class="m">0</span> <span class="p">|</span> OpenThread       <span class="p">|</span> dead00beef00cafe <span class="p">|</span> ffff <span class="p">|</span> f1d92a82c8d8fe43 <span class="p">|</span> <span class="m">11</span> <span class="p">|</span> -20 <span class="p">|</span>   <span class="m">0</span> <span class="p">|</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id37">
+<h3>singleton<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+<p>Return true when there are no other nodes in the network, otherwise return false.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; singleton
+<span class="nb">true</span> or <span class="nb">false</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id38">
+<h3>state<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
+<p>Return state of current state.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; state
+offline, disabled, detached, child, router or leader
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="state-state">
+<h3>state <span class="raw-html-m2r"><state></span><a class="headerlink" href="#state-state" title="Permalink to this headline">¶</a></h3>
+<p>Try to switch to state <code class="docutils literal notranslate"><span class="pre">detached</span></code>, <code class="docutils literal notranslate"><span class="pre">child</span></code>, <code class="docutils literal notranslate"><span class="pre">router</span></code> or <code class="docutils literal notranslate"><span class="pre">leader</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; state leader
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="thread-start">
+<h3>thread start<a class="headerlink" href="#thread-start" title="Permalink to this headline">¶</a></h3>
 <p>Enable Thread protocol operation and attach to a Thread network.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">thread</span> <span class="pre">start</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### thread stop</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; thread start
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="thread-stop">
+<h3>thread stop<a class="headerlink" href="#thread-stop" title="Permalink to this headline">¶</a></h3>
 <p>Disable Thread protocol operation and detach from a Thread network.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">thread</span> <span class="pre">stop</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### txpowermax</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; thread stop
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id39">
+<h3>txpowermax<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
 <p>Get the maximum transmit power in dBm.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">txpowermax</span>
-<span class="pre">-10</span> <span class="pre">dBm</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### txpowermax &lt;txpowermax&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; txpowermax
+-10 dBm
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="txpowermax-txpowermax-gt">
+<h3>txpowermax &lt;txpowermax&amp;gt;<a class="headerlink" href="#txpowermax-txpowermax-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the maximum transmit power.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">txpowermax</span> <span class="pre">-10</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### version</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; txpowermax -10
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id40">
+<h3>version<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
 <p>Print the build version information.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">version</span>
-<span class="pre">OPENTHREAD/gf4f2f04;</span> <span class="pre">Jul</span>&#160; <span class="pre">1</span> <span class="pre">2016</span> <span class="pre">17:00:09</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### macfilter</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; version
+OPENTHREAD/gf4f2f04<span class="p">;</span> Jul  <span class="m">1</span> <span class="m">2016</span> <span class="m">17</span>:00:09
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id41">
+<h3>macfilter<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
 <p>List the macfilter status, including address and received signal strength filter settings.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">macfilter</span>
-<span class="pre">Address</span> <span class="pre">Mode:</span> <span class="pre">Whitelist</span>
-<span class="pre">0f6127e33af6b403</span> <span class="pre">:</span> <span class="pre">rss</span> <span class="pre">-95</span> <span class="pre">(lqi</span> <span class="pre">1)</span>
-<span class="pre">0f6127e33af6b402</span>
-<span class="pre">RssIn</span> <span class="pre">List:</span>
-<span class="pre">0f6127e33af6b403</span> <span class="pre">:</span> <span class="pre">rss</span> <span class="pre">-95</span> <span class="pre">(lqi</span> <span class="pre">1)</span>
-<span class="pre">Default</span> <span class="pre">rss</span> <span class="pre">:</span> <span class="pre">-50</span> <span class="pre">(lqi</span> <span class="pre">3)</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### macfilter addr</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; macfilter
+Address Mode: Whitelist
+0f6127e33af6b403 : rss -95 <span class="o">(</span>lqi <span class="m">1</span><span class="o">)</span>
+0f6127e33af6b402
+RssIn List:
+0f6127e33af6b403 : rss -95 <span class="o">(</span>lqi <span class="m">1</span><span class="o">)</span>
+Default rss : -50 <span class="o">(</span>lqi <span class="m">3</span><span class="o">)</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="macfilter-addr">
+<h3>macfilter addr<a class="headerlink" href="#macfilter-addr" title="Permalink to this headline">¶</a></h3>
 <p>List the address filter status.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">macfilter</span> <span class="pre">addr</span>
-<span class="pre">Whitelist</span>
-<span class="pre">0f6127e33af6b403</span> <span class="pre">:</span> <span class="pre">rss</span> <span class="pre">-95</span> <span class="pre">(lqi</span> <span class="pre">1)</span>
-<span class="pre">0f6127e33af6b402</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### macfilter addr disable</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; macfilter addr
+Whitelist
+0f6127e33af6b403 : rss -95 <span class="o">(</span>lqi <span class="m">1</span><span class="o">)</span>
+0f6127e33af6b402
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="macfilter-addr-disable">
+<h3>macfilter addr disable<a class="headerlink" href="#macfilter-addr-disable" title="Permalink to this headline">¶</a></h3>
 <p>Disable address filter mode.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">macfilter</span> <span class="pre">addr</span> <span class="pre">disable</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### macfilter addr whitelist</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; macfilter addr disable
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="macfilter-addr-whitelist">
+<h3>macfilter addr whitelist<a class="headerlink" href="#macfilter-addr-whitelist" title="Permalink to this headline">¶</a></h3>
 <p>Enable whitelist address filter mode.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">macfilter</span> <span class="pre">addr</span> <span class="pre">whitelist</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### macfilter addr blacklist</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; macfilter addr whitelist
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="macfilter-addr-blacklist">
+<h3>macfilter addr blacklist<a class="headerlink" href="#macfilter-addr-blacklist" title="Permalink to this headline">¶</a></h3>
 <p>Enable blacklist address filter mode.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">macfilter</span> <span class="pre">addr</span> <span class="pre">blacklist</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### macfilter addr add &lt;extaddr&gt; [rss]</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; macfilter addr blacklist
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="macfilter-addr-add-extaddr-gt-rss">
+<h3>macfilter addr add &lt;extaddr&amp;gt; [rss]<a class="headerlink" href="#macfilter-addr-add-extaddr-gt-rss" title="Permalink to this headline">¶</a></h3>
 <p>Add an IEEE 802.15.4 Extended Address to the address filter, and fixed the received singal strength for
 the messages from the address if rss is specified.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">macfilter</span> <span class="pre">addr</span> <span class="pre">add</span> <span class="pre">0f6127e33af6b403</span> <span class="pre">-95</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">macfilter</span> <span class="pre">addr</span> <span class="pre">add</span> <span class="pre">0f6127e33af6b402</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### macfilter addr remove &lt;extaddr&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; macfilter addr add 0f6127e33af6b403 -95
+Done
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; macfilter addr add 0f6127e33af6b402
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="macfilter-addr-remove-extaddr-gt">
+<h3>macfilter addr remove &lt;extaddr&amp;gt;<a class="headerlink" href="#macfilter-addr-remove-extaddr-gt" title="Permalink to this headline">¶</a></h3>
 <p>Remove the IEEE802.15.4 Extended Address from the address filter.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">macfilter</span> <span class="pre">addr</span> <span class="pre">remove</span> <span class="pre">0f6127e33af6b402</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### macfilter addr clear</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; macfilter addr remove 0f6127e33af6b402
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="macfilter-addr-clear">
+<h3>macfilter addr clear<a class="headerlink" href="#macfilter-addr-clear" title="Permalink to this headline">¶</a></h3>
 <p>Clear all the IEEE802.15.4 Extended Addresses from the address filter.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">macfilter</span> <span class="pre">addr</span> <span class="pre">clear</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### macfilter rss</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; macfilter addr clear
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="macfilter-rss">
+<h3>macfilter rss<a class="headerlink" href="#macfilter-rss" title="Permalink to this headline">¶</a></h3>
 <p>List the rss filter status</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">macfilter</span> <span class="pre">rss</span>
-<span class="pre">0f6127e33af6b403</span> <span class="pre">:</span> <span class="pre">rss</span> <span class="pre">-95</span> <span class="pre">(lqi</span> <span class="pre">1)</span>
-<span class="pre">Default</span> <span class="pre">rss:</span> <span class="pre">-50</span> <span class="pre">(lqi</span> <span class="pre">3)</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### macfilter rss add &lt;extaddr&gt; &lt;rss&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; macfilter rss
+0f6127e33af6b403 : rss -95 <span class="o">(</span>lqi <span class="m">1</span><span class="o">)</span>
+Default rss: -50 <span class="o">(</span>lqi <span class="m">3</span><span class="o">)</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="macfilter-rss-add-extaddr-gt-rss-gt">
+<h3>macfilter rss add &lt;extaddr&amp;gt; &lt;rss&amp;gt;<a class="headerlink" href="#macfilter-rss-add-extaddr-gt-rss-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the received signal strength for the messages from the IEEE802.15.4 Extended Address.
-If extaddr is *, default received signal strength for all received messages would be set.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">macfilter</span> <span class="pre">rss</span> <span class="pre">add</span> <span class="pre">*</span> <span class="pre">-50</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">macfilter</span> <span class="pre">rss</span> <span class="pre">add</span> <span class="pre">0f6127e33af6b404</span> <span class="pre">-85</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### macfilter rss add-lqi &lt;extaddr&gt; &lt;lqi&gt;</p>
+If extaddr is <cite>*</cite>, default received signal strength for all received messages would be set.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; macfilter rss add * -50
+Done
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; macfilter rss add 0f6127e33af6b404 -85
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="macfilter-rss-add-lqi-extaddr-gt-lqi-gt">
+<h3>macfilter rss add-lqi &lt;extaddr&amp;gt; &lt;lqi&amp;gt;<a class="headerlink" href="#macfilter-rss-add-lqi-extaddr-gt-lqi-gt" title="Permalink to this headline">¶</a></h3>
 <p>Set the received link quality for the messages from the IEEE802.15.4 Extended Address. Valid lqi range [0,3]
-If extaddr is *, default received link quality for all received messages would be set.
+If extaddr is <cite>*</cite>, default received link quality for all received messages would be set.
 Equivalent with ‘filter rss add’ with similar usage</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">macfilter</span> <span class="pre">rss</span> <span class="pre">add-lqi</span> <span class="pre">*</span> <span class="pre">3</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">macfilter</span> <span class="pre">rss</span> <span class="pre">add</span> <span class="pre">0f6127e33af6b404</span> <span class="pre">2</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### macfilter rss remove &lt;extaddr&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; macfilter rss add-lqi * <span class="m">3</span>
+Done
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; macfilter rss add 0f6127e33af6b404 <span class="m">2</span>
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="macfilter-rss-remove-extaddr-gt">
+<h3>macfilter rss remove &lt;extaddr&amp;gt;<a class="headerlink" href="#macfilter-rss-remove-extaddr-gt" title="Permalink to this headline">¶</a></h3>
 <p>Removes the received signal strength or received link quality setting on the Extended Address.
-If extaddr is *, default received signal strength or link quality for all received messages would be unset.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">macfilter</span> <span class="pre">rss</span> <span class="pre">remove</span> <span class="pre">*</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">macfilter</span> <span class="pre">rss</span> <span class="pre">remove</span> <span class="pre">0f6127e33af6b404</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### macfilter rss clear</p>
+If extaddr is <cite>*</cite>, default received signal strength or link quality for all received messages would be unset.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; macfilter rss remove *
+Done
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; macfilter rss remove 0f6127e33af6b404
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="macfilter-rss-clear">
+<h3>macfilter rss clear<a class="headerlink" href="#macfilter-rss-clear" title="Permalink to this headline">¶</a></h3>
 <p>Clear all the the received signal strength or received link quality settings.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">&gt;</span> <span class="pre">macfilter</span> <span class="pre">rss</span> <span class="pre">clear</span>
-<span class="pre">Done</span>
-<span class="pre">`</span></code></p>
-<p>### diag</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; macfilter rss clear
+Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="id42">
+<h3>diag<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
 <p>Diagnostics module is enabled only when building OpenThread with –enable-diag option.
-Go [diagnostics module][1] for more information.</p>
-<p>[1]:./OT_DIAG.md</p>
+Go <a class="reference external" href="./OT_DIAG.md">diagnostics module</a> for more information.</p>
+</div>
+</div>
+</div>
 
 
            </div>
@@ -1470,25 +1785,18 @@ Go [diagnostics module][1] for more information.</p>
           </div>
           <footer>
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="OT_DIAG.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../README.html" class="btn btn-neutral float-left" title="OpenThread Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
         &copy; Copyright 2019, Synopsys
+      <span class="lastupdated">
+        Last updated on Aug 04, 2021.
+      </span>
 
     </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
 

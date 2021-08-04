@@ -1,0 +1,376 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="structdev__i2s" kind="struct" prot="public">
+    <compoundname>dev_i2s</compoundname>
+    <includes refid="dev__i2s_8h" local="no">dev_i2s.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structdev__i2s_a9c5277fd78a33dcb54b8a8c8f8070153_1a9c5277fd78a33dcb54b8a8c8f8070153" prot="public" static="no" mutable="no">
+        <type><ref refid="group__DEVICE__HAL__I2S__DEVSTRUCT_ga7b91c9deef53310f03e7269e2f72fb29_1ga7b91c9deef53310f03e7269e2f72fb29" kindref="member">DEV_I2S_INFO</ref></type>
+        <definition>DEV_I2S_INFO dev_i2s::i2s_info</definition>
+        <argsstring></argsstring>
+        <name>i2s_info</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>I2S device information </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="371" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="371" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__DEVICE__HAL__I2S__DEVSTRUCT_gabad3f7a2c6d8f1bc6fa2669af2147fba_1gabad3f7a2c6d8f1bc6fa2669af2147fba" prot="public" static="no" mutable="no">
+        <type>int32_t(*</type>
+        <definition>int32_t(* dev_i2s::i2s_open)(uint32_t mode, uint32_t param)</definition>
+        <argsstring>)(uint32_t mode, uint32_t param)</argsstring>
+        <name>i2s_open</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>open I2S device in master/slave mode, \ when in master mode, param stands for speed mode, \ when in slave mode, param stands for slave address</para><para>open an I2S device with selected mode (master or slave) with defined param <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>working mode (<ref refid="group__DEVICE__HAL__COMMON__DEVMODE_ga9b1ad5abdf677288f655dd4bc9dc188d_1ga9b1ad5abdf677288f655dd4bc9dc188d" kindref="member">master</ref> or <ref refid="group__DEVICE__HAL__COMMON__DEVMODE_gaf070489d9f19e9000cb9700bb859a079_1gaf070489d9f19e9000cb9700bb859a079" kindref="member">slave</ref>) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">param</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>device type (<ref refid="group__I2S__DEVICE__TYPE_ga705f27f97f7a5cb298fce2320fceb1a8_1gga705f27f97f7a5cb298fce2320fceb1a8ab3c8bedf88d7ae02593d28719246ef48" kindref="member">transmitter</ref> OR <ref refid="group__I2S__DEVICE__TYPE_ga705f27f97f7a5cb298fce2320fceb1a8_1gga705f27f97f7a5cb298fce2320fceb1a8a3fafd3ba0b838d8ef620f6c4dd47b2d6" kindref="member">receiver</ref>) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>E_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Open successfully without any issues </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_OPNED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device was opened before </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_OBJ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device object is not valid </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_SYS</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device initialized parameters are different with parameters in IP </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_PAR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameter is not valid </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_NOSPT</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Open settings are not supported </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="372" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="372" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__DEVICE__HAL__I2S__DEVSTRUCT_ga2ee988e687f463ecc79ab2f8b8cb8fea_1ga2ee988e687f463ecc79ab2f8b8cb8fea" prot="public" static="no" mutable="no">
+        <type>int32_t(*</type>
+        <definition>int32_t(* dev_i2s::i2s_close)(void)</definition>
+        <argsstring>)(void)</argsstring>
+        <name>i2s_close</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>close I2S device</para><para>close an I2S device, just decrease the <ref refid="structdev__i2s__info_a6e6f365b6451f280a44ee076818c9747_1a6e6f365b6451f280a44ee076818c9747" kindref="member">opn_cnt</ref>, if <ref refid="structdev__i2s__info_a6e6f365b6451f280a44ee076818c9747_1a6e6f365b6451f280a44ee076818c9747" kindref="member">opn_cnt</ref> equals 0, then close the device <parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>E_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Close successfully without any issues(including scenario that device is already closed) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_OPNED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device is still opened, the device <ref refid="structdev__i2s__info_a6e6f365b6451f280a44ee076818c9747_1a6e6f365b6451f280a44ee076818c9747" kindref="member">opn_cnt</ref> decreased by 1 </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_OBJ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device object is not valid </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="375" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="375" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__DEVICE__HAL__I2S__DEVSTRUCT_ga644a0a82aeedb2c8ee2d354efe0a3366_1ga644a0a82aeedb2c8ee2d354efe0a3366" prot="public" static="no" mutable="no">
+        <type>int32_t(*</type>
+        <definition>int32_t(* dev_i2s::i2s_control)(uint32_t ctrl_cmd, void *param)</definition>
+        <argsstring>)(uint32_t ctrl_cmd, void *param)</argsstring>
+        <name>i2s_control</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>control i2s device</para><para>control an I2S device by ctrl_cmd, with passed param. you can control I2S device using predefined I2S control commands defined using <ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref> (which must be implemented by bsp developer), <ref refid="group__DEVICE__HAL__I2S__CTRLCMD" kindref="compound">command details</ref>. And you can also control I2S device using your own specified commands defined using <ref refid="group__DEVICE__HAL__COMMON__DEFCMD_gafe70e244452c1c2f5235b85cadf602bb_1gafe70e244452c1c2f5235b85cadf602bb" kindref="member">DEV_SET_USRCMD</ref>, but these specified commands should be defined in your own I2S device driver implementation. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ctrl_cmd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="group__DEVICE__HAL__I2S__CTRLCMD" kindref="compound">control command</ref>, to change or get some thing related to I2S </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">param</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>parameters that maybe argument of the command, or return values of the command, must not be NULL </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>E_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Control device successfully </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_CLSED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device is not opened </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_OBJ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device object is not valid or not exists </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_PAR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameter is not valid for current control command </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_SYS</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Control device failed, due to hardware issues, such as device is disabled </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_CTX</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Control device failed, due to different reasons like in transfer state </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_NOSPT</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Control command is not supported or not valid </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="376" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="376" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__DEVICE__HAL__I2S__DEVSTRUCT_ga8222b7914f6859d37e3f6da9828cdfda_1ga8222b7914f6859d37e3f6da9828cdfda" prot="public" static="no" mutable="no">
+        <type>int32_t(*</type>
+        <definition>int32_t(* dev_i2s::i2s_write)(const void *data, uint32_t len)</definition>
+        <argsstring>)(const void *data, uint32_t len)</argsstring>
+        <name>i2s_write</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>send data by i2s TX device (blocking method)</para><para>send data through I2S with defined len to RX device. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to data need to send by I2S </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>length of data to be sent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>&gt;0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Byte count that was successfully sent for poll method, it might can&apos;t send that much due to <ref refid="structdev__i2s__info_a765db1a62b0b9a158c953c320c43564f_1a765db1a62b0b9a158c953c320c43564f" kindref="member">different error state</ref>. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_OBJ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device object is not valid or not exists </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_PAR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameter is not valid </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_CTX</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device is still in transfer state </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_SYS</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Can&apos;t write data to hardware due to hardware issues, such as device is disabled </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="377" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="377" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__DEVICE__HAL__I2S__DEVSTRUCT_ga14520176324ec3f8ee7cbf7c4a13d729_1ga14520176324ec3f8ee7cbf7c4a13d729" prot="public" static="no" mutable="no">
+        <type>int32_t(*</type>
+        <definition>int32_t(* dev_i2s::i2s_read)(void *data, uint32_t len)</definition>
+        <argsstring>)(void *data, uint32_t len)</argsstring>
+        <name>i2s_read</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>read data from i2s RX device (blocking method)</para><para>receive data of defined len through I2S from TX device. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to data need to received by I2S </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>length of data to be received </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>&gt;0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Byte count that was successfully received for poll method, it might can&apos;t send that much due to <ref refid="structdev__i2s__info_a765db1a62b0b9a158c953c320c43564f_1a765db1a62b0b9a158c953c320c43564f" kindref="member">different error state</ref>. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_OBJ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device object is not valid or not exists </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_CTX</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device is still in transfer state </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_PAR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameter is not valid </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_SYS</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Can&apos;t receive data from hardware due to hardware issues, such as device is disabled </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="378" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="378" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>I2S device interface definition. </para>    </briefdescription>
+    <detaileddescription>
+<para>define I2S device interface, like I2S information structure, fuctions to get I2S info, open/close/control I2S, send/receive data by I2S <simplesect kind="note"><para>all this details are implemented by user in user porting code </para></simplesect>
+</para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="94">
+        <label>dev_i2s_cbs</label>
+        <link refid="structdev__i2s__cbs"/>
+      </node>
+      <node id="93">
+        <label>dev_i2s_info</label>
+        <link refid="structdev__i2s__info"/>
+        <childnode refid="94" relation="usage">
+          <edgelabel>i2s_cbs</edgelabel>
+        </childnode>
+        <childnode refid="95" relation="usage">
+          <edgelabel>tx_buf</edgelabel>
+          <edgelabel>rx_buf</edgelabel>
+        </childnode>
+      </node>
+      <node id="92">
+        <label>dev_i2s</label>
+        <link refid="structdev__i2s"/>
+        <childnode refid="93" relation="usage">
+          <edgelabel>i2s_info</edgelabel>
+        </childnode>
+      </node>
+      <node id="95">
+        <label>dev_buffer</label>
+        <link refid="structdev__buffer"/>
+      </node>
+    </collaborationgraph>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="370" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="370" bodyend="379"/>
+    <listofallmembers>
+      <member refid="group__DEVICE__HAL__I2S__DEVSTRUCT_ga2ee988e687f463ecc79ab2f8b8cb8fea_1ga2ee988e687f463ecc79ab2f8b8cb8fea" prot="public" virt="non-virtual"><scope>dev_i2s</scope><name>i2s_close</name></member>
+      <member refid="group__DEVICE__HAL__I2S__DEVSTRUCT_ga644a0a82aeedb2c8ee2d354efe0a3366_1ga644a0a82aeedb2c8ee2d354efe0a3366" prot="public" virt="non-virtual"><scope>dev_i2s</scope><name>i2s_control</name></member>
+      <member refid="structdev__i2s_a9c5277fd78a33dcb54b8a8c8f8070153_1a9c5277fd78a33dcb54b8a8c8f8070153" prot="public" virt="non-virtual"><scope>dev_i2s</scope><name>i2s_info</name></member>
+      <member refid="group__DEVICE__HAL__I2S__DEVSTRUCT_gabad3f7a2c6d8f1bc6fa2669af2147fba_1gabad3f7a2c6d8f1bc6fa2669af2147fba" prot="public" virt="non-virtual"><scope>dev_i2s</scope><name>i2s_open</name></member>
+      <member refid="group__DEVICE__HAL__I2S__DEVSTRUCT_ga14520176324ec3f8ee7cbf7c4a13d729_1ga14520176324ec3f8ee7cbf7c4a13d729" prot="public" virt="non-virtual"><scope>dev_i2s</scope><name>i2s_read</name></member>
+      <member refid="group__DEVICE__HAL__I2S__DEVSTRUCT_ga8222b7914f6859d37e3f6da9828cdfda_1ga8222b7914f6859d37e3f6da9828cdfda" prot="public" virt="non-virtual"><scope>dev_i2s</scope><name>i2s_write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

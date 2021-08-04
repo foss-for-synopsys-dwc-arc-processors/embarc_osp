@@ -1,0 +1,376 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="structdev__iic" kind="struct" prot="public">
+    <compoundname>dev_iic</compoundname>
+    <includes refid="dev__iic_8h" local="no">dev_iic.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structdev__iic_abaccd43eb5eff8e589fd54529abf3deb_1abaccd43eb5eff8e589fd54529abf3deb" prot="public" static="no" mutable="no">
+        <type><ref refid="group__DEVICE__HAL__IIC__DEVSTRUCT_ga110fe78b9c1d4bfd1f31bb73d44744a9_1ga110fe78b9c1d4bfd1f31bb73d44744a9" kindref="member">DEV_IIC_INFO</ref></type>
+        <definition>DEV_IIC_INFO dev_iic::iic_info</definition>
+        <argsstring></argsstring>
+        <name>iic_info</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>iic device information </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_iic.h" line="425" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_iic.h" bodystart="425" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__DEVICE__HAL__IIC__DEVSTRUCT_ga0d6e561d2179ad140a99cc270d4ae958_1ga0d6e561d2179ad140a99cc270d4ae958" prot="public" static="no" mutable="no">
+        <type>int32_t(*</type>
+        <definition>int32_t(* dev_iic::iic_open)(uint32_t mode, uint32_t param)</definition>
+        <argsstring>)(uint32_t mode, uint32_t param)</argsstring>
+        <name>iic_open</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>open iic device in master/slave mode, \ when in master mode, param stands for speed mode, \ when in slave mode, param stands for slave address</para><para>open an iic device with selected mode (master or slave) with defined param <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>working mode (<ref refid="group__DEVICE__HAL__COMMON__DEVMODE_ga9b1ad5abdf677288f655dd4bc9dc188d_1ga9b1ad5abdf677288f655dd4bc9dc188d" kindref="member">master</ref> or <ref refid="group__DEVICE__HAL__COMMON__DEVMODE_gaf070489d9f19e9000cb9700bb859a079_1gaf070489d9f19e9000cb9700bb859a079" kindref="member">slave</ref>) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">param</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>When mode is <ref refid="group__DEVICE__HAL__COMMON__DEVMODE_ga9b1ad5abdf677288f655dd4bc9dc188d_1ga9b1ad5abdf677288f655dd4bc9dc188d" kindref="member">DEV_MASTER_MODE</ref>, param stands for <ref refid="structdev__iic__info_a1a2e7b90305a97b08510632ced7a0585_1a1a2e7b90305a97b08510632ced7a0585" kindref="member">speed mode</ref>, when mode is <ref refid="group__DEVICE__HAL__COMMON__DEVMODE_gaf070489d9f19e9000cb9700bb859a079_1gaf070489d9f19e9000cb9700bb859a079" kindref="member">DEV_SLAVE_MODE</ref>, param stands for <ref refid="structdev__iic__info_a155d96f61944dba9f8b8834772725302_1a155d96f61944dba9f8b8834772725302" kindref="member">slave device 7bit address</ref> </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>E_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Open successfully without any issues </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_OPNED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If device was opened before with different parameters, then just increase the <ref refid="structdev__iic__info_af6488d79474addfec5a4b34993c69251_1af6488d79474addfec5a4b34993c69251" kindref="member">opn_cnt</ref> and return <ref refid="group__EMBARC__ERROR_gaa5935765e74b9d1a7e72c9c8f9018b42_1gaa5935765e74b9d1a7e72c9c8f9018b42" kindref="member">E_OPNED</ref> </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_OBJ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device object is not valid </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_SYS</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device is opened for different mode before, if you want to open it with different mode, you need to fully close it first. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_PAR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameter is not valid </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_NOSPT</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Open settings are not supported </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_iic.h" line="426" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_iic.h" bodystart="426" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__DEVICE__HAL__IIC__DEVSTRUCT_ga0bcfec862c7286995496cd125b0192e2_1ga0bcfec862c7286995496cd125b0192e2" prot="public" static="no" mutable="no">
+        <type>int32_t(*</type>
+        <definition>int32_t(* dev_iic::iic_close)(void)</definition>
+        <argsstring>)(void)</argsstring>
+        <name>iic_close</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>close iic device</para><para>close an iic device, just decrease the <ref refid="structdev__iic__info_af6488d79474addfec5a4b34993c69251_1af6488d79474addfec5a4b34993c69251" kindref="member">opn_cnt</ref>, if <ref refid="structdev__iic__info_af6488d79474addfec5a4b34993c69251_1af6488d79474addfec5a4b34993c69251" kindref="member">opn_cnt</ref> equals 0, then close the device <parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>E_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Close successfully without any issues(including scenario that device is already closed) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_OPNED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device is still opened, the device <ref refid="structdev__iic__info_af6488d79474addfec5a4b34993c69251_1af6488d79474addfec5a4b34993c69251" kindref="member">opn_cnt</ref> decreased by 1 </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_OBJ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device object is not valid </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_iic.h" line="429" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_iic.h" bodystart="429" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__DEVICE__HAL__IIC__DEVSTRUCT_gae81e4eb8e99d15f417da9f63bf7fe7fd_1gae81e4eb8e99d15f417da9f63bf7fe7fd" prot="public" static="no" mutable="no">
+        <type>int32_t(*</type>
+        <definition>int32_t(* dev_iic::iic_control)(uint32_t ctrl_cmd, void *param)</definition>
+        <argsstring>)(uint32_t ctrl_cmd, void *param)</argsstring>
+        <name>iic_control</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>control iic device</para><para>control an iic device by ctrl_cmd, with passed param. you can control iic device using predefined iic control commands defined using <ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref> (which must be implemented by bsp developer), such as <ref refid="group__DEVICE__HAL__IIC__CTRLCMD_ga11a84dead1713e66cbe7ad1dd347cb9a_1ga11a84dead1713e66cbe7ad1dd347cb9a" kindref="member">set iic speed mode</ref>, <ref refid="group__DEVICE__HAL__IIC__CTRLCMD_ga7af936349af8e9b31939fcf2e5c091c0_1ga7af936349af8e9b31939fcf2e5c091c0" kindref="member">flush tx</ref> and <ref refid="group__DEVICE__HAL__IIC__CTRLCMD" kindref="compound">more</ref>. And you can also control iic device using your own specified commands defined using <ref refid="group__DEVICE__HAL__COMMON__DEFCMD_gafe70e244452c1c2f5235b85cadf602bb_1gafe70e244452c1c2f5235b85cadf602bb" kindref="member">DEV_SET_USRCMD</ref>, but these specified commands should be defined in your own iic device driver implementation. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ctrl_cmd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="group__DEVICE__HAL__IIC__CTRLCMD" kindref="compound">control command</ref>, to change or get some thing related to iic </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">param</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>parameters that maybe argument of the command, or return values of the command, must not be NULL </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>E_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Control device successfully </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_CLSED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device is not opened </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_OBJ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device object is not valid or not exists </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_PAR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameter is not valid for current control command </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_SYS</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Control device failed, due to hardware issues, such as device is disabled </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_CTX</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Control device failed, due to different reasons like in transfer state </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_NOSPT</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Control command is not supported or not valid </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_iic.h" line="430" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_iic.h" bodystart="430" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__DEVICE__HAL__IIC__DEVSTRUCT_gac8d366fcedfd479e5f00c4680e89e2c6_1gac8d366fcedfd479e5f00c4680e89e2c6" prot="public" static="no" mutable="no">
+        <type>int32_t(*</type>
+        <definition>int32_t(* dev_iic::iic_write)(const void *data, uint32_t len)</definition>
+        <argsstring>)(const void *data, uint32_t len)</argsstring>
+        <name>iic_write</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>send data by iic device (blocking method)</para><para>send data through iic with defined len to slave device which slave address is slv_addr. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to data need to send by iic </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>length of data to be sent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>&gt;0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Byte count that was successfully sent for poll method, it might can&apos;t send that much due to <ref refid="structdev__iic__info_a802367295ef5ed3c9452bbbb44cf9e29_1a802367295ef5ed3c9452bbbb44cf9e29" kindref="member">different error state</ref>. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_OBJ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device object is not valid or not exists </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_PAR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameter is not valid </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_CTX</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device is still in transfer state </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_SYS</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Can&apos;t write data to hardware due to hardware issues, such as device is disabled </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_iic.h" line="431" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_iic.h" bodystart="431" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__DEVICE__HAL__IIC__DEVSTRUCT_gaf907d1ec86dd20714b655241f9804adb_1gaf907d1ec86dd20714b655241f9804adb" prot="public" static="no" mutable="no">
+        <type>int32_t(*</type>
+        <definition>int32_t(* dev_iic::iic_read)(void *data, uint32_t len)</definition>
+        <argsstring>)(void *data, uint32_t len)</argsstring>
+        <name>iic_read</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>read data from iic device (blocking method)</para><para>receive data of defined len through iic from slave device which slave address is slv_addr. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to data need to received by iic </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>length of data to be received </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>&gt;0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Byte count that was successfully received for poll method, it might can&apos;t send that much due to <ref refid="structdev__iic__info_a802367295ef5ed3c9452bbbb44cf9e29_1a802367295ef5ed3c9452bbbb44cf9e29" kindref="member">different error state</ref>. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_OBJ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device object is not valid or not exists </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_CTX</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device is still in transfer state </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_PAR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameter is not valid </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_SYS</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Can&apos;t receive data from hardware due to hardware issues, such as device is disabled </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_iic.h" line="432" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_iic.h" bodystart="432" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>iic device interface definition </para>    </briefdescription>
+    <detaileddescription>
+<para>define iic device interface, like iic information structure, fuctions to get iic info, open/close/control iic, send/receive data by iic <simplesect kind="note"><para>all this details are implemented by user in user porting code </para></simplesect>
+</para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="103">
+        <label>dev_iic</label>
+        <link refid="structdev__iic"/>
+        <childnode refid="104" relation="usage">
+          <edgelabel>iic_info</edgelabel>
+        </childnode>
+      </node>
+      <node id="106">
+        <label>dev_iic_cbs</label>
+        <link refid="structdev__iic__cbs"/>
+      </node>
+      <node id="105">
+        <label>dev_buffer</label>
+        <link refid="structdev__buffer"/>
+      </node>
+      <node id="104">
+        <label>dev_iic_info</label>
+        <link refid="structdev__iic__info"/>
+        <childnode refid="105" relation="usage">
+          <edgelabel>tx_buf</edgelabel>
+          <edgelabel>rx_buf</edgelabel>
+        </childnode>
+        <childnode refid="106" relation="usage">
+          <edgelabel>iic_cbs</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_iic.h" line="424" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_iic.h" bodystart="424" bodyend="433"/>
+    <listofallmembers>
+      <member refid="group__DEVICE__HAL__IIC__DEVSTRUCT_ga0bcfec862c7286995496cd125b0192e2_1ga0bcfec862c7286995496cd125b0192e2" prot="public" virt="non-virtual"><scope>dev_iic</scope><name>iic_close</name></member>
+      <member refid="group__DEVICE__HAL__IIC__DEVSTRUCT_gae81e4eb8e99d15f417da9f63bf7fe7fd_1gae81e4eb8e99d15f417da9f63bf7fe7fd" prot="public" virt="non-virtual"><scope>dev_iic</scope><name>iic_control</name></member>
+      <member refid="structdev__iic_abaccd43eb5eff8e589fd54529abf3deb_1abaccd43eb5eff8e589fd54529abf3deb" prot="public" virt="non-virtual"><scope>dev_iic</scope><name>iic_info</name></member>
+      <member refid="group__DEVICE__HAL__IIC__DEVSTRUCT_ga0d6e561d2179ad140a99cc270d4ae958_1ga0d6e561d2179ad140a99cc270d4ae958" prot="public" virt="non-virtual"><scope>dev_iic</scope><name>iic_open</name></member>
+      <member refid="group__DEVICE__HAL__IIC__DEVSTRUCT_gaf907d1ec86dd20714b655241f9804adb_1gaf907d1ec86dd20714b655241f9804adb" prot="public" virt="non-virtual"><scope>dev_iic</scope><name>iic_read</name></member>
+      <member refid="group__DEVICE__HAL__IIC__DEVSTRUCT_gac8d366fcedfd479e5f00c4680e89e2c6_1gac8d366fcedfd479e5f00c4680e89e2c6" prot="public" virt="non-virtual"><scope>dev_iic</scope><name>iic_write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

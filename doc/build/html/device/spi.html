@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>SPI HAL &mdash; embARC 2019.06 documentation</title>
+  <title>SPI HAL &mdash; embARC OSP Project Documentation</title>
   
 
   
@@ -176,8 +176,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/device/spi.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -196,10 +194,261 @@ driver to implement. Here is a diagram for the spi interface.</p>
 <img alt="SPI HAL" src="../_images/dev_spi_hal.jpg" />
 <div class="section" id="definitions">
 <h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygengroup: Cannot find namespace “DEVICE_HAL_SPI_DEVSTRUCT” in doxygen xml output for project “embARC_osp” from directory: ../build/doxygen/xml</p>
+<dl class="group">
+<dt>
+<span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT"></span><em>group</em> <code class="sig-name descname">DEVICE_HAL_SPI_DEVSTRUCT</code></dt>
+<dd><p>contains definitions of spi device structure. </p>
+<p>this structure will be used in user implemented code, which was called Device Driver Implement Layer for spi to realize in user code. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Defines</p>
+<dl class="cpp macro">
+<dt id="c.DEV_SPI_XFER_SET_TXBUF">
+<span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT_1gafa61a7a7c000462a82f2444ae25af2bb"></span><code class="sig-name descname">DEV_SPI_XFER_SET_TXBUF</code><span class="sig-paren">(</span><em>xfer</em>, <em>buf</em>, <em>ofs</em>, <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_SPI_XFER_SET_TXBUF" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set tx buffer of device spi transfer </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.DEV_SPI_XFER_SET_RXBUF">
+<span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT_1ga13ef217b2a46833d9d83d41dca34d152"></span><code class="sig-name descname">DEV_SPI_XFER_SET_RXBUF</code><span class="sig-paren">(</span><em>xfer</em>, <em>buf</em>, <em>ofs</em>, <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_SPI_XFER_SET_RXBUF" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set rx buffer of device spi transfer </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.DEV_SPI_XFER_CALC_TOTLEN">
+<span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT_1ga4a968d6e09efb89c82c6f0943fce15a1"></span><code class="sig-name descname">DEV_SPI_XFER_CALC_TOTLEN</code><span class="sig-paren">(</span><em>xfer</em><span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_SPI_XFER_CALC_TOTLEN" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Calculate total length of current transfer without next transfer </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.DEV_SPI_XFER_SET_NEXT">
+<span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT_1ga7f2d84c08d3c7130a82e1414da26ad74"></span><code class="sig-name descname">DEV_SPI_XFER_SET_NEXT</code><span class="sig-paren">(</span><em>xfer</em>, <em>next_xfer</em><span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_SPI_XFER_SET_NEXT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set next SPI transfer </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.DEV_SPI_XFER_INIT">
+<span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT_1ga22c23668b451fd0554ce588289ed54c3"></span><code class="sig-name descname">DEV_SPI_XFER_INIT</code><span class="sig-paren">(</span><em>xfer</em><span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_SPI_XFER_INIT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Init spi transfer </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.DEV_SPI_INFO_SET_EXTRA_OBJECT">
+<span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT_1ga354000dde22f74e03fe31398427d3f89"></span><code class="sig-name descname">DEV_SPI_INFO_SET_EXTRA_OBJECT</code><span class="sig-paren">(</span><em>spi_info_ptr</em>, <em>extra_info</em><span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_SPI_INFO_SET_EXTRA_OBJECT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set extra information pointer of spi info </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.DEV_SPI_INFO_GET_EXTRA_OBJECT">
+<span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT_1gae4b36ea0d96870590ff54beff78dfd37"></span><code class="sig-name descname">DEV_SPI_INFO_GET_EXTRA_OBJECT</code><span class="sig-paren">(</span><em>spi_info_ptr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_SPI_INFO_GET_EXTRA_OBJECT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get extra information pointer of spi info </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.SPI_DFS_DEFAULT">
+<span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT_1gaa32c7741fd1467614b5908e38af740a3"></span><code class="sig-name descname">SPI_DFS_DEFAULT</code><a class="headerlink" href="#c.SPI_DFS_DEFAULT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Default spi data frame size </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.SPI_SLAVE_NOT_SELECTED">
+<span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT_1ga586076350631be95b49d18994622b0eb"></span><code class="sig-name descname">SPI_SLAVE_NOT_SELECTED</code><a class="headerlink" href="#c.SPI_SLAVE_NOT_SELECTED" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Slave is not selected </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.SPI_DUMMY_DEFAULT">
+<span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT_1gae7d05f1d5a9b9c1342951d816b3f8a2f"></span><code class="sig-name descname">SPI_DUMMY_DEFAULT</code><a class="headerlink" href="#c.SPI_DUMMY_DEFAULT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>default dummy value for first open </p>
+</dd></dl>
+
 </div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Typedefs</p>
+<dl class="cpp type">
+<dt id="_CPPv416DEV_SPI_TRANSFER">
+<span id="_CPPv316DEV_SPI_TRANSFER"></span><span id="_CPPv216DEV_SPI_TRANSFER"></span><span id="DEV_SPI_TRANSFER"></span><span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT_1ga296ca50563d3df910743a6c1001946c6"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv416dev_spi_transfer" title="dev_spi_transfer">dev_spi_transfer</a> <code class="sig-name descname">DEV_SPI_TRANSFER</code><a class="headerlink" href="#_CPPv416DEV_SPI_TRANSFER" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv420DEV_SPI_TRANSFER_PTR">
+<span id="_CPPv320DEV_SPI_TRANSFER_PTR"></span><span id="_CPPv220DEV_SPI_TRANSFER_PTR"></span><span id="DEV_SPI_TRANSFER_PTR"></span><span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT_1gaf45a8c9a363591c178f7f75c7294b58a"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv416dev_spi_transfer" title="dev_spi_transfer">dev_spi_transfer</a> *<code class="sig-name descname">DEV_SPI_TRANSFER_PTR</code><a class="headerlink" href="#_CPPv420DEV_SPI_TRANSFER_PTR" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv415DEV_SPI_PAK_PTR">
+<span id="_CPPv315DEV_SPI_PAK_PTR"></span><span id="_CPPv215DEV_SPI_PAK_PTR"></span><span id="DEV_SPI_PAK_PTR"></span><span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT_1ga9c2b7129610aeae9da3fd46ab8dc9f36"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv411DEV_SPI_PAK" title="DEV_SPI_PAK">DEV_SPI_PAK</a> *<code class="sig-name descname">DEV_SPI_PAK_PTR</code><a class="headerlink" href="#_CPPv415DEV_SPI_PAK_PTR" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv412DEV_SPI_INFO">
+<span id="_CPPv312DEV_SPI_INFO"></span><span id="_CPPv212DEV_SPI_INFO"></span><span id="DEV_SPI_INFO"></span><span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT_1ga8125d4a1fd02b56a694d3520ed38b734"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv412dev_spi_info" title="dev_spi_info">dev_spi_info</a> <code class="sig-name descname">DEV_SPI_INFO</code><a class="headerlink" href="#_CPPv412DEV_SPI_INFO" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>spi information struct definition </p>
+<p>informations about spi open state, working state, frequency, spi registers, working method, interrupt number </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv416DEV_SPI_INFO_PTR">
+<span id="_CPPv316DEV_SPI_INFO_PTR"></span><span id="_CPPv216DEV_SPI_INFO_PTR"></span><span id="DEV_SPI_INFO_PTR"></span><span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT_1ga35093aafa08a894ae5d4b8190b22f522"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv412dev_spi_info" title="dev_spi_info">dev_spi_info</a> *<code class="sig-name descname">DEV_SPI_INFO_PTR</code><a class="headerlink" href="#_CPPv416DEV_SPI_INFO_PTR" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv47DEV_SPI">
+<span id="_CPPv37DEV_SPI"></span><span id="_CPPv27DEV_SPI"></span><span id="DEV_SPI"></span><span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT_1gadd86dcfed5b39e0bf5b74c47b4b2971a"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv47dev_spi" title="dev_spi">dev_spi</a> <code class="sig-name descname">DEV_SPI</code><a class="headerlink" href="#_CPPv47DEV_SPI" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>spi device interface definition </p>
+<p>define spi device interface, like spi information structure, fuctions to get spi info, open/close/control spi, send/receive data by spi <dl class="simple">
+<dt><strong>Note</strong></dt><dd><p>all this details are implemented by user in user porting code </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv411DEV_SPI_PTR">
+<span id="_CPPv311DEV_SPI_PTR"></span><span id="_CPPv211DEV_SPI_PTR"></span><span id="DEV_SPI_PTR"></span><span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT_1ga031f3dc885c36f74be5d80c22d849009"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv47dev_spi" title="dev_spi">dev_spi</a> *<code class="sig-name descname">DEV_SPI_PTR</code><a class="headerlink" href="#_CPPv411DEV_SPI_PTR" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Variables</p>
+<dl class="cpp var">
+<dt id="_CPPv48spi_open">
+<span id="_CPPv38spi_open"></span><span id="_CPPv28spi_open"></span><span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT_1gab6b6fc8a280ce9652f6245ba803a4f8c"></span>int32_t (*<code class="sig-name descname">spi_open</code>)<span class="sig-paren">(</span>uint32_t mode, uint32_t param<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48spi_open" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>open spi device in master/slave mode, \ when in master mode, param stands for frequency, \ when in slave mode, param stands for clock mode</p>
+<p>open an spi device with selected mode (master or slave) with defined param <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">mode</span></code>: working mode (master or slave) </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">param</span></code>: When mode is DEV_MASTER_MODE, param stands for frequency, when mode is DEV_SLAVE_MODE, param stands for slave clock mode </p></li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Open successfully without any issues </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: If device was opened before with different parameters, then just increase the opn_cnt and return E_OPNED </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Device is opened for different mode before, if you want to open it with different mode, you need to fully close it first. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_NOSPT</span></code>: Open settings are not supported </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv49spi_close">
+<span id="_CPPv39spi_close"></span><span id="_CPPv29spi_close"></span><span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT_1ga1c550a415224864ca189f3b18a58c5d2"></span>int32_t (*<code class="sig-name descname">spi_close</code>)<span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49spi_close" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>close spi device</p>
+<p>close an spi device, just decrease the opn_cnt, if opn_cnt equals 0, then close the device <dl class="simple">
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Close successfully without any issues(including scenario that device is already closed) </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: Device is still opened, the device opn_cnt decreased by 1 </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv411spi_control">
+<span id="_CPPv311spi_control"></span><span id="_CPPv211spi_control"></span><span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT_1ga9a3ba6c5fbec77ee3555e07fb08667d7"></span>int32_t (*<code class="sig-name descname">spi_control</code>)<span class="sig-paren">(</span>uint32_t ctrl_cmd, void *param<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411spi_control" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>control spi device</p>
+<p>control an spi device by ctrl_cmd, with passed param. you can control spi device using predefined spi control commands defined using DEV_SET_SYSCMD (which must be implemented by bsp developer), such as set spi master frequency, flush tx and more. And you can also control spi device using your own specified commands defined using DEV_SET_USRCMD, but these specified commands should be defined in your own spi device driver implementation. <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">ctrl_cmd</span></code>: control command, to change or get some thing related to spi </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[inout]</span> <span class="pre">param</span></code>: parameters that maybe argument of the command, or return values of the command, must not be NULL </p></li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Control device successfully </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_CLSED</span></code>: Device is not opened </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid for current control command </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Control device failed, due to hardware issues, such as device is disabled </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Control device failed, due to different reasons like in transfer state </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_NOSPT</span></code>: Control command is not supported or not valid </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv49spi_write">
+<span id="_CPPv39spi_write"></span><span id="_CPPv29spi_write"></span><span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT_1gab9f3777682db6132b89f59fe6759a6d5"></span>int32_t (*<code class="sig-name descname">spi_write</code>)<span class="sig-paren">(</span><em class="property">const</em> void *data, uint32_t len<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49spi_write" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>send data to spi device (blocking method)</p>
+<p>send data through spi with defined len to slave device . <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">data</span></code>: pointer to data need to send by spi </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">len</span></code>: length of data to be sent </p></li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;0</span></code>: Byte count that was successfully sent for poll method </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Device is still in transfer state </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Can’t write data to hardware due to hardware issues, such as device is disabled </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv48spi_read">
+<span id="_CPPv38spi_read"></span><span id="_CPPv28spi_read"></span><span class="target" id="group__DEVICE__HAL__SPI__DEVSTRUCT_1ga8fe6f9502c789cb9344686028d9455c0"></span>int32_t (*<code class="sig-name descname">spi_read</code>)<span class="sig-paren">(</span>void *data, uint32_t len<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48spi_read" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>read data from spi device (blocking method)</p>
+<p>receive data of defined len through spi from slave device . <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[out]</span> <span class="pre">data</span></code>: pointer to data need to received by spi </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">len</span></code>: length of data to be received </p></li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;0</span></code>: Byte count that was successfully received for poll method </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Device is still in transfer state </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Can’t receive data from hardware due to hardware issues, such as device is disabled </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt id="_CPPv416dev_spi_transfer">
+<span id="_CPPv316dev_spi_transfer"></span><span id="_CPPv216dev_spi_transfer"></span><span id="dev_spi_transfer"></span><span class="target" id="structdev__spi__transfer"></span><em class="property">struct </em><code class="sig-name descname">dev_spi_transfer</code><a class="headerlink" href="#_CPPv416dev_spi_transfer" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;dev_spi.h&gt;</em><p>spi read and write data structure used by SPI_CMD_TRANSFER_INT or SPI_CMD_TRANSFER_POLLING spi write then read data </p>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv411DEV_SPI_PAK">
+<span id="_CPPv311DEV_SPI_PAK"></span><span id="_CPPv211DEV_SPI_PAK"></span><span id="DEV_SPI_PAK"></span><span class="target" id="structDEV__SPI__PAK"></span><em class="property">struct </em><code class="sig-name descname">DEV_SPI_PAK</code><a class="headerlink" href="#_CPPv411DEV_SPI_PAK" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;dev_spi.h&gt;</em><p>spi read and write data structure used by SPI_CMD_QUAD_READ spi write cmd and address then read data </p>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv412dev_spi_info">
+<span id="_CPPv312dev_spi_info"></span><span id="_CPPv212dev_spi_info"></span><span id="dev_spi_info"></span><span class="target" id="structdev__spi__info"></span><em class="property">struct </em><code class="sig-name descname">dev_spi_info</code><a class="headerlink" href="#_CPPv412dev_spi_info" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;dev_spi.h&gt;</em><p>spi information struct definition </p>
+<p>informations about spi open state, working state, frequency, spi registers, working method, interrupt number </p>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv47dev_spi">
+<span id="_CPPv37dev_spi"></span><span id="_CPPv27dev_spi"></span><span id="dev_spi"></span><span class="target" id="structdev__spi"></span><em class="property">struct </em><code class="sig-name descname">dev_spi</code><a class="headerlink" href="#_CPPv47dev_spi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;dev_spi.h&gt;</em><p>spi device interface definition </p>
+<p>define spi device interface, like spi information structure, fuctions to get spi info, open/close/control spi, send/receive data by spi <dl class="simple">
+<dt><strong>Note</strong></dt><dd><p>all this details are implemented by user in user porting code </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 </div>
 
@@ -209,25 +458,18 @@ driver to implement. Here is a diagram for the spi interface.</p>
           </div>
           <footer>
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="uart.html" class="btn btn-neutral float-right" title="UART HAL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="i2s.html" class="btn btn-neutral float-left" title="I2S HAL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
         &copy; Copyright 2019, Synopsys
+      <span class="lastupdated">
+        Last updated on Aug 04, 2021.
+      </span>
 
     </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
 

@@ -1,83 +1,40 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="hsdk_2drivers_2sdcard_2sdcard_8c" kind="file">
-    <compoundname>hsdk/drivers/sdcard/sdcard.c</compoundname>
-    <includes local="yes">embARC_toolchain.h</includes>
-    <includes local="yes">ff_diskio.h</includes>
-    <includes refid="hsdk_2drivers_2sdcard_2sdcard_8h" local="yes">sdcard.h</includes>
-    <includes local="no">time.h</includes>
+    <compoundname>sdcard.c</compoundname>
+    <includes refid="embARC__toolchain_8h" local="yes">embARC_toolchain.h</includes>
     <incdepgraph>
-      <node id="3448">
-        <label>sdcard.c</label>
+      <node id="2370">
+        <label>stdbool.h</label>
+      </node>
+      <node id="2367">
+        <label>stdint.h</label>
+      </node>
+      <node id="2365">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/drivers/sdcard/sdcard.c</label>
         <link refid="hsdk/drivers/sdcard/sdcard.c"/>
-        <childnode refid="3449" relation="include">
-        </childnode>
-        <childnode refid="3450" relation="include">
-        </childnode>
-        <childnode refid="3451" relation="include">
-        </childnode>
-        <childnode refid="3453" relation="include">
+        <childnode refid="2366" relation="include">
         </childnode>
       </node>
-      <node id="3451">
-        <label>sdcard.h</label>
-        <link refid="hsdk_2drivers_2sdcard_2sdcard_8h_source"/>
-        <childnode refid="3449" relation="include">
-        </childnode>
-        <childnode refid="3452" relation="include">
-        </childnode>
+      <node id="2369">
+        <label>stddef.h</label>
       </node>
-      <node id="3452">
-        <label>sdcard_sdio.h</label>
-        <link refid="hsdk_2drivers_2sdcard_2sdcard__sdio_8h_source"/>
-        <childnode refid="3450" relation="include">
-        </childnode>
-      </node>
-      <node id="3449">
+      <node id="2366">
         <label>embARC_toolchain.h</label>
+        <link refid="embARC__toolchain_8h"/>
+        <childnode refid="2367" relation="include">
+        </childnode>
+        <childnode refid="2368" relation="include">
+        </childnode>
+        <childnode refid="2369" relation="include">
+        </childnode>
+        <childnode refid="2370" relation="include">
+        </childnode>
       </node>
-      <node id="3450">
-        <label>ff_diskio.h</label>
-      </node>
-      <node id="3453">
-        <label>time.h</label>
+      <node id="2368">
+        <label>limits.h</label>
       </node>
     </incdepgraph>
-      <sectiondef kind="func">
-      <memberdef kind="function" id="hsdk_2drivers_2sdcard_2sdcard_8c_1a66d0d58d346468558bd28cc00e8ed9c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>uint32_t</type>
-        <definition>uint32_t diskio_get_fattime</definition>
-        <argsstring>(void)</argsstring>
-        <name>diskio_get_fattime</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/drivers/sdcard/sdcard.c" line="37" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/drivers/sdcard/sdcard.c" bodystart="37" bodyend="53"/>
-      </memberdef>
-      <memberdef kind="function" id="hsdk_2drivers_2sdcard_2sdcard_8c_1af6d1a109119befdeedba4784cdc39c9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>FATFS_DISKIO *</type>
-        <definition>FATFS_DISKIO* get_fatfs_diskio</definition>
-        <argsstring>(uint32_t drvid)</argsstring>
-        <name>get_fatfs_diskio</name>
-        <param>
-          <type>uint32_t</type>
-          <declname>drvid</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/drivers/sdcard/sdcard.c" line="55" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/drivers/sdcard/sdcard.c" bodystart="55" bodyend="67"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -112,7 +69,7 @@
 <codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
 <codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
 <codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/>---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;embARC_toolchain.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="embARC__toolchain_8h" kindref="compound">embARC_toolchain.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MID_FATFS<sp/></highlight><highlight class="comment">/*<sp/>only<sp/>available<sp/>when<sp/>enable<sp/>fatfs<sp/>middleware<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="33"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;ff_diskio.h&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -121,34 +78,34 @@
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal">uint32_t<sp/>diskio_get_fattime(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="38"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">tm<sp/>*p_tm;</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>time_t<sp/>cur_time;</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>fattime;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">tm<sp/>*p_tm;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>time_t<sp/>cur_time;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>fattime;</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cur_time<sp/>=<sp/>time(NULL);</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p_tm<sp/>=<sp/>localtime(&amp;cur_time);</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fattime<sp/>=<sp/>((p_tm-&gt;tm_year<sp/>+<sp/>1900<sp/>-<sp/>1980)<sp/>&amp;<sp/>0x7f)<sp/>&lt;&lt;<sp/>25;</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fattime<sp/>|=<sp/>((p_tm-&gt;tm_mon<sp/>+<sp/>1)<sp/>&amp;<sp/>0xf)<sp/>&lt;&lt;<sp/>21;</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fattime<sp/>|=<sp/>((p_tm-&gt;tm_mday)<sp/>&amp;<sp/>0x1f)<sp/>&lt;&lt;<sp/>16;</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fattime<sp/>|=<sp/>((p_tm-&gt;tm_hour)<sp/>&amp;<sp/>0x1f)<sp/>&lt;&lt;<sp/>11;</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fattime<sp/>|=<sp/>((p_tm-&gt;tm_min)<sp/>&amp;<sp/>0x3f)<sp/>&lt;&lt;<sp/>5;</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fattime<sp/>|=<sp/>((p_tm-&gt;tm_sec<sp/>&gt;&gt;<sp/>1)<sp/>&amp;<sp/>0x1f);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>cur_time<sp/>=<sp/>time(NULL);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>p_tm<sp/>=<sp/>localtime(&amp;cur_time);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>fattime<sp/>=<sp/>((p_tm-&gt;tm_year<sp/>+<sp/>1900<sp/>-<sp/>1980)<sp/>&amp;<sp/>0x7f)<sp/>&lt;&lt;<sp/>25;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>fattime<sp/>|=<sp/>((p_tm-&gt;tm_mon<sp/>+<sp/>1)<sp/>&amp;<sp/>0xf)<sp/>&lt;&lt;<sp/>21;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>fattime<sp/>|=<sp/>((p_tm-&gt;tm_mday)<sp/>&amp;<sp/>0x1f)<sp/>&lt;&lt;<sp/>16;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>fattime<sp/>|=<sp/>((p_tm-&gt;tm_hour)<sp/>&amp;<sp/>0x1f)<sp/>&lt;&lt;<sp/>11;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>fattime<sp/>|=<sp/>((p_tm-&gt;tm_min)<sp/>&amp;<sp/>0x3f)<sp/>&lt;&lt;<sp/>5;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>fattime<sp/>|=<sp/>((p_tm-&gt;tm_sec<sp/>&gt;&gt;<sp/>1)<sp/>&amp;<sp/>0x1f);</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fattime;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fattime;</highlight></codeline>
 <codeline lineno="53"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"></highlight></codeline>
 <codeline lineno="55"><highlight class="normal">FATFS_DISKIO<sp/>*get_fatfs_diskio(uint32_t<sp/>drvid)</highlight></codeline>
 <codeline lineno="56"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(drvid)<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(drvid)<sp/>{</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(USE_HSDK_SDCARD_SDIO_0)</highlight></codeline>
-<codeline lineno="59"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>HSDK_SDCARD_0_DRVID:</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;sdcard_sdio_0_diskio;</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>HSDK_SDCARD_0_DRVID:</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;sdcard_sdio_0_diskio;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="63"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
 <codeline lineno="67"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>MID_FATFS<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>

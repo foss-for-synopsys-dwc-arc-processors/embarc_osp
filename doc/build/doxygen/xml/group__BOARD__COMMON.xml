@@ -1,0 +1,297 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="group__BOARD__COMMON" kind="group">
+    <compoundname>BOARD_COMMON</compoundname>
+    <title>Common Definitions</title>
+    <innerfile refid="board_8h">board.h</innerfile>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__BOARD__COMMON_1ga916f2adc2080b4fe88034086d107a8dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void board_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>board_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Board init routine MUST be called in each application. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>the following macros must use the same name, because they are used by middleware and other applicationshere is a sample of EMSK board resource definitions you can add your board configuration as BOARD_EMSK defined up nsim related definition</para><simplesectsep/><para>It is better to disable interrupts when calling this function remember to enable interrupt when you want to use them </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="86" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/axs/common/axs_init.c" bodystart="38" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BOARD__COMMON_1ga2d400eb191882aeb5b35143ffe7ea9ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void board_timer_update</definition>
+        <argsstring>(uint32_t precision)</argsstring>
+        <name>board_timer_update</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>precision</declname>
+        </param>
+        <briefdescription>
+<para>Update timer counter and other MS period operation in cycling interrupt and must be called periodically. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>precision</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>interrupt-period precision in Hz </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+<para>count sys hz</para><para>count ms </para>        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="87" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.c" bodystart="344" bodyend="365"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BOARD__COMMON_1gadf80b95e6ceb5c1014e3e1a6f243fe8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void board_delay_ms</definition>
+        <argsstring>(uint32_t ms, uint8_t os_compat)</argsstring>
+        <name>board_delay_ms</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>ms</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>os_compat</declname>
+        </param>
+        <briefdescription>
+<para>provide MS delay function </para>        </briefdescription>
+        <detaileddescription>
+<para><verbatim>    this function needs a 1-MS timer interrupt to work.
+For bare-metal, it is implemented in this file.
+For OS, you must call @ref board_timer_update in
+the OS 1-MS timer interrupt when the bare-metal timer interrupt
+is not ready
+</verbatim> <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MS to delay </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">os_compat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Enable or disable When this delay is enabled, use the OS delay function, if one is provided. See <ref refid="group__BOARD__COMMON_ga0925d758144e37de4158bb2faadea9e9_1ga0925d758144e37de4158bb2faadea9e9" kindref="member">OSP_DELAY_OS_COMPAT_ENABLE</ref> and <ref refid="group__BOARD__COMMON_ga0a78908e297806f4ae43488e59f3e682_1ga0a78908e297806f4ae43488e59f3e682" kindref="member">OSP_DELAY_OS_COMPAT_DISABLE</ref> </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="88" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.c" bodystart="433" bodyend="451"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BOARD__COMMON_1gac019f96ffa35670f7013ab1e3c91b230" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t board_get_hwticks</definition>
+        <argsstring>(void)</argsstring>
+        <name>board_get_hwticks</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Get current timer&apos;s counter value in ticks. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>Ticks</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>count in 64 bit format </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="89" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.c" bodystart="371" bodyend="382"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BOARD__COMMON_1gac804f2adaefaef9ae3d123dbe4abb123" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t board_get_cur_us</definition>
+        <argsstring>(void)</argsstring>
+        <name>board_get_cur_us</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Get current passed us since timer init. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>us</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Count in 64 bit format </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="90" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.c" bodystart="388" bodyend="399"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BOARD__COMMON_1gad78111cf910063b70a901aa3fbcf7c86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t board_get_cur_syshz</definition>
+        <argsstring>(void)</argsstring>
+        <name>board_get_cur_syshz</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Get board timer counter in timer interrupt. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>Count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>in 64 bit format </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="91" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.c" bodystart="414" bodyend="417"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BOARD__COMMON_1ga0a2cbc20d3612af27543fde270ad862c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t board_get_cur_ms</definition>
+        <argsstring>(void)</argsstring>
+        <name>board_get_cur_ms</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Get current passed ms since timer init. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Count in 32 bit format </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="92" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.c" bodystart="405" bodyend="408"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BOARD__COMMON_1ga93e410eda85f9b5da900bcf582ff0043" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void platform_main</definition>
+        <argsstring>(void)</argsstring>
+        <name>platform_main</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="93" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.c" bodystart="298" bodyend="313"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BOARD__COMMON_1gaebe394b3306ee36bba1a23f2ea9e6d2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void board_main</definition>
+        <argsstring>(void)</argsstring>
+        <name>board_main</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="94" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.c" bodystart="315" bodyend="336"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group__BOARD__COMMON_1ga0925d758144e37de4158bb2faadea9e9" prot="public" static="no">
+        <name>OSP_DELAY_OS_COMPAT_ENABLE</name>
+        <initializer>(1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="100" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__COMMON_1ga0a78908e297806f4ae43488e59f3e682" prot="public" static="no">
+        <name>OSP_DELAY_OS_COMPAT_DISABLE</name>
+        <initializer>(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="101" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__COMMON_1gabd10baafda4f7905848d2a6741be5888" prot="public" static="no">
+        <name>OSP_GET_CUR_SYSHZ</name>
+        <param></param>
+        <initializer>bord_get_cur_syshz()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="103" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__COMMON_1ga1aeaa7e8387adcad735b59293caa0078" prot="public" static="no">
+        <name>OSP_GET_CUR_MS</name>
+        <param></param>
+        <initializer><ref refid="group__BOARD__COMMON_ga0a2cbc20d3612af27543fde270ad862c_1ga0a2cbc20d3612af27543fde270ad862c" kindref="member">board_get_cur_ms</ref>()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="104" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__COMMON_1gabfd80da126409074c73a5a633f2909bf" prot="public" static="no">
+        <name>OSP_GET_CUR_US</name>
+        <param></param>
+        <initializer><ref refid="group__BOARD__COMMON_gac804f2adaefaef9ae3d123dbe4abb123_1gac804f2adaefaef9ae3d123dbe4abb123" kindref="member">board_get_cur_us</ref>()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="105" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__BOARD__COMMON_1gad5344be95b93a72c0901d34027240b9c" prot="public" static="no">
+        <name>OSP_GET_CUR_HWTICKS</name>
+        <param></param>
+        <initializer><ref refid="group__BOARD__COMMON_gac019f96ffa35670f7013ab1e3c91b230_1gac019f96ffa35670f7013ab1e3c91b230" kindref="member">board_get_hwticks</ref>()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="106" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>all the common resources definitions for all boards </para>    </briefdescription>
+    <detaileddescription>
+<para>To let more applications can run on different boards, here we need to make many definitions for common resources, like uart, sdcard, wifi, button, led and so on. So that you can just use it without considering board difference. </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

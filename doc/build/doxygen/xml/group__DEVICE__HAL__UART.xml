@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="group__DEVICE__HAL__UART" kind="group">
+    <compoundname>DEVICE_HAL_UART</compoundname>
+    <title>UART Device HAL Interface</title>
+    <innerfile refid="dev__uart_8h">dev_uart.h</innerfile>
+    <innergroup refid="group__DEVICE__HAL__UART__BAUD">UART Device Baudrate Definitions</innergroup>
+    <innergroup refid="group__DEVICE__HAL__UART__CTRLCMD">UART Device Control Commands</innergroup>
+    <innergroup refid="group__DEVICE__HAL__UART__FORMAT">UART Device Format Definitions</innergroup>
+    <innergroup refid="group__DEVICE__HAL__UART__DEVSTRUCT">UART Device Interface Definition</innergroup>
+    <innergroup refid="group__DEVICE__HAL__UART__CALLBACK">UART Interrupt callback functions</innergroup>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__DEVICE__HAL__UART_1gaa79a1d08e403b54670b892c0c58d91d5" prot="public" static="no">
+        <name>UART_HW_FLOW_CONTROL</name>
+        <enumvalue id="group__DEVICE__HAL__UART_gaa79a1d08e403b54670b892c0c58d91d5_1ggaa79a1d08e403b54670b892c0c58d91d5a527864f0ec595151e7db5ef909fcf9f0" prot="public">
+          <name>UART_FC_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Non hardware flow control </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__UART_gaa79a1d08e403b54670b892c0c58d91d5_1ggaa79a1d08e403b54670b892c0c58d91d5afc75cc759e85ee277ead4520fb1d0b90" prot="public">
+          <name>UART_FC_RTS</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Request To Send </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__UART_gaa79a1d08e403b54670b892c0c58d91d5_1ggaa79a1d08e403b54670b892c0c58d91d5a42eb1be010429695afe750de07e7ade6" prot="public">
+          <name>UART_FC_CTS</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Clear To Send </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__UART_gaa79a1d08e403b54670b892c0c58d91d5_1ggaa79a1d08e403b54670b892c0c58d91d5a666090870593651febac7ad9db862760" prot="public">
+          <name>UART_FC_BOTH</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Both hardware flow control methods </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>UART Device Hardware Flow Control Types Enum </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="138" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="138" bodyend="143"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__DEVICE__HAL__UART_1ga4f722366b7af5439793dc46b8a209fe8" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="group__DEVICE__HAL__UART_gaa79a1d08e403b54670b892c0c58d91d5_1gaa79a1d08e403b54670b892c0c58d91d5" kindref="member">UART_HW_FLOW_CONTROL</ref></type>
+        <definition>const UART_HW_FLOW_CONTROL hwfc_default</definition>
+        <argsstring></argsstring>
+        <name>hwfc_default</name>
+        <initializer>= <ref refid="group__DEVICE__HAL__UART_gaa79a1d08e403b54670b892c0c58d91d5_1ggaa79a1d08e403b54670b892c0c58d91d5a527864f0ec595151e7db5ef909fcf9f0" kindref="member">UART_FC_NONE</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Default hardware flow control method </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="145" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__DEVICE__HAL__UART_1gade938afe2174b43b8522bf05cdcb1202" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__DEVICE__HAL__UART__DEVSTRUCT_gaab715d85781589ebc9b2194e25b4a101_1gaab715d85781589ebc9b2194e25b4a101" kindref="member">DEV_UART_PTR</ref></type>
+        <definition>DEV_UART_PTR uart_get_dev</definition>
+        <argsstring>(int32_t uart_id)</argsstring>
+        <name>uart_get_dev</name>
+        <param>
+          <type>int32_t</type>
+          <declname>uart_id</declname>
+        </param>
+        <briefdescription>
+<para>get an <ref refid="structdev__uart" kindref="compound">uart device</ref> by uart device id. For how to use uart device hal refer to <ref refid="group__DEVICE__HAL__UART__DEVSTRUCT" kindref="compound">Functions in uart device structure</ref> </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">uart_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>id of uart, defined by user </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>!NULL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to an <ref refid="structdev__uart" kindref="compound">uart device structure</ref> </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>NULL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>failed to find the uart device by uart_id </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>need to implemented by user in user code</para></simplesect>
+get one designware device structure</para><para>get one uart device structure </para>        </detaileddescription>
+        <inbodydescription>
+<para>&lt; uart 0 id macro</para><para>&lt; uart 1 id macro</para><para>&lt; uart 2 id macro</para><para>&lt; uart 0 id macro</para><para>&lt; uart 1 id macro</para><para>&lt; uart 0 id macro</para><para>&lt; uart 1 id macro</para><para>&lt; uart 2 id macro</para><para>&lt; uart 3 id macro</para><para>&lt; uart 0 id macro </para>        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="465" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/axs/drivers/ip/designware/uart/dw_uart_obj.c" bodystart="256" bodyend="286"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Definitions for uart device hardware layer (<ref refid="dev__uart_8h" kindref="compound">dev_uart.h</ref>) </para>    </briefdescription>
+    <detaileddescription>
+<para>Provide unified APIs for uart driver to implement. Here is a diagram for the uart interface.</para><para><htmlonly> 
+ &lt;div class=&quot;imagebox&quot;&gt;
+     &lt;div style=&quot;width: 600px&quot;&gt;
+         &lt;img src=&quot;pic/dev_uart_hal.jpg&quot; alt=&quot;UART Device HAL Interface Diagram&quot;/&gt;
+         &lt;p&gt;UART Device HAL Interface Diagram&lt;/p&gt;
+     &lt;/div&gt;
+ &lt;/div&gt;
+ </htmlonly></para><para><heading level="3">Reference Links</heading>
+</para><para><itemizedlist>
+<listitem><para><ulink url="https://en.wikipedia.org/wiki/Serial_port">Serial Port</ulink></para></listitem></itemizedlist>
+</para><para>6 </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

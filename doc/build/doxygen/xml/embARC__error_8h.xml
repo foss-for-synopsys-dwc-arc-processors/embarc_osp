@@ -1,0 +1,872 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="embARC__error_8h" kind="file">
+    <compoundname>embARC_error.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includes refid="arc__builtin_8h" local="yes">arc/arc_builtin.h</includes>
+    <includedby refid="embARC_8h" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC.h</includedby>
+    <includedby refid="axc003__gpio_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/axs/configs/103/axc003_gpio.c</includedby>
+    <includedby refid="emsdp__io_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/common/emsdp_io.c</includedby>
+    <includedby refid="emsdp_2drivers_2mux_2mux_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c</includedby>
+    <includedby refid="emsdp_2drivers_2ntshell_2ntshell__io__netconn_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ntshell/ntshell_io_netconn.c</includedby>
+    <includedby refid="emsdp_2drivers_2ntshell_2ntshell__io__uart_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ntshell/ntshell_io_uart.c</includedby>
+    <includedby refid="emsk__gpio_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/common/emsk_gpio.c</includedby>
+    <includedby refid="emsk_2drivers_2flash__obj_2flash__obj_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/flash_obj/flash_obj.c</includedby>
+    <includedby refid="emsk_2drivers_2mux_2mux_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c</includedby>
+    <includedby refid="emsk_2drivers_2ntshell_2ntshell__io__netconn_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ntshell/ntshell_io_netconn.c</includedby>
+    <includedby refid="emsk_2drivers_2ntshell_2ntshell__io__uart_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ntshell/ntshell_io_uart.c</includedby>
+    <includedby refid="hsdk__io_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.c</includedby>
+    <includedby refid="hsdk_2drivers_2mux_2mux_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/drivers/mux/mux.c</includedby>
+    <includedby refid="hsdk_2drivers_2ntshell_2ntshell__io__netconn_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c</includedby>
+    <includedby refid="hsdk_2drivers_2ntshell_2ntshell__io__uart_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c</includedby>
+    <includedby refid="iotdk_2drivers_2flash__obj_2flash__obj_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/flash_obj/flash_obj.c</includedby>
+    <includedby refid="iotdk_2drivers_2mux_2mux_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/mux/mux.c</includedby>
+    <includedby refid="iotdk_2drivers_2ntshell_2ntshell__io__netconn_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/ntshell/ntshell_io_netconn.c</includedby>
+    <includedby refid="iotdk_2drivers_2ntshell_2ntshell__io__uart_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/ntshell/ntshell_io_uart.c</includedby>
+    <includedby refid="smic__adc_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_adc/smic_adc.c</includedby>
+    <includedby refid="smic__bootspi_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.c</includedby>
+    <includedby refid="smic__eflash_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c</includedby>
+    <includedby refid="nsim_2drivers_2ntshell_2ntshell__io__uart_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/nsim/drivers/ntshell/ntshell_io_uart.c</includedby>
+    <incdepgraph>
+      <node id="5373">
+        <label>stdbool.h</label>
+      </node>
+      <node id="5374">
+        <label>arc/arc.h</label>
+        <link refid="arc_8h"/>
+        <childnode refid="5375" relation="include">
+        </childnode>
+      </node>
+      <node id="5369">
+        <label>arc/arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="5370" relation="include">
+        </childnode>
+        <childnode refid="5374" relation="include">
+        </childnode>
+      </node>
+      <node id="5368">
+        <label>stdint.h</label>
+      </node>
+      <node id="5372">
+        <label>stddef.h</label>
+      </node>
+      <node id="5370">
+        <label>embARC_toolchain.h</label>
+        <link refid="embARC__toolchain_8h"/>
+        <childnode refid="5368" relation="include">
+        </childnode>
+        <childnode refid="5371" relation="include">
+        </childnode>
+        <childnode refid="5372" relation="include">
+        </childnode>
+        <childnode refid="5373" relation="include">
+        </childnode>
+      </node>
+      <node id="5371">
+        <label>limits.h</label>
+      </node>
+      <node id="5375">
+        <label>arc/arc_feature_config.h</label>
+        <link refid="arc__feature__config_8h"/>
+      </node>
+      <node id="5367">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h</label>
+        <link refid="embARC_error.h"/>
+        <childnode refid="5368" relation="include">
+        </childnode>
+        <childnode refid="5369" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5385">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/ip/designware/i2s/dw_i2s_obj.c</label>
+        <link refid="dw__i2s__obj_8c"/>
+      </node>
+      <node id="5399">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ntshell/ntshell_io_uart.c</label>
+        <link refid="emsk_2drivers_2ntshell_2ntshell__io__uart_8c"/>
+      </node>
+      <node id="5391">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/common/emsdp_io.c</label>
+        <link refid="emsdp__io_8c"/>
+      </node>
+      <node id="5392">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c</label>
+        <link refid="emsdp_2drivers_2mux_2mux_8c"/>
+      </node>
+      <node id="5397">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c</label>
+        <link refid="emsk_2drivers_2mux_2mux_8c"/>
+      </node>
+      <node id="5384">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/designware/dw_i2s.h</label>
+        <link refid="dw__i2s_8h"/>
+        <childnode refid="5385" relation="include">
+        </childnode>
+      </node>
+      <node id="5400">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.c</label>
+        <link refid="hsdk__io_8c"/>
+      </node>
+      <node id="5405">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/mux/mux.c</label>
+        <link refid="iotdk_2drivers_2mux_2mux_8c"/>
+      </node>
+      <node id="5398">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ntshell/ntshell_io_netconn.c</label>
+        <link refid="emsk_2drivers_2ntshell_2ntshell__io__netconn_8c"/>
+      </node>
+      <node id="5396">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/flash_obj/flash_obj.c</label>
+        <link refid="emsk_2drivers_2flash__obj_2flash__obj_8c"/>
+      </node>
+      <node id="5401">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/drivers/mux/mux.c</label>
+        <link refid="hsdk_2drivers_2mux_2mux_8c"/>
+      </node>
+      <node id="5407">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/ntshell/ntshell_io_uart.c</label>
+        <link refid="iotdk_2drivers_2ntshell_2ntshell__io__uart_8c"/>
+      </node>
+      <node id="5410">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c</label>
+        <link refid="smic__eflash_8c"/>
+      </node>
+      <node id="5388">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/configs/10/hsdk_interrupt.c</label>
+        <link refid="10_2hsdk__interrupt_8c"/>
+      </node>
+      <node id="5404">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/flash_obj/flash_obj.c</label>
+        <link refid="iotdk_2drivers_2flash__obj_2flash__obj_8c"/>
+      </node>
+      <node id="5394">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ntshell/ntshell_io_uart.c</label>
+        <link refid="emsdp_2drivers_2ntshell_2ntshell__io__uart_8c"/>
+      </node>
+      <node id="5411">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/nsim/drivers/ntshell/ntshell_io_uart.c</label>
+        <link refid="nsim_2drivers_2ntshell_2ntshell__io__uart_8c"/>
+      </node>
+      <node id="5393">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ntshell/ntshell_io_netconn.c</label>
+        <link refid="emsdp_2drivers_2ntshell_2ntshell__io__netconn_8c"/>
+      </node>
+      <node id="5380">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/clib/embARC_syscalls.c</label>
+        <link refid="embARC__syscalls_8c"/>
+      </node>
+      <node id="5381">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/board/emsdp/common/secure_console.c</label>
+        <link refid="emsdp_2common_2secure__console_8c"/>
+      </node>
+      <node id="5406">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/ntshell/ntshell_io_netconn.c</label>
+        <link refid="iotdk_2drivers_2ntshell_2ntshell__io__netconn_8c"/>
+      </node>
+      <node id="5386">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/axs/configs/103/axs_103_interrupt.c</label>
+        <link refid="axs__103__interrupt_8c"/>
+      </node>
+      <node id="5389">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/configs/20/hsdk_interrupt.c</label>
+        <link refid="20_2hsdk__interrupt_8c"/>
+      </node>
+      <node id="5409">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.c</label>
+        <link refid="smic__bootspi_8c"/>
+      </node>
+      <node id="5408">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_adc/smic_adc.c</label>
+        <link refid="smic__adc_8c"/>
+      </node>
+      <node id="5390">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/axs/configs/103/axc003_gpio.c</label>
+        <link refid="axc003__gpio_8c"/>
+      </node>
+      <node id="5395">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/common/emsk_gpio.c</label>
+        <link refid="emsk__gpio_8c"/>
+      </node>
+      <node id="5402">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c</label>
+        <link refid="hsdk_2drivers_2ntshell_2ntshell__io__netconn_8c"/>
+      </node>
+      <node id="5377">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC.h</label>
+        <link refid="embARC_8h"/>
+        <childnode refid="5378" relation="include">
+        </childnode>
+        <childnode refid="5380" relation="include">
+        </childnode>
+        <childnode refid="5381" relation="include">
+        </childnode>
+        <childnode refid="5382" relation="include">
+        </childnode>
+        <childnode refid="5383" relation="include">
+        </childnode>
+        <childnode refid="5384" relation="include">
+        </childnode>
+        <childnode refid="5386" relation="include">
+        </childnode>
+        <childnode refid="5387" relation="include">
+        </childnode>
+        <childnode refid="5388" relation="include">
+        </childnode>
+        <childnode refid="5389" relation="include">
+        </childnode>
+      </node>
+      <node id="5378">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/clib/fatfs_dirent.h</label>
+        <link refid="fatfs__dirent_8h"/>
+        <childnode refid="5379" relation="include">
+        </childnode>
+      </node>
+      <node id="5387">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.c</label>
+        <link refid="board_8c"/>
+      </node>
+      <node id="5379">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/clib/dirent.h</label>
+        <link refid="dirent_8h"/>
+      </node>
+      <node id="5376">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h</label>
+        <link refid="embARC_error.h"/>
+        <childnode refid="5377" relation="include">
+        </childnode>
+        <childnode refid="5390" relation="include">
+        </childnode>
+        <childnode refid="5391" relation="include">
+        </childnode>
+        <childnode refid="5392" relation="include">
+        </childnode>
+        <childnode refid="5393" relation="include">
+        </childnode>
+        <childnode refid="5394" relation="include">
+        </childnode>
+        <childnode refid="5395" relation="include">
+        </childnode>
+        <childnode refid="5396" relation="include">
+        </childnode>
+        <childnode refid="5397" relation="include">
+        </childnode>
+        <childnode refid="5398" relation="include">
+        </childnode>
+        <childnode refid="5399" relation="include">
+        </childnode>
+        <childnode refid="5400" relation="include">
+        </childnode>
+        <childnode refid="5401" relation="include">
+        </childnode>
+        <childnode refid="5402" relation="include">
+        </childnode>
+        <childnode refid="5403" relation="include">
+        </childnode>
+        <childnode refid="5404" relation="include">
+        </childnode>
+        <childnode refid="5405" relation="include">
+        </childnode>
+        <childnode refid="5406" relation="include">
+        </childnode>
+        <childnode refid="5407" relation="include">
+        </childnode>
+        <childnode refid="5408" relation="include">
+        </childnode>
+        <childnode refid="5409" relation="include">
+        </childnode>
+        <childnode refid="5410" relation="include">
+        </childnode>
+        <childnode refid="5411" relation="include">
+        </childnode>
+      </node>
+      <node id="5403">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c</label>
+        <link refid="hsdk_2drivers_2ntshell_2ntshell__io__uart_8c"/>
+      </node>
+      <node id="5382">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/board/emsk/common/secure_console.c</label>
+        <link refid="emsk_2common_2secure__console_8c"/>
+      </node>
+      <node id="5383">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/board/iotdk/common/secure_console.c</label>
+        <link refid="iotdk_2common_2secure__console_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="user-defined">
+      <header>Main Error Code Definitions</header>
+      <memberdef kind="define" id="group__EMBARC__ERROR_ga1e7cc741c56207a8872ea58373276925_1ga1e7cc741c56207a8872ea58373276925" prot="public" static="no">
+        <name>E_OK</name>
+        <initializer>(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ok </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="56" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_gae5989e632e687010b35b613304089823_1gae5989e632e687010b35b613304089823" prot="public" static="no">
+        <name>E_SYS</name>
+        <initializer>(-5)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>system error </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="57" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_gac05cde47c29052935fd39d6d8a6c5ff4_1gac05cde47c29052935fd39d6d8a6c5ff4" prot="public" static="no">
+        <name>E_NOSPT</name>
+        <initializer>(-9)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>unsupported features </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="58" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_gade1c4cfe0d52374a5bcce6d80bc6cb67_1gade1c4cfe0d52374a5bcce6d80bc6cb67" prot="public" static="no">
+        <name>E_RSFN</name>
+        <initializer>(-10)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>reserved function code </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="59" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_gae4395ec890a1fbe5969e6a82269d52f6_1gae4395ec890a1fbe5969e6a82269d52f6" prot="public" static="no">
+        <name>E_RSATR</name>
+        <initializer>(-11)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>reserved attribute </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="60" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_ga28d0303b78b18735ae91a99ecc11bc8e_1ga28d0303b78b18735ae91a99ecc11bc8e" prot="public" static="no">
+        <name>E_PAR</name>
+        <initializer>(-17)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>parameter error </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="61" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_gaf1ebd563e58c090b310f82eb13176e02_1gaf1ebd563e58c090b310f82eb13176e02" prot="public" static="no">
+        <name>E_ID</name>
+        <initializer>(-18)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>invalid ID number </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="62" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_ga794d581c6f9c0407cbdde9f738c24e9e_1ga794d581c6f9c0407cbdde9f738c24e9e" prot="public" static="no">
+        <name>E_CTX</name>
+        <initializer>(-25)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>context error </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="63" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_gacfe7844cd775e0feb1456095958f045e_1gacfe7844cd775e0feb1456095958f045e" prot="public" static="no">
+        <name>E_MACV</name>
+        <initializer>(-26)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>memory access violation </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="64" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_gadc124e267af9c2389de8afe7dc87d4ca_1gadc124e267af9c2389de8afe7dc87d4ca" prot="public" static="no">
+        <name>E_OACV</name>
+        <initializer>(-27)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>object access violation </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="65" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_ga48c234f57dc47d55360adcf94f9228ae_1ga48c234f57dc47d55360adcf94f9228ae" prot="public" static="no">
+        <name>E_ILUSE</name>
+        <initializer>(-28)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>illegal service call use </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="66" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_ga2c08bce13e2f5280d96f8d8e39a5ff35_1ga2c08bce13e2f5280d96f8d8e39a5ff35" prot="public" static="no">
+        <name>E_NOMEM</name>
+        <initializer>(-33)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>insufficient memory </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="67" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_ga055fdfc03946d7ed4ceb476af349a4b9_1ga055fdfc03946d7ed4ceb476af349a4b9" prot="public" static="no">
+        <name>E_NOID</name>
+        <initializer>(-34)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>no ID number available </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="68" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_gafcffaac150e1adaf3ae9a06d77b54b87_1gafcffaac150e1adaf3ae9a06d77b54b87" prot="public" static="no">
+        <name>E_NORES</name>
+        <initializer>(-35)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>no resource available </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="69" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_ga33dcdca4c2e85d1b2899272d9d176553_1ga33dcdca4c2e85d1b2899272d9d176553" prot="public" static="no">
+        <name>E_OBJ</name>
+        <initializer>(-41)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>object state error </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="70" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_ga83828efe60511a2f7f2acce60a10965f_1ga83828efe60511a2f7f2acce60a10965f" prot="public" static="no">
+        <name>E_NOEXS</name>
+        <initializer>(-42)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>non-existent object </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="71" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_ga0620de2bb182345f78b1c192f2e0b8f3_1ga0620de2bb182345f78b1c192f2e0b8f3" prot="public" static="no">
+        <name>E_QOVR</name>
+        <initializer>(-43)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>queue overflow </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="72" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_ga68f59c53763da1faaad92eda9a481267_1ga68f59c53763da1faaad92eda9a481267" prot="public" static="no">
+        <name>E_RLWAI</name>
+        <initializer>(-49)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>forced release from waiting </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="73" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_ga5baec5ad4048e22b26df6f323663cf8e_1ga5baec5ad4048e22b26df6f323663cf8e" prot="public" static="no">
+        <name>E_TMOUT</name>
+        <initializer>(-50)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>polling failure or timeout </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="74" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_gab594edb6c4ff115feef5c84b6b3b41be_1gab594edb6c4ff115feef5c84b6b3b41be" prot="public" static="no">
+        <name>E_DLT</name>
+        <initializer>(-51)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>waiting object deleted </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="75" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_ga5227de4513606fb333cb9f4d5416ed5f_1ga5227de4513606fb333cb9f4d5416ed5f" prot="public" static="no">
+        <name>E_CLS</name>
+        <initializer>(-52)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>waiting object state changed </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="76" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_gadd69a16a94788dc16cdd1736087fe8da_1gadd69a16a94788dc16cdd1736087fe8da" prot="public" static="no">
+        <name>E_WBLK</name>
+        <initializer>(-57)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>non-blocking accepted </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="77" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_gaa829a363141900b3983f014fcbd8f294_1gaa829a363141900b3983f014fcbd8f294" prot="public" static="no">
+        <name>E_BOVR</name>
+        <initializer>(-58)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>buffer overflow </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="78" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_gaa5935765e74b9d1a7e72c9c8f9018b42_1gaa5935765e74b9d1a7e72c9c8f9018b42" prot="public" static="no">
+        <name>E_OPNED</name>
+        <initializer>(-6)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>device is opened </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="79" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_gac4e674c971a46afe82377d02a2d19451_1gac4e674c971a46afe82377d02a2d19451" prot="public" static="no">
+        <name>E_CLSED</name>
+        <initializer>(-7)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>device is closed </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="80" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Generate And Decompose Error Code</header>
+      <memberdef kind="define" id="group__EMBARC__ERROR_ga545786d2cbebd00e5c9754c0401810a2_1ga545786d2cbebd00e5c9754c0401810a2" prot="public" static="no">
+        <name>ERCD</name>
+        <param><defname>mercd</defname></param>
+        <param><defname>sercd</defname></param>
+        <initializer>((uint32_t)((((uint32_t) sercd) &lt;&lt; 8) | (((uint32_t) mercd) &amp; 0xffU)))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>generate error code using main error code and sub error code </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="89" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_ga06e5206ebea78aa209ad3141dd988c46_1ga06e5206ebea78aa209ad3141dd988c46" prot="public" static="no">
+        <name>MERCD</name>
+        <param><defname>ercd</defname></param>
+        <initializer>((uint32_t)(((uint32_t) ercd) | ~0xffU))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get main error code from error code </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="99" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_ga30261004179ea1953a467216e5069d99_1ga30261004179ea1953a467216e5069d99" prot="public" static="no">
+        <name>SERCD</name>
+        <param><defname>ercd</defname></param>
+        <initializer>((uint32_t)((ercd) &gt;&gt; 8))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get sub error code from error code </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="105" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Check Error</header>
+      <memberdef kind="define" id="group__EMBARC__ERROR_ga4151670bbcb21a581f28ed6bc5baa906_1ga4151670bbcb21a581f28ed6bc5baa906" prot="public" static="no">
+        <name>CHECK_EXP</name>
+        <param><defname>EXPR</defname></param>
+        <param><defname>ERCD</defname></param>
+        <param><defname>ERROR_CODE</defname></param>
+        <param><defname>EXIT_LABEL</defname></param>
+        <initializer>{ \
+		if (<ref refid="group__ARC__HAL__BUILTIN_gad077dba129e598bdc9a85a87cd0266b0_1gad077dba129e598bdc9a85a87cd0266b0" kindref="member">arc_compiler_rarely</ref>(!(EXPR))) {	  \
+			<ref refid="group__EMBARC__ERROR_ga545786d2cbebd00e5c9754c0401810a2_1ga545786d2cbebd00e5c9754c0401810a2" kindref="member">ERCD</ref> = (ERROR_CODE);		  \
+			goto EXIT_LABEL;		  \
+		}					  \
+}</initializer>
+        <briefdescription>
+<para>check an expression to see if it is right, and when error set the ercd, and goto exit_label </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>EXPR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the expression that need to be checked (==0 failed) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ERCD</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MUST pass a variable to here to get the error code </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ERROR_CODE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>error code that pass to ERCD </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>EXIT_LABEL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a label to go when error happens </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="121" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_ga77484b978195f1cc0b1e094fd7f085e6_1ga77484b978195f1cc0b1e094fd7f085e6" prot="public" static="no">
+        <name>CHECK_EXP_NOERCD</name>
+        <param><defname>EXPR</defname></param>
+        <param><defname>EXIT_LABEL</defname></param>
+        <initializer>{	    \
+		if (<ref refid="group__ARC__HAL__BUILTIN_gad077dba129e598bdc9a85a87cd0266b0_1gad077dba129e598bdc9a85a87cd0266b0" kindref="member">arc_compiler_rarely</ref>(!(EXPR))) { \
+			goto EXIT_LABEL;	    \
+		}				    \
+}</initializer>
+        <briefdescription>
+<para>check an expression to see if it is right, and when error directly goto exit_label </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>EXPR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the expression that need to be checked (==0 failed) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>EXIT_LABEL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a label to go when error happens </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="133" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_gadc422942cbbbb8c3bb162ff50da04122_1gadc422942cbbbb8c3bb162ff50da04122" prot="public" static="no">
+        <name>CHECK_ALIGN_BYTES</name>
+        <param><defname>pointer</defname></param>
+        <param><defname>cnt</defname></param>
+        <initializer>((((uint32_t)(pointer)) &amp; (cnt - 1)) == 0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>check cnt bytes align, 1 for aligned, 0 for not-aligned </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="139" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_gae2348692e539db235f567daeb12eeb54_1gae2348692e539db235f567daeb12eeb54" prot="public" static="no">
+        <name>CHECK_ALIGN_2BYTES</name>
+        <param><defname>pointer</defname></param>
+        <initializer>((((uint32_t)(pointer)) &amp; 0x1) == 0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>check 2 bytes align, 1 for aligned, 0 for not-aligned </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="141" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_gace3d588dc25676d080bcf53ee3522d63_1gace3d588dc25676d080bcf53ee3522d63" prot="public" static="no">
+        <name>CHECK_ALIGN_4BYTES</name>
+        <param><defname>pointer</defname></param>
+        <initializer>((((uint32_t)(pointer)) &amp; 0x3) == 0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>check 4 bytes align, 1 for aligned, 0 for not-aligned </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="143" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EMBARC__ERROR_gae1eff54744e2c82cdf941d9cbfbc3897_1gae1eff54744e2c82cdf941d9cbfbc3897" prot="public" static="no">
+        <name>CHECK_ALIGN_8BYTES</name>
+        <param><defname>pointer</defname></param>
+        <initializer>((((uint32_t)(pointer)) &amp; 0x7) == 0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>check 8 bytes align, 1 for aligned, 0 for not-aligned </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" line="145" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>header file to define common definitions error management </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/>------------------------------------------</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2017,<sp/>Synopsys,<sp/>Inc.<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"></highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>1)<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"></highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>2)<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"></highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>3)<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>Synopsys,<sp/>Inc.,<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"></highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/>---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="preprocessor">#ifndef<sp/>_EMBARC_ERROR_H_</highlight></codeline>
+<codeline lineno="43"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_EMBARC_ERROR_H_</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__builtin_8h" kindref="compound">arc/arc_builtin.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__ASSEMBLY__</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="56" refid="group__EMBARC__ERROR_ga1e7cc741c56207a8872ea58373276925_1ga1e7cc741c56207a8872ea58373276925" refkind="member"><highlight class="preprocessor">#define<sp/>E_OK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="57" refid="group__EMBARC__ERROR_gae5989e632e687010b35b613304089823_1gae5989e632e687010b35b613304089823" refkind="member"><highlight class="preprocessor">#define<sp/>E_SYS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-5)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="58" refid="group__EMBARC__ERROR_gac05cde47c29052935fd39d6d8a6c5ff4_1gac05cde47c29052935fd39d6d8a6c5ff4" refkind="member"><highlight class="preprocessor">#define<sp/>E_NOSPT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-9)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="59" refid="group__EMBARC__ERROR_gade1c4cfe0d52374a5bcce6d80bc6cb67_1gade1c4cfe0d52374a5bcce6d80bc6cb67" refkind="member"><highlight class="preprocessor">#define<sp/>E_RSFN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-10)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="60" refid="group__EMBARC__ERROR_gae4395ec890a1fbe5969e6a82269d52f6_1gae4395ec890a1fbe5969e6a82269d52f6" refkind="member"><highlight class="preprocessor">#define<sp/>E_RSATR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-11)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="61" refid="group__EMBARC__ERROR_ga28d0303b78b18735ae91a99ecc11bc8e_1ga28d0303b78b18735ae91a99ecc11bc8e" refkind="member"><highlight class="preprocessor">#define<sp/>E_PAR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-17)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="62" refid="group__EMBARC__ERROR_gaf1ebd563e58c090b310f82eb13176e02_1gaf1ebd563e58c090b310f82eb13176e02" refkind="member"><highlight class="preprocessor">#define<sp/>E_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-18)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="63" refid="group__EMBARC__ERROR_ga794d581c6f9c0407cbdde9f738c24e9e_1ga794d581c6f9c0407cbdde9f738c24e9e" refkind="member"><highlight class="preprocessor">#define<sp/>E_CTX<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-25)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="64" refid="group__EMBARC__ERROR_gacfe7844cd775e0feb1456095958f045e_1gacfe7844cd775e0feb1456095958f045e" refkind="member"><highlight class="preprocessor">#define<sp/>E_MACV<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-26)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="65" refid="group__EMBARC__ERROR_gadc124e267af9c2389de8afe7dc87d4ca_1gadc124e267af9c2389de8afe7dc87d4ca" refkind="member"><highlight class="preprocessor">#define<sp/>E_OACV<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-27)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="66" refid="group__EMBARC__ERROR_ga48c234f57dc47d55360adcf94f9228ae_1ga48c234f57dc47d55360adcf94f9228ae" refkind="member"><highlight class="preprocessor">#define<sp/>E_ILUSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-28)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="67" refid="group__EMBARC__ERROR_ga2c08bce13e2f5280d96f8d8e39a5ff35_1ga2c08bce13e2f5280d96f8d8e39a5ff35" refkind="member"><highlight class="preprocessor">#define<sp/>E_NOMEM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-33)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="68" refid="group__EMBARC__ERROR_ga055fdfc03946d7ed4ceb476af349a4b9_1ga055fdfc03946d7ed4ceb476af349a4b9" refkind="member"><highlight class="preprocessor">#define<sp/>E_NOID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-34)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="69" refid="group__EMBARC__ERROR_gafcffaac150e1adaf3ae9a06d77b54b87_1gafcffaac150e1adaf3ae9a06d77b54b87" refkind="member"><highlight class="preprocessor">#define<sp/>E_NORES<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-35)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="70" refid="group__EMBARC__ERROR_ga33dcdca4c2e85d1b2899272d9d176553_1ga33dcdca4c2e85d1b2899272d9d176553" refkind="member"><highlight class="preprocessor">#define<sp/>E_OBJ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-41)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="71" refid="group__EMBARC__ERROR_ga83828efe60511a2f7f2acce60a10965f_1ga83828efe60511a2f7f2acce60a10965f" refkind="member"><highlight class="preprocessor">#define<sp/>E_NOEXS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-42)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="72" refid="group__EMBARC__ERROR_ga0620de2bb182345f78b1c192f2e0b8f3_1ga0620de2bb182345f78b1c192f2e0b8f3" refkind="member"><highlight class="preprocessor">#define<sp/>E_QOVR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-43)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="73" refid="group__EMBARC__ERROR_ga68f59c53763da1faaad92eda9a481267_1ga68f59c53763da1faaad92eda9a481267" refkind="member"><highlight class="preprocessor">#define<sp/>E_RLWAI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-49)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="74" refid="group__EMBARC__ERROR_ga5baec5ad4048e22b26df6f323663cf8e_1ga5baec5ad4048e22b26df6f323663cf8e" refkind="member"><highlight class="preprocessor">#define<sp/>E_TMOUT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-50)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="75" refid="group__EMBARC__ERROR_gab594edb6c4ff115feef5c84b6b3b41be_1gab594edb6c4ff115feef5c84b6b3b41be" refkind="member"><highlight class="preprocessor">#define<sp/>E_DLT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-51)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="76" refid="group__EMBARC__ERROR_ga5227de4513606fb333cb9f4d5416ed5f_1ga5227de4513606fb333cb9f4d5416ed5f" refkind="member"><highlight class="preprocessor">#define<sp/>E_CLS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-52)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="77" refid="group__EMBARC__ERROR_gadd69a16a94788dc16cdd1736087fe8da_1gadd69a16a94788dc16cdd1736087fe8da" refkind="member"><highlight class="preprocessor">#define<sp/>E_WBLK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-57)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="78" refid="group__EMBARC__ERROR_gaa829a363141900b3983f014fcbd8f294_1gaa829a363141900b3983f014fcbd8f294" refkind="member"><highlight class="preprocessor">#define<sp/>E_BOVR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-58)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="79" refid="group__EMBARC__ERROR_gaa5935765e74b9d1a7e72c9c8f9018b42_1gaa5935765e74b9d1a7e72c9c8f9018b42" refkind="member"><highlight class="preprocessor">#define<sp/>E_OPNED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-6)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="80" refid="group__EMBARC__ERROR_gac4e674c971a46afe82377d02a2d19451_1gac4e674c971a46afe82377d02a2d19451" refkind="member"><highlight class="preprocessor">#define<sp/>E_CLSED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(-7)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="87"><highlight class="preprocessor">#ifndef<sp/>ERCD</highlight></codeline>
+<codeline lineno="88"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="89" refid="group__EMBARC__ERROR_ga545786d2cbebd00e5c9754c0401810a2_1ga545786d2cbebd00e5c9754c0401810a2" refkind="member"><highlight class="preprocessor">#define<sp/>ERCD(mercd,<sp/>sercd)<sp/>\</highlight></codeline>
+<codeline lineno="90"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>((uint32_t)((((uint32_t)<sp/>sercd)<sp/>&lt;&lt;<sp/>8)<sp/>|<sp/>(((uint32_t)<sp/>mercd)<sp/>&amp;<sp/>0xffU)))</highlight></codeline>
+<codeline lineno="91"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>ERCD<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="92"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MERCD</highlight></codeline>
+<codeline lineno="94"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifdef<sp/>INT8_MAX</highlight></codeline>
+<codeline lineno="95"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="96"><highlight class="preprocessor">#define<sp/>MERCD(ercd)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)((int8_t)(ercd)))</highlight></codeline>
+<codeline lineno="97"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#else<sp/></highlight><highlight class="comment">/*<sp/>INT8_MAX<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="98"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="99" refid="group__EMBARC__ERROR_ga06e5206ebea78aa209ad3141dd988c46_1ga06e5206ebea78aa209ad3141dd988c46" refkind="member"><highlight class="preprocessor">#define<sp/>MERCD(ercd)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)(((uint32_t)<sp/>ercd)<sp/>|<sp/>~0xffU))</highlight></codeline>
+<codeline lineno="100"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>INT8_MAX<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="101"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>MERCD<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="102"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>SERCD</highlight></codeline>
+<codeline lineno="104"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="105" refid="group__EMBARC__ERROR_ga30261004179ea1953a467216e5069d99_1ga30261004179ea1953a467216e5069d99" refkind="member"><highlight class="preprocessor">#define<sp/>SERCD(ercd)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)((ercd)<sp/>&gt;&gt;<sp/>8))</highlight></codeline>
+<codeline lineno="106"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>SERCD<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="107"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="121" refid="group__EMBARC__ERROR_ga4151670bbcb21a581f28ed6bc5baa906_1ga4151670bbcb21a581f28ed6bc5baa906" refkind="member"><highlight class="preprocessor">#define<sp/>CHECK_EXP(EXPR,<sp/>ERCD,<sp/>ERROR_CODE,<sp/>EXIT_LABEL)<sp/><sp/><sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="122"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(arc_compiler_rarely(!(EXPR)))<sp/>{<sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="123"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ERCD<sp/>=<sp/>(ERROR_CODE);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="124"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goto<sp/>EXIT_LABEL;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="125"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="126"><highlight class="preprocessor">}</highlight></codeline>
+<codeline lineno="127"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="133" refid="group__EMBARC__ERROR_ga77484b978195f1cc0b1e094fd7f085e6_1ga77484b978195f1cc0b1e094fd7f085e6" refkind="member"><highlight class="preprocessor">#define<sp/>CHECK_EXP_NOERCD(EXPR,<sp/>EXIT_LABEL)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="134"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(arc_compiler_rarely(!(EXPR)))<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="135"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goto<sp/>EXIT_LABEL;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="136"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="137"><highlight class="preprocessor">}</highlight></codeline>
+<codeline lineno="138"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="139" refid="group__EMBARC__ERROR_gadc422942cbbbb8c3bb162ff50da04122_1gadc422942cbbbb8c3bb162ff50da04122" refkind="member"><highlight class="preprocessor">#define<sp/>CHECK_ALIGN_BYTES(pointer,<sp/>cnt)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((((uint32_t)(pointer))<sp/>&amp;<sp/>(cnt<sp/>-<sp/>1))<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="140"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="141" refid="group__EMBARC__ERROR_gae2348692e539db235f567daeb12eeb54_1gae2348692e539db235f567daeb12eeb54" refkind="member"><highlight class="preprocessor">#define<sp/>CHECK_ALIGN_2BYTES(pointer)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((((uint32_t)(pointer))<sp/>&amp;<sp/>0x1)<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="142"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="143" refid="group__EMBARC__ERROR_gace3d588dc25676d080bcf53ee3522d63_1gace3d588dc25676d080bcf53ee3522d63" refkind="member"><highlight class="preprocessor">#define<sp/>CHECK_ALIGN_4BYTES(pointer)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((((uint32_t)(pointer))<sp/>&amp;<sp/>0x3)<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="144"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="145" refid="group__EMBARC__ERROR_gae1eff54744e2c82cdf941d9cbfbc3897_1gae1eff54744e2c82cdf941d9cbfbc3897" refkind="member"><highlight class="preprocessor">#define<sp/>CHECK_ALIGN_8BYTES(pointer)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((((uint32_t)(pointer))<sp/>&amp;<sp/>0x7)<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="146"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="148"><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="149"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="151"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>__ASSEMBLY__<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="152"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>_EMBARC_ERROR_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="154"><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/embARC_error.h"/>
+  </compounddef>
+</doxygen>

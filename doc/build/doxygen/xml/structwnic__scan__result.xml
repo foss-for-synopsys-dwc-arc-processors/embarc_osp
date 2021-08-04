@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="structwnic__scan__result" kind="struct" prot="public">
+    <compoundname>wnic_scan_result</compoundname>
+    <includes refid="dev__wnic_8h" local="no">dev_wnic.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structwnic__scan__result_a88eabf09e8a409c02a8ca5cb5b875b58_1a88eabf09e8a409c02a8ca5cb5b875b58" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t wnic_scan_result::bssid[(6)]</definition>
+        <argsstring>[(6)]</argsstring>
+        <name>bssid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Network BSSID value </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="199" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="199" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwnic__scan__result_ab64a32a2fbe01890994613224d08cd60_1ab64a32a2fbe01890994613224d08cd60" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t wnic_scan_result::ssid[(32)]</definition>
+        <argsstring>[(32)]</argsstring>
+        <name>ssid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Network SSID value </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="200" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="200" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwnic__scan__result_acd24cac059ae9ba908bf82309b4c3ce6_1acd24cac059ae9ba908bf82309b4c3ce6" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t wnic_scan_result::ssidlen</definition>
+        <argsstring></argsstring>
+        <name>ssidlen</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Number of valid characters in ssid </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="201" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="201" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwnic__scan__result_abc4ffc33741c9cb27960bf28755aafce_1abc4ffc33741c9cb27960bf28755aafce" prot="public" static="no" mutable="no">
+        <type><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga78894682223143a152a0e3403a7bf986_1ga78894682223143a152a0e3403a7bf986" kindref="member">WNIC_AP_CONFIG</ref></type>
+        <definition>WNIC_AP_CONFIG wnic_scan_result::ap_config</definition>
+        <argsstring></argsstring>
+        <name>ap_config</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>Access point configuration <table rows="2" cols="8"><row>
+<entry thead="yes"><para>Bit 7 </para></entry><entry thead="yes"><para>Bit 6 </para></entry><entry thead="yes"><para>Bit 5 </para></entry><entry thead="yes"><para>Bit 4 </para></entry><entry thead="yes"><para>Bit 3 </para></entry><entry thead="yes"><para>Bit 2 </para></entry><entry thead="yes"><para>Bit 1 </para></entry><entry thead="yes"><para>Bit 0  </para></entry></row>
+<row>
+<entry thead="no"><para>WPA2 </para></entry><entry thead="no"><para>WPA </para></entry><entry thead="no"><para>Preamble </para></entry><entry thead="no"><para>Privacy </para></entry><entry thead="no"><para>Reserved </para></entry><entry thead="no"><para>Reserved </para></entry><entry thead="no"><para>Reserved </para></entry><entry thead="no"><para>IE </para></entry></row>
+</table>
+</para></listitem><listitem><para>IE<itemizedlist>
+<listitem><para>1 if AP broadcasting one or more Information Elements, else 0</para></listitem></itemizedlist>
+</para></listitem><listitem><para>Privacy<itemizedlist>
+<listitem><para>0 : AP is open (no security)</para></listitem><listitem><para>1: AP using security, if neither WPA and WPA2 set then security is WEP.</para></listitem></itemizedlist>
+</para></listitem><listitem><para>Preamble<itemizedlist>
+<listitem><para>0: AP transmitting with short preamble</para></listitem><listitem><para>1: AP transmitting with long preamble</para></listitem></itemizedlist>
+</para></listitem><listitem><para>WPA<itemizedlist>
+<listitem><para>Only valid if Privacy is 1.</para></listitem><listitem><para>0: AP does not support WPA</para></listitem><listitem><para>1: AP supports WPA</para></listitem></itemizedlist>
+</para></listitem><listitem><para>WPA2<itemizedlist>
+<listitem><para>Only valid if Privacy is 1.</para></listitem><listitem><para>0: AP does not support WPA2</para></listitem><listitem><para>1: AP supports WPA2 </para></listitem></itemizedlist>
+</para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="225" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="225" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwnic__scan__result_a23a085acd05f78569afdab776d1e1f4b_1a23a085acd05f78569afdab776d1e1f4b" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t wnic_scan_result::rssi</definition>
+        <argsstring></argsstring>
+        <name>rssi</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Signal strength of received frame beacon or probe response </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="226" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="226" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwnic__scan__result_a8e0cde05c42c5294c2c194aaaf5c194f_1a8e0cde05c42c5294c2c194aaaf5c194f" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t wnic_scan_result::bsstype</definition>
+        <argsstring></argsstring>
+        <name>bsstype</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>refer to <ref refid="group__DEVICE__HAL__WNIC__MACROS_ga9a5b0a380e1abe1162f98c24ebf424c2_1ga9a5b0a380e1abe1162f98c24ebf424c2" kindref="member">WNIC_NETWORK_TYPE</ref> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="227" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="227" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwnic__scan__result_add8130a1480742f1a89ff7262a39c0f7_1add8130a1480742f1a89ff7262a39c0f7" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t wnic_scan_result::channel</definition>
+        <argsstring></argsstring>
+        <name>channel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>channel number </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="228" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="228" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="410">
+        <label>wnic_ap_config</label>
+        <link refid="unionwnic__ap__config"/>
+        <childnode refid="411" relation="usage">
+          <edgelabel>ap_cfg</edgelabel>
+        </childnode>
+      </node>
+      <node id="409">
+        <label>wnic_scan_result</label>
+        <link refid="structwnic__scan__result"/>
+        <childnode refid="410" relation="usage">
+          <edgelabel>ap_config</edgelabel>
+        </childnode>
+      </node>
+      <node id="411">
+        <label>wnic_ap_config::apcfg</label>
+        <link refid="structwnic__ap__config_1_1apcfg"/>
+      </node>
+    </collaborationgraph>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="198" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="198" bodyend="229"/>
+    <listofallmembers>
+      <member refid="structwnic__scan__result_abc4ffc33741c9cb27960bf28755aafce_1abc4ffc33741c9cb27960bf28755aafce" prot="public" virt="non-virtual"><scope>wnic_scan_result</scope><name>ap_config</name></member>
+      <member refid="structwnic__scan__result_a88eabf09e8a409c02a8ca5cb5b875b58_1a88eabf09e8a409c02a8ca5cb5b875b58" prot="public" virt="non-virtual"><scope>wnic_scan_result</scope><name>bssid</name></member>
+      <member refid="structwnic__scan__result_a8e0cde05c42c5294c2c194aaaf5c194f_1a8e0cde05c42c5294c2c194aaaf5c194f" prot="public" virt="non-virtual"><scope>wnic_scan_result</scope><name>bsstype</name></member>
+      <member refid="structwnic__scan__result_add8130a1480742f1a89ff7262a39c0f7_1add8130a1480742f1a89ff7262a39c0f7" prot="public" virt="non-virtual"><scope>wnic_scan_result</scope><name>channel</name></member>
+      <member refid="structwnic__scan__result_a23a085acd05f78569afdab776d1e1f4b_1a23a085acd05f78569afdab776d1e1f4b" prot="public" virt="non-virtual"><scope>wnic_scan_result</scope><name>rssi</name></member>
+      <member refid="structwnic__scan__result_ab64a32a2fbe01890994613224d08cd60_1ab64a32a2fbe01890994613224d08cd60" prot="public" virt="non-virtual"><scope>wnic_scan_result</scope><name>ssid</name></member>
+      <member refid="structwnic__scan__result_acd24cac059ae9ba908bf82309b4c3ce6_1acd24cac059ae9ba908bf82309b4c3ce6" prot="public" virt="non-virtual"><scope>wnic_scan_result</scope><name>ssidlen</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -4,33 +4,33 @@
     <compoundname>boot_rsp</compoundname>
     <includes refid="bootutil_8h" local="no">bootutil.h</includes>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="structboot__rsp_1a148796f0d4fef5b2ea74d5a9b794f35a" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="structboot__rsp_a148796f0d4fef5b2ea74d5a9b794f35a_1a148796f0d4fef5b2ea74d5a9b794f35a" prot="public" static="no" mutable="no">
         <type>struct <ref refid="structimage__header" kindref="compound">image_header</ref> *</type>
         <definition>struct image_header* boot_rsp::br_hdr</definition>
         <argsstring></argsstring>
         <name>br_hdr</name>
         <briefdescription>
-<para>A pointer to the header of the image to be executed. </para>        </briefdescription>
+        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>A pointer to the header of the image to be executed. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/mcuboot/bootutil/include/bootutil/bootutil.h" line="57" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/mcuboot/bootutil/include/bootutil/bootutil.h" bodystart="57" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structboot__rsp_1ad57c70acf024079a403aed49c015bde3" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="structboot__rsp_ad57c70acf024079a403aed49c015bde3_1ad57c70acf024079a403aed49c015bde3" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
         <definition>uint8_t boot_rsp::br_flash_dev_id</definition>
         <argsstring></argsstring>
         <name>br_flash_dev_id</name>
         <briefdescription>
-<para>The flash offset of the image to execute. </para>        </briefdescription>
+        </briefdescription>
         <detaileddescription>
-<para>Indicates the position of the image header within its flash device. </para>        </detaileddescription>
+<para>The flash offset of the image to execute. Indicates the position of the image header within its flash device. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/mcuboot/bootutil/include/bootutil/bootutil.h" line="63" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/mcuboot/bootutil/include/bootutil/bootutil.h" bodystart="63" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structboot__rsp_1a73f0ca28e6463aec91edbf84b79eeb4d" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="structboot__rsp_a73f0ca28e6463aec91edbf84b79eeb4d_1a73f0ca28e6463aec91edbf84b79eeb4d" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
         <definition>uint32_t boot_rsp::br_image_off</definition>
         <argsstring></argsstring>
@@ -45,34 +45,34 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>A response object provided by the boot loader code; indicates where to jump to execute the main image. </para>    </briefdescription>
+    </briefdescription>
     <detaileddescription>
-    </detaileddescription>
+<para>A response object provided by the boot loader code; indicates where to jump to execute the main image. </para>    </detaileddescription>
     <collaborationgraph>
-      <node id="18">
+      <node id="44">
         <label>image_version</label>
         <link refid="structimage__version"/>
       </node>
-      <node id="16">
+      <node id="42">
         <label>boot_rsp</label>
         <link refid="structboot__rsp"/>
-        <childnode refid="17" relation="usage">
-          <edgelabel>+br_hdr</edgelabel>
+        <childnode refid="43" relation="usage">
+          <edgelabel>br_hdr</edgelabel>
         </childnode>
       </node>
-      <node id="17">
+      <node id="43">
         <label>image_header</label>
         <link refid="structimage__header"/>
-        <childnode refid="18" relation="usage">
-          <edgelabel>+ih_ver</edgelabel>
+        <childnode refid="44" relation="usage">
+          <edgelabel>ih_ver</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
     <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/mcuboot/bootutil/include/bootutil/bootutil.h" line="55" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/mcuboot/bootutil/include/bootutil/bootutil.h" bodystart="55" bodyend="65"/>
     <listofallmembers>
-      <member refid="structboot__rsp_1ad57c70acf024079a403aed49c015bde3" prot="public" virt="non-virtual"><scope>boot_rsp</scope><name>br_flash_dev_id</name></member>
-      <member refid="structboot__rsp_1a148796f0d4fef5b2ea74d5a9b794f35a" prot="public" virt="non-virtual"><scope>boot_rsp</scope><name>br_hdr</name></member>
-      <member refid="structboot__rsp_1a73f0ca28e6463aec91edbf84b79eeb4d" prot="public" virt="non-virtual"><scope>boot_rsp</scope><name>br_image_off</name></member>
+      <member refid="structboot__rsp_ad57c70acf024079a403aed49c015bde3_1ad57c70acf024079a403aed49c015bde3" prot="public" virt="non-virtual"><scope>boot_rsp</scope><name>br_flash_dev_id</name></member>
+      <member refid="structboot__rsp_a148796f0d4fef5b2ea74d5a9b794f35a_1a148796f0d4fef5b2ea74d5a9b794f35a" prot="public" virt="non-virtual"><scope>boot_rsp</scope><name>br_hdr</name></member>
+      <member refid="structboot__rsp_a73f0ca28e6463aec91edbf84b79eeb4d_1a73f0ca28e6463aec91edbf84b79eeb4d" prot="public" virt="non-virtual"><scope>boot_rsp</scope><name>br_image_off</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ARC IoT Development Kit &mdash; embARC 2019.06 documentation</title>
+  <title>ARC IoT Development Kit &mdash; embARC OSP Project Documentation</title>
   
 
   
@@ -177,8 +177,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/board/iotdk.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -200,7 +198,7 @@ within a larger system context, including ARC EM9D, an extensive collection of
 I/O functions and fast math (trigonometric) accelerator.</p>
 <p>See also this URL for details about the board: <a class="reference external" href="https://www.synopsys.com/dw/ipdir.php?ds=arc_iot_development_kit">The ARC IoT Development Kit
 (IoTDK)</a></p>
-<img alt="DesignWare ARC IoT Development Kit" src="../_images/iotdk_board.jpg" />
+<img alt="DesignWare ARC IoT Development Kit" src="../_images/iotdk_board.png" />
 <div class="section" id="components">
 <h2>Components:<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -248,8 +246,8 @@ I/O functions and fast math (trigonometric) accelerator.</p>
 </dl>
 </li>
 </ul>
-<img alt="ARC IoTDK Diagram" src="../_images/iotdk_block_diagram.jpg" />
-<img alt="ARC IoTDK Chip Block Diagram" src="../_images/iotdk_chip.jpg" />
+<img alt="ARC IoTDK Diagram" src="../_images/iotdk_block_diagram.png" />
+<img alt="ARC IoTDK Chip Block Diagram" src="../_images/iotdk_chip.png" />
 </div>
 <div class="section" id="features">
 <h2>Features:<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
@@ -312,11 +310,11 @@ I/O functions and fast math (trigonometric) accelerator.</p>
 <p>The ARC IoT ASIC uses a single 16MHz reference clock from which all the main system clocks are generated.
 The clock generation is centralized in the SYSCONFIG module. The SYSCONFIG module implements a single PLL
 and integer dividers which allows for accurate fine-tuning of the system clocks to the desired frequency.</p>
-<img alt="ARC IoTDK Clock Architecture" src="../_images/iotdk_clock_architecture.jpg" />
+<img alt="ARC IoTDK Clock Architecture" src="../_images/iotdk_clock_architecture.png" />
 </div>
 <div class="section" id="configuration-switches">
 <h2>Configuration switches<a class="headerlink" href="#configuration-switches" title="Permalink to this headline">¶</a></h2>
-<img alt="ARC IoTDK switches" src="../_images/iotdk_board_switch.jpg" />
+<img alt="ARC IoTDK switches" src="../_images/iotdk_board_switch.png" />
 <p>The “On” and “Off” position for all four switches are depicted in the figure above, please see details below for function of each switch:</p>
 <ol class="arabic simple">
 <li><dl class="simple">
@@ -350,13 +348,13 @@ either continues execution of the U-Boot bootloader or starts executing the Firm
 <div class="section" id="extension-interfaces">
 <h2>Extension Interfaces<a class="headerlink" href="#extension-interfaces" title="Permalink to this headline">¶</a></h2>
 <p>To bring your application context around the ARC IoTDK, the following peripheral module standards are supported:</p>
-<img alt="ARC IoTDK Extension Interfaces" src="../_images/iotdk_extension_interfaces.jpg" />
+<img alt="ARC IoTDK Extension Interfaces" src="../_images/iotdk_extension_interfaces.png" />
 <p><strong>Digilent PMOD™ (2x)</strong></p>
 <p>The ARC IoTDK features two 12-pin PMOD connectors PMOD_B and PMOD_C. The functionality of the PMOD connectors
 is programmable and includes GPIO and SPI for PMOD_B and GPIO and UART for PMOD_C.
 After a reset, all ports are configured as GPIO inputs.
 The location of the pins on the PMOD connectors is shown:</p>
-<img alt="ARC IoTDK Pinout Diagram of PMOD" src="../_images/iotdk_pinout_diagram_of_pmod.jpg" />
+<img alt="ARC IoTDK Pinout Diagram of PMOD" src="../_images/iotdk_pinout_diagram_of_pmod.png" />
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 9%" />
@@ -479,13 +477,13 @@ include wireless and wired connectivity modules, sensor modules, display modules
 and miscellaneous modules and accessories, See <a class="reference external" href="https://www.mikroe.com">MikroElektronica</a> for a full list. Multiplexing to
 get the right function assignment on the MikroBUS headers is controlled by software using the
 ARDUINO_MUX register</p>
-<img alt="ARC IoTDK MikroBUS Headers" src="../_images/iotdk_mikrobus_headers.jpg" />
+<img alt="ARC IoTDK MikroBUS Headers" src="../_images/iotdk_mikrobus_headers.png" />
 <p><strong>Arduino (1x)</strong></p>
 <p>The ARC IoTDK provides an Arduino shield interface. The picture below shows the relevant function assignments.
 The Arduino shield interface is compatible with the Arduino UNO R3 with the following exceptions: 5 Volt shields are not supported,
 the IOREF voltage on the ARC IoTDK board is fixed to 3V3. Note that the ICSP header is also not available.
 Most shields do not require this ICSP header as the SPI master interface on this ICSP header is also available on the IO10 to IO13 pins.</p>
-<img alt="ARC IoTDK Arduino Shield Interface" src="../_images/iotdk_arduino_shield_interface.jpg" />
+<img alt="ARC IoTDK Arduino Shield Interface" src="../_images/iotdk_arduino_shield_interface.png" />
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -712,7 +710,7 @@ Most shields do not require this ICSP header as the SPI master interface on this
 </tbody>
 </table>
 <p><strong>2x18 Pin Extension Header</strong></p>
-<img alt="ARC IoTDK 2x18 Pin Extension Header" src="../_images/iotdk_2x18_pin_extension_header.jpg" />
+<img alt="ARC IoTDK 2x18 Pin Extension Header" src="../_images/iotdk_2x18_pin_extension_header.png" />
 </div>
 <div class="section" id="programming-and-debugging">
 <span id="getting-started-with-iot-development-kit"></span><h2>Programming and Debugging<a class="headerlink" href="#programming-and-debugging" title="Permalink to this headline">¶</a></h2>
@@ -826,25 +824,18 @@ application into IoTDK through debugger. You need other tools/applications
           </div>
           <footer>
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="nsim.html" class="btn btn-neutral float-right" title="Virtual Board based on ARC nSIM" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="hsdk.html" class="btn btn-neutral float-left" title="ARC HS Development Kit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
         &copy; Copyright 2019, Synopsys
+      <span class="lastupdated">
+        Last updated on Aug 04, 2021.
+      </span>
 
     </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
 

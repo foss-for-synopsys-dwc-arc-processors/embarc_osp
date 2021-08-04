@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GPIO HAL &mdash; embARC 2019.06 documentation</title>
+  <title>GPIO HAL &mdash; embARC OSP Project Documentation</title>
   
 
   
@@ -176,8 +176,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/device/gpio.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -196,10 +194,103 @@ driver to implement. Here is a diagram for the gpio interface.</p>
 <img alt="GPIO HAL" src="../_images/dev_gpio_hal.jpg" />
 <div class="section" id="definitions">
 <h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygengroup: Cannot find namespace “DEVICE_HAL_GPIO_DEVSTRUCT” in doxygen xml output for project “embARC_osp” from directory: ../build/doxygen/xml</p>
+<dl class="group">
+<dt>
+<span class="target" id="group__DEVICE__HAL__GPIO__DEVSTRUCT"></span><em>group</em> <code class="sig-name descname">DEVICE_HAL_GPIO_DEVSTRUCT</code></dt>
+<dd><p>contains definitions of gpio device structure. </p>
+<p>This structure will be used in user implemented code, which was called Device Driver Implement Layer for gpio to use in implementation code. Application developer should use the GPIO API provided here to access to GPIO devices. BSP developer should follow the API definition to implement GPIO device drivers. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Defines</p>
+<dl class="cpp macro">
+<dt id="c.DEV_GPIO_INFO_SET_EXTRA_OBJECT">
+<span class="target" id="group__DEVICE__HAL__GPIO__DEVSTRUCT_1gaec3eaf5c7fa6d44a27e58e65a864d8ac"></span><code class="sig-name descname">DEV_GPIO_INFO_SET_EXTRA_OBJECT</code><span class="sig-paren">(</span><em>gpio_info_ptr</em>, <em>extra_info</em><span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_GPIO_INFO_SET_EXTRA_OBJECT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set extra information pointer of gpio info </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.DEV_GPIO_INFO_GET_EXTRA_OBJECT">
+<span class="target" id="group__DEVICE__HAL__GPIO__DEVSTRUCT_1gaf04d0e5061e455cf4a79b2eea7d26b4f"></span><code class="sig-name descname">DEV_GPIO_INFO_GET_EXTRA_OBJECT</code><span class="sig-paren">(</span><em>gpio_info_ptr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_GPIO_INFO_GET_EXTRA_OBJECT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get extra information pointer of gpio info </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.DEV_GPIO_BITS_MTHD_POLL">
+<span class="target" id="group__DEVICE__HAL__GPIO__DEVSTRUCT_1gaed07d1ee12aecd4634df70aeed4e9678"></span><code class="sig-name descname">DEV_GPIO_BITS_MTHD_POLL</code><a class="headerlink" href="#c.DEV_GPIO_BITS_MTHD_POLL" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Method of all gpio bits set to poll </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.DEV_GPIO_BITS_MTHD_INTERRUPT">
+<span class="target" id="group__DEVICE__HAL__GPIO__DEVSTRUCT_1ga88cc519090f41d765e90e0abf5a98956"></span><code class="sig-name descname">DEV_GPIO_BITS_MTHD_INTERRUPT</code><a class="headerlink" href="#c.DEV_GPIO_BITS_MTHD_INTERRUPT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Method of all gpio bits set to interrupt </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt id="c.DEV_GPIO_BITS_MTHD_DEFAULT">
+<span class="target" id="group__DEVICE__HAL__GPIO__DEVSTRUCT_1ga38f184480198a34d80ea26240160facb"></span><code class="sig-name descname">DEV_GPIO_BITS_MTHD_DEFAULT</code><a class="headerlink" href="#c.DEV_GPIO_BITS_MTHD_DEFAULT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Default method of all gpio bits should be poll for first open </p>
+</dd></dl>
+
 </div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Typedefs</p>
+<dl class="cpp type">
+<dt id="_CPPv413DEV_GPIO_INFO">
+<span id="_CPPv313DEV_GPIO_INFO"></span><span id="_CPPv213DEV_GPIO_INFO"></span><span id="DEV_GPIO_INFO"></span><span class="target" id="group__DEVICE__HAL__GPIO__DEVSTRUCT_1ga87e9eab1a73f62b5d21cc109b19d5db9"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv413dev_gpio_info" title="dev_gpio_info">dev_gpio_info</a> <code class="sig-name descname">DEV_GPIO_INFO</code><a class="headerlink" href="#_CPPv413DEV_GPIO_INFO" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>gpio information struct definition </p>
+<p>Informations about gpio open count, working status gpio registers and control block, gpio io direction and interrupt/poll for each bit of gpio <dl class="simple">
+<dt><strong>Note</strong></dt><dd><p>Only available for gpio with max 32bits </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv417DEV_GPIO_INFO_PTR">
+<span id="_CPPv317DEV_GPIO_INFO_PTR"></span><span id="_CPPv217DEV_GPIO_INFO_PTR"></span><span id="DEV_GPIO_INFO_PTR"></span><span class="target" id="group__DEVICE__HAL__GPIO__DEVSTRUCT_1ga63f18c36c2745bb2ba23c69c037a21b7"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv413dev_gpio_info" title="dev_gpio_info">dev_gpio_info</a> *<code class="sig-name descname">DEV_GPIO_INFO_PTR</code><a class="headerlink" href="#_CPPv417DEV_GPIO_INFO_PTR" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv48DEV_GPIO">
+<span id="_CPPv38DEV_GPIO"></span><span id="_CPPv28DEV_GPIO"></span><span id="DEV_GPIO"></span><span class="target" id="group__DEVICE__HAL__GPIO__DEVSTRUCT_1gab39bda9a6b6726d0ccccc7b4742d9d27"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv48dev_gpio" title="dev_gpio">dev_gpio</a> <code class="sig-name descname">DEV_GPIO</code><a class="headerlink" href="#_CPPv48DEV_GPIO" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>gpio device interface definition </p>
+<p>Define gpio device interface, like gpio information structure, fuctions to open/close/control gpio, write or read data via gpio <dl class="simple">
+<dt><strong>Note</strong></dt><dd><p>All this details are implemented by user in user porting code </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv412DEV_GPIO_PTR">
+<span id="_CPPv312DEV_GPIO_PTR"></span><span id="_CPPv212DEV_GPIO_PTR"></span><span id="DEV_GPIO_PTR"></span><span class="target" id="group__DEVICE__HAL__GPIO__DEVSTRUCT_1ga7b3aa4bd54650b0e15f9a84be12ef179"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv48dev_gpio" title="dev_gpio">dev_gpio</a> *<code class="sig-name descname">DEV_GPIO_PTR</code><a class="headerlink" href="#_CPPv412DEV_GPIO_PTR" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt id="_CPPv413dev_gpio_info">
+<span id="_CPPv313dev_gpio_info"></span><span id="_CPPv213dev_gpio_info"></span><span id="dev_gpio_info"></span><span class="target" id="structdev__gpio__info"></span><em class="property">struct </em><code class="sig-name descname">dev_gpio_info</code><a class="headerlink" href="#_CPPv413dev_gpio_info" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;dev_gpio.h&gt;</em><p>gpio information struct definition </p>
+<p>Informations about gpio open count, working status gpio registers and control block, gpio io direction and interrupt/poll for each bit of gpio <dl class="simple">
+<dt><strong>Note</strong></dt><dd><p>Only available for gpio with max 32bits </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv48dev_gpio">
+<span id="_CPPv38dev_gpio"></span><span id="_CPPv28dev_gpio"></span><span id="dev_gpio"></span><span class="target" id="structdev__gpio"></span><em class="property">struct </em><code class="sig-name descname">dev_gpio</code><a class="headerlink" href="#_CPPv48dev_gpio" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;dev_gpio.h&gt;</em><p>gpio device interface definition </p>
+<p>Define gpio device interface, like gpio information structure, fuctions to open/close/control gpio, write or read data via gpio <dl class="simple">
+<dt><strong>Note</strong></dt><dd><p>All this details are implemented by user in user porting code </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 </div>
 
@@ -209,25 +300,18 @@ driver to implement. Here is a diagram for the gpio interface.</p>
           </div>
           <footer>
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="i2c.html" class="btn btn-neutral float-right" title="I2C HAL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="device.html" class="btn btn-neutral float-left" title="Devices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
         &copy; Copyright 2019, Synopsys
+      <span class="lastupdated">
+        Last updated on Aug 04, 2021.
+      </span>
 
     </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
 

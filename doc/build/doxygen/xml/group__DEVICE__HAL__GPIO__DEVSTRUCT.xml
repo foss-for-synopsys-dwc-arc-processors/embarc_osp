@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="group__DEVICE__HAL__GPIO__DEVSTRUCT" kind="group">
+    <compoundname>DEVICE_HAL_GPIO_DEVSTRUCT</compoundname>
+    <title>GPIO Device Interface Definition</title>
+    <innerclass refid="structdev__gpio__info" prot="public">dev_gpio_info</innerclass>
+    <innerclass refid="structdev__gpio" prot="public">dev_gpio</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__DEVICE__HAL__GPIO__DEVSTRUCT_1ga87e9eab1a73f62b5d21cc109b19d5db9" prot="public" static="no">
+        <type>struct <ref refid="structdev__gpio__info" kindref="compound">dev_gpio_info</ref></type>
+        <definition>typedef struct dev_gpio_info  DEV_GPIO_INFO</definition>
+        <argsstring></argsstring>
+        <name>DEV_GPIO_INFO</name>
+        <briefdescription>
+<para>gpio information struct definition </para>        </briefdescription>
+        <detaileddescription>
+<para>Informations about gpio open count, working status gpio registers and control block, gpio io direction and interrupt/poll for each bit of gpio <simplesect kind="note"><para>Only available for gpio with max 32bits </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_gpio.h" line="398" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__GPIO__DEVSTRUCT_1ga63f18c36c2745bb2ba23c69c037a21b7" prot="public" static="no">
+        <type>struct <ref refid="structdev__gpio__info" kindref="compound">dev_gpio_info</ref> *</type>
+        <definition>typedef struct dev_gpio_info * DEV_GPIO_INFO_PTR</definition>
+        <argsstring></argsstring>
+        <name>DEV_GPIO_INFO_PTR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_gpio.h" line="398" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__GPIO__DEVSTRUCT_1gab39bda9a6b6726d0ccccc7b4742d9d27" prot="public" static="no">
+        <type>struct <ref refid="structdev__gpio" kindref="compound">dev_gpio</ref></type>
+        <definition>typedef struct dev_gpio  DEV_GPIO</definition>
+        <argsstring></argsstring>
+        <name>DEV_GPIO</name>
+        <briefdescription>
+<para>gpio device interface definition </para>        </briefdescription>
+        <detaileddescription>
+<para>Define gpio device interface, like gpio information structure, fuctions to open/close/control gpio, write or read data via gpio <simplesect kind="note"><para>All this details are implemented by user in user porting code </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_gpio.h" line="424" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__GPIO__DEVSTRUCT_1ga7b3aa4bd54650b0e15f9a84be12ef179" prot="public" static="no">
+        <type>struct <ref refid="structdev__gpio" kindref="compound">dev_gpio</ref> *</type>
+        <definition>typedef struct dev_gpio * DEV_GPIO_PTR</definition>
+        <argsstring></argsstring>
+        <name>DEV_GPIO_PTR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_gpio.h" line="424" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group__DEVICE__HAL__GPIO__DEVSTRUCT_1gaec3eaf5c7fa6d44a27e58e65a864d8ac" prot="public" static="no">
+        <name>DEV_GPIO_INFO_SET_EXTRA_OBJECT</name>
+        <param><defname>gpio_info_ptr</defname></param>
+        <param><defname>extra_info</defname></param>
+        <initializer>(gpio_info_ptr)-&gt;extra = (void *)(extra_info)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set extra information pointer of gpio info </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_gpio.h" line="400" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_gpio.h" bodystart="400" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__GPIO__DEVSTRUCT_1gaf04d0e5061e455cf4a79b2eea7d26b4f" prot="public" static="no">
+        <name>DEV_GPIO_INFO_GET_EXTRA_OBJECT</name>
+        <param><defname>gpio_info_ptr</defname></param>
+        <initializer>((gpio_info_ptr)-&gt;extra)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get extra information pointer of gpio info </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_gpio.h" line="402" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_gpio.h" bodystart="402" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__GPIO__DEVSTRUCT_1gaed07d1ee12aecd4634df70aeed4e9678" prot="public" static="no">
+        <name>DEV_GPIO_BITS_MTHD_POLL</name>
+        <initializer>(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Method of all gpio bits set to poll </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_gpio.h" line="405" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_gpio.h" bodystart="405" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__GPIO__DEVSTRUCT_1ga88cc519090f41d765e90e0abf5a98956" prot="public" static="no">
+        <name>DEV_GPIO_BITS_MTHD_INTERRUPT</name>
+        <initializer>(0xFFFFFFFF)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Method of all gpio bits set to interrupt </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_gpio.h" line="407" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_gpio.h" bodystart="407" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__GPIO__DEVSTRUCT_1ga38f184480198a34d80ea26240160facb" prot="public" static="no">
+        <name>DEV_GPIO_BITS_MTHD_DEFAULT</name>
+        <initializer>(<ref refid="group__DEVICE__HAL__GPIO__DEVSTRUCT_gaed07d1ee12aecd4634df70aeed4e9678_1gaed07d1ee12aecd4634df70aeed4e9678" kindref="member">DEV_GPIO_BITS_MTHD_POLL</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Default method of all gpio bits should be poll for first open </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_gpio.h" line="409" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_gpio.h" bodystart="409" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>contains definitions of gpio device structure. </para>    </briefdescription>
+    <detaileddescription>
+<para>This structure will be used in user implemented code, which was called <ref refid="group__DEVICE__IMPL" kindref="compound">Device Driver Implement Layer</ref> for gpio to use in implementation code. Application developer should use the GPIO API provided here to access to GPIO devices. BSP developer should follow the API definition to implement GPIO device drivers. </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

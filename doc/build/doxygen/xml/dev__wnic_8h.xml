@@ -1,0 +1,1282 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="dev__wnic_8h" kind="file">
+    <compoundname>dev_wnic.h</compoundname>
+    <includes refid="dev__common_8h" local="yes">device/dev_common.h</includes>
+    <incdepgraph>
+      <node id="4718">
+        <label>stdint.h</label>
+      </node>
+      <node id="4717">
+        <label>device/dev_common.h</label>
+        <link refid="dev__common_8h"/>
+        <childnode refid="4718" relation="include">
+        </childnode>
+      </node>
+      <node id="4716">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h</label>
+        <link refid="dev_wnic.h"/>
+        <childnode refid="4717" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structwnic__cfg__ssid" prot="public">wnic_cfg_ssid</innerclass>
+    <innerclass refid="unionwnic__ap__config" prot="public">wnic_ap_config</innerclass>
+    <innerclass refid="structwnic__ap__config_1_1apcfg" prot="public">wnic_ap_config::apcfg</innerclass>
+    <innerclass refid="structwnic__auth__key" prot="public">wnic_auth_key</innerclass>
+    <innerclass refid="structwnic__scan__result" prot="public">wnic_scan_result</innerclass>
+    <innerclass refid="structdev__wnic__on__ops" prot="public">dev_wnic_on_ops</innerclass>
+    <innerclass refid="structdev__wnic__info" prot="public">dev_wnic_info</innerclass>
+    <innerclass refid="structdev__wnic" prot="public">dev_wnic</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group__DEVICE__HAL__WNIC__CTRLCMD_ga66fae6ce02a3072407f05c014e978b75_1ga66fae6ce02a3072407f05c014e978b75" prot="public" static="no">
+        <name>WNIC_CMD_CHG_FREQ</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(0x0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ctrl command: change wnic working frequency(Hz) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="72" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__WNIC__CTRLCMD_gaacf1ff588ca51784d87c2fab221ba749_1gaacf1ff588ca51784d87c2fab221ba749" prot="public" static="no">
+        <name>WNIC_CMD_CHG_MTHD</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(0x1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ctrl command: change wnic working method(interrupt or poll) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="73" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__WNIC__GETINFOCMD_gaa6e2be6e5632534bb0ac81801e72ce3e_1gaa6e2be6e5632534bb0ac81801e72ce3e" prot="public" static="no">
+        <name>WNIC_CMD_GETINFO_ALL</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(0x0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get info command: get all info of wnic </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="86" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__WNIC__MACROS_gad31392abb15670470441f4fdbe8936cc_1gad31392abb15670470441f4fdbe8936cc" prot="public" static="no">
+        <name>WNIC_HDR_LEN</name>
+        <initializer>(6)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>mac address length </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="95" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__WNIC__MACROS_gaf72d385c0cb13512b1025e2750ac2c22_1gaf72d385c0cb13512b1025e2750ac2c22" prot="public" static="no">
+        <name>WNIC_NAME_LEN</name>
+        <initializer>(20)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>wnic name length </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="96" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__WNIC__MACROS_gac8d0693e13b81d99c27837619e30e1f1_1gac8d0693e13b81d99c27837619e30e1f1" prot="public" static="no">
+        <name>WNIC_SSID_MAX_LEN</name>
+        <initializer>(32)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>wnic max ssid length </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="97" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__WNIC__MACROS_ga992cd51ef1f8439c0e3335ad39790a6d_1ga992cd51ef1f8439c0e3335ad39790a6d" prot="public" static="no">
+        <name>WNIC_BSSID_MAX_LEN</name>
+        <initializer>(6)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>wnic max bssid length </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="98" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__WNIC__MACROS_gad2c13bf21a5dbfb0a91ef6624f0972c4_1gad2c13bf21a5dbfb0a91ef6624f0972c4" prot="public" static="no">
+        <name>WNIC_MAX_NUM_RATES</name>
+        <initializer>(8)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>wnic max rates number </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="99" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__WNIC__MACROS_gaf44f41d2b9ad0a42f025c6eec0e53a4e_1gaf44f41d2b9ad0a42f025c6eec0e53a4e" prot="public" static="no">
+        <name>WNIC_IF_NAME_LEN</name>
+        <initializer>(2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>wnic ifname len </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="100" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_gaa4885d48831865ce2c35d3de3e20f528_1gaa4885d48831865ce2c35d3de3e20f528" prot="public" static="no">
+        <name>WNIC_SET_ON_INIT_SUCCESS</name>
+        <param><defname>wnic_ptr</defname></param>
+        <param><defname>on_ops</defname></param>
+        <initializer>((<ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_ga331469c5eeebf80940a6bfef0658b342_1ga331469c5eeebf80940a6bfef0658b342" kindref="member">DEV_WNIC</ref> *)wnic_ptr)-&gt;wnic_on_ops.on_init_success = (<ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_gab5f0d17dd7fd48476196b3c44ce40422_1gab5f0d17dd7fd48476196b3c44ce40422" kindref="member">ON_WNIC_OPS</ref> )(on_ops)</initializer>
+        <briefdescription>
+<para>WNIC SET ON OPERATIONS. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="263" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="263" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_ga0ccd0db347b2a33736152d0893b42e98_1ga0ccd0db347b2a33736152d0893b42e98" prot="public" static="no">
+        <name>WNIC_SET_ON_INIT_FAIL</name>
+        <param><defname>wnic_ptr</defname></param>
+        <param><defname>on_ops</defname></param>
+        <initializer>((<ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_ga331469c5eeebf80940a6bfef0658b342_1ga331469c5eeebf80940a6bfef0658b342" kindref="member">DEV_WNIC</ref> *)wnic_ptr)-&gt;wnic_on_ops.on_init_fail = (<ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_gab5f0d17dd7fd48476196b3c44ce40422_1gab5f0d17dd7fd48476196b3c44ce40422" kindref="member">ON_WNIC_OPS</ref> )(on_ops)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="266" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="266" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_ga48a6f4114becd91bb59de73ea99075ab_1ga48a6f4114becd91bb59de73ea99075ab" prot="public" static="no">
+        <name>WNIC_SET_ON_CONNECTED</name>
+        <param><defname>wnic_ptr</defname></param>
+        <param><defname>on_ops</defname></param>
+        <initializer>((<ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_ga331469c5eeebf80940a6bfef0658b342_1ga331469c5eeebf80940a6bfef0658b342" kindref="member">DEV_WNIC</ref> *)wnic_ptr)-&gt;wnic_on_ops.on_connected = (<ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_gab5f0d17dd7fd48476196b3c44ce40422_1gab5f0d17dd7fd48476196b3c44ce40422" kindref="member">ON_WNIC_OPS</ref> )(on_ops)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="269" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="269" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_gaff6f43710ba02dc3271236e6f240553c_1gaff6f43710ba02dc3271236e6f240553c" prot="public" static="no">
+        <name>WNIC_SET_ON_DISCONNECTED</name>
+        <param><defname>wnic_ptr</defname></param>
+        <param><defname>on_ops</defname></param>
+        <initializer>((<ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_ga331469c5eeebf80940a6bfef0658b342_1ga331469c5eeebf80940a6bfef0658b342" kindref="member">DEV_WNIC</ref> *)wnic_ptr)-&gt;wnic_on_ops.on_disconnected = (<ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_gab5f0d17dd7fd48476196b3c44ce40422_1gab5f0d17dd7fd48476196b3c44ce40422" kindref="member">ON_WNIC_OPS</ref> )(on_ops)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="272" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="272" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_ga8aedacca47209d6fee674140a60fcac8_1ga8aedacca47209d6fee674140a60fcac8" prot="public" static="no">
+        <name>WNIC_SET_ON_MAC_UPDATED</name>
+        <param><defname>wnic_ptr</defname></param>
+        <param><defname>on_ops</defname></param>
+        <initializer>((<ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_ga331469c5eeebf80940a6bfef0658b342_1ga331469c5eeebf80940a6bfef0658b342" kindref="member">DEV_WNIC</ref> *)wnic_ptr)-&gt;wnic_on_ops.on_mac_updated = (<ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_gab5f0d17dd7fd48476196b3c44ce40422_1gab5f0d17dd7fd48476196b3c44ce40422" kindref="member">ON_WNIC_OPS</ref> )(on_ops)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="275" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="275" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_gaf24bc3a78deae657922bcebf02e25198_1gaf24bc3a78deae657922bcebf02e25198" prot="public" static="no">
+        <name>WNIC_SET_ON_SCAN_FINISHED</name>
+        <param><defname>wnic_ptr</defname></param>
+        <param><defname>on_ops</defname></param>
+        <initializer>((<ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_ga331469c5eeebf80940a6bfef0658b342_1ga331469c5eeebf80940a6bfef0658b342" kindref="member">DEV_WNIC</ref> *)wnic_ptr)-&gt;wnic_on_ops.on_scan_finished = (<ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_gab5f0d17dd7fd48476196b3c44ce40422_1gab5f0d17dd7fd48476196b3c44ce40422" kindref="member">ON_WNIC_OPS</ref> )(on_ops)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="278" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="278" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_ga8611ea8b19ecd050911098b1f7a146b4_1ga8611ea8b19ecd050911098b1f7a146b4" prot="public" static="no">
+        <name>WNIC_SET_ON_RXDATA_COMES</name>
+        <param><defname>wnic_ptr</defname></param>
+        <param><defname>on_ops</defname></param>
+        <initializer>((<ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_ga331469c5eeebf80940a6bfef0658b342_1ga331469c5eeebf80940a6bfef0658b342" kindref="member">DEV_WNIC</ref> *)wnic_ptr)-&gt;wnic_on_ops.on_rxdata_comes = (<ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_gab5f0d17dd7fd48476196b3c44ce40422_1gab5f0d17dd7fd48476196b3c44ce40422" kindref="member">ON_WNIC_OPS</ref> )(on_ops)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="281" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="281" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_gaf4f76884a28236ccb45718788bbbb51c_1gaf4f76884a28236ccb45718788bbbb51c" prot="public" static="no">
+        <name>WNIC_SET_ON_DEV_ASSERTED</name>
+        <param><defname>wnic_ptr</defname></param>
+        <param><defname>on_ops</defname></param>
+        <initializer>((<ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_ga331469c5eeebf80940a6bfef0658b342_1ga331469c5eeebf80940a6bfef0658b342" kindref="member">DEV_WNIC</ref> *)wnic_ptr)-&gt;wnic_on_ops.on_dev_asserted = (<ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_gab5f0d17dd7fd48476196b3c44ce40422_1gab5f0d17dd7fd48476196b3c44ce40422" kindref="member">ON_WNIC_OPS</ref> )(on_ops)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="284" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="284" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__DEVICE__HAL__WNIC__MACROS_gad9956967e5a1fae2ed5173ea6c953dce_1gad9956967e5a1fae2ed5173ea6c953dce" prot="public" static="no">
+        <name>wnic_network_type</name>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gad9956967e5a1fae2ed5173ea6c953dce_1ggad9956967e5a1fae2ed5173ea6c953dcea6c8256dcc59d27ad8f52ea43a60740b3" prot="public">
+          <name>WNIC_NETWORK_TYPE_MIN</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gad9956967e5a1fae2ed5173ea6c953dce_1ggad9956967e5a1fae2ed5173ea6c953dcead689a66fe22cf3faeec612d0ad6da239" prot="public">
+          <name>WNIC_NETWORK_TYPE_INFRASTRUCTURE</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gad9956967e5a1fae2ed5173ea6c953dce_1ggad9956967e5a1fae2ed5173ea6c953dcea298b7d09392f16c13d7343e8f3076e72" prot="public">
+          <name>WNIC_NETWORK_TYPE_ADHOC</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gad9956967e5a1fae2ed5173ea6c953dce_1ggad9956967e5a1fae2ed5173ea6c953dcea492c607e9918983c46caeceadc5ff092" prot="public">
+          <name>WNIC_NETWORK_TYPE_P2P</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gad9956967e5a1fae2ed5173ea6c953dce_1ggad9956967e5a1fae2ed5173ea6c953dcea1380428f971f6409e6264bcce811ad43" prot="public">
+          <name>WNIC_NETWORK_TYPE_SOFTAP</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gad9956967e5a1fae2ed5173ea6c953dce_1ggad9956967e5a1fae2ed5173ea6c953dcea9ee8960b266899afb0d39a6a0ba0d219" prot="public">
+          <name>WNIC_NETWORK_TYPE_MAX</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="102" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="102" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__DEVICE__HAL__WNIC__MACROS_gab1eca489d8b3aacfb98448688f039567_1gab1eca489d8b3aacfb98448688f039567" prot="public" static="no">
+        <name>wnic_init_state</name>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gab1eca489d8b3aacfb98448688f039567_1ggab1eca489d8b3aacfb98448688f039567a4cba89221f91a71b8f0d56eaad6be918" prot="public">
+          <name>WNIC_NOT_INITIALIZED</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gab1eca489d8b3aacfb98448688f039567_1ggab1eca489d8b3aacfb98448688f039567a54dad3c73fcc27955bbabdd9ea16c5b8" prot="public">
+          <name>WNIC_DURING_INITIALIZATION</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gab1eca489d8b3aacfb98448688f039567_1ggab1eca489d8b3aacfb98448688f039567aa43f33e15730c225f53aa9fc08687148" prot="public">
+          <name>WNIC_INIT_SUCCESSFUL</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gab1eca489d8b3aacfb98448688f039567_1ggab1eca489d8b3aacfb98448688f039567a26f1961259bc88db34af1865c54a13d5" prot="public">
+          <name>WNIC_INIT_FAILED</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="111" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="111" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__DEVICE__HAL__WNIC__MACROS_ga09e234d6a0ec703902744a64ce596fa2_1ga09e234d6a0ec703902744a64ce596fa2" prot="public" static="no">
+        <name>wnic_conn_state</name>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_ga09e234d6a0ec703902744a64ce596fa2_1gga09e234d6a0ec703902744a64ce596fa2a7ad3b599615315b3366c2c50e734cb34" prot="public">
+          <name>WNIC_NOT_CONNECTED</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_ga09e234d6a0ec703902744a64ce596fa2_1gga09e234d6a0ec703902744a64ce596fa2a2129b98ef12d077e664edaaf4a572100" prot="public">
+          <name>WNIC_DURING_CONNECTION</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_ga09e234d6a0ec703902744a64ce596fa2_1gga09e234d6a0ec703902744a64ce596fa2a550090e2239c886079f59af9e48b6d29" prot="public">
+          <name>WNIC_DURING_DISCONNECTION</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_ga09e234d6a0ec703902744a64ce596fa2_1gga09e234d6a0ec703902744a64ce596fa2a904bda9fc80c475081d0b257fdc2ba3d" prot="public">
+          <name>WNIC_CONNECTED</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_ga09e234d6a0ec703902744a64ce596fa2_1gga09e234d6a0ec703902744a64ce596fa2a888f2c6287484068a4afbd469e35e592" prot="public">
+          <name>WNIC_CONN_TEMP_LOST</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="118" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="118" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__DEVICE__HAL__WNIC__MACROS_gab63cdd10e170ea76ef933d7d2f3008fe_1gab63cdd10e170ea76ef933d7d2f3008fe" prot="public" static="no">
+        <name>wnic_conn_type</name>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gab63cdd10e170ea76ef933d7d2f3008fe_1ggab63cdd10e170ea76ef933d7d2f3008feac7169a224f73fe846fdc7129c32e665f" prot="public">
+          <name>WNIC_CONN_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gab63cdd10e170ea76ef933d7d2f3008fe_1ggab63cdd10e170ea76ef933d7d2f3008fead0f91e51dc9ffb9d657edb47ee39e746" prot="public">
+          <name>WNIC_CONN_INFRASTRUCTURE</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gab63cdd10e170ea76ef933d7d2f3008fe_1ggab63cdd10e170ea76ef933d7d2f3008fea0ae1c9caf81f5da109cc50a75539a540" prot="public">
+          <name>WNIC_CONN_ADHOC</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gab63cdd10e170ea76ef933d7d2f3008fe_1ggab63cdd10e170ea76ef933d7d2f3008feab275fac6307b18cb78fa4f744a459aee" prot="public">
+          <name>WNIC_CONN_P2P</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="126" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="126" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__DEVICE__HAL__WNIC__MACROS_ga1fb9b1e8815b48da2e5d5609fd4e03dc_1ga1fb9b1e8815b48da2e5d5609fd4e03dc" prot="public" static="no">
+        <name>wnic_mac_state</name>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_ga1fb9b1e8815b48da2e5d5609fd4e03dc_1gga1fb9b1e8815b48da2e5d5609fd4e03dca584fa9b9415900c3ca4da819615ee62d" prot="public">
+          <name>WNIC_MAC_NOT_UPDATED</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_ga1fb9b1e8815b48da2e5d5609fd4e03dc_1gga1fb9b1e8815b48da2e5d5609fd4e03dcafac5b48f8751e507282e959e6b31fbcd" prot="public">
+          <name>WNIC_MAC_UPDATED</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="133" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="133" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__DEVICE__HAL__WNIC__MACROS_gaeb8375d4e6a245d40ba5ecbc3a520a2e_1gaeb8375d4e6a245d40ba5ecbc3a520a2e" prot="public" static="no">
+        <name>wnic_scan_state</name>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gaeb8375d4e6a245d40ba5ecbc3a520a2e_1ggaeb8375d4e6a245d40ba5ecbc3a520a2eaf6133468ed8ac7bba26e29f755bb3084" prot="public">
+          <name>WNIC_NOT_SCANED</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>scan not started </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gaeb8375d4e6a245d40ba5ecbc3a520a2e_1ggaeb8375d4e6a245d40ba5ecbc3a520a2eaec0e384b7e408b3f1c477859c38f3a30" prot="public">
+          <name>WNIC_DURING_SCAN</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>during scan </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gaeb8375d4e6a245d40ba5ecbc3a520a2e_1ggaeb8375d4e6a245d40ba5ecbc3a520a2ea7a73474db60cf473fb15900478b558e8" prot="public">
+          <name>WNIC_SCAN_FINISHED</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>scan is finished </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gaeb8375d4e6a245d40ba5ecbc3a520a2e_1ggaeb8375d4e6a245d40ba5ecbc3a520a2ea350d08daeca507f9e847e416d50ac669" prot="public">
+          <name>WNIC_SCAN_OUTOFDATE</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>when scan is done, need to update its result </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="138" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="138" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__DEVICE__HAL__WNIC__MACROS_ga7da91aef1789235529d6847ea21b5237_1ga7da91aef1789235529d6847ea21b5237" prot="public" static="no">
+        <name>wnic_power_state</name>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_ga7da91aef1789235529d6847ea21b5237_1gga7da91aef1789235529d6847ea21b5237abbf0ada8e8fefb3468d8bd9315a36feb" prot="public">
+          <name>WNIC_POWER_OFF</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_ga7da91aef1789235529d6847ea21b5237_1gga7da91aef1789235529d6847ea21b5237a8dca6aca478f21768ea4b41450f5b466" prot="public">
+          <name>WNIC_POWER_NORMAL</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_ga7da91aef1789235529d6847ea21b5237_1gga7da91aef1789235529d6847ea21b5237ad05dcec922acdd29952c85af73ad34d7" prot="public">
+          <name>WNIC_POWER_LOW</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_ga7da91aef1789235529d6847ea21b5237_1gga7da91aef1789235529d6847ea21b5237a2d3eaa218490360a2730290eae8db49f" prot="public">
+          <name>WNIC_POWER_HIBERNATE</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="145" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="145" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__DEVICE__HAL__WNIC__MACROS_gacc681c7fb81c62b462f2ec1cd6331894_1gacc681c7fb81c62b462f2ec1cd6331894" prot="public" static="no">
+        <name>wnic_busy_state</name>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gacc681c7fb81c62b462f2ec1cd6331894_1ggacc681c7fb81c62b462f2ec1cd6331894a9c9fff6faab83765b0f95c735a1bc4be" prot="public">
+          <name>WNIC_IS_FREE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gacc681c7fb81c62b462f2ec1cd6331894_1ggacc681c7fb81c62b462f2ec1cd6331894a50a4ac5f79939105c3acd58896c56c2c" prot="public">
+          <name>WNIC_IS_BUSY</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="152" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="152" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1gab11336a15c7c926d133e400b5e2bdafa" prot="public" static="no">
+        <name>wnic_auth_security_mode</name>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa0fde1f9c1652c21023771c15d0dd4842" prot="public">
+          <name>AUTH_SECURITY_OPEN</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa765629e30d091411ea9205e68aed5528" prot="public">
+          <name>AUTH_SECURITY_WEP_40</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa7b4a020a5f6b71be42f990cfcb1c5987" prot="public">
+          <name>AUTH_SECURITY_WEP_104</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaaaaa8c8dee94ea951e7357cdc4790b608" prot="public">
+          <name>AUTH_SECURITY_WPA_WITH_KEY</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaac12d4807f7176b37d57be55268413813" prot="public">
+          <name>AUTH_SECURITY_WPA_WITH_PASS_PHRASE</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa95df8350949565c8a5a0da39752bcfad" prot="public">
+          <name>AUTH_SECURITY_WPA2_WITH_KEY</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa3dc31a7e244142f9075d5ef44ae3d6d3" prot="public">
+          <name>AUTH_SECURITY_WPA2_WITH_PASS_PHRASE</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaaa438cbb84f80a9d803e4c055bb6e162a" prot="public">
+          <name>AUTH_SECURITY_WPA_AUTO_WITH_KEY</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa0882bf43abaf50f08c2a526a41035854" prot="public">
+          <name>AUTH_SECURITY_WPA_AUTO_WITH_PASS_PHRASE</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa335745ae3c4682cf3e0663689766c4e3" prot="public">
+          <name>AUTH_SECURITY_WPS_PUSH_BUTTON</name>
+          <initializer>= 9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaae90fef15bbb2cb1c0c0263fbabf3d921" prot="public">
+          <name>AUTH_SECURITY_WPS_PIN</name>
+          <initializer>= 10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa5f43b956ee6134254ba672bae69f1ed8" prot="public">
+          <name>AUTH_MAX_SECURITY_TYPE</name>
+          <initializer>= 10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>wnic auth security mode </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="159" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="159" bodyend="173"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__MACROS_ga9a5b0a380e1abe1162f98c24ebf424c2_1ga9a5b0a380e1abe1162f98c24ebf424c2" prot="public" static="no">
+        <type>enum <ref refid="group__DEVICE__HAL__WNIC__MACROS_gad9956967e5a1fae2ed5173ea6c953dce_1gad9956967e5a1fae2ed5173ea6c953dce" kindref="member">wnic_network_type</ref></type>
+        <definition>typedef enum wnic_network_type  WNIC_NETWORK_TYPE</definition>
+        <argsstring></argsstring>
+        <name>WNIC_NETWORK_TYPE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="109" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__MACROS_ga32ba4c5078ec0a606e8ef620be217fc3_1ga32ba4c5078ec0a606e8ef620be217fc3" prot="public" static="no">
+        <type>enum <ref refid="group__DEVICE__HAL__WNIC__MACROS_gab1eca489d8b3aacfb98448688f039567_1gab1eca489d8b3aacfb98448688f039567" kindref="member">wnic_init_state</ref></type>
+        <definition>typedef enum wnic_init_state  WNIC_INIT_STATE</definition>
+        <argsstring></argsstring>
+        <name>WNIC_INIT_STATE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="116" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__MACROS_ga9b119d98c76430fb981e8836d4dbc58d_1ga9b119d98c76430fb981e8836d4dbc58d" prot="public" static="no">
+        <type>enum <ref refid="group__DEVICE__HAL__WNIC__MACROS_ga09e234d6a0ec703902744a64ce596fa2_1ga09e234d6a0ec703902744a64ce596fa2" kindref="member">wnic_conn_state</ref></type>
+        <definition>typedef enum wnic_conn_state  WNIC_CONN_STATE</definition>
+        <argsstring></argsstring>
+        <name>WNIC_CONN_STATE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="124" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__MACROS_ga7c33e6317f6c782239ee81fefcfa268f_1ga7c33e6317f6c782239ee81fefcfa268f" prot="public" static="no">
+        <type>enum <ref refid="group__DEVICE__HAL__WNIC__MACROS_gab63cdd10e170ea76ef933d7d2f3008fe_1gab63cdd10e170ea76ef933d7d2f3008fe" kindref="member">wnic_conn_type</ref></type>
+        <definition>typedef enum wnic_conn_type  WNIC_CONN_TYPE</definition>
+        <argsstring></argsstring>
+        <name>WNIC_CONN_TYPE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="131" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__MACROS_gac97b305139a3afba7842eac4ac3cf6e5_1gac97b305139a3afba7842eac4ac3cf6e5" prot="public" static="no">
+        <type>enum <ref refid="group__DEVICE__HAL__WNIC__MACROS_ga1fb9b1e8815b48da2e5d5609fd4e03dc_1ga1fb9b1e8815b48da2e5d5609fd4e03dc" kindref="member">wnic_mac_state</ref></type>
+        <definition>typedef enum wnic_mac_state  WNIC_MAC_STATE</definition>
+        <argsstring></argsstring>
+        <name>WNIC_MAC_STATE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="136" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__MACROS_gae9403e1d333742b11c45197b238caa77_1gae9403e1d333742b11c45197b238caa77" prot="public" static="no">
+        <type>enum <ref refid="group__DEVICE__HAL__WNIC__MACROS_gaeb8375d4e6a245d40ba5ecbc3a520a2e_1gaeb8375d4e6a245d40ba5ecbc3a520a2e" kindref="member">wnic_scan_state</ref></type>
+        <definition>typedef enum wnic_scan_state  WNIC_SCAN_STATE</definition>
+        <argsstring></argsstring>
+        <name>WNIC_SCAN_STATE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="143" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__MACROS_gad02003f02f671ee1fef35018917e4043_1gad02003f02f671ee1fef35018917e4043" prot="public" static="no">
+        <type>enum <ref refid="group__DEVICE__HAL__WNIC__MACROS_ga7da91aef1789235529d6847ea21b5237_1ga7da91aef1789235529d6847ea21b5237" kindref="member">wnic_power_state</ref></type>
+        <definition>typedef enum wnic_power_state  WNIC_POWER_STATE</definition>
+        <argsstring></argsstring>
+        <name>WNIC_POWER_STATE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="150" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__MACROS_ga7d774ae628993285689919b1e4bda07a_1ga7d774ae628993285689919b1e4bda07a" prot="public" static="no">
+        <type>enum <ref refid="group__DEVICE__HAL__WNIC__MACROS_gacc681c7fb81c62b462f2ec1cd6331894_1gacc681c7fb81c62b462f2ec1cd6331894" kindref="member">wnic_busy_state</ref></type>
+        <definition>typedef enum wnic_busy_state  WNIC_BUSY_STATE</definition>
+        <argsstring></argsstring>
+        <name>WNIC_BUSY_STATE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="155" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__MACROS_ga1b780a45059ec6871a224c0e465d6112_1ga1b780a45059ec6871a224c0e465d6112" prot="public" static="no">
+        <type>enum <ref refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1gab11336a15c7c926d133e400b5e2bdafa" kindref="member">wnic_auth_security_mode</ref></type>
+        <definition>typedef enum wnic_auth_security_mode  AUTH_SECURITY_MODE</definition>
+        <argsstring></argsstring>
+        <name>AUTH_SECURITY_MODE</name>
+        <briefdescription>
+<para>wnic auth security mode </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="173" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__MACROS_gac637f4dafd2bff9801fe4ac1e60bf475_1gac637f4dafd2bff9801fe4ac1e60bf475" prot="public" static="no">
+        <type>struct <ref refid="structwnic__cfg__ssid" kindref="compound">wnic_cfg_ssid</ref></type>
+        <definition>typedef struct wnic_cfg_ssid  WNIC_CFG_SSID</definition>
+        <argsstring></argsstring>
+        <name>WNIC_CFG_SSID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="178" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__MACROS_ga3bd0e3bc90fa4005230ad36bb2cdb4c2_1ga3bd0e3bc90fa4005230ad36bb2cdb4c2" prot="public" static="no">
+        <type>struct <ref refid="structwnic__cfg__ssid" kindref="compound">wnic_cfg_ssid</ref> *</type>
+        <definition>typedef struct wnic_cfg_ssid * WNIC_CFG_SSID_PTR</definition>
+        <argsstring></argsstring>
+        <name>WNIC_CFG_SSID_PTR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="178" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__MACROS_ga78894682223143a152a0e3403a7bf986_1ga78894682223143a152a0e3403a7bf986" prot="public" static="no">
+        <type>union <ref refid="unionwnic__ap__config" kindref="compound">wnic_ap_config</ref></type>
+        <definition>typedef union wnic_ap_config  WNIC_AP_CONFIG</definition>
+        <argsstring></argsstring>
+        <name>WNIC_AP_CONFIG</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="190" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__MACROS_ga41b7fa993540982c1b482f7baf59eeb6_1ga41b7fa993540982c1b482f7baf59eeb6" prot="public" static="no">
+        <type>struct <ref refid="structwnic__auth__key" kindref="compound">wnic_auth_key</ref></type>
+        <definition>typedef struct wnic_auth_key  WNIC_AUTH_KEY</definition>
+        <argsstring></argsstring>
+        <name>WNIC_AUTH_KEY</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="196" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__MACROS_gaf89a889e316fb0aac4bd94539b65db4c_1gaf89a889e316fb0aac4bd94539b65db4c" prot="public" static="no">
+        <type>struct <ref refid="structwnic__auth__key" kindref="compound">wnic_auth_key</ref> *</type>
+        <definition>typedef struct wnic_auth_key * WNIC_AUTH_KEY_PTR</definition>
+        <argsstring></argsstring>
+        <name>WNIC_AUTH_KEY_PTR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="196" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__MACROS_ga14a3f8c5a5fea77db04f3a7ff2648614_1ga14a3f8c5a5fea77db04f3a7ff2648614" prot="public" static="no">
+        <type>struct <ref refid="structwnic__scan__result" kindref="compound">wnic_scan_result</ref></type>
+        <definition>typedef struct wnic_scan_result  WNIC_SCAN_RESULT</definition>
+        <argsstring></argsstring>
+        <name>WNIC_SCAN_RESULT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="229" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__MACROS_gaa7a4336b8daa3482df1d6a6de16cfe5d_1gaa7a4336b8daa3482df1d6a6de16cfe5d" prot="public" static="no">
+        <type>struct <ref refid="structwnic__scan__result" kindref="compound">wnic_scan_result</ref> *</type>
+        <definition>typedef struct wnic_scan_result * WNIC_SCAN_RESULT_PTR</definition>
+        <argsstring></argsstring>
+        <name>WNIC_SCAN_RESULT_PTR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="229" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_ga331469c5eeebf80940a6bfef0658b342_1ga331469c5eeebf80940a6bfef0658b342" prot="public" static="no">
+        <type>struct <ref refid="structdev__wnic" kindref="compound">dev_wnic</ref></type>
+        <definition>typedef struct dev_wnic DEV_WNIC</definition>
+        <argsstring></argsstring>
+        <name>DEV_WNIC</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="118" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="241" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_gac35eb119dfb9902e12513c52cc6cb120_1gac35eb119dfb9902e12513c52cc6cb120" prot="public" static="no">
+        <type>struct <ref refid="structdev__wnic" kindref="compound">dev_wnic</ref> *</type>
+        <definition>typedef struct dev_wnic * DEV_WNIC_PTR</definition>
+        <argsstring></argsstring>
+        <name>DEV_WNIC_PTR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="241" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="241" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_gab5f0d17dd7fd48476196b3c44ce40422_1gab5f0d17dd7fd48476196b3c44ce40422" prot="public" static="no">
+        <type>int32_t(*</type>
+        <definition>typedef int32_t(* ON_WNIC_OPS)(DEV_WNIC *wnic_ptr)</definition>
+        <argsstring>)(DEV_WNIC *wnic_ptr)</argsstring>
+        <name>ON_WNIC_OPS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="242" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_gaefac53a14f230c7cd6526817a2f9befb_1gaefac53a14f230c7cd6526817a2f9befb" prot="public" static="no">
+        <type>struct <ref refid="structdev__wnic__on__ops" kindref="compound">dev_wnic_on_ops</ref></type>
+        <definition>typedef struct dev_wnic_on_ops  DEV_WNIC_ON_OPS</definition>
+        <argsstring></argsstring>
+        <name>DEV_WNIC_ON_OPS</name>
+        <briefdescription>
+<para>wnic on state operations such as init success, init failed hardware assert, connected, disconnected, mac updated, scan finished </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="258" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_ga1c5fb841775d05f59f42c49439fff3e7_1ga1c5fb841775d05f59f42c49439fff3e7" prot="public" static="no">
+        <type>struct <ref refid="structdev__wnic__on__ops" kindref="compound">dev_wnic_on_ops</ref> *</type>
+        <definition>typedef struct dev_wnic_on_ops * DEV_WNIC_ON_OPS_PTR</definition>
+        <argsstring></argsstring>
+        <name>DEV_WNIC_ON_OPS_PTR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="258" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_gaba6c69016d03043288ad39b93fd96d25_1gaba6c69016d03043288ad39b93fd96d25" prot="public" static="no">
+        <type>struct <ref refid="structdev__wnic__info" kindref="compound">dev_wnic_info</ref></type>
+        <definition>typedef struct dev_wnic_info  DEV_WNIC_INFO</definition>
+        <argsstring></argsstring>
+        <name>DEV_WNIC_INFO</name>
+        <briefdescription>
+<para>wnic information struct definition </para>        </briefdescription>
+        <detaileddescription>
+<para>informations about wnic open state, working state, frequence, working method </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="316" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_gaf38034b6c29e24438d48e8125c8c2600_1gaf38034b6c29e24438d48e8125c8c2600" prot="public" static="no">
+        <type>struct <ref refid="structdev__wnic__info" kindref="compound">dev_wnic_info</ref> *</type>
+        <definition>typedef struct dev_wnic_info * DEV_WNIC_INFO_PTR</definition>
+        <argsstring></argsstring>
+        <name>DEV_WNIC_INFO_PTR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="316" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__DEVICE__HAL__WNIC_ga4ea6fc486b6808c2c88e8116dde30a05_1ga4ea6fc486b6808c2c88e8116dde30a05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_gac35eb119dfb9902e12513c52cc6cb120_1gac35eb119dfb9902e12513c52cc6cb120" kindref="member">DEV_WNIC_PTR</ref></type>
+        <definition>DEV_WNIC_PTR wnic_get_dev</definition>
+        <argsstring>(int32_t wnic_id)</argsstring>
+        <name>wnic_get_dev</name>
+        <param>
+          <type>int32_t</type>
+          <declname>wnic_id</declname>
+        </param>
+        <briefdescription>
+<para>get an <ref refid="structdev__wnic" kindref="compound">wnic device</ref> by wnic device id. For how to use wnic device hal refer to <ref refid="structdev__wnic" kindref="compound">Functions in wnic device structure</ref> </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">wnic_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>id of wnic, defined by user </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>!NULL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to an wnic device structure (<ref refid="structdev__wnic" kindref="compound">dev_wnic</ref>) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>NULL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>failed to find the wnic device </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>need to implemented by user in user code </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h" line="368" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>wireless network interface controller device hardware layer definitions </para>    </briefdescription>
+    <detaileddescription>
+<para>provide common definitions for wnic device, then software developer can develop wnic driver following this definitions, and the applications can directly call this definition to realize functions </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/>------------------------------------------</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2017,<sp/>Synopsys,<sp/>Inc.<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"></highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>1)<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"></highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>2)<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"></highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>3)<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>Synopsys,<sp/>Inc.,<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"></highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/>---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor">#ifndef<sp/>_DEVICE_HAL_WNIC_H_</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_DEVICE_HAL_WNIC_H_</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dev__common_8h" kindref="compound">device/dev_common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*<sp/>defines<sp/>for<sp/>system<sp/>control<sp/>commands<sp/>of<sp/>wnic</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*<sp/>commands<sp/>need<sp/>by<sp/>wnic_control::ctrl_cmd</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="group__DEVICE__HAL__WNIC__CTRLCMD_ga66fae6ce02a3072407f05c014e978b75_1ga66fae6ce02a3072407f05c014e978b75" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WNIC_CMD_CHG_FREQ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_SET_SYSCMD(0x0)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="73" refid="group__DEVICE__HAL__WNIC__CTRLCMD_gaacf1ff588ca51784d87c2fab221ba749_1gaacf1ff588ca51784d87c2fab221ba749" refkind="member"><highlight class="preprocessor">#define<sp/>WNIC_CMD_CHG_MTHD<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_SET_SYSCMD(0x1)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="82"><highlight class="preprocessor"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/>*<sp/>defines<sp/>for<sp/>system<sp/>command<sp/>to<sp/>get<sp/>wnic<sp/>info</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/>*<sp/>commands<sp/>need<sp/>by<sp/>wnic_get_info::cmd</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="86" refid="group__DEVICE__HAL__WNIC__GETINFOCMD_gaa6e2be6e5632534bb0ac81801e72ce3e_1gaa6e2be6e5632534bb0ac81801e72ce3e" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WNIC_CMD_GETINFO_ALL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_SET_SYSCMD(0x0)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="95" refid="group__DEVICE__HAL__WNIC__MACROS_gad31392abb15670470441f4fdbe8936cc_1gad31392abb15670470441f4fdbe8936cc" refkind="member"><highlight class="preprocessor">#define<sp/>WNIC_HDR_LEN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(6)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="96" refid="group__DEVICE__HAL__WNIC__MACROS_gaf72d385c0cb13512b1025e2750ac2c22_1gaf72d385c0cb13512b1025e2750ac2c22" refkind="member"><highlight class="preprocessor">#define<sp/>WNIC_NAME_LEN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(20)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="97" refid="group__DEVICE__HAL__WNIC__MACROS_gac8d0693e13b81d99c27837619e30e1f1_1gac8d0693e13b81d99c27837619e30e1f1" refkind="member"><highlight class="preprocessor">#define<sp/>WNIC_SSID_MAX_LEN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(32)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="98" refid="group__DEVICE__HAL__WNIC__MACROS_ga992cd51ef1f8439c0e3335ad39790a6d_1ga992cd51ef1f8439c0e3335ad39790a6d" refkind="member"><highlight class="preprocessor">#define<sp/>WNIC_BSSID_MAX_LEN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(6)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="99" refid="group__DEVICE__HAL__WNIC__MACROS_gad2c13bf21a5dbfb0a91ef6624f0972c4_1gad2c13bf21a5dbfb0a91ef6624f0972c4" refkind="member"><highlight class="preprocessor">#define<sp/>WNIC_MAX_NUM_RATES<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(8)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="100" refid="group__DEVICE__HAL__WNIC__MACROS_gaf44f41d2b9ad0a42f025c6eec0e53a4e_1gaf44f41d2b9ad0a42f025c6eec0e53a4e" refkind="member"><highlight class="preprocessor">#define<sp/>WNIC_IF_NAME_LEN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(2)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="102" refid="group__DEVICE__HAL__WNIC__MACROS_gad9956967e5a1fae2ed5173ea6c953dce_1gad9956967e5a1fae2ed5173ea6c953dce" refkind="member"><highlight class="preprocessor">typedef<sp/>enum<sp/>wnic_network_type<sp/>{</highlight></codeline>
+<codeline lineno="103" refid="group__DEVICE__HAL__WNIC__MACROS_gad9956967e5a1fae2ed5173ea6c953dce_1ggad9956967e5a1fae2ed5173ea6c953dcea6c8256dcc59d27ad8f52ea43a60740b3" refkind="member"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gad9956967e5a1fae2ed5173ea6c953dce_1ggad9956967e5a1fae2ed5173ea6c953dcea6c8256dcc59d27ad8f52ea43a60740b3" kindref="member">WNIC_NETWORK_TYPE_MIN</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="104" refid="group__DEVICE__HAL__WNIC__MACROS_gad9956967e5a1fae2ed5173ea6c953dce_1ggad9956967e5a1fae2ed5173ea6c953dcead689a66fe22cf3faeec612d0ad6da239" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gad9956967e5a1fae2ed5173ea6c953dce_1ggad9956967e5a1fae2ed5173ea6c953dcead689a66fe22cf3faeec612d0ad6da239" kindref="member">WNIC_NETWORK_TYPE_INFRASTRUCTURE</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="105" refid="group__DEVICE__HAL__WNIC__MACROS_gad9956967e5a1fae2ed5173ea6c953dce_1ggad9956967e5a1fae2ed5173ea6c953dcea298b7d09392f16c13d7343e8f3076e72" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gad9956967e5a1fae2ed5173ea6c953dce_1ggad9956967e5a1fae2ed5173ea6c953dcea298b7d09392f16c13d7343e8f3076e72" kindref="member">WNIC_NETWORK_TYPE_ADHOC</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="106" refid="group__DEVICE__HAL__WNIC__MACROS_gad9956967e5a1fae2ed5173ea6c953dce_1ggad9956967e5a1fae2ed5173ea6c953dcea492c607e9918983c46caeceadc5ff092" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gad9956967e5a1fae2ed5173ea6c953dce_1ggad9956967e5a1fae2ed5173ea6c953dcea492c607e9918983c46caeceadc5ff092" kindref="member">WNIC_NETWORK_TYPE_P2P</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>3,</highlight></codeline>
+<codeline lineno="107" refid="group__DEVICE__HAL__WNIC__MACROS_gad9956967e5a1fae2ed5173ea6c953dce_1ggad9956967e5a1fae2ed5173ea6c953dcea1380428f971f6409e6264bcce811ad43" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gad9956967e5a1fae2ed5173ea6c953dce_1ggad9956967e5a1fae2ed5173ea6c953dcea1380428f971f6409e6264bcce811ad43" kindref="member">WNIC_NETWORK_TYPE_SOFTAP</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>4,</highlight></codeline>
+<codeline lineno="108" refid="group__DEVICE__HAL__WNIC__MACROS_gad9956967e5a1fae2ed5173ea6c953dce_1ggad9956967e5a1fae2ed5173ea6c953dcea9ee8960b266899afb0d39a6a0ba0d219" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gad9956967e5a1fae2ed5173ea6c953dce_1ggad9956967e5a1fae2ed5173ea6c953dcea9ee8960b266899afb0d39a6a0ba0d219" kindref="member">WNIC_NETWORK_TYPE_MAX</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>4</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}<sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga9a5b0a380e1abe1162f98c24ebf424c2_1ga9a5b0a380e1abe1162f98c24ebf424c2" kindref="member">WNIC_NETWORK_TYPE</ref>;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="group__DEVICE__HAL__WNIC__MACROS_gab1eca489d8b3aacfb98448688f039567_1gab1eca489d8b3aacfb98448688f039567" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab1eca489d8b3aacfb98448688f039567_1gab1eca489d8b3aacfb98448688f039567" kindref="member">wnic_init_state</ref><sp/>{</highlight></codeline>
+<codeline lineno="112" refid="group__DEVICE__HAL__WNIC__MACROS_gab1eca489d8b3aacfb98448688f039567_1ggab1eca489d8b3aacfb98448688f039567a4cba89221f91a71b8f0d56eaad6be918" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab1eca489d8b3aacfb98448688f039567_1ggab1eca489d8b3aacfb98448688f039567a4cba89221f91a71b8f0d56eaad6be918" kindref="member">WNIC_NOT_INITIALIZED</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="113" refid="group__DEVICE__HAL__WNIC__MACROS_gab1eca489d8b3aacfb98448688f039567_1ggab1eca489d8b3aacfb98448688f039567a54dad3c73fcc27955bbabdd9ea16c5b8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab1eca489d8b3aacfb98448688f039567_1ggab1eca489d8b3aacfb98448688f039567a54dad3c73fcc27955bbabdd9ea16c5b8" kindref="member">WNIC_DURING_INITIALIZATION</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="114" refid="group__DEVICE__HAL__WNIC__MACROS_gab1eca489d8b3aacfb98448688f039567_1ggab1eca489d8b3aacfb98448688f039567aa43f33e15730c225f53aa9fc08687148" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab1eca489d8b3aacfb98448688f039567_1ggab1eca489d8b3aacfb98448688f039567aa43f33e15730c225f53aa9fc08687148" kindref="member">WNIC_INIT_SUCCESSFUL</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>3,</highlight></codeline>
+<codeline lineno="115" refid="group__DEVICE__HAL__WNIC__MACROS_gab1eca489d8b3aacfb98448688f039567_1ggab1eca489d8b3aacfb98448688f039567a26f1961259bc88db34af1865c54a13d5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab1eca489d8b3aacfb98448688f039567_1ggab1eca489d8b3aacfb98448688f039567a26f1961259bc88db34af1865c54a13d5" kindref="member">WNIC_INIT_FAILED</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>4</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">}<sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga32ba4c5078ec0a606e8ef620be217fc3_1ga32ba4c5078ec0a606e8ef620be217fc3" kindref="member">WNIC_INIT_STATE</ref>;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="group__DEVICE__HAL__WNIC__MACROS_ga09e234d6a0ec703902744a64ce596fa2_1ga09e234d6a0ec703902744a64ce596fa2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga09e234d6a0ec703902744a64ce596fa2_1ga09e234d6a0ec703902744a64ce596fa2" kindref="member">wnic_conn_state</ref><sp/>{</highlight></codeline>
+<codeline lineno="119" refid="group__DEVICE__HAL__WNIC__MACROS_ga09e234d6a0ec703902744a64ce596fa2_1gga09e234d6a0ec703902744a64ce596fa2a7ad3b599615315b3366c2c50e734cb34" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga09e234d6a0ec703902744a64ce596fa2_1gga09e234d6a0ec703902744a64ce596fa2a7ad3b599615315b3366c2c50e734cb34" kindref="member">WNIC_NOT_CONNECTED</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="120" refid="group__DEVICE__HAL__WNIC__MACROS_ga09e234d6a0ec703902744a64ce596fa2_1gga09e234d6a0ec703902744a64ce596fa2a2129b98ef12d077e664edaaf4a572100" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga09e234d6a0ec703902744a64ce596fa2_1gga09e234d6a0ec703902744a64ce596fa2a2129b98ef12d077e664edaaf4a572100" kindref="member">WNIC_DURING_CONNECTION</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="121" refid="group__DEVICE__HAL__WNIC__MACROS_ga09e234d6a0ec703902744a64ce596fa2_1gga09e234d6a0ec703902744a64ce596fa2a550090e2239c886079f59af9e48b6d29" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga09e234d6a0ec703902744a64ce596fa2_1gga09e234d6a0ec703902744a64ce596fa2a550090e2239c886079f59af9e48b6d29" kindref="member">WNIC_DURING_DISCONNECTION</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>3,</highlight></codeline>
+<codeline lineno="122" refid="group__DEVICE__HAL__WNIC__MACROS_ga09e234d6a0ec703902744a64ce596fa2_1gga09e234d6a0ec703902744a64ce596fa2a904bda9fc80c475081d0b257fdc2ba3d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga09e234d6a0ec703902744a64ce596fa2_1gga09e234d6a0ec703902744a64ce596fa2a904bda9fc80c475081d0b257fdc2ba3d" kindref="member">WNIC_CONNECTED</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>4,</highlight></codeline>
+<codeline lineno="123" refid="group__DEVICE__HAL__WNIC__MACROS_ga09e234d6a0ec703902744a64ce596fa2_1gga09e234d6a0ec703902744a64ce596fa2a888f2c6287484068a4afbd469e35e592" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga09e234d6a0ec703902744a64ce596fa2_1gga09e234d6a0ec703902744a64ce596fa2a888f2c6287484068a4afbd469e35e592" kindref="member">WNIC_CONN_TEMP_LOST</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>5</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">}<sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga9b119d98c76430fb981e8836d4dbc58d_1ga9b119d98c76430fb981e8836d4dbc58d" kindref="member">WNIC_CONN_STATE</ref>;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="group__DEVICE__HAL__WNIC__MACROS_gab63cdd10e170ea76ef933d7d2f3008fe_1gab63cdd10e170ea76ef933d7d2f3008fe" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab63cdd10e170ea76ef933d7d2f3008fe_1gab63cdd10e170ea76ef933d7d2f3008fe" kindref="member">wnic_conn_type</ref><sp/>{</highlight></codeline>
+<codeline lineno="127" refid="group__DEVICE__HAL__WNIC__MACROS_gab63cdd10e170ea76ef933d7d2f3008fe_1ggab63cdd10e170ea76ef933d7d2f3008feac7169a224f73fe846fdc7129c32e665f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab63cdd10e170ea76ef933d7d2f3008fe_1ggab63cdd10e170ea76ef933d7d2f3008feac7169a224f73fe846fdc7129c32e665f" kindref="member">WNIC_CONN_NONE</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="128" refid="group__DEVICE__HAL__WNIC__MACROS_gab63cdd10e170ea76ef933d7d2f3008fe_1ggab63cdd10e170ea76ef933d7d2f3008fead0f91e51dc9ffb9d657edb47ee39e746" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab63cdd10e170ea76ef933d7d2f3008fe_1ggab63cdd10e170ea76ef933d7d2f3008fead0f91e51dc9ffb9d657edb47ee39e746" kindref="member">WNIC_CONN_INFRASTRUCTURE</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="129" refid="group__DEVICE__HAL__WNIC__MACROS_gab63cdd10e170ea76ef933d7d2f3008fe_1ggab63cdd10e170ea76ef933d7d2f3008fea0ae1c9caf81f5da109cc50a75539a540" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab63cdd10e170ea76ef933d7d2f3008fe_1ggab63cdd10e170ea76ef933d7d2f3008fea0ae1c9caf81f5da109cc50a75539a540" kindref="member">WNIC_CONN_ADHOC</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="130" refid="group__DEVICE__HAL__WNIC__MACROS_gab63cdd10e170ea76ef933d7d2f3008fe_1ggab63cdd10e170ea76ef933d7d2f3008feab275fac6307b18cb78fa4f744a459aee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab63cdd10e170ea76ef933d7d2f3008fe_1ggab63cdd10e170ea76ef933d7d2f3008feab275fac6307b18cb78fa4f744a459aee" kindref="member">WNIC_CONN_P2P</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>3</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}<sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga7c33e6317f6c782239ee81fefcfa268f_1ga7c33e6317f6c782239ee81fefcfa268f" kindref="member">WNIC_CONN_TYPE</ref>;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="group__DEVICE__HAL__WNIC__MACROS_ga1fb9b1e8815b48da2e5d5609fd4e03dc_1ga1fb9b1e8815b48da2e5d5609fd4e03dc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga1fb9b1e8815b48da2e5d5609fd4e03dc_1ga1fb9b1e8815b48da2e5d5609fd4e03dc" kindref="member">wnic_mac_state</ref><sp/>{</highlight></codeline>
+<codeline lineno="134" refid="group__DEVICE__HAL__WNIC__MACROS_ga1fb9b1e8815b48da2e5d5609fd4e03dc_1gga1fb9b1e8815b48da2e5d5609fd4e03dca584fa9b9415900c3ca4da819615ee62d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga1fb9b1e8815b48da2e5d5609fd4e03dc_1gga1fb9b1e8815b48da2e5d5609fd4e03dca584fa9b9415900c3ca4da819615ee62d" kindref="member">WNIC_MAC_NOT_UPDATED</ref><sp/><sp/><sp/><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="135" refid="group__DEVICE__HAL__WNIC__MACROS_ga1fb9b1e8815b48da2e5d5609fd4e03dc_1gga1fb9b1e8815b48da2e5d5609fd4e03dcafac5b48f8751e507282e959e6b31fbcd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga1fb9b1e8815b48da2e5d5609fd4e03dc_1gga1fb9b1e8815b48da2e5d5609fd4e03dcafac5b48f8751e507282e959e6b31fbcd" kindref="member">WNIC_MAC_UPDATED</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}<sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gac97b305139a3afba7842eac4ac3cf6e5_1gac97b305139a3afba7842eac4ac3cf6e5" kindref="member">WNIC_MAC_STATE</ref>;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138" refid="group__DEVICE__HAL__WNIC__MACROS_gaeb8375d4e6a245d40ba5ecbc3a520a2e_1gaeb8375d4e6a245d40ba5ecbc3a520a2e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gaeb8375d4e6a245d40ba5ecbc3a520a2e_1gaeb8375d4e6a245d40ba5ecbc3a520a2e" kindref="member">wnic_scan_state</ref><sp/>{</highlight></codeline>
+<codeline lineno="139" refid="group__DEVICE__HAL__WNIC__MACROS_gaeb8375d4e6a245d40ba5ecbc3a520a2e_1ggaeb8375d4e6a245d40ba5ecbc3a520a2eaf6133468ed8ac7bba26e29f755bb3084" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gaeb8375d4e6a245d40ba5ecbc3a520a2e_1ggaeb8375d4e6a245d40ba5ecbc3a520a2eaf6133468ed8ac7bba26e29f755bb3084" kindref="member">WNIC_NOT_SCANED</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="140" refid="group__DEVICE__HAL__WNIC__MACROS_gaeb8375d4e6a245d40ba5ecbc3a520a2e_1ggaeb8375d4e6a245d40ba5ecbc3a520a2eaec0e384b7e408b3f1c477859c38f3a30" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gaeb8375d4e6a245d40ba5ecbc3a520a2e_1ggaeb8375d4e6a245d40ba5ecbc3a520a2eaec0e384b7e408b3f1c477859c38f3a30" kindref="member">WNIC_DURING_SCAN</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="141" refid="group__DEVICE__HAL__WNIC__MACROS_gaeb8375d4e6a245d40ba5ecbc3a520a2e_1ggaeb8375d4e6a245d40ba5ecbc3a520a2ea7a73474db60cf473fb15900478b558e8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gaeb8375d4e6a245d40ba5ecbc3a520a2e_1ggaeb8375d4e6a245d40ba5ecbc3a520a2ea7a73474db60cf473fb15900478b558e8" kindref="member">WNIC_SCAN_FINISHED</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>2,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="142" refid="group__DEVICE__HAL__WNIC__MACROS_gaeb8375d4e6a245d40ba5ecbc3a520a2e_1ggaeb8375d4e6a245d40ba5ecbc3a520a2ea350d08daeca507f9e847e416d50ac669" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gaeb8375d4e6a245d40ba5ecbc3a520a2e_1ggaeb8375d4e6a245d40ba5ecbc3a520a2ea350d08daeca507f9e847e416d50ac669" kindref="member">WNIC_SCAN_OUTOFDATE</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="143"><highlight class="normal">}<sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gae9403e1d333742b11c45197b238caa77_1gae9403e1d333742b11c45197b238caa77" kindref="member">WNIC_SCAN_STATE</ref>;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145" refid="group__DEVICE__HAL__WNIC__MACROS_ga7da91aef1789235529d6847ea21b5237_1ga7da91aef1789235529d6847ea21b5237" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga7da91aef1789235529d6847ea21b5237_1ga7da91aef1789235529d6847ea21b5237" kindref="member">wnic_power_state</ref><sp/>{</highlight></codeline>
+<codeline lineno="146" refid="group__DEVICE__HAL__WNIC__MACROS_ga7da91aef1789235529d6847ea21b5237_1gga7da91aef1789235529d6847ea21b5237abbf0ada8e8fefb3468d8bd9315a36feb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga7da91aef1789235529d6847ea21b5237_1gga7da91aef1789235529d6847ea21b5237abbf0ada8e8fefb3468d8bd9315a36feb" kindref="member">WNIC_POWER_OFF</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="147" refid="group__DEVICE__HAL__WNIC__MACROS_ga7da91aef1789235529d6847ea21b5237_1gga7da91aef1789235529d6847ea21b5237a8dca6aca478f21768ea4b41450f5b466" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga7da91aef1789235529d6847ea21b5237_1gga7da91aef1789235529d6847ea21b5237a8dca6aca478f21768ea4b41450f5b466" kindref="member">WNIC_POWER_NORMAL</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="148" refid="group__DEVICE__HAL__WNIC__MACROS_ga7da91aef1789235529d6847ea21b5237_1gga7da91aef1789235529d6847ea21b5237ad05dcec922acdd29952c85af73ad34d7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga7da91aef1789235529d6847ea21b5237_1gga7da91aef1789235529d6847ea21b5237ad05dcec922acdd29952c85af73ad34d7" kindref="member">WNIC_POWER_LOW</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="149" refid="group__DEVICE__HAL__WNIC__MACROS_ga7da91aef1789235529d6847ea21b5237_1gga7da91aef1789235529d6847ea21b5237a2d3eaa218490360a2730290eae8db49f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga7da91aef1789235529d6847ea21b5237_1gga7da91aef1789235529d6847ea21b5237a2d3eaa218490360a2730290eae8db49f" kindref="member">WNIC_POWER_HIBERNATE</ref><sp/><sp/><sp/><sp/>=<sp/>3</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">}<sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gad02003f02f671ee1fef35018917e4043_1gad02003f02f671ee1fef35018917e4043" kindref="member">WNIC_POWER_STATE</ref>;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152" refid="group__DEVICE__HAL__WNIC__MACROS_gacc681c7fb81c62b462f2ec1cd6331894_1gacc681c7fb81c62b462f2ec1cd6331894" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gacc681c7fb81c62b462f2ec1cd6331894_1gacc681c7fb81c62b462f2ec1cd6331894" kindref="member">wnic_busy_state</ref><sp/>{</highlight></codeline>
+<codeline lineno="153" refid="group__DEVICE__HAL__WNIC__MACROS_gacc681c7fb81c62b462f2ec1cd6331894_1ggacc681c7fb81c62b462f2ec1cd6331894a9c9fff6faab83765b0f95c735a1bc4be" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gacc681c7fb81c62b462f2ec1cd6331894_1ggacc681c7fb81c62b462f2ec1cd6331894a9c9fff6faab83765b0f95c735a1bc4be" kindref="member">WNIC_IS_FREE</ref><sp/><sp/><sp/><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="154" refid="group__DEVICE__HAL__WNIC__MACROS_gacc681c7fb81c62b462f2ec1cd6331894_1ggacc681c7fb81c62b462f2ec1cd6331894a50a4ac5f79939105c3acd58896c56c2c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gacc681c7fb81c62b462f2ec1cd6331894_1ggacc681c7fb81c62b462f2ec1cd6331894a50a4ac5f79939105c3acd58896c56c2c" kindref="member">WNIC_IS_BUSY</ref><sp/><sp/><sp/><sp/>=<sp/>1</highlight></codeline>
+<codeline lineno="155"><highlight class="normal">}<sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga7d774ae628993285689919b1e4bda07a_1ga7d774ae628993285689919b1e4bda07a" kindref="member">WNIC_BUSY_STATE</ref>;</highlight></codeline>
+<codeline lineno="159" refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1gab11336a15c7c926d133e400b5e2bdafa" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1gab11336a15c7c926d133e400b5e2bdafa" kindref="member">wnic_auth_security_mode</ref><sp/>{</highlight></codeline>
+<codeline lineno="160" refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa0fde1f9c1652c21023771c15d0dd4842" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa0fde1f9c1652c21023771c15d0dd4842" kindref="member">AUTH_SECURITY_OPEN</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="161" refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa765629e30d091411ea9205e68aed5528" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa765629e30d091411ea9205e68aed5528" kindref="member">AUTH_SECURITY_WEP_40</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="162" refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa7b4a020a5f6b71be42f990cfcb1c5987" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa7b4a020a5f6b71be42f990cfcb1c5987" kindref="member">AUTH_SECURITY_WEP_104</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="163" refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaaaaa8c8dee94ea951e7357cdc4790b608" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaaaaa8c8dee94ea951e7357cdc4790b608" kindref="member">AUTH_SECURITY_WPA_WITH_KEY</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>3,</highlight></codeline>
+<codeline lineno="164" refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaac12d4807f7176b37d57be55268413813" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaac12d4807f7176b37d57be55268413813" kindref="member">AUTH_SECURITY_WPA_WITH_PASS_PHRASE</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>4,</highlight></codeline>
+<codeline lineno="165" refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa95df8350949565c8a5a0da39752bcfad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa95df8350949565c8a5a0da39752bcfad" kindref="member">AUTH_SECURITY_WPA2_WITH_KEY</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>5,</highlight></codeline>
+<codeline lineno="166" refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa3dc31a7e244142f9075d5ef44ae3d6d3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa3dc31a7e244142f9075d5ef44ae3d6d3" kindref="member">AUTH_SECURITY_WPA2_WITH_PASS_PHRASE</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>6,</highlight></codeline>
+<codeline lineno="167" refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaaa438cbb84f80a9d803e4c055bb6e162a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaaa438cbb84f80a9d803e4c055bb6e162a" kindref="member">AUTH_SECURITY_WPA_AUTO_WITH_KEY</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>7,</highlight></codeline>
+<codeline lineno="168" refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa0882bf43abaf50f08c2a526a41035854" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa0882bf43abaf50f08c2a526a41035854" kindref="member">AUTH_SECURITY_WPA_AUTO_WITH_PASS_PHRASE</ref><sp/>=<sp/>8,</highlight></codeline>
+<codeline lineno="169" refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa335745ae3c4682cf3e0663689766c4e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa335745ae3c4682cf3e0663689766c4e3" kindref="member">AUTH_SECURITY_WPS_PUSH_BUTTON</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>9,</highlight></codeline>
+<codeline lineno="170" refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaae90fef15bbb2cb1c0c0263fbabf3d921" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaae90fef15bbb2cb1c0c0263fbabf3d921" kindref="member">AUTH_SECURITY_WPS_PIN</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>10,</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172" refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa5f43b956ee6134254ba672bae69f1ed8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gab11336a15c7c926d133e400b5e2bdafa_1ggab11336a15c7c926d133e400b5e2bdafaa5f43b956ee6134254ba672bae69f1ed8" kindref="member">AUTH_MAX_SECURITY_TYPE</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>10</highlight></codeline>
+<codeline lineno="173"><highlight class="normal">}<sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga1b780a45059ec6871a224c0e465d6112_1ga1b780a45059ec6871a224c0e465d6112" kindref="member">AUTH_SECURITY_MODE</ref>;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175" refid="structwnic__cfg__ssid" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwnic__cfg__ssid" kindref="compound">wnic_cfg_ssid</ref><sp/>{</highlight></codeline>
+<codeline lineno="176" refid="structwnic__cfg__ssid_ae41fda564bc7328b574fa67f54b8a5dc_1ae41fda564bc7328b574fa67f54b8a5dc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwnic__cfg__ssid_ae41fda564bc7328b574fa67f54b8a5dc_1ae41fda564bc7328b574fa67f54b8a5dc" kindref="member">ssid</ref>[<ref refid="group__DEVICE__HAL__WNIC__MACROS_gac8d0693e13b81d99c27837619e30e1f1_1gac8d0693e13b81d99c27837619e30e1f1" kindref="member">WNIC_SSID_MAX_LEN</ref>];</highlight></codeline>
+<codeline lineno="177" refid="structwnic__cfg__ssid_a67b9ffb41e38616ca48beec953711789_1a67b9ffb41e38616ca48beec953711789" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwnic__cfg__ssid_a67b9ffb41e38616ca48beec953711789_1a67b9ffb41e38616ca48beec953711789" kindref="member">ssid_len</ref>;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">}<sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_gac637f4dafd2bff9801fe4ac1e60bf475_1gac637f4dafd2bff9801fe4ac1e60bf475" kindref="member">WNIC_CFG_SSID</ref>,<sp/>*<ref refid="group__DEVICE__HAL__WNIC__MACROS_ga3bd0e3bc90fa4005230ad36bb2cdb4c2_1ga3bd0e3bc90fa4005230ad36bb2cdb4c2" kindref="member">WNIC_CFG_SSID_PTR</ref>;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180" refid="unionwnic__ap__config" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="unionwnic__ap__config" kindref="compound">wnic_ap_config</ref><sp/>{</highlight></codeline>
+<codeline lineno="181" refid="unionwnic__ap__config_a649125a9b845e0f16b78dc4406d8048f_1a649125a9b845e0f16b78dc4406d8048f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="unionwnic__ap__config_a649125a9b845e0f16b78dc4406d8048f_1a649125a9b845e0f16b78dc4406d8048f" kindref="member">apConfig</ref>;</highlight></codeline>
+<codeline lineno="182" refid="structwnic__ap__config_1_1apcfg" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwnic__ap__config_1_1apcfg" kindref="compound">apcfg</ref><sp/>{</highlight></codeline>
+<codeline lineno="183" refid="structwnic__ap__config_1_1apcfg_a02268919fa8b11a81bfd8d0baf5dfc22_1a02268919fa8b11a81bfd8d0baf5dfc22" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwnic__ap__config_1_1apcfg_a02268919fa8b11a81bfd8d0baf5dfc22_1a02268919fa8b11a81bfd8d0baf5dfc22" kindref="member">ie</ref><sp/>:<sp/>1;</highlight></codeline>
+<codeline lineno="184" refid="structwnic__ap__config_1_1apcfg_a8af3c075e348117c5e5d2d0730a3606e_1a8af3c075e348117c5e5d2d0730a3606e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwnic__ap__config_1_1apcfg_a8af3c075e348117c5e5d2d0730a3606e_1a8af3c075e348117c5e5d2d0730a3606e" kindref="member">reserved</ref><sp/>:<sp/>3;</highlight></codeline>
+<codeline lineno="185" refid="structwnic__ap__config_1_1apcfg_a2169f47e2b56eb313736c433408e7fc6_1a2169f47e2b56eb313736c433408e7fc6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwnic__ap__config_1_1apcfg_a2169f47e2b56eb313736c433408e7fc6_1a2169f47e2b56eb313736c433408e7fc6" kindref="member">privacy</ref><sp/>:<sp/>1;</highlight></codeline>
+<codeline lineno="186" refid="structwnic__ap__config_1_1apcfg_a5a027b83b1a13fbde04a1c9e441e61c3_1a5a027b83b1a13fbde04a1c9e441e61c3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwnic__ap__config_1_1apcfg_a5a027b83b1a13fbde04a1c9e441e61c3_1a5a027b83b1a13fbde04a1c9e441e61c3" kindref="member">preamble</ref><sp/>:<sp/>1;</highlight></codeline>
+<codeline lineno="187" refid="structwnic__ap__config_1_1apcfg_a4b07732a470d8d14ec07a77aaba4939a_1a4b07732a470d8d14ec07a77aaba4939a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwnic__ap__config_1_1apcfg_a4b07732a470d8d14ec07a77aaba4939a_1a4b07732a470d8d14ec07a77aaba4939a" kindref="member">wpa</ref><sp/>:<sp/>1;</highlight></codeline>
+<codeline lineno="188" refid="structwnic__ap__config_1_1apcfg_a34547cc694273d726599df66ca4b0184_1a34547cc694273d726599df66ca4b0184" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwnic__ap__config_1_1apcfg_a34547cc694273d726599df66ca4b0184_1a34547cc694273d726599df66ca4b0184" kindref="member">wpa2</ref><sp/>:<sp/>1;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><ref refid="unionwnic__ap__config_a3f6aa1c477b8de9be309e23efde0e7ef_1a3f6aa1c477b8de9be309e23efde0e7ef" kindref="member">ap_cfg</ref>;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal">}<sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga78894682223143a152a0e3403a7bf986_1ga78894682223143a152a0e3403a7bf986" kindref="member">WNIC_AP_CONFIG</ref>;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192" refid="structwnic__auth__key" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwnic__auth__key" kindref="compound">wnic_auth_key</ref><sp/>{</highlight></codeline>
+<codeline lineno="193" refid="structwnic__auth__key_aec90d3f0a43021a449a37446e53cd7ab_1aec90d3f0a43021a449a37446e53cd7ab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*<ref refid="structwnic__auth__key_aec90d3f0a43021a449a37446e53cd7ab_1aec90d3f0a43021a449a37446e53cd7ab" kindref="member">key</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="194" refid="structwnic__auth__key_ae5b5c4b32f32eca9118c42dc3322c2a5_1ae5b5c4b32f32eca9118c42dc3322c2a5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwnic__auth__key_ae5b5c4b32f32eca9118c42dc3322c2a5_1ae5b5c4b32f32eca9118c42dc3322c2a5" kindref="member">key_len</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="195" refid="structwnic__auth__key_af262674bb1618d4c9ebc52a8f7412a46_1af262674bb1618d4c9ebc52a8f7412a46" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwnic__auth__key_af262674bb1618d4c9ebc52a8f7412a46_1af262674bb1618d4c9ebc52a8f7412a46" kindref="member">key_idx</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="196"><highlight class="normal">}<sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga41b7fa993540982c1b482f7baf59eeb6_1ga41b7fa993540982c1b482f7baf59eeb6" kindref="member">WNIC_AUTH_KEY</ref>,<sp/>*<ref refid="group__DEVICE__HAL__WNIC__MACROS_gaf89a889e316fb0aac4bd94539b65db4c_1gaf89a889e316fb0aac4bd94539b65db4c" kindref="member">WNIC_AUTH_KEY_PTR</ref>;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198" refid="structwnic__scan__result" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwnic__scan__result" kindref="compound">wnic_scan_result</ref><sp/>{</highlight></codeline>
+<codeline lineno="199" refid="structwnic__scan__result_a88eabf09e8a409c02a8ca5cb5b875b58_1a88eabf09e8a409c02a8ca5cb5b875b58" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwnic__scan__result_a88eabf09e8a409c02a8ca5cb5b875b58_1a88eabf09e8a409c02a8ca5cb5b875b58" kindref="member">bssid</ref>[<ref refid="group__DEVICE__HAL__WNIC__MACROS_ga992cd51ef1f8439c0e3335ad39790a6d_1ga992cd51ef1f8439c0e3335ad39790a6d" kindref="member">WNIC_BSSID_MAX_LEN</ref>];<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="200" refid="structwnic__scan__result_ab64a32a2fbe01890994613224d08cd60_1ab64a32a2fbe01890994613224d08cd60" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwnic__scan__result_ab64a32a2fbe01890994613224d08cd60_1ab64a32a2fbe01890994613224d08cd60" kindref="member">ssid</ref>[<ref refid="group__DEVICE__HAL__WNIC__MACROS_gac8d0693e13b81d99c27837619e30e1f1_1gac8d0693e13b81d99c27837619e30e1f1" kindref="member">WNIC_SSID_MAX_LEN</ref>];<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="201" refid="structwnic__scan__result_acd24cac059ae9ba908bf82309b4c3ce6_1acd24cac059ae9ba908bf82309b4c3ce6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwnic__scan__result_acd24cac059ae9ba908bf82309b4c3ce6_1acd24cac059ae9ba908bf82309b4c3ce6" kindref="member">ssidlen</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="225" refid="structwnic__scan__result_abc4ffc33741c9cb27960bf28755aafce_1abc4ffc33741c9cb27960bf28755aafce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="unionwnic__ap__config" kindref="compound">WNIC_AP_CONFIG</ref><sp/><ref refid="structwnic__scan__result_abc4ffc33741c9cb27960bf28755aafce_1abc4ffc33741c9cb27960bf28755aafce" kindref="member">ap_config</ref>;</highlight></codeline>
+<codeline lineno="226" refid="structwnic__scan__result_a23a085acd05f78569afdab776d1e1f4b_1a23a085acd05f78569afdab776d1e1f4b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwnic__scan__result_a23a085acd05f78569afdab776d1e1f4b_1a23a085acd05f78569afdab776d1e1f4b" kindref="member">rssi</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="227" refid="structwnic__scan__result_a8e0cde05c42c5294c2c194aaaf5c194f_1a8e0cde05c42c5294c2c194aaaf5c194f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwnic__scan__result_a8e0cde05c42c5294c2c194aaaf5c194f_1a8e0cde05c42c5294c2c194aaaf5c194f" kindref="member">bsstype</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="228" refid="structwnic__scan__result_add8130a1480742f1a89ff7262a39c0f7_1add8130a1480742f1a89ff7262a39c0f7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwnic__scan__result_add8130a1480742f1a89ff7262a39c0f7_1add8130a1480742f1a89ff7262a39c0f7" kindref="member">channel</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="229"><highlight class="normal">}<sp/><ref refid="group__DEVICE__HAL__WNIC__MACROS_ga14a3f8c5a5fea77db04f3a7ff2648614_1ga14a3f8c5a5fea77db04f3a7ff2648614" kindref="member">WNIC_SCAN_RESULT</ref>,<sp/>*<ref refid="group__DEVICE__HAL__WNIC__MACROS_gaa7a4336b8daa3482df1d6a6de16cfe5d_1gaa7a4336b8daa3482df1d6a6de16cfe5d" kindref="member">WNIC_SCAN_RESULT_PTR</ref>;</highlight></codeline>
+<codeline lineno="241" refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_gac35eb119dfb9902e12513c52cc6cb120_1gac35eb119dfb9902e12513c52cc6cb120" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structdev__wnic" kindref="compound">dev_wnic</ref><sp/><ref refid="structdev__wnic" kindref="compound">DEV_WNIC</ref>,<sp/>*<ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_gac35eb119dfb9902e12513c52cc6cb120_1gac35eb119dfb9902e12513c52cc6cb120" kindref="member">DEV_WNIC_PTR</ref>;</highlight></codeline>
+<codeline lineno="242" refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_gab5f0d17dd7fd48476196b3c44ce40422_1gab5f0d17dd7fd48476196b3c44ce40422" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>int32_t<sp/>(*<ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_gab5f0d17dd7fd48476196b3c44ce40422_1gab5f0d17dd7fd48476196b3c44ce40422" kindref="member">ON_WNIC_OPS</ref>)(<ref refid="structdev__wnic" kindref="compound">DEV_WNIC</ref><sp/>*wnic_ptr);</highlight></codeline>
+<codeline lineno="249" refid="structdev__wnic__on__ops" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structdev__wnic__on__ops" kindref="compound">dev_wnic_on_ops</ref><sp/>{</highlight></codeline>
+<codeline lineno="250" refid="structdev__wnic__on__ops_ae7c85b0086215b68fa78fcff296cbb6f_1ae7c85b0086215b68fa78fcff296cbb6f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic__on__ops_ae7c85b0086215b68fa78fcff296cbb6f_1ae7c85b0086215b68fa78fcff296cbb6f" kindref="member">on_init_success</ref>)(<ref refid="structdev__wnic" kindref="compound">DEV_WNIC</ref><sp/>*wnic_ptr);</highlight></codeline>
+<codeline lineno="251" refid="structdev__wnic__on__ops_a49c0380594e209e9910e7d19fb375958_1a49c0380594e209e9910e7d19fb375958" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic__on__ops_a49c0380594e209e9910e7d19fb375958_1a49c0380594e209e9910e7d19fb375958" kindref="member">on_init_fail</ref>)(<ref refid="structdev__wnic" kindref="compound">DEV_WNIC</ref><sp/>*wnic_ptr);</highlight></codeline>
+<codeline lineno="252" refid="structdev__wnic__on__ops_a9bb4d8f6496d3e0558abc5a5719b9dd4_1a9bb4d8f6496d3e0558abc5a5719b9dd4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic__on__ops_a9bb4d8f6496d3e0558abc5a5719b9dd4_1a9bb4d8f6496d3e0558abc5a5719b9dd4" kindref="member">on_connected</ref>)(<ref refid="structdev__wnic" kindref="compound">DEV_WNIC</ref><sp/>*wnic_ptr);</highlight></codeline>
+<codeline lineno="253" refid="structdev__wnic__on__ops_a1d5103caaa63e79c0922d71f0d2ada5a_1a1d5103caaa63e79c0922d71f0d2ada5a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic__on__ops_a1d5103caaa63e79c0922d71f0d2ada5a_1a1d5103caaa63e79c0922d71f0d2ada5a" kindref="member">on_disconnected</ref>)(<ref refid="structdev__wnic" kindref="compound">DEV_WNIC</ref><sp/>*wnic_ptr);</highlight></codeline>
+<codeline lineno="254" refid="structdev__wnic__on__ops_a9bc2384392f6cc282fb4e3bd795e7ab8_1a9bc2384392f6cc282fb4e3bd795e7ab8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic__on__ops_a9bc2384392f6cc282fb4e3bd795e7ab8_1a9bc2384392f6cc282fb4e3bd795e7ab8" kindref="member">on_mac_updated</ref>)(<ref refid="structdev__wnic" kindref="compound">DEV_WNIC</ref><sp/>*wnic_ptr);</highlight></codeline>
+<codeline lineno="255" refid="structdev__wnic__on__ops_a308974963d88b60bc16c469758edd3c0_1a308974963d88b60bc16c469758edd3c0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic__on__ops_a308974963d88b60bc16c469758edd3c0_1a308974963d88b60bc16c469758edd3c0" kindref="member">on_scan_finished</ref>)(<ref refid="structdev__wnic" kindref="compound">DEV_WNIC</ref><sp/>*wnic_ptr);</highlight></codeline>
+<codeline lineno="256" refid="structdev__wnic__on__ops_aaf56a526e1630809349cd7d4aa85ebf7_1aaf56a526e1630809349cd7d4aa85ebf7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic__on__ops_aaf56a526e1630809349cd7d4aa85ebf7_1aaf56a526e1630809349cd7d4aa85ebf7" kindref="member">on_rxdata_comes</ref>)(<ref refid="structdev__wnic" kindref="compound">DEV_WNIC</ref><sp/>*wnic_ptr);</highlight></codeline>
+<codeline lineno="257" refid="structdev__wnic__on__ops_a9371a5c9860fa565b9d967bde51e81e8_1a9371a5c9860fa565b9d967bde51e81e8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic__on__ops_a9371a5c9860fa565b9d967bde51e81e8_1a9371a5c9860fa565b9d967bde51e81e8" kindref="member">on_dev_asserted</ref>)(<ref refid="structdev__wnic" kindref="compound">DEV_WNIC</ref><sp/>*wnic_ptr);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal">}<sp/><ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_gaefac53a14f230c7cd6526817a2f9befb_1gaefac53a14f230c7cd6526817a2f9befb" kindref="member">DEV_WNIC_ON_OPS</ref>,<sp/>*<ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_ga1c5fb841775d05f59f42c49439fff3e7_1ga1c5fb841775d05f59f42c49439fff3e7" kindref="member">DEV_WNIC_ON_OPS_PTR</ref>;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263" refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_gaa4885d48831865ce2c35d3de3e20f528_1gaa4885d48831865ce2c35d3de3e20f528" refkind="member"><highlight class="preprocessor">#define<sp/>WNIC_SET_ON_INIT_SUCCESS(wnic_ptr,<sp/>on_ops)<sp/>\</highlight></codeline>
+<codeline lineno="264"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>((DEV_WNIC<sp/>*)wnic_ptr)-&gt;wnic_on_ops.on_init_success<sp/>=<sp/>(ON_WNIC_OPS<sp/>)(on_ops)</highlight></codeline>
+<codeline lineno="265"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266" refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_ga0ccd0db347b2a33736152d0893b42e98_1ga0ccd0db347b2a33736152d0893b42e98" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WNIC_SET_ON_INIT_FAIL(wnic_ptr,<sp/>on_ops)<sp/>\</highlight></codeline>
+<codeline lineno="267"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>((DEV_WNIC<sp/>*)wnic_ptr)-&gt;wnic_on_ops.on_init_fail<sp/>=<sp/>(ON_WNIC_OPS<sp/>)(on_ops)</highlight></codeline>
+<codeline lineno="268"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="269" refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_ga48a6f4114becd91bb59de73ea99075ab_1ga48a6f4114becd91bb59de73ea99075ab" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WNIC_SET_ON_CONNECTED(wnic_ptr,<sp/>on_ops)<sp/>\</highlight></codeline>
+<codeline lineno="270"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>((DEV_WNIC<sp/>*)wnic_ptr)-&gt;wnic_on_ops.on_connected<sp/>=<sp/>(ON_WNIC_OPS<sp/>)(on_ops)</highlight></codeline>
+<codeline lineno="271"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="272" refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_gaff6f43710ba02dc3271236e6f240553c_1gaff6f43710ba02dc3271236e6f240553c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WNIC_SET_ON_DISCONNECTED(wnic_ptr,<sp/>on_ops)<sp/>\</highlight></codeline>
+<codeline lineno="273"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>((DEV_WNIC<sp/>*)wnic_ptr)-&gt;wnic_on_ops.on_disconnected<sp/>=<sp/>(ON_WNIC_OPS<sp/>)(on_ops)</highlight></codeline>
+<codeline lineno="274"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="275" refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_ga8aedacca47209d6fee674140a60fcac8_1ga8aedacca47209d6fee674140a60fcac8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WNIC_SET_ON_MAC_UPDATED(wnic_ptr,<sp/>on_ops)<sp/>\</highlight></codeline>
+<codeline lineno="276"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>((DEV_WNIC<sp/>*)wnic_ptr)-&gt;wnic_on_ops.on_mac_updated<sp/>=<sp/>(ON_WNIC_OPS<sp/>)(on_ops)</highlight></codeline>
+<codeline lineno="277"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="278" refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_gaf24bc3a78deae657922bcebf02e25198_1gaf24bc3a78deae657922bcebf02e25198" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WNIC_SET_ON_SCAN_FINISHED(wnic_ptr,<sp/>on_ops)<sp/>\</highlight></codeline>
+<codeline lineno="279"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>((DEV_WNIC<sp/>*)wnic_ptr)-&gt;wnic_on_ops.on_scan_finished<sp/>=<sp/>(ON_WNIC_OPS<sp/>)(on_ops)</highlight></codeline>
+<codeline lineno="280"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281" refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_ga8611ea8b19ecd050911098b1f7a146b4_1ga8611ea8b19ecd050911098b1f7a146b4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WNIC_SET_ON_RXDATA_COMES(wnic_ptr,<sp/>on_ops)<sp/>\</highlight></codeline>
+<codeline lineno="282"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>((DEV_WNIC<sp/>*)wnic_ptr)-&gt;wnic_on_ops.on_rxdata_comes<sp/>=<sp/>(ON_WNIC_OPS<sp/>)(on_ops)</highlight></codeline>
+<codeline lineno="283"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="284" refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_gaf4f76884a28236ccb45718788bbbb51c_1gaf4f76884a28236ccb45718788bbbb51c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WNIC_SET_ON_DEV_ASSERTED(wnic_ptr,<sp/>on_ops)<sp/>\</highlight></codeline>
+<codeline lineno="285"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>((DEV_WNIC<sp/>*)wnic_ptr)-&gt;wnic_on_ops.on_dev_asserted<sp/>=<sp/>(ON_WNIC_OPS<sp/>)(on_ops)</highlight></codeline>
+<codeline lineno="286"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="292" refid="structdev__wnic__info" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structdev__wnic__info" kindref="compound">dev_wnic_info</ref><sp/>{</highlight></codeline>
+<codeline lineno="293" refid="structdev__wnic__info_a619fef0e14806238546e0f3f5e0a34f2_1a619fef0e14806238546e0f3f5e0a34f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structdev__wnic__info_a619fef0e14806238546e0f3f5e0a34f2_1a619fef0e14806238546e0f3f5e0a34f2" kindref="member">name</ref>[<ref refid="group__DEVICE__HAL__WNIC__MACROS_gaf72d385c0cb13512b1025e2750ac2c22_1gaf72d385c0cb13512b1025e2750ac2c22" kindref="member">WNIC_NAME_LEN</ref>];<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="294" refid="structdev__wnic__info_abc2eb439ee4f387ff383bc67b91c99ed_1abc2eb439ee4f387ff383bc67b91c99ed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structdev__wnic__info_abc2eb439ee4f387ff383bc67b91c99ed_1abc2eb439ee4f387ff383bc67b91c99ed" kindref="member">ifname</ref>[<ref refid="group__DEVICE__HAL__WNIC__MACROS_gaf44f41d2b9ad0a42f025c6eec0e53a4e_1gaf44f41d2b9ad0a42f025c6eec0e53a4e" kindref="member">WNIC_IF_NAME_LEN</ref>];<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="295" refid="structdev__wnic__info_a3b18a25028f286c0713f7648135c5402_1a3b18a25028f286c0713f7648135c5402" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwnic__cfg__ssid" kindref="compound">WNIC_CFG_SSID</ref><sp/><ref refid="structdev__wnic__info_a3b18a25028f286c0713f7648135c5402_1a3b18a25028f286c0713f7648135c5402" kindref="member">ssid</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="296" refid="structdev__wnic__info_a54bc3fca4bc2ce2294107dd266e84131_1a54bc3fca4bc2ce2294107dd266e84131" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<ref refid="structdev__wnic__info_a54bc3fca4bc2ce2294107dd266e84131_1a54bc3fca4bc2ce2294107dd266e84131" kindref="member">ctrl</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="297" refid="structdev__wnic__info_aeef0484506fbbf880c4d0e2d427414bc_1aeef0484506fbbf880c4d0e2d427414bc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<ref refid="structdev__wnic__info_aeef0484506fbbf880c4d0e2d427414bc_1aeef0484506fbbf880c4d0e2d427414bc" kindref="member">extra</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="298" refid="structdev__wnic__info_a8540acbf5a5ddcccf4b980e6d0f13f23_1a8540acbf5a5ddcccf4b980e6d0f13f23" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structdev__wnic__info_a8540acbf5a5ddcccf4b980e6d0f13f23_1a8540acbf5a5ddcccf4b980e6d0f13f23" kindref="member">opn_flg</ref><sp/>:<sp/>1;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="299" refid="structdev__wnic__info_ad956dfea5ed1fb1890be924039887793_1ad956dfea5ed1fb1890be924039887793" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structdev__wnic__info_ad956dfea5ed1fb1890be924039887793_1ad956dfea5ed1fb1890be924039887793" kindref="member">err_flg</ref><sp/>:<sp/>1;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="300" refid="structdev__wnic__info_a81085be37351f8ca36a0a5c9361362b8_1a81085be37351f8ca36a0a5c9361362b8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structdev__wnic__info_a81085be37351f8ca36a0a5c9361362b8_1a81085be37351f8ca36a0a5c9361362b8" kindref="member">network_type</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="301" refid="structdev__wnic__info_ae8e985f8e237e05452df9f1375428f17_1ae8e985f8e237e05452df9f1375428f17" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structdev__wnic__info_ae8e985f8e237e05452df9f1375428f17_1ae8e985f8e237e05452df9f1375428f17" kindref="member">init_status</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="302" refid="structdev__wnic__info_a18841715e4c445d1498173b3a9f0b71a_1a18841715e4c445d1498173b3a9f0b71a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structdev__wnic__info_a18841715e4c445d1498173b3a9f0b71a_1a18841715e4c445d1498173b3a9f0b71a" kindref="member">conn_status</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="303" refid="structdev__wnic__info_ad52382ee7bf26cae60a11414b1e52ab4_1ad52382ee7bf26cae60a11414b1e52ab4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structdev__wnic__info_ad52382ee7bf26cae60a11414b1e52ab4_1ad52382ee7bf26cae60a11414b1e52ab4" kindref="member">conn_type</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="304" refid="structdev__wnic__info_a927a69da74cb67ec296733e91b6c15e3_1a927a69da74cb67ec296733e91b6c15e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structdev__wnic__info_a927a69da74cb67ec296733e91b6c15e3_1a927a69da74cb67ec296733e91b6c15e3" kindref="member">mac_status</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="305" refid="structdev__wnic__info_a3f3a0fc5c459d12a535c9e64076d8f0b_1a3f3a0fc5c459d12a535c9e64076d8f0b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structdev__wnic__info_a3f3a0fc5c459d12a535c9e64076d8f0b_1a3f3a0fc5c459d12a535c9e64076d8f0b" kindref="member">scan_status</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="306" refid="structdev__wnic__info_a47c20c5df91cf79ee09abb48259621fc_1a47c20c5df91cf79ee09abb48259621fc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structdev__wnic__info_a47c20c5df91cf79ee09abb48259621fc_1a47c20c5df91cf79ee09abb48259621fc" kindref="member">scan_results</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="307" refid="structdev__wnic__info_aead254b033c31d4083e45b85d8491498_1aead254b033c31d4083e45b85d8491498" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structdev__wnic__info_aead254b033c31d4083e45b85d8491498_1aead254b033c31d4083e45b85d8491498" kindref="member">mac_addr</ref>[<ref refid="group__DEVICE__HAL__WNIC__MACROS_gad31392abb15670470441f4fdbe8936cc_1gad31392abb15670470441f4fdbe8936cc" kindref="member">WNIC_HDR_LEN</ref>];<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="308" refid="structdev__wnic__info_a0482d4e497510b10f79f7c1be32af4ab_1a0482d4e497510b10f79f7c1be32af4ab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structdev__wnic__info_a0482d4e497510b10f79f7c1be32af4ab_1a0482d4e497510b10f79f7c1be32af4ab" kindref="member">busy_status</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="309" refid="structdev__wnic__info_a9edee3bf1242d83605c77d08bd3e3235_1a9edee3bf1242d83605c77d08bd3e3235" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structdev__wnic__info_a9edee3bf1242d83605c77d08bd3e3235_1a9edee3bf1242d83605c77d08bd3e3235" kindref="member">tx_frame_cnt</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="310" refid="structdev__wnic__info_aafaa8434f4aa89a49742c7a26084f9b6_1aafaa8434f4aa89a49742c7a26084f9b6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structdev__wnic__info_aafaa8434f4aa89a49742c7a26084f9b6_1aafaa8434f4aa89a49742c7a26084f9b6" kindref="member">tx_speed</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="311" refid="structdev__wnic__info_abfd2f13e8d21dbc9ce38e3b52a0a9c4c_1abfd2f13e8d21dbc9ce38e3b52a0a9c4c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structdev__wnic__info_abfd2f13e8d21dbc9ce38e3b52a0a9c4c_1abfd2f13e8d21dbc9ce38e3b52a0a9c4c" kindref="member">tx_pending</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="312" refid="structdev__wnic__info_a218f41336d89dbe60a19ba81fcea4a5f_1a218f41336d89dbe60a19ba81fcea4a5f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structdev__wnic__info_a218f41336d89dbe60a19ba81fcea4a5f_1a218f41336d89dbe60a19ba81fcea4a5f" kindref="member">rx_frame_cnt</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="313" refid="structdev__wnic__info_a33ca4b7c5e85c07b2033f0d546e203bf_1a33ca4b7c5e85c07b2033f0d546e203bf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structdev__wnic__info_a33ca4b7c5e85c07b2033f0d546e203bf_1a33ca4b7c5e85c07b2033f0d546e203bf" kindref="member">rx_speed</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="314" refid="structdev__wnic__info_a59dc94c6e6875bf730c6307f7d6f7a6f_1a59dc94c6e6875bf730c6307f7d6f7a6f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structdev__wnic__info_a59dc94c6e6875bf730c6307f7d6f7a6f_1a59dc94c6e6875bf730c6307f7d6f7a6f" kindref="member">rx_pending</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="315" refid="structdev__wnic__info_a4ff4703269b5603af0fe386eb7a51d71_1a4ff4703269b5603af0fe386eb7a51d71" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structdev__wnic__info_a4ff4703269b5603af0fe386eb7a51d71_1a4ff4703269b5603af0fe386eb7a51d71" kindref="member">power_status</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="316"><highlight class="normal">}<sp/><ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_gaba6c69016d03043288ad39b93fd96d25_1gaba6c69016d03043288ad39b93fd96d25" kindref="member">DEV_WNIC_INFO</ref>,<sp/>*<ref refid="group__DEVICE__HAL__WNIC__DEVSTRUCT_gaf38034b6c29e24438d48e8125c8c2600_1gaf38034b6c29e24438d48e8125c8c2600" kindref="member">DEV_WNIC_INFO_PTR</ref>;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight></codeline>
+<codeline lineno="324" refid="structdev__wnic" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structdev__wnic" kindref="compound">dev_wnic</ref><sp/>{</highlight></codeline>
+<codeline lineno="325" refid="structdev__wnic_af7f763cbd12dc36731707bb46ca1f7f4_1af7f763cbd12dc36731707bb46ca1f7f4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structdev__wnic__info" kindref="compound">DEV_WNIC_INFO</ref><sp/><ref refid="structdev__wnic_af7f763cbd12dc36731707bb46ca1f7f4_1af7f763cbd12dc36731707bb46ca1f7f4" kindref="member">wnic_info</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="326" refid="structdev__wnic_a1077f20286f70ab27c37284704a1f6ba_1a1077f20286f70ab27c37284704a1f6ba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structdev__wnic__on__ops" kindref="compound">DEV_WNIC_ON_OPS</ref><sp/><ref refid="structdev__wnic_a1077f20286f70ab27c37284704a1f6ba_1a1077f20286f70ab27c37284704a1f6ba" kindref="member">wnic_on_ops</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="327" refid="structdev__wnic_a0253a38c4916fa13163d092b1945e477_1a0253a38c4916fa13163d092b1945e477" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_a0253a38c4916fa13163d092b1945e477_1a0253a38c4916fa13163d092b1945e477" kindref="member">wnic_get_info</ref>)<sp/>(uint32_t<sp/>cmd,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*rinfo);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="328" refid="structdev__wnic_af14b3c96ea64f865b7acf2707d478242_1af14b3c96ea64f865b7acf2707d478242" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_af14b3c96ea64f865b7acf2707d478242_1af14b3c96ea64f865b7acf2707d478242" kindref="member">wnic_control</ref>)<sp/>(uint32_t<sp/>ctrl_cmd,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*param);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="329" refid="structdev__wnic_a777e4c1df90d66387707bd6fb6691a63_1a777e4c1df90d66387707bd6fb6691a63" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_a777e4c1df90d66387707bd6fb6691a63_1a777e4c1df90d66387707bd6fb6691a63" kindref="member">wnic_init</ref>)<sp/>(uint32_t<sp/>network_type);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="330" refid="structdev__wnic_a4afd84c6f7dd1f35a4dea0b8e3f7f677_1a4afd84c6f7dd1f35a4dea0b8e3f7f677" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_a4afd84c6f7dd1f35a4dea0b8e3f7f677_1a4afd84c6f7dd1f35a4dea0b8e3f7f677" kindref="member">poll_init_status</ref>)<sp/>(void);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="331" refid="structdev__wnic_aa1c896b5634950d8773e87bc516c96fe_1aa1c896b5634950d8773e87bc516c96fe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_aa1c896b5634950d8773e87bc516c96fe_1aa1c896b5634950d8773e87bc516c96fe" kindref="member">poll_busy_status</ref>)<sp/>(void);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="332" refid="structdev__wnic_af4f1b139659e7ef865c838cc3f0947b8_1af4f1b139659e7ef865c838cc3f0947b8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_af4f1b139659e7ef865c838cc3f0947b8_1af4f1b139659e7ef865c838cc3f0947b8" kindref="member">set_network_type</ref>)<sp/>(uint32_t<sp/>type);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="333" refid="structdev__wnic_ad6695099e2cbf7c74432feca799bbe74_1ad6695099e2cbf7c74432feca799bbe74" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_ad6695099e2cbf7c74432feca799bbe74_1ad6695099e2cbf7c74432feca799bbe74" kindref="member">set_macaddr</ref>)<sp/>(uint8_t<sp/>*mac);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="334" refid="structdev__wnic_ac5b66354759860280141897638cf960c_1ac5b66354759860280141897638cf960c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_ac5b66354759860280141897638cf960c_1ac5b66354759860280141897638cf960c" kindref="member">get_macaddr</ref>)<sp/>(uint8_t<sp/>*mac);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="335" refid="structdev__wnic_a5dd0bffad4b6e332191b0439bd7449d8_1a5dd0bffad4b6e332191b0439bd7449d8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_a5dd0bffad4b6e332191b0439bd7449d8_1a5dd0bffad4b6e332191b0439bd7449d8" kindref="member">start_scan</ref>)<sp/>(void);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="336" refid="structdev__wnic_a8005386dd2745adf69559909527f0501_1a8005386dd2745adf69559909527f0501" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_a8005386dd2745adf69559909527f0501_1a8005386dd2745adf69559909527f0501" kindref="member">stop_scan</ref>)<sp/>(void);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="337" refid="structdev__wnic_a852763d47bffd419c79d6ba105212fa9_1a852763d47bffd419c79d6ba105212fa9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_a852763d47bffd419c79d6ba105212fa9_1a852763d47bffd419c79d6ba105212fa9" kindref="member">poll_scan_status</ref>)<sp/>(void);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="338" refid="structdev__wnic_ab0fed9e2278ac060ffc01366288a73e3_1ab0fed9e2278ac060ffc01366288a73e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_ab0fed9e2278ac060ffc01366288a73e3_1ab0fed9e2278ac060ffc01366288a73e3" kindref="member">get_scan_result_cnt</ref>)<sp/>(void);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="339" refid="structdev__wnic_ad40e29ab395b3c7c6adfc39da6ee8c96_1ad40e29ab395b3c7c6adfc39da6ee8c96" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_ad40e29ab395b3c7c6adfc39da6ee8c96_1ad40e29ab395b3c7c6adfc39da6ee8c96" kindref="member">get_scan_result</ref>)<sp/>(uint32_t<sp/>index,<sp/><ref refid="structwnic__scan__result" kindref="compound">WNIC_SCAN_RESULT</ref><sp/>*result);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="340" refid="structdev__wnic_a5f2e5464b2ff99060d9af1278449f346_1a5f2e5464b2ff99060d9af1278449f346" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_a5f2e5464b2ff99060d9af1278449f346_1a5f2e5464b2ff99060d9af1278449f346" kindref="member">wnic_connect</ref>)<sp/>(uint32_t<sp/>security,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*ssid,<sp/><ref refid="structwnic__auth__key" kindref="compound">WNIC_AUTH_KEY</ref><sp/>*key);<sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>connect<sp/>to<sp/>an<sp/>network<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="341" refid="structdev__wnic_a7c2edc48a9df1e87abec944a02db0b72_1a7c2edc48a9df1e87abec944a02db0b72" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_a7c2edc48a9df1e87abec944a02db0b72_1a7c2edc48a9df1e87abec944a02db0b72" kindref="member">poll_conn_status</ref>)<sp/>(void);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="342" refid="structdev__wnic_a41e9deabe10c26df933f453936799a9f_1a41e9deabe10c26df933f453936799a9f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_a41e9deabe10c26df933f453936799a9f_1a41e9deabe10c26df933f453936799a9f" kindref="member">wnic_disconnect</ref>)<sp/>(void);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="343" refid="structdev__wnic_a47054ca712cef2adf5a4d38d8e3a5cce_1a47054ca712cef2adf5a4d38d8e3a5cce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_a47054ca712cef2adf5a4d38d8e3a5cce_1a47054ca712cef2adf5a4d38d8e3a5cce" kindref="member">prepare_tx</ref>)<sp/>(uint32_t<sp/>tx_len);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="344" refid="structdev__wnic_abd3b3af59fd9226237159bd2dc79eb2c_1abd3b3af59fd9226237159bd2dc79eb2c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_abd3b3af59fd9226237159bd2dc79eb2c_1abd3b3af59fd9226237159bd2dc79eb2c" kindref="member">add_tx_data</ref>)<sp/>(uint8_t<sp/>*p_buf,<sp/>uint32_t<sp/>len);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="345" refid="structdev__wnic_add8c0d7908623d71af6b7ba461e8ed27_1add8c0d7908623d71af6b7ba461e8ed27" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_add8c0d7908623d71af6b7ba461e8ed27_1add8c0d7908623d71af6b7ba461e8ed27" kindref="member">commit_tx</ref>)<sp/>(uint32_t<sp/>len);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="346" refid="structdev__wnic_a1cd50ac28c732f8593a1754038502518_1a1cd50ac28c732f8593a1754038502518" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_a1cd50ac28c732f8593a1754038502518_1a1cd50ac28c732f8593a1754038502518" kindref="member">prepare_rx</ref>)<sp/>(void);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="347" refid="structdev__wnic_a2143baf1c09c1f072ea558bca46bc1ca_1a2143baf1c09c1f072ea558bca46bc1ca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_a2143baf1c09c1f072ea558bca46bc1ca_1a2143baf1c09c1f072ea558bca46bc1ca" kindref="member">get_rx_data</ref>)<sp/>(uint8_t<sp/>*p_buf,<sp/>uint32_t<sp/>len);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="348" refid="structdev__wnic_a080ed3e1d6da3301aeb8e4d68c582eed_1a080ed3e1d6da3301aeb8e4d68c582eed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_a080ed3e1d6da3301aeb8e4d68c582eed_1a080ed3e1d6da3301aeb8e4d68c582eed" kindref="member">accept_rx</ref>)<sp/>(void);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="349" refid="structdev__wnic_af8396b93c61e16e6141ff7568d619877_1af8396b93c61e16e6141ff7568d619877" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_af8396b93c61e16e6141ff7568d619877_1af8396b93c61e16e6141ff7568d619877" kindref="member">config_power_mode</ref>)<sp/>(int32_t<sp/>power_mode);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="350" refid="structdev__wnic_afca31d056eccaa148cf17fa13ef9357b_1afca31d056eccaa148cf17fa13ef9357b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_afca31d056eccaa148cf17fa13ef9357b_1afca31d056eccaa148cf17fa13ef9357b" kindref="member">poll_power_mode</ref>)<sp/>(void);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="351" refid="structdev__wnic_a1242b0ee806c0c31712b1f337152b5e8_1a1242b0ee806c0c31712b1f337152b5e8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>(*<ref refid="structdev__wnic_a1242b0ee806c0c31712b1f337152b5e8_1a1242b0ee806c0c31712b1f337152b5e8" kindref="member">wnic_reset</ref>)<sp/>(void);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="352" refid="structdev__wnic_a64b9373e298359b770fbbe9c52ea54a7_1a64b9373e298359b770fbbe9c52ea54a7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>(*<ref refid="structdev__wnic_a64b9373e298359b770fbbe9c52ea54a7_1a64b9373e298359b770fbbe9c52ea54a7" kindref="member">period_process</ref>)<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ptr);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="353"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="356"><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="357"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="359"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="368"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>DEV_WNIC_PTR<sp/><ref refid="group__DEVICE__HAL__WNIC_ga4ea6fc486b6808c2c88e8116dde30a05_1ga4ea6fc486b6808c2c88e8116dde30a05" kindref="member">wnic_get_dev</ref>(int32_t<sp/>wnic_id);</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="371"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="373"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="375"><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_DEVICE_HAL_WNIC_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_wnic.h"/>
+  </compounddef>
+</doxygen>

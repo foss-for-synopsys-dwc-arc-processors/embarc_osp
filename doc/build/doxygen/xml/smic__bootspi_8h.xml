@@ -2,97 +2,146 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="smic__bootspi_8h" kind="file">
     <compoundname>smic_bootspi.h</compoundname>
-    <includes local="yes">arc/arc_exception.h</includes>
-    <includedby refid="iotdk_2drivers_2flash__obj_2flash__obj_8c" local="yes">flash_obj.c</includedby>
-    <includedby refid="smic__bootspi_8c" local="yes">smic_bootspi.c</includedby>
-    <includedby refid="iotdk_8h" local="yes">iotdk.h</includedby>
+    <includes refid="arc__exception_8h" local="yes">arc/arc_exception.h</includes>
+    <includedby refid="iotdk_2drivers_2flash__obj_2flash__obj_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/flash_obj/flash_obj.c</includedby>
+    <includedby refid="smic__bootspi_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.c</includedby>
+    <includedby refid="iotdk_8h" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/iotdk.h</includedby>
     <incdepgraph>
-      <node id="3978">
-        <label>arc/arc_exception.h</label>
+      <node id="3295">
+        <label>stdbool.h</label>
       </node>
-      <node id="3977">
-        <label>smic_bootspi.h</label>
-        <link refid="smic_bootspi.h"/>
-        <childnode refid="3978" relation="include">
+      <node id="3296">
+        <label>arc/arc.h</label>
+        <link refid="arc_8h"/>
+        <childnode refid="3297" relation="include">
         </childnode>
+      </node>
+      <node id="3298">
+        <label>arc/arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="3291" relation="include">
+        </childnode>
+        <childnode refid="3296" relation="include">
+        </childnode>
+      </node>
+      <node id="3292">
+        <label>stdint.h</label>
+      </node>
+      <node id="3294">
+        <label>stddef.h</label>
+      </node>
+      <node id="3291">
+        <label>embARC_toolchain.h</label>
+        <link refid="embARC__toolchain_8h"/>
+        <childnode refid="3292" relation="include">
+        </childnode>
+        <childnode refid="3293" relation="include">
+        </childnode>
+        <childnode refid="3294" relation="include">
+        </childnode>
+        <childnode refid="3295" relation="include">
+        </childnode>
+      </node>
+      <node id="3293">
+        <label>limits.h</label>
+      </node>
+      <node id="3289">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h</label>
+        <link refid="smic_bootspi.h"/>
+        <childnode refid="3290" relation="include">
+        </childnode>
+      </node>
+      <node id="3290">
+        <label>arc/arc_exception.h</label>
+        <link refid="arc__exception_8h"/>
+        <childnode refid="3291" relation="include">
+        </childnode>
+        <childnode refid="3296" relation="include">
+        </childnode>
+        <childnode refid="3298" relation="include">
+        </childnode>
+      </node>
+      <node id="3297">
+        <label>arc/arc_feature_config.h</label>
+        <link refid="arc__feature__config_8h"/>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="3983">
-        <label>dw_i2s_obj.c</label>
-        <link refid="dw__i2s__obj_8c_source"/>
+      <node id="3303">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/ip/designware/i2s/dw_i2s_obj.c</label>
+        <link refid="dw__i2s__obj_8c"/>
       </node>
-      <node id="3982">
-        <label>iotdk.h</label>
-        <link refid="iotdk_8h_source"/>
-        <childnode refid="3983" relation="include">
+      <node id="3302">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/iotdk.h</label>
+        <link refid="iotdk_8h"/>
+        <childnode refid="3303" relation="include">
         </childnode>
-        <childnode refid="3984" relation="include">
+        <childnode refid="3304" relation="include">
         </childnode>
-        <childnode refid="3985" relation="include">
+        <childnode refid="3305" relation="include">
         </childnode>
-        <childnode refid="3986" relation="include">
+        <childnode refid="3306" relation="include">
         </childnode>
-        <childnode refid="3987" relation="include">
+        <childnode refid="3307" relation="include">
         </childnode>
-        <childnode refid="3988" relation="include">
+        <childnode refid="3308" relation="include">
         </childnode>
-        <childnode refid="3989" relation="include">
+        <childnode refid="3309" relation="include">
         </childnode>
-        <childnode refid="3990" relation="include">
+        <childnode refid="3310" relation="include">
         </childnode>
       </node>
-      <node id="3990">
-        <label>mux.c</label>
-        <link refid="iotdk_2drivers_2mux_2mux_8c_source"/>
+      <node id="3310">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/mux/mux.c</label>
+        <link refid="iotdk_2drivers_2mux_2mux_8c"/>
       </node>
-      <node id="3986">
-        <label>dfss_gpio_obj.c</label>
-        <link refid="iotdk_2drivers_2ip_2subsystem_2gpio_2dfss__gpio__obj_8c_source"/>
+      <node id="3306">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/ip/subsystem/gpio/dfss_gpio_obj.c</label>
+        <link refid="iotdk_2drivers_2ip_2subsystem_2gpio_2dfss__gpio__obj_8c"/>
       </node>
-      <node id="3980">
-        <label>flash_obj.c</label>
-        <link refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_source"/>
+      <node id="3300">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/flash_obj/flash_obj.c</label>
+        <link refid="iotdk_2drivers_2flash__obj_2flash__obj_8c"/>
       </node>
-      <node id="3981">
-        <label>smic_bootspi.c</label>
-        <link refid="smic__bootspi_8c_source"/>
+      <node id="3301">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.c</label>
+        <link refid="smic__bootspi_8c"/>
       </node>
-      <node id="3979">
-        <label>smic_bootspi.h</label>
+      <node id="3299">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h</label>
         <link refid="smic_bootspi.h"/>
-        <childnode refid="3980" relation="include">
+        <childnode refid="3300" relation="include">
         </childnode>
-        <childnode refid="3981" relation="include">
+        <childnode refid="3301" relation="include">
         </childnode>
-        <childnode refid="3982" relation="include">
+        <childnode refid="3302" relation="include">
         </childnode>
       </node>
-      <node id="3984">
-        <label>dw_pwm_timer_obj.c</label>
-        <link refid="iotdk_2drivers_2ip_2designware_2pwm__timer_2dw__pwm__timer__obj_8c_source"/>
+      <node id="3304">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.c</label>
+        <link refid="iotdk_2drivers_2ip_2designware_2pwm__timer_2dw__pwm__timer__obj_8c"/>
       </node>
-      <node id="3985">
-        <label>dw_sdio_obj.c</label>
-        <link refid="iotdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
+      <node id="3305">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/ip/designware/sdio/dw_sdio_obj.c</label>
+        <link refid="iotdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c"/>
       </node>
-      <node id="3989">
-        <label>dfss_uart_obj.c</label>
-        <link refid="iotdk_2drivers_2ip_2subsystem_2uart_2dfss__uart__obj_8c_source"/>
+      <node id="3309">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/ip/subsystem/uart/dfss_uart_obj.c</label>
+        <link refid="iotdk_2drivers_2ip_2subsystem_2uart_2dfss__uart__obj_8c"/>
       </node>
-      <node id="3988">
-        <label>dfss_spi_obj.c</label>
-        <link refid="iotdk_2drivers_2ip_2subsystem_2spi_2dfss__spi__obj_8c_source"/>
+      <node id="3308">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/ip/subsystem/spi/dfss_spi_obj.c</label>
+        <link refid="iotdk_2drivers_2ip_2subsystem_2spi_2dfss__spi__obj_8c"/>
       </node>
-      <node id="3987">
-        <label>dfss_iic_obj.c</label>
-        <link refid="iotdk_2drivers_2ip_2subsystem_2iic_2dfss__iic__obj_8c_source"/>
+      <node id="3307">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/ip/subsystem/iic/dfss_iic_obj.c</label>
+        <link refid="iotdk_2drivers_2ip_2subsystem_2iic_2dfss__iic__obj_8c"/>
       </node>
     </invincdepgraph>
     <innerclass refid="structsmic__bootspi__reg" prot="public">smic_bootspi_reg</innerclass>
-    <innerclass refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" prot="public">SMIC_BOOTSPI_DEF</innerclass>
+    <innerclass refid="structSMIC__BOOTSPI__DEF" prot="public">SMIC_BOOTSPI_DEF</innerclass>
       <sectiondef kind="define">
-      <memberdef kind="define" id="smic__bootspi_8h_1ac7a8bc54c2c8e9613c0389e3484ace97" prot="public" static="no">
+      <memberdef kind="define" id="smic__bootspi_8h_ac7a8bc54c2c8e9613c0389e3484ace97_1ac7a8bc54c2c8e9613c0389e3484ace97" prot="public" static="no">
         <name>BOOTSPI_CTRL_BASE</name>
         <initializer>0xF0003000</initializer>
         <briefdescription>
@@ -103,7 +152,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="34" column="10" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" bodystart="34" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="smic__bootspi_8h_1af958ed8a003e4a8356e3700434ff4b8b" prot="public" static="no">
+      <memberdef kind="define" id="smic__bootspi_8h_af958ed8a003e4a8356e3700434ff4b8b_1af958ed8a003e4a8356e3700434ff4b8b" prot="public" static="no">
         <name>SMIC_BOOTSPI_RESET</name>
         <initializer>0</initializer>
         <briefdescription>
@@ -114,7 +163,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="36" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" bodystart="36" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="smic__bootspi_8h_1a0511846ab766f4230d23e5b7019f9895" prot="public" static="no">
+      <memberdef kind="define" id="smic__bootspi_8h_a0511846ab766f4230d23e5b7019f9895_1a0511846ab766f4230d23e5b7019f9895" prot="public" static="no">
         <name>SMIC_BOOTSPI_READ_ID</name>
         <initializer>1</initializer>
         <briefdescription>
@@ -125,7 +174,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="37" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" bodystart="37" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="smic__bootspi_8h_1aca5e404cc4fc2944a847281648c1f353" prot="public" static="no">
+      <memberdef kind="define" id="smic__bootspi_8h_aca5e404cc4fc2944a847281648c1f353_1aca5e404cc4fc2944a847281648c1f353" prot="public" static="no">
         <name>SMIC_BOOTSPI_CHIP_ERASE</name>
         <initializer>2</initializer>
         <briefdescription>
@@ -136,7 +185,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="38" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" bodystart="38" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="smic__bootspi_8h_1a210616c8707a928af1b62ccb74931708" prot="public" static="no">
+      <memberdef kind="define" id="smic__bootspi_8h_a210616c8707a928af1b62ccb74931708_1a210616c8707a928af1b62ccb74931708" prot="public" static="no">
         <name>SMIC_BOOTSPI_BLK_ERASE</name>
         <initializer>3</initializer>
         <briefdescription>
@@ -147,7 +196,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="39" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" bodystart="39" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="smic__bootspi_8h_1a27d010f6bf17639156d34afc01e3e62b" prot="public" static="no">
+      <memberdef kind="define" id="smic__bootspi_8h_a27d010f6bf17639156d34afc01e3e62b_1a27d010f6bf17639156d34afc01e3e62b" prot="public" static="no">
         <name>SMIC_BOOTSPI_SEC_ERASE</name>
         <initializer>4</initializer>
         <briefdescription>
@@ -158,7 +207,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="40" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" bodystart="40" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="smic__bootspi_8h_1a937db19dc4e2642db8c4144be0f5ebf5" prot="public" static="no">
+      <memberdef kind="define" id="smic__bootspi_8h_a937db19dc4e2642db8c4144be0f5ebf5_1a937db19dc4e2642db8c4144be0f5ebf5" prot="public" static="no">
         <name>SMIC_BOOTSPI_PAGE_SIZE</name>
         <initializer>0x100</initializer>
         <briefdescription>
@@ -169,7 +218,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="42" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" bodystart="42" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="smic__bootspi_8h_1a9ef3197037e800fc184a084d4d1a491f" prot="public" static="no">
+      <memberdef kind="define" id="smic__bootspi_8h_a9ef3197037e800fc184a084d4d1a491f_1a9ef3197037e800fc184a084d4d1a491f" prot="public" static="no">
         <name>SMIC_BOOTSPI_SEC_SIZE</name>
         <initializer>0x1000</initializer>
         <briefdescription>
@@ -180,7 +229,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="43" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" bodystart="43" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="smic__bootspi_8h_1a6695ff5c0abd684beea11ffda265dfbb" prot="public" static="no">
+      <memberdef kind="define" id="smic__bootspi_8h_a6695ff5c0abd684beea11ffda265dfbb_1a6695ff5c0abd684beea11ffda265dfbb" prot="public" static="no">
         <name>SMIC_BOOTSPI_BLK_SIZE</name>
         <initializer>0x10000</initializer>
         <briefdescription>
@@ -191,7 +240,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="44" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" bodystart="44" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="smic__bootspi_8h_1ae7688f6cae8fdb64f14a52ccf1e6e8da" prot="public" static="no">
+      <memberdef kind="define" id="smic__bootspi_8h_ae7688f6cae8fdb64f14a52ccf1e6e8da_1ae7688f6cae8fdb64f14a52ccf1e6e8da" prot="public" static="no">
         <name>SMIC_BOOTSPI_BLKS_PER_CHIP</name>
         <initializer>32</initializer>
         <briefdescription>
@@ -202,7 +251,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="46" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" bodystart="46" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="smic__bootspi_8h_1aa2dfa75f30fbb49851526e31f390811e" prot="public" static="no">
+      <memberdef kind="define" id="smic__bootspi_8h_aa2dfa75f30fbb49851526e31f390811e_1aa2dfa75f30fbb49851526e31f390811e" prot="public" static="no">
         <name>SMIC_BOOTSPI_SECS_PER_CHIP</name>
         <initializer>512</initializer>
         <briefdescription>
@@ -213,15 +262,15 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="47" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" bodystart="47" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="smic__bootspi_8h_1ad4c2e978f6c06172ef6208430532c27c" prot="public" static="no">
+      <memberdef kind="define" id="smic__bootspi_8h_ad4c2e978f6c06172ef6208430532c27c_1ad4c2e978f6c06172ef6208430532c27c" prot="public" static="no">
         <name>BOOTSPI_DEFINE</name>
         <param><defname>NAME</defname></param>
         <param><defname>REG_BASE</defname></param>
-        <initializer><ref refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" kindref="compound">SMIC_BOOTSPI_DEF</ref> __ ## NAME = {			       \
+        <initializer><ref refid="structSMIC__BOOTSPI__DEF" kindref="compound">SMIC_BOOTSPI_DEF</ref> __ ## NAME = {			       \
 		.bootspi_open_cnt = 0,			       \
-		.bootspi_reg = (<ref refid="structsmic__bootspi__reg" kindref="compound">SMIC_BOOTSPI_REG_PTR</ref>)REG_BASE, \
+		.bootspi_reg = (<ref refid="smic__bootspi_8h_ab8a09726b4f2353836bddc191dc7a357_1ab8a09726b4f2353836bddc191dc7a357" kindref="member">SMIC_BOOTSPI_REG_PTR</ref>)REG_BASE, \
 	};						       \
-	<ref refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" kindref="compound">SMIC_BOOTSPI_DEF_PTR</ref> NAME = &amp;__ ## NAME</initializer>
+	<ref refid="smic__bootspi_8h_ab70dac3c867283c01afb38674facb295_1ab70dac3c867283c01afb38674facb295" kindref="member">SMIC_BOOTSPI_DEF_PTR</ref> NAME = &amp;__ ## NAME</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -232,7 +281,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
-      <memberdef kind="typedef" id="smic__bootspi_8h_1a05f37fc4a8998ebc4c51faa92fe978cd" prot="public" static="no">
+      <memberdef kind="typedef" id="smic__bootspi_8h_a05f37fc4a8998ebc4c51faa92fe978cd_1a05f37fc4a8998ebc4c51faa92fe978cd" prot="public" static="no">
         <type>struct <ref refid="structsmic__bootspi__reg" kindref="compound">smic_bootspi_reg</ref></type>
         <definition>typedef struct smic_bootspi_reg  SMIC_BOOTSPI_REG</definition>
         <argsstring></argsstring>
@@ -245,7 +294,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="67" column="1"/>
       </memberdef>
-      <memberdef kind="typedef" id="smic__bootspi_8h_1ab8a09726b4f2353836bddc191dc7a357" prot="public" static="no">
+      <memberdef kind="typedef" id="smic__bootspi_8h_ab8a09726b4f2353836bddc191dc7a357_1ab8a09726b4f2353836bddc191dc7a357" prot="public" static="no">
         <type>struct <ref refid="structsmic__bootspi__reg" kindref="compound">smic_bootspi_reg</ref> *</type>
         <definition>typedef struct smic_bootspi_reg * SMIC_BOOTSPI_REG_PTR</definition>
         <argsstring></argsstring>
@@ -258,8 +307,8 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="67" column="1"/>
       </memberdef>
-      <memberdef kind="typedef" id="smic__bootspi_8h_1ab70dac3c867283c01afb38674facb295" prot="public" static="no">
-        <type>struct <ref refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" kindref="compound">SMIC_BOOTSPI_DEF</ref> *</type>
+      <memberdef kind="typedef" id="smic__bootspi_8h_ab70dac3c867283c01afb38674facb295_1ab70dac3c867283c01afb38674facb295" prot="public" static="no">
+        <type>struct <ref refid="structSMIC__BOOTSPI__DEF" kindref="compound">SMIC_BOOTSPI_DEF</ref> *</type>
         <definition>typedef  struct SMIC_BOOTSPI_DEF * SMIC_BOOTSPI_DEF_PTR</definition>
         <argsstring></argsstring>
         <name>SMIC_BOOTSPI_DEF_PTR</name>
@@ -273,13 +322,13 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
-      <memberdef kind="function" id="smic__bootspi_8h_1a675d16a7b207bf82a9273ed04e0b7b87" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="smic__bootspi_8h_a675d16a7b207bf82a9273ed04e0b7b87_1a675d16a7b207bf82a9273ed04e0b7b87" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t smic_bootspi_open</definition>
         <argsstring>(SMIC_BOOTSPI_DEF_PTR obj)</argsstring>
         <name>smic_bootspi_open</name>
         <param>
-          <type><ref refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" kindref="compound">SMIC_BOOTSPI_DEF_PTR</ref></type>
+          <type><ref refid="smic__bootspi_8h_ab70dac3c867283c01afb38674facb295_1ab70dac3c867283c01afb38674facb295" kindref="member">SMIC_BOOTSPI_DEF_PTR</ref></type>
           <declname>obj</declname>
         </param>
         <briefdescription>
@@ -290,13 +339,13 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="81" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.c" bodystart="251" bodyend="267"/>
       </memberdef>
-      <memberdef kind="function" id="smic__bootspi_8h_1af50d2d035dfdf53d4e8bca0e735d1adb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="smic__bootspi_8h_af50d2d035dfdf53d4e8bca0e735d1adb_1af50d2d035dfdf53d4e8bca0e735d1adb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t smic_bootspi_close</definition>
         <argsstring>(SMIC_BOOTSPI_DEF_PTR obj)</argsstring>
         <name>smic_bootspi_close</name>
         <param>
-          <type><ref refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" kindref="compound">SMIC_BOOTSPI_DEF_PTR</ref></type>
+          <type><ref refid="smic__bootspi_8h_ab70dac3c867283c01afb38674facb295_1ab70dac3c867283c01afb38674facb295" kindref="member">SMIC_BOOTSPI_DEF_PTR</ref></type>
           <declname>obj</declname>
         </param>
         <briefdescription>
@@ -307,13 +356,13 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="82" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.c" bodystart="269" bodyend="281"/>
       </memberdef>
-      <memberdef kind="function" id="smic__bootspi_8h_1a9056c649fc7e51bf1027eaf6d934d691" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="smic__bootspi_8h_a9056c649fc7e51bf1027eaf6d934d691_1a9056c649fc7e51bf1027eaf6d934d691" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t smic_bootspi_read</definition>
         <argsstring>(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val)</argsstring>
         <name>smic_bootspi_read</name>
         <param>
-          <type><ref refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" kindref="compound">SMIC_BOOTSPI_DEF_PTR</ref></type>
+          <type><ref refid="smic__bootspi_8h_ab70dac3c867283c01afb38674facb295_1ab70dac3c867283c01afb38674facb295" kindref="member">SMIC_BOOTSPI_DEF_PTR</ref></type>
           <declname>obj</declname>
         </param>
         <param>
@@ -336,13 +385,13 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="83" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.c" bodystart="283" bodyend="311"/>
       </memberdef>
-      <memberdef kind="function" id="smic__bootspi_8h_1a6769c8a1a231f3e5007c7ac5104f888f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="smic__bootspi_8h_a6769c8a1a231f3e5007c7ac5104f888f_1a6769c8a1a231f3e5007c7ac5104f888f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t smic_bootspi_write</definition>
         <argsstring>(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val)</argsstring>
         <name>smic_bootspi_write</name>
         <param>
-          <type><ref refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" kindref="compound">SMIC_BOOTSPI_DEF_PTR</ref></type>
+          <type><ref refid="smic__bootspi_8h_ab70dac3c867283c01afb38674facb295_1ab70dac3c867283c01afb38674facb295" kindref="member">SMIC_BOOTSPI_DEF_PTR</ref></type>
           <declname>obj</declname>
         </param>
         <param>
@@ -365,13 +414,13 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="84" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.c" bodystart="339" bodyend="400"/>
       </memberdef>
-      <memberdef kind="function" id="smic__bootspi_8h_1a3bef3ffd8602ea0d0a20dd1b134431a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="smic__bootspi_8h_a3bef3ffd8602ea0d0a20dd1b134431a4_1a3bef3ffd8602ea0d0a20dd1b134431a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t smic_bootspi_write_nocheck</definition>
         <argsstring>(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val)</argsstring>
         <name>smic_bootspi_write_nocheck</name>
         <param>
-          <type><ref refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" kindref="compound">SMIC_BOOTSPI_DEF_PTR</ref></type>
+          <type><ref refid="smic__bootspi_8h_ab70dac3c867283c01afb38674facb295_1ab70dac3c867283c01afb38674facb295" kindref="member">SMIC_BOOTSPI_DEF_PTR</ref></type>
           <declname>obj</declname>
         </param>
         <param>
@@ -394,13 +443,13 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="85" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.c" bodystart="313" bodyend="337"/>
       </memberdef>
-      <memberdef kind="function" id="smic__bootspi_8h_1a71d43e0234a6b5316f8f0f91ae95e311" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="smic__bootspi_8h_a71d43e0234a6b5316f8f0f91ae95e311_1a71d43e0234a6b5316f8f0f91ae95e311" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t smic_bootspi_control</definition>
         <argsstring>(SMIC_BOOTSPI_DEF_PTR obj, uint32_t ctrl_cmd, void *param)</argsstring>
         <name>smic_bootspi_control</name>
         <param>
-          <type><ref refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" kindref="compound">SMIC_BOOTSPI_DEF_PTR</ref></type>
+          <type><ref refid="smic__bootspi_8h_ab70dac3c867283c01afb38674facb295_1ab70dac3c867283c01afb38674facb295" kindref="member">SMIC_BOOTSPI_DEF_PTR</ref></type>
           <declname>obj</declname>
         </param>
         <param>
@@ -419,13 +468,13 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="86" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.c" bodystart="462" bodyend="502"/>
       </memberdef>
-      <memberdef kind="function" id="smic__bootspi_8h_1ae2e8120e5443a3c17dbb0516c08b406f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="smic__bootspi_8h_ae2e8120e5443a3c17dbb0516c08b406f_1ae2e8120e5443a3c17dbb0516c08b406f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t smic_bootspi_erase</definition>
         <argsstring>(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len)</argsstring>
         <name>smic_bootspi_erase</name>
         <param>
-          <type><ref refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" kindref="compound">SMIC_BOOTSPI_DEF_PTR</ref></type>
+          <type><ref refid="smic__bootspi_8h_ab70dac3c867283c01afb38674facb295_1ab70dac3c867283c01afb38674facb295" kindref="member">SMIC_BOOTSPI_DEF_PTR</ref></type>
           <declname>obj</declname>
         </param>
         <param>
@@ -482,21 +531,21 @@
 <codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_SMIC_BOOTSPI_H_</highlight></codeline>
 <codeline lineno="31"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_SMIC_BOOTSPI_H_</highlight></codeline>
 <codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc_exception.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOOTSPI_CTRL_BASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0xF0003000</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__exception_8h" kindref="compound">arc/arc_exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="smic__bootspi_8h_ac7a8bc54c2c8e9613c0389e3484ace97_1ac7a8bc54c2c8e9613c0389e3484ace97" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOOTSPI_CTRL_BASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0xF0003000</highlight></codeline>
 <codeline lineno="35"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_RESET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0</highlight></codeline>
-<codeline lineno="37"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_READ_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1</highlight></codeline>
-<codeline lineno="38"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_CHIP_ERASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2</highlight></codeline>
-<codeline lineno="39"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_BLK_ERASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>3</highlight></codeline>
-<codeline lineno="40"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_SEC_ERASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>4</highlight></codeline>
+<codeline lineno="36" refid="smic__bootspi_8h_af958ed8a003e4a8356e3700434ff4b8b_1af958ed8a003e4a8356e3700434ff4b8b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_RESET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0</highlight></codeline>
+<codeline lineno="37" refid="smic__bootspi_8h_a0511846ab766f4230d23e5b7019f9895_1a0511846ab766f4230d23e5b7019f9895" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_READ_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1</highlight></codeline>
+<codeline lineno="38" refid="smic__bootspi_8h_aca5e404cc4fc2944a847281648c1f353_1aca5e404cc4fc2944a847281648c1f353" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_CHIP_ERASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2</highlight></codeline>
+<codeline lineno="39" refid="smic__bootspi_8h_a210616c8707a928af1b62ccb74931708_1a210616c8707a928af1b62ccb74931708" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_BLK_ERASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>3</highlight></codeline>
+<codeline lineno="40" refid="smic__bootspi_8h_a27d010f6bf17639156d34afc01e3e62b_1a27d010f6bf17639156d34afc01e3e62b" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_SEC_ERASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>4</highlight></codeline>
 <codeline lineno="41"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_PAGE_SIZE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x100<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>256<sp/>bytes</highlight></codeline>
-<codeline lineno="43"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_SEC_SIZE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x1000<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>4K<sp/><sp/>bytes</highlight></codeline>
-<codeline lineno="44"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_BLK_SIZE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x10000<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>64K<sp/>bytes</highlight></codeline>
+<codeline lineno="42" refid="smic__bootspi_8h_a937db19dc4e2642db8c4144be0f5ebf5_1a937db19dc4e2642db8c4144be0f5ebf5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_PAGE_SIZE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x100<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>256<sp/>bytes</highlight></codeline>
+<codeline lineno="43" refid="smic__bootspi_8h_a9ef3197037e800fc184a084d4d1a491f_1a9ef3197037e800fc184a084d4d1a491f" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_SEC_SIZE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x1000<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>4K<sp/><sp/>bytes</highlight></codeline>
+<codeline lineno="44" refid="smic__bootspi_8h_a6695ff5c0abd684beea11ffda265dfbb_1a6695ff5c0abd684beea11ffda265dfbb" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_BLK_SIZE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x10000<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>64K<sp/>bytes</highlight></codeline>
 <codeline lineno="45"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_BLKS_PER_CHIP<sp/><sp/><sp/><sp/><sp/><sp/>32</highlight></codeline>
-<codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_SECS_PER_CHIP<sp/><sp/><sp/><sp/><sp/><sp/>512</highlight></codeline>
+<codeline lineno="46" refid="smic__bootspi_8h_ae7688f6cae8fdb64f14a52ccf1e6e8da_1ae7688f6cae8fdb64f14a52ccf1e6e8da" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_BLKS_PER_CHIP<sp/><sp/><sp/><sp/><sp/><sp/>32</highlight></codeline>
+<codeline lineno="47" refid="smic__bootspi_8h_aa2dfa75f30fbb49851526e31f390811e_1aa2dfa75f30fbb49851526e31f390811e" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_SECS_PER_CHIP<sp/><sp/><sp/><sp/><sp/><sp/>512</highlight></codeline>
 <codeline lineno="48"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>SMIC_BOOTSPI_PAGES_PER_SEC<sp/><sp/><sp/>(SMIC_BOOTSPI_SECTOR_SIZE/SMIC_BOOTSPI_PAGE_SIZE)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>SMIC_BOOTSPI_SECS_PER_BLK<sp/><sp/><sp/><sp/>(SMIC_BOOTSPI_BLK_SIZE/SMIC_BOOTSPI_SEC_SIZE)</highlight><highlight class="normal"></highlight></codeline>
@@ -506,37 +555,37 @@
 <codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="55"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="56" refid="structsmic__bootspi__reg" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structsmic__bootspi__reg" kindref="compound">smic_bootspi_reg</ref><sp/>{</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Manual<sp/>Mode<sp/>Data<sp/>Read<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>MMDR;<sp/><sp/></highlight><highlight class="comment">//<sp/>(0x00)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Manual<sp/>Mode<sp/>Data<sp/>Write<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>MMDW;<sp/><sp/></highlight><highlight class="comment">//<sp/>(0x04)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Manual<sp/>Mode<sp/>Control<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>MMC;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(0x08)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Manual<sp/>Mode<sp/>Status<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>MMS;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(0x0C)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Manual<sp/>Mode<sp/>Enable<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>MME;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(0x10)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal">}<sp/><ref refid="structsmic__bootspi__reg" kindref="compound">SMIC_BOOTSPI_REG</ref>,<sp/>*<ref refid="structsmic__bootspi__reg" kindref="compound">SMIC_BOOTSPI_REG_PTR</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Manual<sp/>Mode<sp/>Data<sp/>Read<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="structsmic__bootspi__reg_a468a0afe9e7074571b6fea983188f4d2_1a468a0afe9e7074571b6fea983188f4d2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structsmic__bootspi__reg_a468a0afe9e7074571b6fea983188f4d2_1a468a0afe9e7074571b6fea983188f4d2" kindref="member">MMDR</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>(0x00)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Manual<sp/>Mode<sp/>Data<sp/>Write<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="structsmic__bootspi__reg_aff93103b87e0b2dcbbc60e692b7c1bac_1aff93103b87e0b2dcbbc60e692b7c1bac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structsmic__bootspi__reg_aff93103b87e0b2dcbbc60e692b7c1bac_1aff93103b87e0b2dcbbc60e692b7c1bac" kindref="member">MMDW</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>(0x04)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Manual<sp/>Mode<sp/>Control<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="structsmic__bootspi__reg_ac1dae4f29c0e7bb838440482bd1a0d81_1ac1dae4f29c0e7bb838440482bd1a0d81" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structsmic__bootspi__reg_ac1dae4f29c0e7bb838440482bd1a0d81_1ac1dae4f29c0e7bb838440482bd1a0d81" kindref="member">MMC</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(0x08)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Manual<sp/>Mode<sp/>Status<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="structsmic__bootspi__reg_a536c6c6741a59f05e84d57a804f5374a_1a536c6c6741a59f05e84d57a804f5374a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structsmic__bootspi__reg_a536c6c6741a59f05e84d57a804f5374a_1a536c6c6741a59f05e84d57a804f5374a" kindref="member">MMS</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(0x0C)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Manual<sp/>Mode<sp/>Enable<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="structsmic__bootspi__reg_a84187aadf0f343a4b7fc0c0dbd9f1b75_1a84187aadf0f343a4b7fc0c0dbd9f1b75" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structsmic__bootspi__reg_a84187aadf0f343a4b7fc0c0dbd9f1b75_1a84187aadf0f343a4b7fc0c0dbd9f1b75" kindref="member">MME</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(0x10)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}<sp/><ref refid="smic__bootspi_8h_a05f37fc4a8998ebc4c51faa92fe978cd_1a05f37fc4a8998ebc4c51faa92fe978cd" kindref="member">SMIC_BOOTSPI_REG</ref>,<sp/>*<ref refid="smic__bootspi_8h_ab8a09726b4f2353836bddc191dc7a357_1ab8a09726b4f2353836bddc191dc7a357" kindref="member">SMIC_BOOTSPI_REG_PTR</ref>;</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
-<codeline lineno="69" refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SMIC_BOOTSPI_REG_PTR<sp/>bootspi_reg;</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>bootspi_open_cnt;</highlight></codeline>
-<codeline lineno="72"><highlight class="normal">}<sp/><ref refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" kindref="compound">SMIC_BOOTSPI_DEF</ref>,<sp/>*<ref refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" kindref="compound">SMIC_BOOTSPI_DEF_PTR</ref>;</highlight></codeline>
+<codeline lineno="69" refid="structSMIC__BOOTSPI__DEF" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="70" refid="structSMIC__BOOTSPI__DEF_aeaeb587751189fb9dd57cb5c8feadc32_1aeaeb587751189fb9dd57cb5c8feadc32" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>SMIC_BOOTSPI_REG_PTR<sp/><ref refid="structSMIC__BOOTSPI__DEF_aeaeb587751189fb9dd57cb5c8feadc32_1aeaeb587751189fb9dd57cb5c8feadc32" kindref="member">bootspi_reg</ref>;</highlight></codeline>
+<codeline lineno="71" refid="structSMIC__BOOTSPI__DEF_a385f3bb8393f643300f1870f84caab41_1a385f3bb8393f643300f1870f84caab41" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structSMIC__BOOTSPI__DEF_a385f3bb8393f643300f1870f84caab41_1a385f3bb8393f643300f1870f84caab41" kindref="member">bootspi_open_cnt</ref>;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}<sp/><ref refid="structSMIC__BOOTSPI__DEF" kindref="compound">SMIC_BOOTSPI_DEF</ref>,<sp/>*<ref refid="smic__bootspi_8h_ab70dac3c867283c01afb38674facb295_1ab70dac3c867283c01afb38674facb295" kindref="member">SMIC_BOOTSPI_DEF_PTR</ref>;</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOOTSPI_DEFINE(NAME,<sp/>REG_BASE)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="75"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SMIC_BOOTSPI_DEF<sp/>__<sp/>##<sp/>NAME<sp/>=<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="76"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.bootspi_open_cnt<sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="77"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.bootspi_reg<sp/>=<sp/>(SMIC_BOOTSPI_REG_PTR)REG_BASE,<sp/>\</highlight></codeline>
-<codeline lineno="78"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="79"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SMIC_BOOTSPI_DEF_PTR<sp/>NAME<sp/>=<sp/>&amp;__<sp/>##<sp/>NAME</highlight></codeline>
+<codeline lineno="74" refid="smic__bootspi_8h_ad4c2e978f6c06172ef6208430532c27c_1ad4c2e978f6c06172ef6208430532c27c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOOTSPI_DEFINE(NAME,<sp/>REG_BASE)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="75"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>SMIC_BOOTSPI_DEF<sp/>__<sp/>##<sp/>NAME<sp/>=<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="76"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.bootspi_open_cnt<sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="77"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.bootspi_reg<sp/>=<sp/>(SMIC_BOOTSPI_REG_PTR)REG_BASE,<sp/>\</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="79"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>SMIC_BOOTSPI_DEF_PTR<sp/>NAME<sp/>=<sp/>&amp;__<sp/>##<sp/>NAME</highlight></codeline>
 <codeline lineno="80"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_bootspi_open(SMIC_BOOTSPI_DEF_PTR<sp/>obj);</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_bootspi_close(SMIC_BOOTSPI_DEF_PTR<sp/>obj);</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_bootspi_read(SMIC_BOOTSPI_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>addr,<sp/>uint32_t<sp/>len,<sp/>uint8_t<sp/>*val);</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_bootspi_write(SMIC_BOOTSPI_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>addr,<sp/>uint32_t<sp/>len,<sp/>uint8_t<sp/>*val);</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_bootspi_write_nocheck(SMIC_BOOTSPI_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>addr,<sp/>uint32_t<sp/>len,<sp/>uint8_t<sp/>*val);</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_bootspi_control(SMIC_BOOTSPI_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>ctrl_cmd,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*param);</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_bootspi_erase(SMIC_BOOTSPI_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>addr,<sp/>uint32_t<sp/>len);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="smic__bootspi_8c_a675d16a7b207bf82a9273ed04e0b7b87_1a675d16a7b207bf82a9273ed04e0b7b87" kindref="member">smic_bootspi_open</ref>(SMIC_BOOTSPI_DEF_PTR<sp/>obj);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="smic__bootspi_8c_af50d2d035dfdf53d4e8bca0e735d1adb_1af50d2d035dfdf53d4e8bca0e735d1adb" kindref="member">smic_bootspi_close</ref>(SMIC_BOOTSPI_DEF_PTR<sp/>obj);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="smic__bootspi_8c_a9056c649fc7e51bf1027eaf6d934d691_1a9056c649fc7e51bf1027eaf6d934d691" kindref="member">smic_bootspi_read</ref>(SMIC_BOOTSPI_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>addr,<sp/>uint32_t<sp/>len,<sp/>uint8_t<sp/>*val);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="smic__bootspi_8c_a6769c8a1a231f3e5007c7ac5104f888f_1a6769c8a1a231f3e5007c7ac5104f888f" kindref="member">smic_bootspi_write</ref>(SMIC_BOOTSPI_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>addr,<sp/>uint32_t<sp/>len,<sp/>uint8_t<sp/>*val);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="smic__bootspi_8c_a3bef3ffd8602ea0d0a20dd1b134431a4_1a3bef3ffd8602ea0d0a20dd1b134431a4" kindref="member">smic_bootspi_write_nocheck</ref>(SMIC_BOOTSPI_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>addr,<sp/>uint32_t<sp/>len,<sp/>uint8_t<sp/>*val);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="smic__bootspi_8c_a71d43e0234a6b5316f8f0f91ae95e311_1a71d43e0234a6b5316f8f0f91ae95e311" kindref="member">smic_bootspi_control</ref>(SMIC_BOOTSPI_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>ctrl_cmd,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*param);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="smic__bootspi_8c_ae2e8120e5443a3c17dbb0516c08b406f_1ae2e8120e5443a3c17dbb0516c08b406f" kindref="member">smic_bootspi_erase</ref>(SMIC_BOOTSPI_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>addr,<sp/>uint32_t<sp/>len);</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
 <codeline lineno="89"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>

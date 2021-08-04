@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="group__BOARD" kind="group">
+    <compoundname>BOARD</compoundname>
+    <title>BSP Layer</title>
+    <innergroup refid="group__BOARD__AXS">AXS BSP</innergroup>
+    <innergroup refid="group__BOARD__COMMON">Common Definitions</innergroup>
+    <innergroup refid="group__BOARD__EMSK">EMSK BSP</innergroup>
+    <innergroup refid="group__BOARD__HSDK">HSDK BSP</innergroup>
+    <innergroup refid="group__BOARD__NSIM">NSIM BSP</innergroup>
+    <briefdescription>
+<para>Board Support Package Layer. </para>    </briefdescription>
+    <detaileddescription>
+<para>This Board Support Package Layer provides support for different boards, including board peripherals drivers, link scripts used by board, common board init process, and common board resources or API definitions.<itemizedlist>
+<listitem><para>board peripherals drivers. <linebreak/>
+ Because in embARC we adopt object-oriented concept to define the device driver, we implemented some designware ip drivers such as uart, spi, etc. in device/designware, but the drivers need to realized with hardware, so you need to implement different peripherals drivers based on the device driver layer definitions, like implementing a uart driver using the designware uart ip driver and uart device abstract definitions. Then applications only need to call the apis defined in device hardware abstract layer. Also to implement peripherals drivers which may be needed by middleware, such as for the fatfs middleware, you need to implement disk_read and disk_write, etc.</para></listitem><listitem><para>common board init process. <linebreak/>
+ We need to install all the needed drivers in the startup process, init a 1ms timer interrupt to provide ms-precision counter and delayer, and other board init issues. This is done in one common function called board_init.</para></listitem><listitem><para>common board resources or API definitions. <linebreak/>
+ We need to make unified definitions for common devices, so that our applications can run with different boards without any changes. This is implemented in <ref refid="board_8h" kindref="compound">board.h</ref>, such as BOARD_CPU_FREQ, BOARD_DEV_FREQ, Timer Interrupt Frequency, Common used uart, and spi id. For example we define a uart id named BOARD_CONSOLE_UART_ID, which is a uart mostly used to print messages and is used as a console. There are other common APIs, for example board_delay_ms(cnt).</para></listitem><listitem><para>link scripts used by board. <linebreak/>
+ Put board related link scripts to compile and generate proper program files. A link script is the description of the board memory resources and scheme. </para></listitem></itemizedlist>
+</para>    </detaileddescription>
+  </compounddef>
+</doxygen>

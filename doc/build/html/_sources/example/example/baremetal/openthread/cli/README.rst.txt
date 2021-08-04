@@ -1,63 +1,183 @@
 .. _example_openthread_cli:
 
-OpenThread CLI
-##############
 
-Overview
-********
+OpenThread CLI Example
+======================
 
- | This example is an OpenThread Command Line Interface (CLI) application on PMOD RF2 (MRF24J40).
- | The mesh network is established, and IPv6 is configured with using bi-/multi-boards as Thread nodes.
- | The node status can be shown on the terminal via UART. There are dozens of commands supported in the CLI example.
+This application is designed to show how to use the OpenThread Command Line Interface (CLI) example in embARC.
 
-Detailed Description
-====================
+Hardware and Software Setup
+---------------------------
 
- * Extra Required Tools
-    NO
+Required Hardware
+^^^^^^^^^^^^^^^^^
 
- * Extra Required Peripherals
-    - 2 x EMSK
-    - 2 x Digilent PMOD RF2 (MRF24J40)
-    - 1 x SD card
 
- * Design Concept
-    | This example is an OpenThread Command Line Interface (CLI) application on PMOD RF2 (MRF24J40).
-    | The mesh network is established, and IPv6 is configured with using bi-/multi-boards as Thread nodes.
-    | The node status can be shown on the terminal via UART. There are dozens of commands supported in the CLI example.
-    | The OpenThread CLI reference is in OT_CLI.md.
+* 2 x `<a href="https://www.synopsys.com/dw/ipdir.php?ds=arc_em_starter_kit" title="DesignWare ARC EM Starter Kit(EMSK)">DesignWare ARC EM Starter Kit(EMSK)</a>`\ , recommended version 2.3
+* 2 x <a href="http://store.digilentinc.com/pmod-rf2-ieee-802-15-rf-transceiver/" title="Digilent Pmod RF2">Digilent Pmod RF2</a>`
+* 1 x SD card
 
- * Usage Manual
-    - See EMBARC_BOARD_CONNECTION "EMSK" to connect PMOD RF2 (MRF24J40).
-    - How to use this example
-        * Program the secondary bootloader application into onboard SPI flash of EMSKs.
-        * Generate boot.bin of the Openthread CLI example using "make bin".
-        * Run Openthread CLI example with boot.bin from SD card. Make sure Bit 4 of the onboard DIP switch is ON to enable the secondary bootloader.
-            - Insert SD Card back to one EMSK. Press the reset button to reboot it. Wait for loading boot.bin from SD card.
-            - Get SD card from one EMSK and insert it to the other EMSK. Press the reset button to reboot it. Wait for loading boot.bin from SD card.
-            - Enter “1” and press Enter button in one Tera Term. Enter “2” and press Enter button in the other one.
-              The number will not be shown directly in the Tera Term until pressing Enter button from the keyboard.
-            - Enter the following commands in the two terminal windows, "panid 0x1234", "ifconfig up", "thread start", to start
-              start Thread process.
-            - Wait 20 seconds for completing Thread configuration. Enter “state” to see the state of the node, one leader and one router.
-            - Enter other commands in the OpenThread CLI reference (OT_CLI.md) to get more information. For example, “ipaddr” is used to show the IP address of the Thread node. Enter “ipaddr” in one ternimal to get the Thread node IP address, such as **fe80:0:0:0:f065:44eb:ef9f:57c8**. Enter “ping fe80:0:0:0:f065:44eb:ef9f:57c8” in the other ternimal to ping the Thread node. The Internet Control Messages Protocol (ICMP) is implemented in the OpenThread for **ping** command.
+Required Software
+^^^^^^^^^^^^^^^^^
 
- * Extra Comments
-    | A few seconds are required to make connections of Thread nodes.
-    | Use AC adapter to ensure a steady power supply.
-    | Open two Tera Term emulators to connect EMSKs with different COM ports.
-    | The self-boot mode preparation is included in the above steps.
-    | “make run” is not supported because EMSK boards are both v2.x and it can lead to conflict. See sect_example_usage_HowToDebugMultiBoards "how to debug multiple boards in embARC" for more information.
-    | Enter number to generate the pseudo-random number for OpenThread. Recommend enter number in order, such as “1”, “2” and “3”. Using same number in different nodes may lead error.
-    | Make sure the compiler configuration (TOOLCHAIN, BD_VER, CUR_CORE) of the secondary bootloader and bin file. For example, the bootloader for EMSK 2.3/ARCEM7D cannot boot the program for EMSK 2.3/ARCEM11D.
 
-Buidling and Running
-********************
+* Metaware or ARC GNU Toolset
+* Serial port terminal, such as putty, tera-term or minicom
 
- See the usage manual.
+Hardware Connection
+^^^^^^^^^^^^^^^^^^^
 
-Sample Output
-=============
 
- See the usage manual.
+* Connect PmodRF2 to J6.
 
+
+.. image:: doc/screenshots/emsk_connections.jpg
+   :target: doc/screenshots/emsk_connections.jpg
+   :alt: emsk_connections
+
+
+
+* Configure your hardware with proper core configuration. ARCEM7D on EMSK 2.3 is used as an example in the following document.
+
+User Manual
+-----------
+
+Running OpenThread in self-boot mode
+------------------------------------
+
+Two EMSKs will be used as two Thread nodes. They are set automatically by OpenThread stack. The following example is to run the OpenThread CLI in the EMSK self-boot mode with using SD card.
+
+
+* The Digilent PmodRF2 and the self-made MRF24J40 module are both supported.
+* Use AC adapter to ensure a steady power supply.
+* Open two Tera Term emulators to connect EMSKs with different COM ports.
+* The self-boot mode preparation is included in the following steps.
+* **make run** is not supported because both EMSK board is v2.3 and it will lead to conflict.
+
+Building and running OpenThread example
+---------------------------------------
+
+
+#. 
+   Program the secondary bootloader application into onboard SPI Flash.
+
+
+   * Go to ``\embARC\example\baremetal\bootloader`` in command line.
+   * Enter **make TOOLCHAIN=gnu BD_VER=23 CUR_CORE=arcem7d bin**
+
+     * Select configuration 1 on the EMSK for ARCEM7D by setting all DIP switches to the OFF position.
+
+   * Insert the SD card to your PC, and copy the binary file ``obj_emsk_23/gnu_arcem7d/emsk_bootloader_gnu_arcem7d.bin`` to the SD Card root directory.  Rename it to ``em7d_2bt.bin`` as the secondary bootloader.
+
+     * The bootloader has been modified in embARC. Please perform the following steps to update the bootloader in the EMSK SPI flash.
+     * Update the bootloader in both EMSK boards. The other EMSK board should be updated by performing the same steps.
+
+   * Connect one EMSK board to the host with USB. Insert the SD Card into the EMSK board SD Card slot.
+
+     * Go to ``\embARC\example\freertos\net\ntshell`` in command line. Enter **make TOOLCHAIN=gnu BD_VER=23 CUR_CORE=arcem7d**. Once the application builds successfully, enter **make TOOLCHAIN=gnu BD_VER=23 CUR_CORE=arcem7d run** in command line to start NT-Shell.
+
+   * 
+     Use NT-Shell command **spirw** in the terminal window to write the ``em7d_2bt.bin`` to SPI flash.
+
+
+     * run **spirw -h** to show help.
+     * run **spirw -w em7d_2bt.bin 0x17f00000 0x17f00004** to program SPI flash.
+     * 
+       Check the output message to see if it is programmed successfully. The process may take some time. If ``WF INIT FAILED`` and ``MRF24G Init Failed`` is shown in the Tera Term, there is no error since the WiFi module has not been used here.
+
+
+       .. image:: doc/screenshots/spirw_em7d_2bt.jpg
+          :target: doc/screenshots/spirw_em7d_2bt.jpg
+          :alt: spirw_em7d_2bt
+
+
+#. 
+   Generate ``boot.bin`` of the OpenThread CLI example.
+
+
+   * Go to ``\embARC\example\baremetal\openthread\cli`` in command line.
+   * Enter **make TOOLCHAIN=gnu BD_VER=23 CUR_CORE=arcem7d bin**.
+   * Insert SD Card to PC. Copy the generated binary file ``obj_emsk_23/gnu_arcem7d/openthread_gnu_arcem7d.bin`` to SD card root. And rename it to ``boot.bin``. Note that the secondary bootloader can only identify ``boot.bin`` in the SD card root.
+
+#. 
+   Run OpenThread CLI example. Before resetting the EMSK boards, make sure Bit 4 of the onboard DIP switch is ON to enable secondary bootloader to run.
+
+
+   * 
+     Insert SD Card back to one EMSK. Press the reset button to reboot it. Wait for loading boot.bin from SD card. The response in the terminal window is shown as below.
+
+       
+     .. image:: doc/screenshots/enter_no_emsk.PNG
+        :target: doc/screenshots/enter_no_emsk.PNG
+        :alt: enter_no_emsk
+
+
+   * 
+     Get SD card from one EMSK and insert it to the other EMSK. Press the reset button to reboot it. Wait for loading boot.bin from SD card.
+
+   * 
+     Enter **1** and press Enter button in one Tera Term. Enter **2** and press Enter button in the other one. Enter the number here to generate pseudo random number for OpenThread. Recommend to enter numbers in order, such as **1**\ , **2** and **3**. Using same number in different nodes may lead error. The number will not be shown directly in the Tera Term until pressing Enter button from the keyboard.
+
+       
+     .. image:: doc/screenshots/show_no_emsk.PNG
+        :target: doc/screenshots/show_no_emsk.PNG
+        :alt: show_no_emsk
+
+
+   * 
+     Enter the following commands in the two Tera Term windows.
+
+
+     * **panid 0x1234**
+     * **ifconfig up**
+     * **thread start**
+
+   * 
+     Wait 20 seconds for completing Thread configuration. Enter “state” to see the state of the node, one leader and one router.
+
+       
+     .. image:: doc/screenshots/thread_state.PNG
+        :target: doc/screenshots/thread_state.PNG
+        :alt: thread_state
+
+
+#. 
+   Enter **ipaddr** to show the IP address of the Thread node. Then enter **ping [IP address]**\ , such as **ping fdde:ad00:beef:0:0:ff:fe00:ec00**.
+
+
+   * The IP addresses may not be the same in different tests, even using the same node number, program and EMSK board.
+   * ICMP protocol is implemented in OpenThread for **ping** command.
+   * This example demonstrates a minimal OpenThread application to show the OpenThread configuration and management interfaces via a basic command-line interface. The example result is the same as the one in the Posix simulation in Linux.
+   * See the OpenThread CLI reference ``OT_CLI.md`` for more details.
+   * 
+     For example, the following response can be shown for the EMSK node 1 (COM4) and EMSK node 2 (COM8).
+
+       
+     .. image:: doc/screenshots/thread_ping.PNG
+        :target: doc/screenshots/thread_ping.PNG
+        :alt: thread_ping
+
+
+     .. code-block:: bash
+
+
+              > state
+              leader
+              > ipaddr
+              fdde:ad00:beef:0:0:ff:fe00:fc00
+              fdde:ad00:beef:0:0:ff:fe00:d400
+              fdde:ad00:beef:0:63a8:7376:c6ad:828c
+              fe80:0:0:0:c8b:9427:900e:186f
+              > ping fe80:0:0:0:f065:44eb:ef9f:57c8
+
+     .. code-block:: bash
+
+
+              > state
+              router
+              > ipaddr
+              fdde:ad00:beef:0:0:ff:fe00:fc00
+              fdde:ad00:beef:0:0:ff:fe00:6800
+              fdde:ad00:beef:0:4f6e:7e53:67c8:f5b0
+              fe80:0:0:0:f065:44eb:ef9f:57c8
+              > ping fe80:0:0:0:c8b:9427:900e:186f

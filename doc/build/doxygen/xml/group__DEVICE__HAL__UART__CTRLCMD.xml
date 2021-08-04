@@ -1,0 +1,279 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="group__DEVICE__HAL__UART__CTRLCMD" kind="group">
+    <compoundname>DEVICE_HAL_UART_CTRLCMD</compoundname>
+    <title>UART Device Control Commands</title>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group__DEVICE__HAL__UART__CTRLCMD_1ga764fa9e43d0e6386328e6123469dfd05" prot="public" static="no">
+        <name>UART_CMD_SET_BAUD</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set <ref refid="structdev__uart__info_ade43cdfba4fbeb94641e9be3453e7ef0_1ade43cdfba4fbeb94641e9be3453e7ef0" kindref="member">uart baudrate</ref>.<itemizedlist>
+<listitem><para>Param type : uint32_t</para></listitem><listitem><para>Param usage : uart baudrate, must above zero. Here is a list of <ref refid="group__DEVICE__HAL__UART__BAUD" kindref="compound">possible baudrates</ref></para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="172" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="172" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__UART__CTRLCMD_1gacf4d94078ba78b978a620c7e6b352736" prot="public" static="no">
+        <name>UART_CMD_GET_STATUS</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get <ref refid="structdev__uart__info_a0d5c787fe766670160806618b2897f9f_1a0d5c787fe766670160806618b2897f9f" kindref="member">current device status</ref><itemizedlist>
+<listitem><para>Param type : uint32_t *</para></listitem><listitem><para>Param usage : store result of current status</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="179" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="179" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__UART__CTRLCMD_1ga778353469e5446cd8e540720792e39a8" prot="public" static="no">
+        <name>UART_CMD_ENA_DEV</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enable uart device<itemizedlist>
+<listitem><para>Param type : NULL</para></listitem><listitem><para>Param usage : param is not required</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="186" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="186" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__UART__CTRLCMD_1gae7d733241c19376c55bb6873ba39abae" prot="public" static="no">
+        <name>UART_CMD_DIS_DEV</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(3)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Disable uart device, when device is disabled, only <ref refid="group__DEVICE__HAL__UART__CTRLCMD_ga778353469e5446cd8e540720792e39a8_1ga778353469e5446cd8e540720792e39a8" kindref="member">UART_CMD_ENA_DEV</ref>, <ref refid="group__DEVICE__HAL__UART__CTRLCMD_gae7d733241c19376c55bb6873ba39abae_1gae7d733241c19376c55bb6873ba39abae" kindref="member">UART_CMD_DIS_DEV</ref> and <ref refid="group__DEVICE__HAL__UART__CTRLCMD_gacf4d94078ba78b978a620c7e6b352736_1gacf4d94078ba78b978a620c7e6b352736" kindref="member">UART_CMD_GET_STATUS</ref> commands can be executed, other commands will return <ref refid="group__EMBARC__ERROR_gae5989e632e687010b35b613304089823_1gae5989e632e687010b35b613304089823" kindref="member">E_SYS</ref><itemizedlist>
+<listitem><para>Param type : NULL</para></listitem><listitem><para>Param usage : param is not required</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="196" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="196" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__UART__CTRLCMD_1gae4fafef76cb1216e06523779ef842847" prot="public" static="no">
+        <name>UART_CMD_FLUSH_OUTPUT</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(4)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Flush uart device output<itemizedlist>
+<listitem><para>Param type : NULL</para></listitem><listitem><para>Param usage : param is not required</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="203" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="203" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__UART__CTRLCMD_1ga3b38c556992512590acd208eda841c2c" prot="public" static="no">
+        <name>UART_CMD_GET_TXAVAIL</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(5)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get how many bytes space in uart are available to transmit, this can be used in interrupt callback functions, cooperate with <ref refid="group__DEVICE__HAL__UART__DEVSTRUCT_gadb3f65e65636442af53578c64f2ea2a4_1gadb3f65e65636442af53578c64f2ea2a4" kindref="member">uart_write</ref> API to realize non-blocked write<itemizedlist>
+<listitem><para>Param type : int32_t *</para></listitem><listitem><para>Param usage : store the write available bytes, &gt; 0 for available bytes, 0 for not available</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="212" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="212" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__UART__CTRLCMD_1ga8d2dc24b2777c4ad6ac72350c2d6b6c4" prot="public" static="no">
+        <name>UART_CMD_GET_RXAVAIL</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(6)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get how many bytes in uart are available to receive, this can be used in interrupt callback functions, cooperate with <ref refid="group__DEVICE__HAL__UART__DEVSTRUCT_ga8fa470ea11eca6e728e802b64501cbb5_1ga8fa470ea11eca6e728e802b64501cbb5" kindref="member">uart_read</ref> API to realize non-blocked read<itemizedlist>
+<listitem><para>Param type : int32_t *</para></listitem><listitem><para>Param usage : store the read available bytes, &gt; 0 for available bytes, 0 for not available</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="221" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="221" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__UART__CTRLCMD_1ga1f80b681a44db548672e225872820439" prot="public" static="no">
+        <name>UART_CMD_BREAK_SET</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(7)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Cause a break condition to be transmitted to the receiving device<itemizedlist>
+<listitem><para>Param type : NULL</para></listitem><listitem><para>Param usage : param is not required</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="228" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="228" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__UART__CTRLCMD_1ga27cc6b038a8cbfb6b04af889d0d4121c" prot="public" static="no">
+        <name>UART_CMD_BREAK_CLR</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(8)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Clear break condition and return to normal<itemizedlist>
+<listitem><para>Param type : NULL</para></listitem><listitem><para>Param usage : param is not required</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="235" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="235" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__UART__CTRLCMD_1ga814ea0d0efd24844998b46429c284c9e" prot="public" static="no">
+        <name>UART_CMD_SET_DPS_FORMAT</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(9)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Change uart <ref refid="structdev__uart__info_aef7fdb7858a5bb595b5751231af3293d_1aef7fdb7858a5bb595b5751231af3293d" kindref="member">D/P/S(Data/Parity/Stop) format</ref><itemizedlist>
+<listitem><para>Param type : <ref refid="group__DEVICE__HAL__UART__FORMAT_gacaa41f5e07b9b64820a2a96bd96dfd41_1gacaa41f5e07b9b64820a2a96bd96dfd41" kindref="member">UART_DPS_FORMAT</ref> *</para></listitem><listitem><para>Param usage : uart dps format including databits, parity and stopbits</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="242" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__UART__CTRLCMD_1ga7fac96ac8950657bf84be4086327d708" prot="public" static="no">
+        <name>UART_CMD_SET_HWFC</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(10)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set uart device <ref refid="structdev__uart__info_a2fc66c56990d21e53c3fac977c4e93e0_1a2fc66c56990d21e53c3fac977c4e93e0" kindref="member">hardware flow control</ref><itemizedlist>
+<listitem><para>Param type : <ref refid="group__DEVICE__HAL__UART_gaa79a1d08e403b54670b892c0c58d91d5_1gaa79a1d08e403b54670b892c0c58d91d5" kindref="member">UART_HW_FLOW_CONTROL</ref></para></listitem><listitem><para>Param usage : uart dps format including databits, parity and stopbits</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="249" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="249" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__UART__CTRLCMD_1ga0479fa2c6d071ba12b44649df16ad9ae" prot="public" static="no">
+        <name>UART_CMD_SET_TXCB</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(11)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set <ref refid="structdev__uart__cbs_a2c385cdfd61f1d7a8f6371935db8e0f1_1a2c385cdfd61f1d7a8f6371935db8e0f1" kindref="member">uart transmit success callback</ref> function when all required bytes are transmitted for interrupt method<itemizedlist>
+<listitem><para>Param type : <ref refid="group__DEVICE__HAL__COMMON_ga91091c2a8f895b2d00ae61e6b607335e_1ga91091c2a8f895b2d00ae61e6b607335e" kindref="member">DEV_CALLBACK</ref> * or NULL</para></listitem><listitem><para>Param usage : transmit success callback function for uart</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="257" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="257" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__UART__CTRLCMD_1ga18aa857d3b0815ca0235f41e4b6c1067" prot="public" static="no">
+        <name>UART_CMD_SET_RXCB</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(12)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set <ref refid="structdev__uart__cbs_af6d1329c648df0d31eb8f8c1a6d7e777_1af6d1329c648df0d31eb8f8c1a6d7e777" kindref="member">uart receive success callback</ref> function when all required bytes are received for interrupt method<itemizedlist>
+<listitem><para>Param type : <ref refid="group__DEVICE__HAL__COMMON_ga91091c2a8f895b2d00ae61e6b607335e_1ga91091c2a8f895b2d00ae61e6b607335e" kindref="member">DEV_CALLBACK</ref> * or NULL</para></listitem><listitem><para>Param usage : receive success callback function for uart</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="265" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="265" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__UART__CTRLCMD_1ga7161d329fc09ba91caf8196c949512ce" prot="public" static="no">
+        <name>UART_CMD_SET_ERRCB</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(13)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set <ref refid="structdev__uart__cbs_a38de0b4956621917a15e6974f9cd6ca4_1a38de0b4956621917a15e6974f9cd6ca4" kindref="member">uart transfer error callback</ref> function when something error happened for interrupt method<itemizedlist>
+<listitem><para>Param type : <ref refid="group__DEVICE__HAL__COMMON_ga91091c2a8f895b2d00ae61e6b607335e_1ga91091c2a8f895b2d00ae61e6b607335e" kindref="member">DEV_CALLBACK</ref> * or NULL</para></listitem><listitem><para>Param usage : transfer error callback function for uart</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="273" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="273" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__UART__CTRLCMD_1ga45de4c83687e1c2ccb305a5d9c26077a" prot="public" static="no">
+        <name>UART_CMD_SET_TXINT_BUF</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(14)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set transmit buffer via interrupt, and it will set <ref refid="structdev__uart__info_aaec9266437298f69cee418419b2af57e_1aaec9266437298f69cee418419b2af57e" kindref="member">tx_buf</ref><itemizedlist>
+<listitem><para>Param type : DEV_BUFFER * or NULL</para></listitem><listitem><para>Param usage : buffer structure pointer, if param is NULL, then it will set tx_buf to NULL</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="280" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="280" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__UART__CTRLCMD_1gab41fc9f4e9745c1d30bf3bbd0733ab31" prot="public" static="no">
+        <name>UART_CMD_SET_RXINT_BUF</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(15)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set receive buffer via interrupt, and it will set <ref refid="structdev__uart__info_a914e6795561013ba36899b1ab6d857fa_1a914e6795561013ba36899b1ab6d857fa" kindref="member">rx_buf</ref><itemizedlist>
+<listitem><para>Param type : DEV_BUFFER * or NULL</para></listitem><listitem><para>Param usage : buffer structure pointer, if param is NULL, then it will set rx_buf to NULL</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="287" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="287" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__UART__CTRLCMD_1gab3644b0ee0991f276c0e4d20d794ac96" prot="public" static="no">
+        <name>UART_CMD_SET_TXINT</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(16)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enable or disable transmit interrupt<itemizedlist>
+<listitem><para>Param type : uint32_t</para></listitem><listitem><para>Param usage : enable(none-zero) or disable(zero) flag</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="294" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="294" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__UART__CTRLCMD_1ga04b7d1f98d6a94c3590677121a853105" prot="public" static="no">
+        <name>UART_CMD_SET_RXINT</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(17)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enable or disable receive interrupt<itemizedlist>
+<listitem><para>Param type : uint32_t</para></listitem><listitem><para>Param usage : enable(none-zero) or disable(zero) flag</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="301" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="301" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__UART__CTRLCMD_1ga96ebb358e1b93a49dffb6fd08ea9d52e" prot="public" static="no">
+        <name>UART_CMD_ABORT_TX</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(18)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Abort current interrupt transmit operation if tx interrupt enabled, it will disable transmit interrupt, and set <ref refid="group__DEVICE__HAL__COMMON__DEVSTATUS_ga80e3a2bfa3fca72a807e59da0bb3b2ee_1ga80e3a2bfa3fca72a807e59da0bb3b2ee" kindref="member">DEV_IN_TX_ABRT</ref> in <ref refid="structdev__uart__info_a0d5c787fe766670160806618b2897f9f_1a0d5c787fe766670160806618b2897f9f" kindref="member">status</ref> variable, and call the transmit callback function, when tx callback is finished, it will clear <ref refid="group__DEVICE__HAL__COMMON__DEVSTATUS_ga80e3a2bfa3fca72a807e59da0bb3b2ee_1ga80e3a2bfa3fca72a807e59da0bb3b2ee" kindref="member">DEV_IN_TX_ABRT</ref> and return<itemizedlist>
+<listitem><para>Param type : NULL</para></listitem><listitem><para>Param usage :</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="312" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="312" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__UART__CTRLCMD_1ga091e096b839d8f76f284fc80428f6431" prot="public" static="no">
+        <name>UART_CMD_ABORT_RX</name>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(19)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Abort current interrupt receive operation if rx interrupt enabled, it will disable receive interrupt, and set <ref refid="group__DEVICE__HAL__COMMON__DEVSTATUS_ga80e3a2bfa3fca72a807e59da0bb3b2ee_1ga80e3a2bfa3fca72a807e59da0bb3b2ee" kindref="member">DEV_IN_TX_ABRT</ref> in <ref refid="structdev__uart__info_a0d5c787fe766670160806618b2897f9f_1a0d5c787fe766670160806618b2897f9f" kindref="member">status</ref> variable, and call the receive callback function, when rx callback is finished, it will clear <ref refid="group__DEVICE__HAL__COMMON__DEVSTATUS_ga80e3a2bfa3fca72a807e59da0bb3b2ee_1ga80e3a2bfa3fca72a807e59da0bb3b2ee" kindref="member">DEV_IN_TX_ABRT</ref> and return<itemizedlist>
+<listitem><para>Param type : NULL</para></listitem><listitem><para>Param usage :</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="323" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="323" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Definitions for uart control command, used in <ref refid="group__DEVICE__HAL__UART__DEVSTRUCT_ga7cd1bf12f5d9ca4663980883d01c092a_1ga7cd1bf12f5d9ca4663980883d01c092a" kindref="member">UART IO Control</ref>. </para>    </briefdescription>
+    <detaileddescription>
+<para>These commands defined here can be used in user code directly.<itemizedlist>
+<listitem><para>Parameters Usage<itemizedlist>
+<listitem><para>For passing parameters like integer, just use uint32_t/int32_t to directly pass values</para></listitem><listitem><para>For passing parameters for a structure, please use pointer to pass values</para></listitem><listitem><para>For getting some data, please use pointer to store the return data</para></listitem></itemizedlist>
+</para></listitem><listitem><para>Common Return Values<itemizedlist>
+<listitem><para><ref refid="group__EMBARC__ERROR_ga1e7cc741c56207a8872ea58373276925_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>, Control device successfully</para></listitem><listitem><para><ref refid="group__EMBARC__ERROR_gac4e674c971a46afe82377d02a2d19451_1gac4e674c971a46afe82377d02a2d19451" kindref="member">E_CLSED</ref>, Device is not opened</para></listitem><listitem><para><ref refid="group__EMBARC__ERROR_ga33dcdca4c2e85d1b2899272d9d176553_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>, Device object is not valid or not exists</para></listitem><listitem><para><ref refid="group__EMBARC__ERROR_ga28d0303b78b18735ae91a99ecc11bc8e_1ga28d0303b78b18735ae91a99ecc11bc8e" kindref="member">E_PAR</ref>, Parameter is not valid for current control command</para></listitem><listitem><para><ref refid="group__EMBARC__ERROR_gae5989e632e687010b35b613304089823_1gae5989e632e687010b35b613304089823" kindref="member">E_SYS</ref>, Control device failed, due to hardware issues such as device is disabled</para></listitem><listitem><para><ref refid="group__EMBARC__ERROR_ga794d581c6f9c0407cbdde9f738c24e9e_1ga794d581c6f9c0407cbdde9f738c24e9e" kindref="member">E_CTX</ref>, Control device failed, due to different reasons like in transfer state</para></listitem><listitem><para><ref refid="group__EMBARC__ERROR_gac05cde47c29052935fd39d6d8a6c5ff4_1gac05cde47c29052935fd39d6d8a6c5ff4" kindref="member">E_NOSPT</ref>, Control command is not supported or not valid </para></listitem></itemizedlist>
+</para></listitem></itemizedlist>
+</para>    </detaileddescription>
+  </compounddef>
+</doxygen>

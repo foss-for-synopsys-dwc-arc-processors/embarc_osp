@@ -1,68 +1,40 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="emsdp_2drivers_2ntshell_2ntshell__io_8c" kind="file">
-    <compoundname>emsdp/drivers/ntshell/ntshell_io.c</compoundname>
-    <includes local="yes">embARC_toolchain.h</includes>
-    <includes refid="emsdp_2drivers_2ntshell_2ntshell__io_8h" local="yes">ntshell_io.h</includes>
+    <compoundname>ntshell_io.c</compoundname>
+    <includes refid="embARC__toolchain_8h" local="yes">embARC_toolchain.h</includes>
     <incdepgraph>
-      <node id="2911">
-        <label>ntshell_io.c</label>
+      <node id="2059">
+        <label>stdbool.h</label>
+      </node>
+      <node id="2054">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ntshell/ntshell_io.c</label>
         <link refid="emsdp/drivers/ntshell/ntshell_io.c"/>
-        <childnode refid="2912" relation="include">
-        </childnode>
-        <childnode refid="2913" relation="include">
+        <childnode refid="2055" relation="include">
         </childnode>
       </node>
-      <node id="2913">
-        <label>ntshell_io.h</label>
-        <link refid="emsdp_2drivers_2ntshell_2ntshell__io_8h"/>
-        <childnode refid="2914" relation="include">
-        </childnode>
-        <childnode refid="2916" relation="include">
-        </childnode>
+      <node id="2056">
+        <label>stdint.h</label>
       </node>
-      <node id="2915">
-        <label>ntshell_task.h</label>
+      <node id="2058">
+        <label>stddef.h</label>
       </node>
-      <node id="2914">
-        <label>ntshell_io_uart.h</label>
-        <link refid="emsdp_2drivers_2ntshell_2ntshell__io__uart_8h"/>
-        <childnode refid="2912" relation="include">
-        </childnode>
-        <childnode refid="2915" relation="include">
-        </childnode>
-      </node>
-      <node id="2916">
-        <label>ntshell_io_netconn.h</label>
-        <link refid="emsdp_2drivers_2ntshell_2ntshell__io__netconn_8h"/>
-        <childnode refid="2912" relation="include">
-        </childnode>
-        <childnode refid="2915" relation="include">
-        </childnode>
-      </node>
-      <node id="2912">
+      <node id="2055">
         <label>embARC_toolchain.h</label>
+        <link refid="embARC__toolchain_8h"/>
+        <childnode refid="2056" relation="include">
+        </childnode>
+        <childnode refid="2057" relation="include">
+        </childnode>
+        <childnode refid="2058" relation="include">
+        </childnode>
+        <childnode refid="2059" relation="include">
+        </childnode>
+      </node>
+      <node id="2057">
+        <label>limits.h</label>
       </node>
     </incdepgraph>
-      <sectiondef kind="func">
-      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_d_p___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o_1ga12b79a5c5ba42300fa5c34e863e29a7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>NTSHELL_IO *</type>
-        <definition>NTSHELL_IO* get_ntshell_io</definition>
-        <argsstring>(uint32_t id)</argsstring>
-        <name>get_ntshell_io</name>
-        <param>
-          <type>uint32_t</type>
-          <declname>id</declname>
-        </param>
-        <briefdescription>
-<para>get ntshell interface by index </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ntshell/ntshell_io.c" line="57" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ntshell/ntshell_io.c" bodystart="57" bodyend="74"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>middleware ntshell io interface driver </para>    </briefdescription>
     <detaileddescription>
@@ -98,28 +70,28 @@
 <codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
 <codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/>---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="preprocessor">#include<sp/>&quot;embARC_toolchain.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="embARC__toolchain_8h" kindref="compound">embARC_toolchain.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MID_NTSHELL<sp/></highlight><highlight class="comment">/*<sp/>only<sp/>available<sp/>when<sp/>enable<sp/>ntshell<sp/>middleware<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;ntshell_io.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="57" refid="group___b_o_a_r_d___e_m_s_d_p___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o_1ga12b79a5c5ba42300fa5c34e863e29a7b" refkind="member"><highlight class="normal">NTSHELL_IO<sp/>*<ref refid="group___b_o_a_r_d___e_m_s_d_p___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o_1ga12b79a5c5ba42300fa5c34e863e29a7b" kindref="member">get_ntshell_io</ref>(uint32_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">NTSHELL_IO<sp/>*get_ntshell_io(uint32_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="58"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(USE_EMSDP_NTSHELL_UART_1)</highlight></codeline>
-<codeline lineno="61"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>EMSDP_NTSHELL_0_ID:</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;ntshell_uart_1;</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__BOARD__EMSDP__DRV__MID__NTSHELL__IO_ga7509d881a57a9cc9d9e1da593156d0f4_1ga7509d881a57a9cc9d9e1da593156d0f4" kindref="member">EMSDP_NTSHELL_0_ID</ref>:</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;ntshell_uart_1;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="65"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#if<sp/>(USE_EMSDP_NTSHELL_NETCONN_0)</highlight></codeline>
-<codeline lineno="66"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>EMSDP_NTSHELL_1_ID:</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;ntshell_netconn_0;</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__BOARD__EMSDP__DRV__MID__NTSHELL__IO_gaca063184e54782f299d60c695c5e8acc_1gaca063184e54782f299d60c695c5e8acc" kindref="member">EMSDP_NTSHELL_1_ID</ref>:</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;ntshell_netconn_0;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="70"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="70"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
 <codeline lineno="74"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"></highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight></codeline>

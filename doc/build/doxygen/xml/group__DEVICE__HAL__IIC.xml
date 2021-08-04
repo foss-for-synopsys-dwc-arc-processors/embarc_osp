@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="group__DEVICE__HAL__IIC" kind="group">
+    <compoundname>DEVICE_HAL_IIC</compoundname>
+    <title>IIC Device HAL Interface</title>
+    <innerfile refid="dev__iic_8h">dev_iic.h</innerfile>
+    <innergroup refid="group__DEVICE__HAL__IIC__CTRLCMD">IIC Device Control Commands</innergroup>
+    <innergroup refid="group__DEVICE__HAL__IIC__DEVSTRUCT">IIC Device Structure</innergroup>
+    <innergroup refid="group__DEVICE__HAL__IIC__CALLBACK">IIC Interrupt callback functions</innergroup>
+    <innergroup refid="group__DEVICE__HAL__IIC__CFG">IIC Related Configurations</innergroup>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__DEVICE__HAL__IIC_1ga0ce322e609d92e655c3bd4a16d6bff6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__DEVICE__HAL__IIC__DEVSTRUCT_ga7f9c19c2e162712a47fb0f61e269d6ae_1ga7f9c19c2e162712a47fb0f61e269d6ae" kindref="member">DEV_IIC_PTR</ref></type>
+        <definition>DEV_IIC_PTR iic_get_dev</definition>
+        <argsstring>(int32_t iic_id)</argsstring>
+        <name>iic_get_dev</name>
+        <param>
+          <type>int32_t</type>
+          <declname>iic_id</declname>
+        </param>
+        <briefdescription>
+<para>get an <ref refid="structdev__iic" kindref="compound">iic device</ref> by iic device id. For how to use iic device hal refer to <ref refid="group__DEVICE__HAL__IIC__DEVSTRUCT" kindref="compound">Functions in iic device structure</ref> </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">iic_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>id of iic, defined by user </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>!NULL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to an <ref refid="structdev__iic" kindref="compound">iic device structure</ref> </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>NULL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>failed to find the iic device by iic_id </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>need to implemented by user in user code</para></simplesect>
+get one designware device structure </para>        </detaileddescription>
+        <inbodydescription>
+<para>&lt; iic 0 id macro</para><para>&lt; iic 0 id macro</para><para>&lt; iic 1 id macro</para><para>&lt; iic 2 id macro </para>        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_iic.h" line="518" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/ip_obj_mgr.c" bodystart="166" bodyend="184"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>definitions for iic device hardware layer (<ref refid="dev__iic_8h" kindref="compound">dev_iic.h</ref>) </para>    </briefdescription>
+    <detaileddescription>
+<para>provide interfaces for iic driver to implement Here is a diagram for the iic interface.</para><para><htmlonly> 
+ &lt;div class=&quot;imagebox&quot;&gt;
+     &lt;div style=&quot;width: 600px&quot;&gt;
+         &lt;img src=&quot;pic/dev_iic_hal.jpg&quot; alt=&quot;IIC Device HAL Interface Diagram&quot;/&gt;
+         &lt;p&gt;IIC Device HAL Interface Diagram&lt;/p&gt;
+     &lt;/div&gt;
+ &lt;/div&gt;
+ </htmlonly> </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

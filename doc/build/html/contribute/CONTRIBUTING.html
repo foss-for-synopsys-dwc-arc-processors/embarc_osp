@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>&lt;no title&gt; &mdash; embARC 2019.06 documentation</title>
+  <title>Contributing to embARC OSP &mdash; embARC OSP Project Documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="CODE_OF_CONDUCT.html" />
+    <link rel="next" title="Contributor Covenant Code of Conduct" href="CODE_OF_CONDUCT.html" />
     <link rel="prev" title="Contribute to embARC OSP" href="contribute.html" /> 
 </head>
 
@@ -86,7 +86,7 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arc/arc.html">ARC Processors</a></li>
@@ -98,7 +98,41 @@
 <li class="toctree-l1"><a class="reference internal" href="../example/example.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer/developer_guides.html">Developer Guides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq/faq.html">Usage Guide FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contribute to embARC OSP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="contribute.html">Contribute to embARC OSP</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Contributing to embARC OSP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table Of Contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-should-i-know-before-i-get-started">What should I know before I get started?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-github-account-and-sign-contribution-agreement">Create GitHub account and sign Contribution Agreement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#embarc-osp-and-applications">embARC OSP and Applications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#embarc-osp-design-decisions">embARC OSP Design Decisions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#how-can-i-contribute">How Can I Contribute?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#reporting-bugs">Reporting Bugs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#suggesting-enhancements">Suggesting Enhancements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#your-first-code-contribution">Your First Code Contribution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pull-requests">Pull Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#styleguides">Styleguides</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#git-commit-messages">Git Commit Messages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c-styleguide">C Styleguide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Documentation Styleguide</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-notes">Additional Notes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#issue-and-pull-request-labels">Issue and Pull Request Labels</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#special-thanks-to-the-atom-project">Special Thanks to the Atom Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CODE_OF_CONDUCT.html">Contributor Covenant Code of Conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ISSUE_TEMPLATE.html">Issue Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PULL_REQUEST_TEMPLATE.html">Pull Request Template</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Change Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bsp/bsp.html">embARC BSP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license/license.html">License</a></li>
@@ -149,14 +183,12 @@
         
           <li><a href="contribute.html">Contribute to embARC OSP</a> &raquo;</li>
         
-      <li>&lt;no title&gt;</li>
+      <li>Contributing to embARC OSP</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/contribute/CONTRIBUTING.md.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -168,75 +200,93 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p># Contributing to embARC OSP</p>
+  <div class="section" id="contributing-to-embarc-osp">
+<span id="coding-guidelines"></span><h1>Contributing to embARC OSP<a class="headerlink" href="#contributing-to-embarc-osp" title="Permalink to this headline">¶</a></h1>
 <p>Thank you for contributing to embARC.</p>
-<p>The following is a set of guidelines for contributing to embARC Open Software Platform (OSP), which is hosted in the [embARC Open Software Platform](<a class="reference external" href="https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp">https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp</a>) repository on GitHub.</p>
-<p>These guidelines must be followed when submitting contributions to Synopsys projects to help ensure requests are processed as efficiently as possible. If you have any questions or concerns, please feel free to contact us at [<a class="reference external" href="mailto:opensource&#37;&#52;&#48;synopsys&#46;com">opensource<span>&#64;</span>synopsys<span>&#46;</span>com</a>](<a class="reference external" href="mailto:opensource&#37;&#52;&#48;synopsys&#46;com">mailto:opensource<span>&#64;</span>synopsys<span>&#46;</span>com</a>).</p>
-<p>#### Table Of Contents</p>
-<dl class="simple">
-<dt>[What should I know before I get started?](#what-should-i-know-before-i-get-started)</dt><dd><ul class="simple">
-<li><p>[Review Code of Conduct](#code-of-conduct)</p></li>
-<li><p>[Create GitHub account and sign Contribution Agreement](#create-github-account-and-sign-contribution-agreement)</p></li>
-<li><p>[embARC OSP and Applications](#embarc-osp-and-applications)</p></li>
-<li><p>[embARC OSP Design Decisions](#embarc-osp-design-decisions)</p></li>
-</ul>
-</dd>
-<dt>[How Can I Contribute?](#how-can-i-contribute)</dt><dd><ul class="simple">
-<li><p>[Reporting Bugs](#reporting-bugs)</p></li>
-<li><p>[Suggesting Enhancements](#suggesting-enhancements)</p></li>
-<li><p>[Your First Code Contribution](#your-first-code-contribution)</p></li>
-<li><p>[Pull Requests](#pull-requests)</p></li>
-</ul>
-</dd>
-<dt>[Styleguides](#styleguides)</dt><dd><ul class="simple">
-<li><p>[Git Commit Messages](#git-commit-messages)</p></li>
-<li><p>[C Styleguide](#c-styleguide)</p></li>
-<li><p>[Documentation Styleguide](#documentation-styleguide)</p></li>
-</ul>
-</dd>
-<dt>[Additional Notes](#additional-notes)</dt><dd><ul class="simple">
-<li><p>[Issue and Pull Request Labels](#issue-and-pull-request-labels)</p></li>
-</ul>
-</dd>
-</dl>
-<p>## What should I know before I get started?</p>
-<p>### Code of Conduct</p>
-<p>This project adheres to the Contributor Covenant [code of conduct](./CODE_OF_CONDUCT.md).
-By participating, you are expected to uphold this code.
-Please report unacceptable behavior to [<a class="reference external" href="mailto:info&#37;&#52;&#48;embarc&#46;org">info<span>&#64;</span>embarc<span>&#46;</span>org</a>](<a class="reference external" href="mailto:info&#37;&#52;&#48;embarc&#46;org">mailto:info<span>&#64;</span>embarc<span>&#46;</span>org</a>).</p>
-<p>### Create GitHub account and sign Contribution Agreement</p>
-<p>Make sure you have a [GitHub account](<a class="reference external" href="https://github.com/join">https://github.com/join</a>). If your contribution was developed during employment or while contracting for a third-party, ensure that such owner or contracting party has provided explicit approval for your contribution to the Synopsys project under the terms of the Synopsys Contributor License Agreement.</p>
-<p>Submit the [Synopsys Contributor License Agreement](<a class="reference external" href="https://www.clahub.com/agreements/foss-for-synopsys-dwc-arc-processors/embarc_osp">https://www.clahub.com/agreements/foss-for-synopsys-dwc-arc-processors/embarc_osp</a>) on CLAhub.com.</p>
-<p>### embARC OSP and Applications</p>
-<p>embARC OSP is an open software platform designed to help accelerate the development and production of embedded systems based on DesignWare ARC processors. Applications are the applications which are writing based on embARC Open Software Platform.</p>
-<p>We host the following two repositories to be used in conjunction with each other when working with embARC OSP:
-- [embarc_osp](<a class="reference external" href="https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp">https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp</a>) - The embARC Open Software Platform including core services, platform support adn integrated networking, security and IoT middleware
-- [embarc_applications](<a class="reference external" href="https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications">https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications</a>) - Applications written using the embARC OSP</p>
-<p>When you consider contributing or raising a issue against embARC OSP or Applications, please go to corresponding repository above.</p>
-<p>### embARC OSP Design Decisions</p>
-<p>When we make a significant decision in how we maintain the project and what we can or cannot support, we will document it in the github wiki. If you have a question around how we do things, check to see if it is documented there. If it is <em>not</em> documented there, please open a new issue on [embARC Open Software Platform](<a class="reference external" href="https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp/issues">https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp/issues</a>) and ask your question.</p>
-<p>## How Can I Contribute?</p>
-<p>### Reporting Bugs</p>
-<p>This section guides you through submitting a bug report against embARC projects. Following these guidelines helps maintainers and the community understand your report :pencil:, reproduce the behavior :computer: :computer:, and find related reports :mag_right:.</p>
-<p>Before creating bug reports, please check [this list](#before-submitting-a-bug-report) as you might find out that you don’t need to create one. When you are creating a bug report, please [include as many details as possible](#how-do-i-submit-a-good-bug-report). Please use the template provided for this purpose.</p>
-<p>#### Before Submitting A Bug Report</p>
+<p>The following is a set of guidelines for contributing to embARC Open Software Platform (OSP), which is hosted in the <a class="reference external" href="https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp">embARC Open Software Platform</a> repository on GitHub.</p>
+<p>These guidelines must be followed when submitting contributions to Synopsys projects to help ensure requests are processed as efficiently as possible. If you have any questions or concerns, please feel free to contact us at <a class="reference external" href="mailto:opensource&#37;&#52;&#48;synopsys&#46;com">opensource<span>&#64;</span>synopsys<span>&#46;</span>com</a>.</p>
+<div class="section" id="table-of-contents">
+<h2>Table Of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#what-should-i-know-before-i-get-started">What should I know before I get started?</a></p>
 <ul class="simple">
-<li><p><strong>Check the embARC OSP documentation.</strong> You might be able to find the cause of the problem and fix things yourself. Most importantly, check if you can reproduce the problem in the latest version of embARC OSP, if the problem happens when you run using both the Metaware and the GNU toolchain for ARC Processors.</p></li>
-<li><p><strong>Check the embARC OSP FAQs</strong> for a list of common questions and problems.</p></li>
-<li><p><strong>Determine [which repository the problem should be reported in](#embarc-osp-and-applications)</strong>.</p></li>
-<li><p><strong>Perform a cursory search in related embARC repositories</strong> to see if the problem has already been reported. If it has, add a comment to the existing issue instead of opening a new one.</p></li>
+<li><p><a class="reference external" href="./CODE_OF_CONDUCT.md">Code of Conduct</a></p></li>
+<li><p><a class="reference internal" href="#create-github-account-and-sign-contribution-agreement">Create GitHub account and sign Contribution Agreement</a></p></li>
+<li><p><a class="reference internal" href="#embarc-osp-and-applications">embARC OSP and Applications</a></p></li>
+<li><p><a class="reference internal" href="#embarc-osp-design-decisions">embARC OSP Design Decisions</a></p></li>
 </ul>
-<p>#### How Do I Submit A (Good) Bug Report?</p>
-<p>Bugs are tracked as [GitHub issues](<a class="reference external" href="https://guides.github.com/features/issues/">https://guides.github.com/features/issues/</a>). After you’ve determined [which repository](#embarc-osp-and-applications) your bug is related to, create an issue on that repository and provide the following information.</p>
+<p><a class="reference internal" href="#how-can-i-contribute">How Can I Contribute?</a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#reporting-bugs">Reporting Bugs</a></p></li>
+<li><p><a class="reference internal" href="#suggesting-enhancements">Suggesting Enhancements</a></p></li>
+<li><p><a class="reference internal" href="#your-first-code-contribution">Your First Code Contribution</a></p></li>
+<li><p><a class="reference internal" href="#pull-requests">Pull Requests</a></p></li>
+</ul>
+<p><a class="reference internal" href="#styleguides">Styleguides</a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#git-commit-messages">Git Commit Messages</a></p></li>
+<li><p><a class="reference internal" href="#c-styleguide">C Styleguide</a></p></li>
+<li><p><a class="reference external" href="#documentation-styleguide">Documentation Styleguide</a></p></li>
+</ul>
+<p><a class="reference internal" href="#additional-notes">Additional Notes</a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#issue-and-pull-request-labels">Issue and Pull Request Labels</a></p></li>
+</ul>
+</div>
+<div class="section" id="what-should-i-know-before-i-get-started">
+<h2>What should I know before I get started?<a class="headerlink" href="#what-should-i-know-before-i-get-started" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="code-of-conduct">
+<h3>Code of Conduct<a class="headerlink" href="#code-of-conduct" title="Permalink to this headline">¶</a></h3>
+<p>This project adheres to the Contributor Covenant <a class="reference external" href="./CODE_OF_CONDUCT.md">code of conduct</a>.
+By participating, you are expected to uphold this code.
+Please report unacceptable behavior to <a class="reference external" href="mailto:info&#37;&#52;&#48;embarc&#46;org">info<span>&#64;</span>embarc<span>&#46;</span>org</a>.</p>
+</div>
+<div class="section" id="create-github-account-and-sign-contribution-agreement">
+<h3>Create GitHub account and sign Contribution Agreement<a class="headerlink" href="#create-github-account-and-sign-contribution-agreement" title="Permalink to this headline">¶</a></h3>
+<p>Make sure you have a <a class="reference external" href="https://github.com/join">GitHub account</a>. If your contribution was developed during employment or while contracting for a third-party, ensure that such owner or contracting party has provided explicit approval for your contribution to the Synopsys project under the terms of the Synopsys Contributor License Agreement.</p>
+<p>Submit the <a class="reference external" href="https://www.clahub.com/agreements/foss-for-synopsys-dwc-arc-processors/embarc_osp">Synopsys Contributor License Agreement</a> on CLAhub.com.</p>
+</div>
+<div class="section" id="embarc-osp-and-applications">
+<h3>embARC OSP and Applications<a class="headerlink" href="#embarc-osp-and-applications" title="Permalink to this headline">¶</a></h3>
+<p>embARC OSP is an open software platform designed to help accelerate the development and production of embedded systems based on DesignWare ARC processors. Applications are the applications which are writing based on embARC Open Software Platform.</p>
+<p>We host the following two repositories to be used in conjunction with each other when working with embARC OSP:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp">embarc_osp</a> - The embARC Open Software Platform including core services, platform support adn integrated networking, security and IoT middleware</p></li>
+<li><p><a class="reference external" href="https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications">embarc_applications</a> - Applications written using the embARC OSP</p></li>
+</ul>
+<p>When you consider contributing or raising a issue against embARC OSP or Applications, please go to corresponding repository above.</p>
+</div>
+<div class="section" id="embarc-osp-design-decisions">
+<h3>embARC OSP Design Decisions<a class="headerlink" href="#embarc-osp-design-decisions" title="Permalink to this headline">¶</a></h3>
+<p>When we make a significant decision in how we maintain the project and what we can or cannot support, we will document it in the github wiki. If you have a question around how we do things, check to see if it is documented there. If it is <em>not</em> documented there, please open a new issue on <a class="reference external" href="https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp/issues">embARC Open Software Platform</a> and ask your question.</p>
+</div>
+</div>
+<div class="section" id="how-can-i-contribute">
+<h2>How Can I Contribute?<a class="headerlink" href="#how-can-i-contribute" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="reporting-bugs">
+<h3>Reporting Bugs<a class="headerlink" href="#reporting-bugs" title="Permalink to this headline">¶</a></h3>
+<p>This section guides you through submitting a bug report against embARC projects. Following these guidelines helps maintainers and the community understand your report :pencil:, reproduce the behavior :computer: :computer:, and find related reports :mag_right:.</p>
+<p>Before creating bug reports, please check <a class="reference external" href="#before-submitting-a-bug-report">this list</a> as you might find out that you don’t need to create one. When you are creating a bug report, please <a class="reference external" href="#how-do-i-submit-a-good-bug-report">include as many details as possible</a>. Please use the template provided for this purpose.</p>
+<div class="section" id="before-submitting-a-bug-report">
+<h4>Before Submitting A Bug Report<a class="headerlink" href="#before-submitting-a-bug-report" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Check the embARC OSP documentation. You might be able to find the cause of the problem and fix things yourself. Most importantly, check if you can reproduce the problem in the latest version of embARC OSP, if the problem happens when you run using both the Metaware and the GNU toolchain for ARC Processors.</p></li>
+<li><p>Check the embARC OSP FAQs for a list of common questions and problems.</p></li>
+<li><p>Determine <a class="reference external" href="#embarc-osp-and-applications">which repository the problem should be reported in</a>.</p></li>
+<li><p>Perform a cursory search in related embARC repositories to see if the problem has already been reported. If it has, add a comment to the existing issue instead of opening a new one.</p></li>
+</ul>
+</div>
+<div class="section" id="how-do-i-submit-a-good-bug-report">
+<h4>How Do I Submit A (Good) Bug Report?<a class="headerlink" href="#how-do-i-submit-a-good-bug-report" title="Permalink to this headline">¶</a></h4>
+<p>Bugs are tracked as <a class="reference external" href="https://guides.github.com/features/issues/">GitHub issues</a>. After you’ve determined <a class="reference external" href="#embarc-osp-and-applications">which repository</a> your bug is related to, create an issue on that repository and provide the following information.</p>
 <p>Explain the problem and include additional details to help maintainers reproduce the problem:</p>
 <ul class="simple">
 <li><p><strong>Use a clear and descriptive title</strong> for the issue to identify the problem.</p></li>
 <li><p><strong>Describe the exact steps which reproduce the problem</strong> in as many details as possible. For example, start by explaining which release or commit of embARC OSP you are using, and how you use embARC OSP, e.g. which command exactly you used in the terminal. When listing steps, <strong>don’t just say what you did, but explain how you did it</strong>. For example, if you run a command, explain which terminal you use and the directory where you run the command?</p></li>
-<li><p><strong>Provide specific examples to demonstrate the steps</strong>. Include links to files or GitHub projects, or copy/pasteable snippets, which you use in those examples. If you’re providing snippets in the issue, use [Markdown code blocks](<a class="reference external" href="https://help.github.com/en/articles/getting-started-with-writing-and-formatting-on-github">https://help.github.com/en/articles/getting-started-with-writing-and-formatting-on-github</a>).</p></li>
+<li><p><strong>Provide specific examples to demonstrate the steps</strong>. Include links to files or GitHub projects, or copy/pasteable snippets, which you use in those examples. If you’re providing snippets in the issue, use <a class="reference external" href="https://help.github.com/en/articles/getting-started-with-writing-and-formatting-on-github">Markdown code blocks</a>.</p></li>
 <li><p><strong>Describe the behavior you observed after following the steps</strong> and point out the exact problem with that behavior.</p></li>
 <li><p><strong>Explain which behavior you expected to see instead and why.</strong></p></li>
-<li><p><strong>Include screenshots and animated GIFs</strong> which show you following the described steps and clearly demonstrate the problem. You can try to <strong>record the GIF of the steps to reproduce the bug</strong>. You can use [licecap](<a class="reference external" href="https://www.cockos.com/licecap/">https://www.cockos.com/licecap/</a>) to record GIFs on macOS and Windows, and [silentcast](<a class="reference external" href="https://github.com/colinkeenan/silentcast">https://github.com/colinkeenan/silentcast</a>) on Linux.</p></li>
-<li><p><strong>If you’re reporting embARC OSP compilation failures</strong>, include a verbose compiling log. Include the compiling log in the issue in a [code block](<a class="reference external" href="https://help.github.com/en/articles/getting-started-with-writing-and-formatting-on-github">https://help.github.com/en/articles/getting-started-with-writing-and-formatting-on-github</a>), a [file attachment](<a class="reference external" href="https://help.github.com/en/articles/file-attachments-on-issues-and-pull-requests">https://help.github.com/en/articles/file-attachments-on-issues-and-pull-requests</a>), or put it in a [gist](<a class="reference external" href="https://gist.github.com/discover">https://gist.github.com/discover</a>) and provide link to that gist.</p></li>
+<li><p><strong>Include screenshots and animated GIFs</strong> which show you following the described steps and clearly demonstrate the problem. You can try to <strong>record the GIF of the steps to reproduce the bug</strong>. You can use <a class="reference external" href="https://www.cockos.com/licecap/">licecap</a> to record GIFs on macOS and Windows, and <a class="reference external" href="https://github.com/colinkeenan/silentcast">silentcast</a> on Linux.</p></li>
+<li><p><strong>If you’re reporting embARC OSP compilation failures</strong>, include a verbose compiling log. Include the compiling log in the issue in a <a class="reference external" href="https://help.github.com/en/articles/getting-started-with-writing-and-formatting-on-github">code block</a>, a <a class="reference external" href="https://help.github.com/en/articles/file-attachments-on-issues-and-pull-requests">file attachment</a>, or put it in a <a class="reference external" href="https://gist.github.com/discover">gist</a> and provide link to that gist.</p></li>
 <li><p><strong>If the problem happens randomly</strong>, describe what you were doing before the problem happened and share more information using the guidelines below.</p></li>
 </ul>
 <p>Provide more context by answering these questions:</p>
@@ -251,127 +301,148 @@ Please report unacceptable behavior to [<a class="reference external" href="mail
 <li><p><strong>Provide name and version of the OS and toolchain you are using</strong></p></li>
 <li><p><strong>Provide hardware board and arc core you are using</strong></p></li>
 </ul>
-<p>#### [Template For Submitting Bug Reports](./ISSUE_TEMPLATE.md)</p>
-<p>### Suggesting Enhancements</p>
+<p><a class="reference internal" href="ISSUE_TEMPLATE.html#issue-guidelines"><span class="std std-ref">Template For Submitting Bug Reports</span></a></p>
+</div>
+</div>
+<div class="section" id="suggesting-enhancements">
+<h3>Suggesting Enhancements<a class="headerlink" href="#suggesting-enhancements" title="Permalink to this headline">¶</a></h3>
 <p>This section guides you through submitting an enhancement suggestion for embARC OSP, including completely new features and minor improvements to existing functionality. Following these guidelines helps maintainers and the community understand your suggestion :pencil: and find related suggestions :mag_right:.</p>
-<p>Before creating enhancement suggestions, please check [this list](#before-submitting-an-enhancement-suggestion) as you might find out that you don’t need to create one. When you are creating an enhancement suggestion, please [include as many details as possible](#how-do-i-submit-a-good-enhancement-suggestion). If you’d like, you can use [this template](#template-for-submitting-enhancement-suggestions) to structure the information.</p>
-<p>#### Before Submitting An Enhancement Suggestion</p>
+<p>Before creating enhancement suggestions, please check <a class="reference external" href="#before-submitting-an-enhancement-suggestion">this list</a> as you might find out that you don’t need to create one. When you are creating an enhancement suggestion, please <a class="reference external" href="#how-do-i-submit-a-good-enhancement-suggestion">include as many details as possible</a>. If you’d like, you can use <a class="reference external" href="#template-for-submitting-enhancement-suggestions">this template</a> to structure the information.</p>
+<div class="section" id="before-submitting-an-enhancement-suggestion">
+<h4>Before Submitting An Enhancement Suggestion<a class="headerlink" href="#before-submitting-an-enhancement-suggestion" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>Check the embARC OSP documentation, and embARC OSP roadmap.</p></li>
 <li><p>Check if the enhancement is already developed or in development in latest sourcecode.</p></li>
-<li><p><strong>Determine [which repository the enhancement should be suggested in](#embarc-osp-and-applications).</strong></p></li>
+<li><p>Determine <a class="reference external" href="#embarc-osp-and-applications">which repository the enhancement should be suggested in</a>.
+<strong>Perform a cursory search in related embARC repositories</strong> to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.</p></li>
 </ul>
-<blockquote>
-<div><p><strong>Perform a cursory search in related embARC repositories</strong> to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.</p>
-</div></blockquote>
-<p>#### How Do I Submit A (Good) Enhancement Suggestion?</p>
-<p>Enhancement suggestions are tracked as [GitHub issues](<a class="reference external" href="https://guides.github.com/features/issues/">https://guides.github.com/features/issues/</a>). After you’ve determined [which repository](#embarc-osp-and-applications) your enhancement suggestions is related to, create an issue on that repository and provide the following information:</p>
+</div>
+<div class="section" id="how-do-i-submit-a-good-enhancement-suggestion">
+<h4>How Do I Submit A (Good) Enhancement Suggestion?<a class="headerlink" href="#how-do-i-submit-a-good-enhancement-suggestion" title="Permalink to this headline">¶</a></h4>
+<p>Enhancement suggestions are tracked as <a class="reference external" href="https://guides.github.com/features/issues/">GitHub issues</a>. After you’ve determined <a class="reference external" href="#embarc-osp-and-applications">which repository</a> your enhancement suggestions is related to, create an issue on that repository and provide the following information:</p>
 <ul class="simple">
 <li><p><strong>Use a clear and descriptive title</strong> for the issue to identify the suggestion.</p></li>
 <li><p><strong>Provide a step-by-step description of the suggested enhancement</strong> in as many details as possible.</p></li>
-<li><p><strong>Provide specific examples to demonstrate the steps</strong>. Include copy/pasteable snippets which you use in those examples, as [Markdown code blocks](<a class="reference external" href="https://help.github.com/en/articles/getting-started-with-writing-and-formatting-on-github">https://help.github.com/en/articles/getting-started-with-writing-and-formatting-on-github</a>).</p></li>
+<li><p><strong>Provide specific examples to demonstrate the steps</strong>. Include copy/pasteable snippets which you use in those examples, as <a class="reference external" href="https://help.github.com/en/articles/getting-started-with-writing-and-formatting-on-github">Markdown code blocks</a>.</p></li>
 <li><p><strong>Describe the current behavior</strong> and <strong>explain which behavior you expected to see instead</strong> and why.</p></li>
-<li><p><strong>Include screenshots and animated GIFs</strong> which show you following the described steps and clearly demonstrate the problem. You can try to <strong>record the GIF of the steps to reproduce the bug</strong>. You can use [licecap](<a class="reference external" href="https://www.cockos.com/licecap/">https://www.cockos.com/licecap/</a>) to record GIFs on macOS and Windows, and [silentcast](<a class="reference external" href="https://github.com/colinkeenan/silentcast">https://github.com/colinkeenan/silentcast</a>) on Linux.</p></li>
+<li><p><strong>Include screenshots and animated GIFs</strong> which show you following the described steps and clearly demonstrate the problem. You can try to <strong>record the GIF of the steps to reproduce the bug</strong>. You can use <a class="reference external" href="https://www.cockos.com/licecap/">licecap</a> to record GIFs on macOS and Windows, and <a class="reference external" href="https://github.com/colinkeenan/silentcast">silentcast</a> on Linux.</p></li>
 <li><p><strong>Explain why this enhancement would be useful</strong> to most embARC OSP users and isn’t something that already existed as similiar feature.</p></li>
 <li><p><strong>List some other text software platform where this enhancement exists.</strong></p></li>
 <li><p><strong>Specify the name and version of the OS you’re using.</strong></p></li>
 </ul>
-<p>#### [Template For Submitting Enhancement Suggestions](./ISSUE_TEMPLATE.md)</p>
-<p>### Your First Code Contribution</p>
+</div>
+<div class="section" id="id10">
+<h4><a class="reference external" href="./ISSUE_TEMPLATE.md">Template For Submitting Enhancement Suggestions</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="your-first-code-contribution">
+<h3>Your First Code Contribution<a class="headerlink" href="#your-first-code-contribution" title="Permalink to this headline">¶</a></h3>
 <p>Unsure where to begin contributing to embARC OSP? You can start by looking through the existing issues.</p>
-<p>If you want to read about using embARC OSP or developing board support package, peripheral drivers, libraries, middlewares or applications in embARC OSP, the [embARC OSP documentation](<a class="reference external" href="https://embarc.org/embarc_osp">https://embarc.org/embarc_osp</a>) is free and available online.</p>
-<p>### Pull Requests</p>
+<p>If you want to read about using embARC OSP or developing board support package, peripheral drivers, libraries, middlewares or applications in embARC OSP, the <a class="reference external" href="https://foss-for-synopsys-dwc-arc-processors.github.io/embarc_osp/doc/build/html/index.html">embARC OSP documentation</a> is free and available online.</p>
+</div>
+<div class="section" id="pull-requests">
+<h3>Pull Requests<a class="headerlink" href="#pull-requests" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Include screenshots and/or animated GIFs in your pull request whenever possible.</p></li>
-<li><p>Follow the [C](#c-styleguide) styleguide.</p></li>
-<li><p>Include thoughtfully-worded, well-structured specs in your doc folder or <cite>readme.md</cite>.</p></li>
-<li><p>Document new code based on the [Documentation Styleguide](#documentation-styleguide)</p></li>
+<li><p>Follow the <a class="reference external" href="#c-styleguide">C</a> styleguide.</p></li>
+<li><p>Include thoughtfully-worded, well-structured specs in your doc folder or <code class="docutils literal notranslate"><span class="pre">readme.md</span></code>.</p></li>
+<li><p>Document new code based on the <a class="reference external" href="#documentation-styleguide">Documentation Styleguide</a></p></li>
 <li><p>End files with a newline.</p></li>
 </ul>
-<p>## Styleguides</p>
-<p>### Git Commit Messages</p>
+</div>
+</div>
+<div class="section" id="styleguides">
+<h2>Styleguides<a class="headerlink" href="#styleguides" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="git-commit-messages">
+<h3>Git Commit Messages<a class="headerlink" href="#git-commit-messages" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>Following the [good commit guideline](<a class="reference external" href="https://chris.beams.io/posts/git-commit/">https://chris.beams.io/posts/git-commit/</a>).</p></li>
+<li><p>Following the <a class="reference external" href="https://chris.beams.io/posts/git-commit/">good commit guideline</a>.</p></li>
 <li><p>Use the present tense (“Add feature” not “Added feature”)</p></li>
 <li><p>Use the imperative mood (“Move cursor to…” not “Moves cursor to…”)</p></li>
 <li><p>Limit the first line to 72 characters or less</p></li>
 <li><p>Reference issues and pull requests liberally</p></li>
-<li><dl class="simple">
-<dt>Consider starting the commit message with an category and colon:</dt><dd><ul>
-<li><p><cite>arc:</cite> changes related to arc core</p></li>
-<li><p><cite>board:</cite> changes related to board support packages</p></li>
-<li><p><cite>device:</cite> changes related to device hal</p></li>
-<li><p><cite>peripheral:</cite> changes releated to peripheral drivers</p></li>
-<li><p><cite>library:</cite> changes related to libraries</p></li>
-<li><p><cite>middleware:</cite> changes related to middlewares</p></li>
-<li><p><cite>os:</cite> changes related to OSes</p></li>
-<li><p><cite>test:</cite> changes related to test cases</p></li>
-<li><p><cite>doc:</cite> changes related to documentation</p></li>
-<li><p><cite>build:</cite> changes related to build system</p></li>
-<li><p><cite>tool:</cite> changes related to tools</p></li>
-<li><p><cite>example:</cite> changes related to examples</p></li>
-<li><p><cite>application:</cite> changes related to applications</p></li>
-<li><p><cite>misc:</cite> changes not categorized</p></li>
+<li><p>Consider starting the commit message with an category and colon:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">arc:</span></code> changes related to arc core</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">board:</span></code> changes related to board support packages</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">device:</span></code> changes related to device hal</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">peripheral:</span></code> changes releated to peripheral drivers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">library:</span></code> changes related to libraries</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">middleware:</span></code> changes related to middlewares</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">os:</span></code> changes related to OSes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test:</span></code> changes related to test cases</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">doc:</span></code> changes related to documentation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">build:</span></code> changes related to build system</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tool:</span></code> changes related to tools</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">example:</span></code> changes related to examples</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">application:</span></code> changes related to applications</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">misc:</span></code> changes not categorized</p></li>
 </ul>
-</dd>
-</dl>
 </li>
 </ul>
-<p>### C Styleguide</p>
-<p>All C source code must adhere to [Linux Kernel Coding Style](<a class="reference external" href="https://www.kernel.org/doc/Documentation/CodingStyle">https://www.kernel.org/doc/Documentation/CodingStyle</a>).
-Here we use [AStyle tool](<a class="reference external" href="http://astyle.sourceforge.net/">http://astyle.sourceforge.net/</a>) to format the source code. The astyle option is provided [here](<a class="reference external" href="https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp/blob/master/.astyle/embarc_astylerc">https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp/blob/master/.astyle/embarc_astylerc</a>).</p>
-<p>To help with writing c source code in editor, you can install plugin for your editor.
-- For sublime-text editor, you can use [SublimeAStyleFormatter](<a class="reference external" href="https://packagecontrol.io/packages/SublimeAStyleFormatter">https://packagecontrol.io/packages/SublimeAStyleFormatter</a>) plugin.</p>
-<p>### Documentation Styleguide</p>
+</div>
+<div class="section" id="c-styleguide">
+<h3>C Styleguide<a class="headerlink" href="#c-styleguide" title="Permalink to this headline">¶</a></h3>
+<p>All C source code must adhere to <a class="reference external" href="https://www.kernel.org/doc/Documentation/CodingStyle">Linux Kernel Coding Style</a>.
+Here we use <a class="reference external" href="http://astyle.sourceforge.net/">AStyle tool</a> to format the source code. The astyle option is provided <a class="reference external" href="https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp/blob/master/.astyle/embarc_astylerc">here</a>.</p>
+<p>To help with writing c source code in editor, you can install plugin for your editor.</p>
 <ul class="simple">
-<li><dl class="simple">
-<dt>Use [Doxygen](<a class="reference external" href="http://www.doxygen.nl">http://www.doxygen.nl</a>).</dt><dd><ul>
-<li><dl class="simple">
-<dt>To help with documentation in source code, you can install doxygen plugins for your editor.</dt><dd><ul>
-<li><p>For sublime-text editor, you can use [Doc​Blockr](<a class="reference external" href="https://packagecontrol.io/packages/DocBlockr">https://packagecontrol.io/packages/DocBlockr</a>) plugin.</p></li>
+<li><p>For sublime-text editor, you can use <a class="reference external" href="https://packagecontrol.io/packages/SublimeAStyleFormatter">SublimeAStyleFormatter</a> plugin.</p></li>
 </ul>
-</dd>
-</dl>
+</div>
+<div class="section" id="id11">
+<h3>Documentation Styleguide<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Use <a class="reference external" href="http://www.doxygen.nl">Doxygen</a>.</p>
+<ul>
+<li><p>To help with documentation in source code, you can install doxygen plugins for your editor.</p>
+<ul>
+<li><p>For sublime-text editor, you can use <a class="reference external" href="https://packagecontrol.io/packages/DocBlockr">Doc​Blockr</a> plugin.</p></li>
+</ul>
 </li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><p>Use [Markdown](<a class="reference external" href="https://daringfireball.net/projects/markdown">https://daringfireball.net/projects/markdown</a>).</p></li>
+<li><p>Use <a class="reference external" href="https://daringfireball.net/projects/markdown">Markdown</a>.</p></li>
 </ul>
-<p>#### Example</p>
-<p><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>c
-/**</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>brief       Reserve a DMA channel, and bind it with dma_chn, and set the dma</p></li>
-<li><p>trigger source</p></li>
-<li></li>
-<li><p>param[in]   channel                This can be DMA_CHN_ANY or any valid</p></li>
-<li><p>channel id. For DMA_CHN_ANY, it will try</p></li>
-<li><p>to peek an available channel. For any</p></li>
-<li><p>valid channel id, it will try to reserve</p></li>
-<li><p>that channel.</p></li>
-<li><p>param       dma_chn                uDMA channel structure, should not be</p></li>
-<li><p>NULL</p></li>
-<li><p>param[in]   source                 DMA trigger source, this can be any value</p></li>
-<li><p>in dma_request_source_t enum</p></li>
-<li></li>
-<li><p>retval      DMA_CHN_INVALID        dma_chn is NULL, or channel is not a</p></li>
-<li><p>valid one, or there is no channel</p></li>
-<li><p>available now</p></li>
-<li><p>retval      0-DMA_ALL_CHANNEL_NUM  the channel id that reserved</p></li>
-</ul>
-<p><a href="#id5"><span class="problematic" id="id6">*</span></a>/</p>
-</div></blockquote>
-<p><a href="#id7"><span class="problematic" id="id8">``</span></a><a href="#id9"><span class="problematic" id="id10">`</span></a></p>
-<p>## Additional Notes</p>
-<p>### Issue and Pull Request Labels</p>
+<div class="section" id="example">
+<h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief       Reserve a DMA channel, and bind it with dma_chn, and set the dma</span>
+<span class="cm"> *              trigger source</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in]   channel                This can be DMA_CHN_ANY or any valid</span>
+<span class="cm"> *                                     channel id. For DMA_CHN_ANY, it will try</span>
+<span class="cm"> *                                     to peek an available channel. For any</span>
+<span class="cm"> *                                     valid channel id, it will try to reserve</span>
+<span class="cm"> *                                     that channel.</span>
+<span class="cm"> * @param       dma_chn                uDMA channel structure, should not be</span>
+<span class="cm"> *                                     NULL</span>
+<span class="cm"> * @param[in]   source                 DMA trigger source, this can be any value</span>
+<span class="cm"> *                                     in dma_request_source_t enum</span>
+<span class="cm"> *</span>
+<span class="cm"> * @retval      DMA_CHN_INVALID        dma_chn is NULL, or channel is not a</span>
+<span class="cm"> *                                     valid one, or there is no channel</span>
+<span class="cm"> *                                     available now</span>
+<span class="cm"> * @retval      0-DMA_ALL_CHANNEL_NUM  the channel id that reserved</span>
+<span class="cm"> */</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="additional-notes">
+<h2>Additional Notes<a class="headerlink" href="#additional-notes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="issue-and-pull-request-labels">
+<h3>Issue and Pull Request Labels<a class="headerlink" href="#issue-and-pull-request-labels" title="Permalink to this headline">¶</a></h3>
 <p>This section lists the labels we use to help us track and manage issues and pull requests. Most labels are used across all embARC repositories.</p>
-<p>[GitHub search](<a class="reference external" href="https://help.github.com/en/articles/searching-issues-and-pull-requests">https://help.github.com/en/articles/searching-issues-and-pull-requests</a>) makes it easy to use labels for finding groups of issues or pull requests you’re interested in.</p>
+<p><a class="reference external" href="https://help.github.com/en/articles/searching-issues-and-pull-requests">GitHub search</a> makes it easy to use labels for finding groups of issues or pull requests you’re interested in.</p>
 <p>The labels are loosely grouped by their purpose, but it’s not required that every issue have a label from every group or that an issue can’t have more than one label from the same group.</p>
-<p>## Special Thanks to the Atom Project
-&lt;p&gt;The contribution guideline takes a lot of reference from the &lt;a class=”reference external” href=”<a class="reference external" href="https://github.com/atom/atom/blob/master/CONTRIBUTING">https://github.com/atom/atom/blob/master/CONTRIBUTING</a>”&gt;Atom Contribution Guideline&lt;/a&gt;.&lt;/p&gt;</p>
+</div>
+</div>
+<div class="section" id="special-thanks-to-the-atom-project">
+<h2>Special Thanks to the Atom Project<a class="headerlink" href="#special-thanks-to-the-atom-project" title="Permalink to this headline">¶</a></h2>
+<p>The contribution guideline takes a lot of reference from the <a class="reference external" href="https://github.com/atom/atom/blob/master/CONTRIBUTING">Atom Contribution Guideline</a>.</p></div>
+</div>
 
 
            </div>
@@ -379,25 +450,18 @@ Here we use [AStyle tool](<a class="reference external" href="http://astyle.sour
           </div>
           <footer>
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="CODE_OF_CONDUCT.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="contribute.html" class="btn btn-neutral float-left" title="Contribute to embARC OSP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
         &copy; Copyright 2019, Synopsys
+      <span class="lastupdated">
+        Last updated on Aug 04, 2021.
+      </span>
 
     </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
 

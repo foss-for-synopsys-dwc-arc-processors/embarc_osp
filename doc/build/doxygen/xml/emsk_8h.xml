@@ -2,8 +2,8 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="emsk_8h" kind="file">
     <compoundname>emsk.h</compoundname>
-    <includes local="yes">arc/arc_em.h</includes>
-    <includes local="yes">arc/arc_builtin.h</includes>
+    <includes refid="arc__em_8h" local="yes">arc/arc_em.h</includes>
+    <includes refid="arc__builtin_8h" local="yes">arc/arc_builtin.h</includes>
     <includes refid="emsk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8h" local="yes">drivers/ip/designware/iic/dw_iic_obj.h</includes>
     <includes refid="emsk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8h" local="yes">drivers/ip/designware/spi/dw_spi_obj.h</includes>
     <includes refid="emsk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8h" local="yes">drivers/ip/designware/uart/dw_uart_obj.h</includes>
@@ -12,205 +12,247 @@
     <includes refid="emsk__sdcard_8h" local="yes">drivers/sdcard/emsk_sdcard.h</includes>
     <includes refid="emsk_2drivers_2pmwifi_2pmwifi_8h" local="yes">drivers/pmwifi/pmwifi.h</includes>
     <includes refid="emsk_2drivers_2flash__obj_2flash__obj_8h" local="yes">drivers/flash_obj/flash_obj.h</includes>
-    <includes local="yes">device/dev_pinmux.h</includes>
+    <includes refid="dev__pinmux_8h" local="yes">device/dev_pinmux.h</includes>
     <includes refid="emsk__gpio_8h" local="yes">common/emsk_gpio.h</includes>
     <includes local="yes">emsk_hardware.h</includes>
-    <includedby refid="emsk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c" local="yes">dw_gpio_obj.c</includedby>
-    <includedby refid="emsk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8c" local="yes">dw_iic_obj.c</includedby>
-    <includedby refid="emsk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c" local="yes">dw_spi_obj.c</includedby>
-    <includedby refid="emsk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c" local="yes">dw_uart_obj.c</includedby>
-    <includedby refid="emsk_2drivers_2mux_2mux_8c" local="yes">mux.c</includedby>
+    <includedby refid="emsk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.c</includedby>
+    <includedby refid="emsk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/iic/dw_iic_obj.c</includedby>
+    <includedby refid="emsk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/spi/dw_spi_obj.c</includedby>
+    <includedby refid="emsk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/uart/dw_uart_obj.c</includedby>
+    <includedby refid="emsk_2drivers_2mux_2mux_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c</includedby>
     <incdepgraph>
-      <node id="2127">
-        <label>ntshell_io_uart.h</label>
-        <link refid="emsk_2drivers_2ntshell_2ntshell__io__uart_8h"/>
-        <childnode refid="2128" relation="include">
-        </childnode>
-        <childnode refid="2129" relation="include">
+      <node id="2863">
+        <label>stdbool.h</label>
+      </node>
+      <node id="2856">
+        <label>arc/arc.h</label>
+        <link refid="arc_8h"/>
+        <childnode refid="2857" relation="include">
         </childnode>
       </node>
-      <node id="2138">
-        <label>device/dev_pinmux.h</label>
+      <node id="2858">
+        <label>arc/arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="2859" relation="include">
+        </childnode>
+        <childnode refid="2856" relation="include">
+        </childnode>
       </node>
-      <node id="2122">
+      <node id="2869">
         <label>drivers/ip/designware/uart/dw_uart_obj.h</label>
         <link refid="emsk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8h"/>
-        <childnode refid="2123" relation="include">
+        <childnode refid="2870" relation="include">
         </childnode>
       </node>
-      <node id="2129">
-        <label>ntshell_task.h</label>
-      </node>
-      <node id="2120">
+      <node id="2867">
         <label>drivers/ip/designware/spi/dw_spi_obj.h</label>
         <link refid="emsk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8h"/>
-        <childnode refid="2121" relation="include">
+        <childnode refid="2868" relation="include">
         </childnode>
       </node>
-      <node id="2118">
+      <node id="2879">
+        <label>device/dev_flash.h</label>
+        <link refid="dev__flash_8h"/>
+        <childnode refid="2866" relation="include">
+        </childnode>
+      </node>
+      <node id="2860">
+        <label>stdint.h</label>
+      </node>
+      <node id="2864">
         <label>drivers/ip/designware/iic/dw_iic_obj.h</label>
         <link refid="emsk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8h"/>
-        <childnode refid="2119" relation="include">
+        <childnode refid="2865" relation="include">
         </childnode>
       </node>
-      <node id="2125">
-        <label>dw_gpio.h</label>
-      </node>
-      <node id="2130">
-        <label>ntshell_io_netconn.h</label>
-        <link refid="emsk_2drivers_2ntshell_2ntshell__io__netconn_8h"/>
-        <childnode refid="2128" relation="include">
-        </childnode>
-        <childnode refid="2129" relation="include">
-        </childnode>
-      </node>
-      <node id="2136">
+      <node id="2878">
         <label>drivers/flash_obj/flash_obj.h</label>
-        <link refid="emsk_2drivers_2flash__obj_2flash__obj_8h_source"/>
-        <childnode refid="2137" relation="include">
+        <link refid="emsk_2drivers_2flash__obj_2flash__obj_8h"/>
+        <childnode refid="2879" relation="include">
         </childnode>
       </node>
-      <node id="2116">
-        <label>arc/arc_em.h</label>
+      <node id="2862">
+        <label>stddef.h</label>
       </node>
-      <node id="2117">
-        <label>arc/arc_builtin.h</label>
+      <node id="2859">
+        <label>embARC_toolchain.h</label>
+        <link refid="embARC__toolchain_8h"/>
+        <childnode refid="2860" relation="include">
+        </childnode>
+        <childnode refid="2861" relation="include">
+        </childnode>
+        <childnode refid="2862" relation="include">
+        </childnode>
+        <childnode refid="2863" relation="include">
+        </childnode>
       </node>
-      <node id="2124">
+      <node id="2871">
         <label>drivers/ip/designware/gpio/dw_gpio_obj.h</label>
         <link refid="emsk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8h"/>
-        <childnode refid="2125" relation="include">
+        <childnode refid="2872" relation="include">
         </childnode>
       </node>
-      <node id="2137">
-        <label>device/dev_flash.h</label>
+      <node id="2861">
+        <label>limits.h</label>
       </node>
-      <node id="2119">
+      <node id="2866">
+        <label>device/dev_common.h</label>
+        <link refid="dev__common_8h"/>
+        <childnode refid="2860" relation="include">
+        </childnode>
+      </node>
+      <node id="2865">
         <label>device/ip_hal/dev_iic.h</label>
-      </node>
-      <node id="2132">
-        <label>emsk_sdcard_spi.h</label>
-        <link refid="emsk__sdcard__spi_8h"/>
-        <childnode refid="2133" relation="include">
+        <link refid="dev__iic_8h"/>
+        <childnode refid="2866" relation="include">
         </childnode>
       </node>
-      <node id="2121">
-        <label>device/ip_hal/dev_spi.h</label>
-      </node>
-      <node id="2135">
-        <label>device/dev_wnic.h</label>
-      </node>
-      <node id="2128">
-        <label>embARC_toolchain.h</label>
-      </node>
-      <node id="2126">
+      <node id="2875">
         <label>drivers/ntshell/ntshell_io.h</label>
         <link refid="emsk_2drivers_2ntshell_2ntshell__io_8h"/>
-        <childnode refid="2127" relation="include">
-        </childnode>
-        <childnode refid="2130" relation="include">
+      </node>
+      <node id="2868">
+        <label>device/ip_hal/dev_spi.h</label>
+        <link refid="dev__spi_8h"/>
+        <childnode refid="2866" relation="include">
         </childnode>
       </node>
-      <node id="2133">
-        <label>ff_diskio.h</label>
-      </node>
-      <node id="2140">
+      <node id="2882">
         <label>emsk_hardware.h</label>
       </node>
-      <node id="2139">
+      <node id="2881">
         <label>common/emsk_gpio.h</label>
         <link refid="emsk__gpio_8h"/>
-        <childnode refid="2125" relation="include">
+        <childnode refid="2872" relation="include">
         </childnode>
       </node>
-      <node id="2131">
+      <node id="2876">
         <label>drivers/sdcard/emsk_sdcard.h</label>
         <link refid="emsk__sdcard_8h"/>
-        <childnode refid="2128" relation="include">
-        </childnode>
-        <childnode refid="2132" relation="include">
+        <childnode refid="2859" relation="include">
         </childnode>
       </node>
-      <node id="2123">
+      <node id="2855">
+        <label>arc/arc_em.h</label>
+        <link refid="arc__em_8h"/>
+        <childnode refid="2856" relation="include">
+        </childnode>
+      </node>
+      <node id="2870">
         <label>device/ip_hal/dev_uart.h</label>
+        <link refid="dev__uart_8h"/>
+        <childnode refid="2866" relation="include">
+        </childnode>
       </node>
-      <node id="2115">
-        <label>emsk.h</label>
+      <node id="2880">
+        <label>device/dev_pinmux.h</label>
+        <link refid="dev__pinmux_8h"/>
+        <childnode refid="2859" relation="include">
+        </childnode>
+      </node>
+      <node id="2872">
+        <label>dw_gpio.h</label>
+        <link refid="dw__gpio_8h"/>
+        <childnode refid="2873" relation="include">
+        </childnode>
+        <childnode refid="2874" relation="include">
+        </childnode>
+      </node>
+      <node id="2874">
+        <label>arc/arc_exception.h</label>
+        <link refid="arc__exception_8h"/>
+        <childnode refid="2859" relation="include">
+        </childnode>
+        <childnode refid="2856" relation="include">
+        </childnode>
+        <childnode refid="2858" relation="include">
+        </childnode>
+      </node>
+      <node id="2857">
+        <label>arc/arc_feature_config.h</label>
+        <link refid="arc__feature__config_8h"/>
+      </node>
+      <node id="2854">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h</label>
         <link refid="emsk.h"/>
-        <childnode refid="2116" relation="include">
+        <childnode refid="2855" relation="include">
         </childnode>
-        <childnode refid="2117" relation="include">
+        <childnode refid="2858" relation="include">
         </childnode>
-        <childnode refid="2118" relation="include">
+        <childnode refid="2864" relation="include">
         </childnode>
-        <childnode refid="2120" relation="include">
+        <childnode refid="2867" relation="include">
         </childnode>
-        <childnode refid="2122" relation="include">
+        <childnode refid="2869" relation="include">
         </childnode>
-        <childnode refid="2124" relation="include">
+        <childnode refid="2871" relation="include">
         </childnode>
-        <childnode refid="2126" relation="include">
+        <childnode refid="2875" relation="include">
         </childnode>
-        <childnode refid="2131" relation="include">
+        <childnode refid="2876" relation="include">
         </childnode>
-        <childnode refid="2134" relation="include">
+        <childnode refid="2877" relation="include">
         </childnode>
-        <childnode refid="2136" relation="include">
+        <childnode refid="2878" relation="include">
         </childnode>
-        <childnode refid="2138" relation="include">
+        <childnode refid="2880" relation="include">
         </childnode>
-        <childnode refid="2139" relation="include">
+        <childnode refid="2881" relation="include">
         </childnode>
-        <childnode refid="2140" relation="include">
+        <childnode refid="2882" relation="include">
         </childnode>
       </node>
-      <node id="2134">
+      <node id="2877">
         <label>drivers/pmwifi/pmwifi.h</label>
         <link refid="emsk_2drivers_2pmwifi_2pmwifi_8h"/>
-        <childnode refid="2135" relation="include">
+      </node>
+      <node id="2873">
+        <label>device/ip_hal/dev_gpio.h</label>
+        <link refid="dev__gpio_8h"/>
+        <childnode refid="2866" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="2145">
-        <label>dw_uart_obj.c</label>
+      <node id="2887">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/uart/dw_uart_obj.c</label>
         <link refid="emsk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
       </node>
-      <node id="2144">
-        <label>dw_spi_obj.c</label>
+      <node id="2886">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/spi/dw_spi_obj.c</label>
         <link refid="emsk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c"/>
       </node>
-      <node id="2146">
-        <label>mux.c</label>
+      <node id="2888">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c</label>
         <link refid="emsk_2drivers_2mux_2mux_8c"/>
       </node>
-      <node id="2143">
-        <label>dw_iic_obj.c</label>
+      <node id="2885">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/iic/dw_iic_obj.c</label>
         <link refid="emsk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8c"/>
       </node>
-      <node id="2142">
-        <label>dw_gpio_obj.c</label>
+      <node id="2884">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.c</label>
         <link refid="emsk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c"/>
       </node>
-      <node id="2141">
-        <label>emsk.h</label>
+      <node id="2883">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h</label>
         <link refid="emsk.h"/>
-        <childnode refid="2142" relation="include">
+        <childnode refid="2884" relation="include">
         </childnode>
-        <childnode refid="2143" relation="include">
+        <childnode refid="2885" relation="include">
         </childnode>
-        <childnode refid="2144" relation="include">
+        <childnode refid="2886" relation="include">
         </childnode>
-        <childnode refid="2145" relation="include">
+        <childnode refid="2887" relation="include">
         </childnode>
-        <childnode refid="2146" relation="include">
+        <childnode refid="2888" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
       <sectiondef kind="define">
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga6b2b1ed33a51c388811a269bc1fd2541" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga6b2b1ed33a51c388811a269bc1fd2541_1ga6b2b1ed33a51c388811a269bc1fd2541" prot="public" static="no">
         <name>PERIPHERAL_BASE</name>
-        <initializer>arc_aux_read(AUX_DMP_PERIPHERAL)</initializer>
+        <initializer><ref refid="group__ARC__HAL__BUILTIN_gad03638934aed9ae0b0212a6b351a4aa0_1gad03638934aed9ae0b0212a6b351a4aa0" kindref="member">arc_aux_read</ref>(<ref refid="group__ARC__HAL__CORE__COMM_gadd7f222275f2b649a26d2009e8edfadb_1gadd7f222275f2b649a26d2009e8edfadb" kindref="member">AUX_DMP_PERIPHERAL</ref>)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -219,9 +261,9 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="64" column="10" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="64" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1gad894fa48bdb6402ac026de449da74ffd" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_gad894fa48bdb6402ac026de449da74ffd_1gad894fa48bdb6402ac026de449da74ffd" prot="public" static="no">
         <name>BOARD_CONSOLE_UART_ID</name>
-        <initializer><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___u_a_r_t___o_b_j_1ga5fb2a0672ce7e3c57ea515366808fe56" kindref="member">DW_UART_1_ID</ref></initializer>
+        <initializer><ref refid="hsdk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8h_a5fb2a0672ce7e3c57ea515366808fe56_1a5fb2a0672ce7e3c57ea515366808fe56" kindref="member">DW_UART_1_ID</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -230,9 +272,9 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="69" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="69" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1gab6a5428995eb87c161f554c44e6457ab" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_gab6a5428995eb87c161f554c44e6457ab_1gab6a5428995eb87c161f554c44e6457ab" prot="public" static="no">
         <name>BOARD_CONSOLE_UART_BAUD</name>
-        <initializer>UART_BAUDRATE_115200</initializer>
+        <initializer><ref refid="group__DEVICE__HAL__UART__BAUD_ga7ba5033e1e1547d07d7683d0542c1f4a_1ga7ba5033e1e1547d07d7683d0542c1f4a" kindref="member">UART_BAUDRATE_115200</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -241,9 +283,9 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="70" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="70" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga86280467d0f99572c4a332fa34e36b19" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga86280467d0f99572c4a332fa34e36b19_1ga86280467d0f99572c4a332fa34e36b19" prot="public" static="no">
         <name>BOARD_ADC_IIC_ID</name>
-        <initializer><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___i_i_c___o_b_j_1ga9dad39587e7f20b0e80aca04791dbb09" kindref="member">DW_IIC_0_ID</ref></initializer>
+        <initializer><ref refid="hsdk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8h_a9dad39587e7f20b0e80aca04791dbb09_1a9dad39587e7f20b0e80aca04791dbb09" kindref="member">DW_IIC_0_ID</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -252,9 +294,9 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="71" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="71" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1gab20582f7885e506d06e5e64363e68ddd" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_gab20582f7885e506d06e5e64363e68ddd_1gab20582f7885e506d06e5e64363e68ddd" prot="public" static="no">
         <name>BOARD_TEMP_SENSOR_IIC_ID</name>
-        <initializer><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___i_i_c___o_b_j_1ga9dad39587e7f20b0e80aca04791dbb09" kindref="member">DW_IIC_0_ID</ref></initializer>
+        <initializer><ref refid="hsdk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8h_a9dad39587e7f20b0e80aca04791dbb09_1a9dad39587e7f20b0e80aca04791dbb09" kindref="member">DW_IIC_0_ID</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -263,9 +305,9 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="72" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="72" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1gac2e7657928a275b91b5209995932bb37" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_gac2e7657928a275b91b5209995932bb37_1gac2e7657928a275b91b5209995932bb37" prot="public" static="no">
         <name>BOARD_WIFI_SLIP_UART_ID</name>
-        <initializer><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___u_a_r_t___o_b_j_1ga61cfe53266aacb4cb6a0f8b879507dee" kindref="member">DW_UART_0_ID</ref></initializer>
+        <initializer><ref refid="hsdk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8h_a61cfe53266aacb4cb6a0f8b879507dee_1a61cfe53266aacb4cb6a0f8b879507dee" kindref="member">DW_UART_0_ID</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -274,7 +316,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="73" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="73" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga5c9cd429a7523f442533de1a2a3e0a03" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga5c9cd429a7523f442533de1a2a3e0a03_1ga5c9cd429a7523f442533de1a2a3e0a03" prot="public" static="no">
         <name>BOARD_TEMP_IIC_SLVADDR</name>
         <initializer>TEMP_I2C_SLAVE_ADDRESS</initializer>
         <briefdescription>
@@ -285,9 +327,9 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="75" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="75" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga9d21a1a9583a2aad27c77920d79fba66" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga9d21a1a9583a2aad27c77920d79fba66_1ga9d21a1a9583a2aad27c77920d79fba66" prot="public" static="no">
         <name>BOARD_SDCARD_SPI_ID</name>
-        <initializer><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j_1ga906ed6ea818fb3ea7b3b52f174751ec2" kindref="member">DW_SPI_0_ID</ref></initializer>
+        <initializer><ref refid="hsdk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8h_a906ed6ea818fb3ea7b3b52f174751ec2_1a906ed6ea818fb3ea7b3b52f174751ec2" kindref="member">DW_SPI_0_ID</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -296,9 +338,9 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="77" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="77" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1gae26f3d5348ab4a098b18b250adda5b8d" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_gae26f3d5348ab4a098b18b250adda5b8d_1gae26f3d5348ab4a098b18b250adda5b8d" prot="public" static="no">
         <name>BOARD_WIFI_SPI_ID</name>
-        <initializer><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j_1ga906ed6ea818fb3ea7b3b52f174751ec2" kindref="member">DW_SPI_0_ID</ref></initializer>
+        <initializer><ref refid="hsdk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8h_a906ed6ea818fb3ea7b3b52f174751ec2_1a906ed6ea818fb3ea7b3b52f174751ec2" kindref="member">DW_SPI_0_ID</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -307,9 +349,9 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="78" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="78" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga52bffcf56accef8e1ddbf74cc0145808" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga52bffcf56accef8e1ddbf74cc0145808_1ga52bffcf56accef8e1ddbf74cc0145808" prot="public" static="no">
         <name>BOARD_SFLASH_SPI_ID</name>
-        <initializer><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j_1ga906ed6ea818fb3ea7b3b52f174751ec2" kindref="member">DW_SPI_0_ID</ref></initializer>
+        <initializer><ref refid="hsdk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8h_a906ed6ea818fb3ea7b3b52f174751ec2_1a906ed6ea818fb3ea7b3b52f174751ec2" kindref="member">DW_SPI_0_ID</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -318,9 +360,9 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="79" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="79" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga18d726b68df14d3a5d5f3467a565c8db" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga18d726b68df14d3a5d5f3467a565c8db_1ga18d726b68df14d3a5d5f3467a565c8db" prot="public" static="no">
         <name>BOARD_SDCARD_SPI_LINE</name>
-        <initializer><ref refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga8f034f470d292e2c3a124314a73fe4d5" kindref="member">EMSK_SPI_LINE_SDCARD</ref></initializer>
+        <initializer><ref refid="group__BOARD__EMSK__COMMON__INIT_ga8f034f470d292e2c3a124314a73fe4d5_1ga8f034f470d292e2c3a124314a73fe4d5" kindref="member">EMSK_SPI_LINE_SDCARD</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -329,9 +371,9 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="81" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="81" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1gab6ec1fb5c5bec8858e2fc533515624f3" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_gab6ec1fb5c5bec8858e2fc533515624f3_1gab6ec1fb5c5bec8858e2fc533515624f3" prot="public" static="no">
         <name>BOARD_WIFI_SPI_LINE</name>
-        <initializer><ref refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga235e46bf2bd5d250f4c329e9bf71ed0e" kindref="member">EMSK_SPI_LINE_1</ref></initializer>
+        <initializer><ref refid="group__BOARD__EMSK__COMMON__INIT_ga235e46bf2bd5d250f4c329e9bf71ed0e_1ga235e46bf2bd5d250f4c329e9bf71ed0e" kindref="member">EMSK_SPI_LINE_1</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -340,9 +382,9 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="82" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="82" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga8ecea4bea3606ec07ee9088d26a13d19" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga8ecea4bea3606ec07ee9088d26a13d19_1ga8ecea4bea3606ec07ee9088d26a13d19" prot="public" static="no">
         <name>BOARD_SFLASH_SPI_LIN</name>
-        <initializer><ref refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga795b285142c1c43defe92aef444fc9c6" kindref="member">EMSK_SPI_LINE_SFLASH</ref></initializer>
+        <initializer><ref refid="group__BOARD__EMSK__COMMON__INIT_ga795b285142c1c43defe92aef444fc9c6_1ga795b285142c1c43defe92aef444fc9c6" kindref="member">EMSK_SPI_LINE_SFLASH</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -351,18 +393,18 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="83" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="83" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga658846f2561af188d1cd9fbae2699f60" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga658846f2561af188d1cd9fbae2699f60_1ga658846f2561af188d1cd9fbae2699f60" prot="public" static="no">
         <name>BOARD_FLASH_EXIST</name>
         <initializer>(0)</initializer>
         <briefdescription>
-<para>board doesn`t exist flash device </para>        </briefdescription>
+        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>board doesn`t exist flash device </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="86" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="86" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga3a84fcb550e72d6f56488f9c639054fa" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga3a84fcb550e72d6f56488f9c639054fa_1ga3a84fcb550e72d6f56488f9c639054fa" prot="public" static="no">
         <name>BOARD_SPI_FREQ</name>
         <initializer>(1000000)</initializer>
         <briefdescription>
@@ -373,9 +415,9 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="89" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="89" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga375f6343d75692da616b44c4958e599f" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga375f6343d75692da616b44c4958e599f_1ga375f6343d75692da616b44c4958e599f" prot="public" static="no">
         <name>BOARD_SYS_TIMER_ID</name>
-        <initializer>TIMER_0</initializer>
+        <initializer><ref refid="group__ARC__HAL__MISC__TIMER_gacc9ff9df4a9674a1ce9ba08fc4a4679e_1gacc9ff9df4a9674a1ce9ba08fc4a4679e" kindref="member">TIMER_0</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -384,9 +426,9 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="92" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="92" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga75c72f500916ce679ad4458d61fd3a3e" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga75c72f500916ce679ad4458d61fd3a3e_1ga75c72f500916ce679ad4458d61fd3a3e" prot="public" static="no">
         <name>BOARD_SYS_TIMER_INTNO</name>
-        <initializer>INTNO_TIMER0</initializer>
+        <initializer><ref refid="group__ARC__HAL__MISC__TIMER_ga7b8512078a0c7ba91d2f2058ca8e66b6_1ga7b8512078a0c7ba91d2f2058ca8e66b6" kindref="member">INTNO_TIMER0</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -395,7 +437,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="93" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="93" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga8c5105538fa26a5c3d6eff92454a8697" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga8c5105538fa26a5c3d6eff92454a8697_1ga8c5105538fa26a5c3d6eff92454a8697" prot="public" static="no">
         <name>BOARD_SYS_TIMER_HZ</name>
         <initializer>(1000)</initializer>
         <briefdescription>
@@ -406,32 +448,31 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="94" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="94" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga4deac94773cab055391479766cd72cc6" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga4deac94773cab055391479766cd72cc6_1ga4deac94773cab055391479766cd72cc6" prot="public" static="no">
         <name>BOARD_SYS_TIMER_MS_HZ</name>
         <initializer>(1000)</initializer>
         <briefdescription>
-<para>board timer count frequency (HZ) </para>        </briefdescription>
+        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>board timer count frequency (HZ) </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="97" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="97" bodyend="-1"/>
-        <referencedby refid="group___b_o_a_r_d___c_o_m_m_o_n_1ga2d400eb191882aeb5b35143ffe7ea9ef" compoundref="board_8c" startline="344" endline="365">board_timer_update</referencedby>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga219862b79fcaa501cea1b068ded35f25" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga219862b79fcaa501cea1b068ded35f25_1ga219862b79fcaa501cea1b068ded35f25" prot="public" static="no">
         <name>BOARD_SYS_TIMER_MS_CONV</name>
-        <initializer>(<ref refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga4deac94773cab055391479766cd72cc6" kindref="member">BOARD_SYS_TIMER_MS_HZ</ref> / BOARD_SYS_TIMER_HZ)</initializer>
+        <initializer>(<ref refid="nsim_8h_a4deac94773cab055391479766cd72cc6_1a4deac94773cab055391479766cd72cc6" kindref="member">BOARD_SYS_TIMER_MS_HZ</ref> / <ref refid="nsim_8h_a8c5105538fa26a5c3d6eff92454a8697_1a8c5105538fa26a5c3d6eff92454a8697" kindref="member">BOARD_SYS_TIMER_HZ</ref>)</initializer>
         <briefdescription>
-<para>board timer count frequency convention based on the global timer counter </para>        </briefdescription>
+        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>board timer count frequency convention based on the global timer counter </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="99" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="99" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga6c7035ed8c0a3208ed60d7dd4426fc9e" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga6c7035ed8c0a3208ed60d7dd4426fc9e_1ga6c7035ed8c0a3208ed60d7dd4426fc9e" prot="public" static="no">
         <name>BOARD_OS_TIMER_ID</name>
-        <initializer>TIMER_0</initializer>
+        <initializer><ref refid="group__ARC__HAL__MISC__TIMER_gacc9ff9df4a9674a1ce9ba08fc4a4679e_1gacc9ff9df4a9674a1ce9ba08fc4a4679e" kindref="member">TIMER_0</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -440,9 +481,9 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="101" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="101" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1gaff8db4f0fddc24033143761ea4a461df" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_gaff8db4f0fddc24033143761ea4a461df_1gaff8db4f0fddc24033143761ea4a461df" prot="public" static="no">
         <name>BOARD_OS_TIMER_INTNO</name>
-        <initializer>INTNO_TIMER0</initializer>
+        <initializer><ref refid="group__ARC__HAL__MISC__TIMER_ga7b8512078a0c7ba91d2f2058ca8e66b6_1ga7b8512078a0c7ba91d2f2058ca8e66b6" kindref="member">INTNO_TIMER0</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -451,9 +492,9 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="102" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="102" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga5ce41facbc716678c95ac51a44e7a052" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga5ce41facbc716678c95ac51a44e7a052_1ga5ce41facbc716678c95ac51a44e7a052" prot="public" static="no">
         <name>BOARD_CPU_CLOCK</name>
-        <initializer><ref refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga77ec960fb2992023cfa6b3e698b2aed8" kindref="member">CLK_CPU</ref></initializer>
+        <initializer><ref refid="nsim_8h_a77ec960fb2992023cfa6b3e698b2aed8_1a77ec960fb2992023cfa6b3e698b2aed8" kindref="member">CLK_CPU</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -462,9 +503,9 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="104" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="104" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga56e6d6ec3d48ed1eb073e0ed5cec2258" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga56e6d6ec3d48ed1eb073e0ed5cec2258_1ga56e6d6ec3d48ed1eb073e0ed5cec2258" prot="public" static="no">
         <name>BOARD_DEV_CLOCK</name>
-        <initializer><ref refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga834959d61bd62205d39308860373b374" kindref="member">CLK_BUS_APB</ref></initializer>
+        <initializer><ref refid="20_2hsdk__hardware_8h_a834959d61bd62205d39308860373b374_1a834959d61bd62205d39308860373b374" kindref="member">CLK_BUS_APB</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -473,7 +514,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="105" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="105" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga410e1e3163d011941a32f1e6553e2bc3" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga410e1e3163d011941a32f1e6553e2bc3_1ga410e1e3163d011941a32f1e6553e2bc3" prot="public" static="no">
         <name>BOARD_LED_MASK</name>
         <initializer>(0x1ff)</initializer>
         <briefdescription>
@@ -484,7 +525,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="107" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="107" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga018041af3d60889cd644e597794f5eb8" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga018041af3d60889cd644e597794f5eb8_1ga018041af3d60889cd644e597794f5eb8" prot="public" static="no">
         <name>BOARD_LED_CNT</name>
         <initializer>(9)</initializer>
         <briefdescription>
@@ -495,7 +536,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="108" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="108" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1gaa505814603a7771eaa2ad9391d14c37e" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_gaa505814603a7771eaa2ad9391d14c37e_1gaa505814603a7771eaa2ad9391d14c37e" prot="public" static="no">
         <name>BOARD_BTN_MASK</name>
         <initializer>(0x7)</initializer>
         <briefdescription>
@@ -506,7 +547,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="109" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="109" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga57560179839c4f117c91714da34376f0" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga57560179839c4f117c91714da34376f0_1ga57560179839c4f117c91714da34376f0" prot="public" static="no">
         <name>BOARD_BTN_CNT</name>
         <initializer>(3)</initializer>
         <briefdescription>
@@ -517,7 +558,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="110" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="110" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1gaa6ae795724a84ab21fa3daee084ab0b8" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_gaa6ae795724a84ab21fa3daee084ab0b8_1gaa6ae795724a84ab21fa3daee084ab0b8" prot="public" static="no">
         <name>BOARD_SWT_MASK</name>
         <initializer>(0xf)</initializer>
         <briefdescription>
@@ -528,7 +569,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="111" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="111" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga5b8a96b97e9cbc4fdacd2404887028bf" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga5b8a96b97e9cbc4fdacd2404887028bf_1ga5b8a96b97e9cbc4fdacd2404887028bf" prot="public" static="no">
         <name>BOARD_SWT_CNT</name>
         <initializer>(4)</initializer>
         <briefdescription>
@@ -539,9 +580,9 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="112" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="112" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga10e936569e85faad73173595811cacd1" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga10e936569e85faad73173595811cacd1_1ga10e936569e85faad73173595811cacd1" prot="public" static="no">
         <name>BOARD_ONBOARD_NTSHELL_ID</name>
-        <initializer>(EMSK_NTSHELL_0_ID)</initializer>
+        <initializer>(<ref refid="group__BOARD__EMSK__DRV__MID__NTSHELL__IO_gabe0d6edd958986b7f8ed3290edc0a2c3_1gabe0d6edd958986b7f8ed3290edc0a2c3" kindref="member">EMSK_NTSHELL_0_ID</ref>)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -550,9 +591,9 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="114" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="114" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga779250835495bc58a48fda48115812a3" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga779250835495bc58a48fda48115812a3_1ga779250835495bc58a48fda48115812a3" prot="public" static="no">
         <name>NTSHELL_CONSOLE_ID</name>
-        <initializer>(EMSK_NTSHELL_0_ID)</initializer>
+        <initializer>(<ref refid="group__BOARD__EMSK__DRV__MID__NTSHELL__IO_gabe0d6edd958986b7f8ed3290edc0a2c3_1gabe0d6edd958986b7f8ed3290edc0a2c3" kindref="member">EMSK_NTSHELL_0_ID</ref>)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -561,9 +602,9 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="115" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="115" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga50c898f4db4f1bd2ef777180682a37c6" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga50c898f4db4f1bd2ef777180682a37c6_1ga50c898f4db4f1bd2ef777180682a37c6" prot="public" static="no">
         <name>NTSHELL_NETWORK_ID</name>
-        <initializer>(EMSK_NTSHELL_1_ID)</initializer>
+        <initializer>(<ref refid="group__BOARD__EMSK__DRV__MID__NTSHELL__IO_ga98a01c89763d2239a722e83a3bff7a3c_1ga98a01c89763d2239a722e83a3bff7a3c" kindref="member">EMSK_NTSHELL_1_ID</ref>)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -572,7 +613,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="116" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="116" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga7fdbbfa16209827cb230b7e28a92dd37" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga7fdbbfa16209827cb230b7e28a92dd37_1ga7fdbbfa16209827cb230b7e28a92dd37" prot="public" static="no">
         <name>WF_IPADDR_1</name>
         <initializer>(192)</initializer>
         <briefdescription>
@@ -583,7 +624,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="118" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="118" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga3cb7f87be2010a35e47352bea797fbaf" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga3cb7f87be2010a35e47352bea797fbaf_1ga3cb7f87be2010a35e47352bea797fbaf" prot="public" static="no">
         <name>WF_IPADDR_2</name>
         <initializer>(168)</initializer>
         <briefdescription>
@@ -594,7 +635,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="119" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="119" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga3227fa006b1245f5d7bdc553b823eae9" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga3227fa006b1245f5d7bdc553b823eae9_1ga3227fa006b1245f5d7bdc553b823eae9" prot="public" static="no">
         <name>WF_IPADDR_3</name>
         <initializer>(43)</initializer>
         <briefdescription>
@@ -605,7 +646,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="120" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="120" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1gae4d8bd39ae83fd00725d1364e578cb26" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_gae4d8bd39ae83fd00725d1364e578cb26_1gae4d8bd39ae83fd00725d1364e578cb26" prot="public" static="no">
         <name>WF_IPADDR_4</name>
         <initializer>(102)</initializer>
         <briefdescription>
@@ -616,7 +657,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="121" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="121" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1gad8b38f7aeeffaad7469db86650d5e5b8" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_gad8b38f7aeeffaad7469db86650d5e5b8_1gad8b38f7aeeffaad7469db86650d5e5b8" prot="public" static="no">
         <name>WF_NETMASK_1</name>
         <initializer>(255)</initializer>
         <briefdescription>
@@ -627,7 +668,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="123" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="123" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1gac631f7d54c342a5971a2ce96b2a2fd5a" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_gac631f7d54c342a5971a2ce96b2a2fd5a_1gac631f7d54c342a5971a2ce96b2a2fd5a" prot="public" static="no">
         <name>WF_NETMASK_2</name>
         <initializer>(255)</initializer>
         <briefdescription>
@@ -638,7 +679,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="124" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="124" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga5ea450b203ccd1540cd13bb07ea8ab41" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga5ea450b203ccd1540cd13bb07ea8ab41_1ga5ea450b203ccd1540cd13bb07ea8ab41" prot="public" static="no">
         <name>WF_NETMASK_3</name>
         <initializer>(255)</initializer>
         <briefdescription>
@@ -649,7 +690,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="125" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="125" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga97e54858c85428ec57acab5616152787" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga97e54858c85428ec57acab5616152787_1ga97e54858c85428ec57acab5616152787" prot="public" static="no">
         <name>WF_NETMASK_4</name>
         <initializer>(0)</initializer>
         <briefdescription>
@@ -660,7 +701,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="126" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="126" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1gafff963095feb18f21e06aa534921c0eb" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_gafff963095feb18f21e06aa534921c0eb_1gafff963095feb18f21e06aa534921c0eb" prot="public" static="no">
         <name>WF_GATEWAY_1</name>
         <initializer>(192)</initializer>
         <briefdescription>
@@ -671,7 +712,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="128" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="128" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga97071e2cee0ca3566d29c387b390e42e" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga97071e2cee0ca3566d29c387b390e42e_1ga97071e2cee0ca3566d29c387b390e42e" prot="public" static="no">
         <name>WF_GATEWAY_2</name>
         <initializer>(168)</initializer>
         <briefdescription>
@@ -682,7 +723,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="129" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="129" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1gaa0824841678ded03d1f00a43aea928b3" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_gaa0824841678ded03d1f00a43aea928b3_1gaa0824841678ded03d1f00a43aea928b3" prot="public" static="no">
         <name>WF_GATEWAY_3</name>
         <initializer>(43)</initializer>
         <briefdescription>
@@ -693,7 +734,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="130" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="130" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga32f5761c3bdc91e15062024633f3bfef" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga32f5761c3bdc91e15062024633f3bfef_1ga32f5761c3bdc91e15062024633f3bfef" prot="public" static="no">
         <name>WF_GATEWAY_4</name>
         <initializer>(1)</initializer>
         <briefdescription>
@@ -704,7 +745,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="131" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="131" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga94364251911ea47e212ad79233ebb5e0" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga94364251911ea47e212ad79233ebb5e0_1ga94364251911ea47e212ad79233ebb5e0" prot="public" static="no">
         <name>WF_HOTSPOT_IS_OPEN</name>
         <initializer>(0)</initializer>
         <briefdescription>
@@ -715,7 +756,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="133" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="133" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1gaf380b71a6f9a7188a40dfd92c925dc39" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_gaf380b71a6f9a7188a40dfd92c925dc39_1gaf380b71a6f9a7188a40dfd92c925dc39" prot="public" static="no">
         <name>WF_IPADDR_DHCP</name>
         <initializer>(1)</initializer>
         <briefdescription>
@@ -726,7 +767,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="135" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="135" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga5a633e260ba8bc86461e7665662911a3" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga5a633e260ba8bc86461e7665662911a3_1ga5a633e260ba8bc86461e7665662911a3" prot="public" static="no">
         <name>WF_HOTSPOT_NAME</name>
         <initializer>&quot;embARC&quot;</initializer>
         <briefdescription>
@@ -737,7 +778,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="137" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="137" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga8ee6af55664839a23a804c21267cac97" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga8ee6af55664839a23a804c21267cac97_1ga8ee6af55664839a23a804c21267cac97" prot="public" static="no">
         <name>WF_HOTSPOT_PASSWD</name>
         <initializer>&quot;qazwsxedc&quot;</initializer>
         <briefdescription>
@@ -748,7 +789,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="138" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="138" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga840e5288d289411b1992df0634dacb6e" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga840e5288d289411b1992df0634dacb6e_1ga840e5288d289411b1992df0634dacb6e" prot="public" static="no">
         <name>WF_ENABLE_MANUAL_SET_MAC</name>
         <initializer>(0)</initializer>
         <briefdescription>
@@ -759,7 +800,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="140" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="140" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1gabf7bf875fb08ed16a8d62a91a94a3958" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_gabf7bf875fb08ed16a8d62a91a94a3958_1gabf7bf875fb08ed16a8d62a91a94a3958" prot="public" static="no">
         <name>WF_MAC_ADDR0</name>
         <initializer>(EMSK_PMWIFI_0_MAC_ADDR0)</initializer>
         <briefdescription>
@@ -770,7 +811,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="142" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="142" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga609811ce42a95bb4236a084758194ee3" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga609811ce42a95bb4236a084758194ee3_1ga609811ce42a95bb4236a084758194ee3" prot="public" static="no">
         <name>WF_MAC_ADDR1</name>
         <initializer>(EMSK_PMWIFI_0_MAC_ADDR1)</initializer>
         <briefdescription>
@@ -781,7 +822,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="143" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="143" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1gab38020a5bf8a6dc4d0a7c43c9bd36a6e" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_gab38020a5bf8a6dc4d0a7c43c9bd36a6e_1gab38020a5bf8a6dc4d0a7c43c9bd36a6e" prot="public" static="no">
         <name>WF_MAC_ADDR2</name>
         <initializer>(EMSK_PMWIFI_0_MAC_ADDR2)</initializer>
         <briefdescription>
@@ -792,7 +833,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="144" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="144" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga28285b357ef2a9df82488e8584fda806" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga28285b357ef2a9df82488e8584fda806_1ga28285b357ef2a9df82488e8584fda806" prot="public" static="no">
         <name>WF_MAC_ADDR3</name>
         <initializer>(EMSK_PMWIFI_0_MAC_ADDR3)</initializer>
         <briefdescription>
@@ -803,7 +844,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="145" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="145" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1gafd1e445be45818827b55ee83a2c880f0" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_gafd1e445be45818827b55ee83a2c880f0_1gafd1e445be45818827b55ee83a2c880f0" prot="public" static="no">
         <name>WF_MAC_ADDR4</name>
         <initializer>(EMSK_PMWIFI_0_MAC_ADDR4)</initializer>
         <briefdescription>
@@ -814,7 +855,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="146" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="146" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga0e666e3d4456ba928cb3e5c7cc85f170" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga0e666e3d4456ba928cb3e5c7cc85f170_1ga0e666e3d4456ba928cb3e5c7cc85f170" prot="public" static="no">
         <name>WF_MAC_ADDR5</name>
         <initializer>(EMSK_PMWIFI_0_MAC_ADDR5)</initializer>
         <briefdescription>
@@ -825,7 +866,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="147" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="147" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga5f610d765d2b1871d8776a6a393d2e87" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_ga5f610d765d2b1871d8776a6a393d2e87_1ga5f610d765d2b1871d8776a6a393d2e87" prot="public" static="no">
         <name>BOARD_PMWIFI_0_ID</name>
         <initializer>EMSK_PMWIFI_0_ID</initializer>
         <briefdescription>
@@ -836,7 +877,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="149" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="149" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1gafbbcb0babc48b4a4e6598b80c03a583d" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_gafbbcb0babc48b4a4e6598b80c03a583d_1gafbbcb0babc48b4a4e6598b80c03a583d" prot="public" static="no">
         <name>BOARD_PMWIFI_ID_MAX</name>
         <initializer>EMSK_PMWIFI_0_ID</initializer>
         <briefdescription>
@@ -847,7 +888,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" line="150" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/emsk.h" bodystart="150" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1gad6947c3572bfd9a177242f55180fac7d" prot="public" static="no">
+      <memberdef kind="define" id="group__BOARD__EMSK__COMMON__INIT_gad6947c3572bfd9a177242f55180fac7d_1gad6947c3572bfd9a177242f55180fac7d" prot="public" static="no">
         <name>BOARD_SLIPWIFI_0_ID</name>
         <initializer>EMSK_SLIPWIFI_0_ID</initializer>
         <briefdescription>
@@ -896,8 +937,8 @@
 <codeline lineno="41"><highlight class="preprocessor">#ifndef<sp/>_EMSK_H_</highlight></codeline>
 <codeline lineno="42"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_EMSK_H_</highlight></codeline>
 <codeline lineno="43"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc_em.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc_builtin.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__em_8h" kindref="compound">arc/arc_em.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__builtin_8h" kindref="compound">arc/arc_builtin.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;drivers/ip/designware/iic/dw_iic_obj.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;drivers/ip/designware/spi/dw_spi_obj.h&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -907,7 +948,7 @@
 <codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emsk__sdcard_8h" kindref="compound">drivers/sdcard/emsk_sdcard.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;drivers/pmwifi/pmwifi.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;drivers/flash_obj/flash_obj.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;device/dev_pinmux.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dev__pinmux_8h" kindref="compound">device/dev_pinmux.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emsk__gpio_8h" kindref="compound">common/emsk_gpio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
@@ -916,92 +957,92 @@
 <codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>ARC_FEATURE_DMP_PERIPHERAL</highlight></codeline>
 <codeline lineno="62"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PERIPHERAL_BASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_FEATURE_DMP_PERIPHERAL</highlight></codeline>
 <codeline lineno="63"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#else</highlight></codeline>
-<codeline lineno="64"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PERIPHERAL_BASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arc_aux_read(AUX_DMP_PERIPHERAL)</highlight></codeline>
+<codeline lineno="64" refid="group__BOARD__EMSK__COMMON__INIT_ga6b2b1ed33a51c388811a269bc1fd2541_1ga6b2b1ed33a51c388811a269bc1fd2541" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PERIPHERAL_BASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arc_aux_read(AUX_DMP_PERIPHERAL)</highlight></codeline>
 <codeline lineno="65"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="66"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>common<sp/>macros<sp/>must<sp/>be<sp/>defined<sp/>by<sp/>all<sp/>boards<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOARD_CONSOLE_UART_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_UART_1_ID</highlight></codeline>
-<codeline lineno="70"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_CONSOLE_UART_BAUD<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UART_BAUDRATE_115200</highlight></codeline>
-<codeline lineno="71"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_ADC_IIC_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_IIC_0_ID</highlight></codeline>
-<codeline lineno="72"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_TEMP_SENSOR_IIC_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_IIC_0_ID</highlight></codeline>
-<codeline lineno="73"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_WIFI_SLIP_UART_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_UART_0_ID</highlight></codeline>
+<codeline lineno="69" refid="group__BOARD__EMSK__COMMON__INIT_gad894fa48bdb6402ac026de449da74ffd_1gad894fa48bdb6402ac026de449da74ffd" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOARD_CONSOLE_UART_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_UART_1_ID</highlight></codeline>
+<codeline lineno="70" refid="group__BOARD__EMSK__COMMON__INIT_gab6a5428995eb87c161f554c44e6457ab_1gab6a5428995eb87c161f554c44e6457ab" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_CONSOLE_UART_BAUD<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UART_BAUDRATE_115200</highlight></codeline>
+<codeline lineno="71" refid="group__BOARD__EMSK__COMMON__INIT_ga86280467d0f99572c4a332fa34e36b19_1ga86280467d0f99572c4a332fa34e36b19" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_ADC_IIC_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_IIC_0_ID</highlight></codeline>
+<codeline lineno="72" refid="group__BOARD__EMSK__COMMON__INIT_gab20582f7885e506d06e5e64363e68ddd_1gab20582f7885e506d06e5e64363e68ddd" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_TEMP_SENSOR_IIC_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_IIC_0_ID</highlight></codeline>
+<codeline lineno="73" refid="group__BOARD__EMSK__COMMON__INIT_gac2e7657928a275b91b5209995932bb37_1gac2e7657928a275b91b5209995932bb37" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_WIFI_SLIP_UART_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_UART_0_ID</highlight></codeline>
 <codeline lineno="74"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOARD_TEMP_IIC_SLVADDR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TEMP_I2C_SLAVE_ADDRESS</highlight></codeline>
+<codeline lineno="75" refid="group__BOARD__EMSK__COMMON__INIT_ga5c9cd429a7523f442533de1a2a3e0a03_1ga5c9cd429a7523f442533de1a2a3e0a03" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOARD_TEMP_IIC_SLVADDR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TEMP_I2C_SLAVE_ADDRESS</highlight></codeline>
 <codeline lineno="76"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SDCARD_SPI_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_SPI_0_ID</highlight></codeline>
-<codeline lineno="78"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_WIFI_SPI_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_SPI_0_ID</highlight></codeline>
-<codeline lineno="79"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SFLASH_SPI_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_SPI_0_ID</highlight></codeline>
+<codeline lineno="77" refid="group__BOARD__EMSK__COMMON__INIT_ga9d21a1a9583a2aad27c77920d79fba66_1ga9d21a1a9583a2aad27c77920d79fba66" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SDCARD_SPI_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_SPI_0_ID</highlight></codeline>
+<codeline lineno="78" refid="group__BOARD__EMSK__COMMON__INIT_gae26f3d5348ab4a098b18b250adda5b8d_1gae26f3d5348ab4a098b18b250adda5b8d" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_WIFI_SPI_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_SPI_0_ID</highlight></codeline>
+<codeline lineno="79" refid="group__BOARD__EMSK__COMMON__INIT_ga52bffcf56accef8e1ddbf74cc0145808_1ga52bffcf56accef8e1ddbf74cc0145808" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SFLASH_SPI_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_SPI_0_ID</highlight></codeline>
 <codeline lineno="80"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SDCARD_SPI_LINE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSK_SPI_LINE_SDCARD</highlight></codeline>
-<codeline lineno="82"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_WIFI_SPI_LINE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSK_SPI_LINE_1</highlight></codeline>
-<codeline lineno="83"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SFLASH_SPI_LIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSK_SPI_LINE_SFLASH</highlight></codeline>
+<codeline lineno="81" refid="group__BOARD__EMSK__COMMON__INIT_ga18d726b68df14d3a5d5f3467a565c8db_1ga18d726b68df14d3a5d5f3467a565c8db" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SDCARD_SPI_LINE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSK_SPI_LINE_SDCARD</highlight></codeline>
+<codeline lineno="82" refid="group__BOARD__EMSK__COMMON__INIT_gab6ec1fb5c5bec8858e2fc533515624f3_1gab6ec1fb5c5bec8858e2fc533515624f3" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_WIFI_SPI_LINE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSK_SPI_LINE_1</highlight></codeline>
+<codeline lineno="83" refid="group__BOARD__EMSK__COMMON__INIT_ga8ecea4bea3606ec07ee9088d26a13d19_1ga8ecea4bea3606ec07ee9088d26a13d19" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SFLASH_SPI_LIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSK_SPI_LINE_SFLASH</highlight></codeline>
 <codeline lineno="84"><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="86" refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga658846f2561af188d1cd9fbae2699f60" refkind="member"><highlight class="preprocessor">#define<sp/>BOARD_FLASH_EXIST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight></codeline>
+<codeline lineno="86" refid="group__BOARD__EMSK__COMMON__INIT_ga658846f2561af188d1cd9fbae2699f60_1ga658846f2561af188d1cd9fbae2699f60" refkind="member"><highlight class="preprocessor">#define<sp/>BOARD_FLASH_EXIST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight></codeline>
 <codeline lineno="87"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BOARD_SPI_FREQ</highlight></codeline>
-<codeline lineno="89"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SPI_FREQ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1000000)</highlight></codeline>
+<codeline lineno="89" refid="group__BOARD__EMSK__COMMON__INIT_ga3a84fcb550e72d6f56488f9c639054fa_1ga3a84fcb550e72d6f56488f9c639054fa" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SPI_FREQ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1000000)</highlight></codeline>
 <codeline lineno="90"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="91"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SYS_TIMER_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TIMER_0</highlight></codeline>
-<codeline lineno="93"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SYS_TIMER_INTNO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>INTNO_TIMER0</highlight></codeline>
-<codeline lineno="94"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SYS_TIMER_HZ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1000)</highlight></codeline>
+<codeline lineno="92" refid="group__BOARD__EMSK__COMMON__INIT_ga375f6343d75692da616b44c4958e599f_1ga375f6343d75692da616b44c4958e599f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SYS_TIMER_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TIMER_0</highlight></codeline>
+<codeline lineno="93" refid="group__BOARD__EMSK__COMMON__INIT_ga75c72f500916ce679ad4458d61fd3a3e_1ga75c72f500916ce679ad4458d61fd3a3e" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SYS_TIMER_INTNO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>INTNO_TIMER0</highlight></codeline>
+<codeline lineno="94" refid="group__BOARD__EMSK__COMMON__INIT_ga8c5105538fa26a5c3d6eff92454a8697_1ga8c5105538fa26a5c3d6eff92454a8697" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SYS_TIMER_HZ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1000)</highlight></codeline>
 <codeline lineno="95"><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="97" refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga4deac94773cab055391479766cd72cc6" refkind="member"><highlight class="preprocessor">#define<sp/>BOARD_SYS_TIMER_MS_HZ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1000)</highlight></codeline>
+<codeline lineno="97" refid="group__BOARD__EMSK__COMMON__INIT_ga4deac94773cab055391479766cd72cc6_1ga4deac94773cab055391479766cd72cc6" refkind="member"><highlight class="preprocessor">#define<sp/>BOARD_SYS_TIMER_MS_HZ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1000)</highlight></codeline>
 <codeline lineno="98"><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="99" refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga219862b79fcaa501cea1b068ded35f25" refkind="member"><highlight class="preprocessor">#define<sp/>BOARD_SYS_TIMER_MS_CONV<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(BOARD_SYS_TIMER_MS_HZ<sp/>/<sp/>BOARD_SYS_TIMER_HZ)</highlight></codeline>
+<codeline lineno="99" refid="group__BOARD__EMSK__COMMON__INIT_ga219862b79fcaa501cea1b068ded35f25_1ga219862b79fcaa501cea1b068ded35f25" refkind="member"><highlight class="preprocessor">#define<sp/>BOARD_SYS_TIMER_MS_CONV<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(BOARD_SYS_TIMER_MS_HZ<sp/>/<sp/>BOARD_SYS_TIMER_HZ)</highlight></codeline>
 <codeline lineno="100"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="101"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOARD_OS_TIMER_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TIMER_0</highlight></codeline>
-<codeline lineno="102"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_OS_TIMER_INTNO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>INTNO_TIMER0</highlight></codeline>
+<codeline lineno="101" refid="group__BOARD__EMSK__COMMON__INIT_ga6c7035ed8c0a3208ed60d7dd4426fc9e_1ga6c7035ed8c0a3208ed60d7dd4426fc9e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOARD_OS_TIMER_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TIMER_0</highlight></codeline>
+<codeline lineno="102" refid="group__BOARD__EMSK__COMMON__INIT_gaff8db4f0fddc24033143761ea4a461df_1gaff8db4f0fddc24033143761ea4a461df" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_OS_TIMER_INTNO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>INTNO_TIMER0</highlight></codeline>
 <codeline lineno="103"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOARD_CPU_CLOCK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CLK_CPU</highlight></codeline>
-<codeline lineno="105"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_DEV_CLOCK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CLK_BUS_APB</highlight></codeline>
+<codeline lineno="104" refid="group__BOARD__EMSK__COMMON__INIT_ga5ce41facbc716678c95ac51a44e7a052_1ga5ce41facbc716678c95ac51a44e7a052" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOARD_CPU_CLOCK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CLK_CPU</highlight></codeline>
+<codeline lineno="105" refid="group__BOARD__EMSK__COMMON__INIT_ga56e6d6ec3d48ed1eb073e0ed5cec2258_1ga56e6d6ec3d48ed1eb073e0ed5cec2258" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_DEV_CLOCK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CLK_BUS_APB</highlight></codeline>
 <codeline lineno="106"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOARD_LED_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x1ff)</highlight></codeline>
-<codeline lineno="108"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_LED_CNT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(9)</highlight></codeline>
-<codeline lineno="109"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_BTN_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x7)</highlight></codeline>
-<codeline lineno="110"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_BTN_CNT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(3)</highlight></codeline>
-<codeline lineno="111"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SWT_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xf)</highlight></codeline>
-<codeline lineno="112"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SWT_CNT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(4)</highlight></codeline>
+<codeline lineno="107" refid="group__BOARD__EMSK__COMMON__INIT_ga410e1e3163d011941a32f1e6553e2bc3_1ga410e1e3163d011941a32f1e6553e2bc3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOARD_LED_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x1ff)</highlight></codeline>
+<codeline lineno="108" refid="group__BOARD__EMSK__COMMON__INIT_ga018041af3d60889cd644e597794f5eb8_1ga018041af3d60889cd644e597794f5eb8" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_LED_CNT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(9)</highlight></codeline>
+<codeline lineno="109" refid="group__BOARD__EMSK__COMMON__INIT_gaa505814603a7771eaa2ad9391d14c37e_1gaa505814603a7771eaa2ad9391d14c37e" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_BTN_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x7)</highlight></codeline>
+<codeline lineno="110" refid="group__BOARD__EMSK__COMMON__INIT_ga57560179839c4f117c91714da34376f0_1ga57560179839c4f117c91714da34376f0" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_BTN_CNT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(3)</highlight></codeline>
+<codeline lineno="111" refid="group__BOARD__EMSK__COMMON__INIT_gaa6ae795724a84ab21fa3daee084ab0b8_1gaa6ae795724a84ab21fa3daee084ab0b8" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SWT_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xf)</highlight></codeline>
+<codeline lineno="112" refid="group__BOARD__EMSK__COMMON__INIT_ga5b8a96b97e9cbc4fdacd2404887028bf_1ga5b8a96b97e9cbc4fdacd2404887028bf" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SWT_CNT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(4)</highlight></codeline>
 <codeline lineno="113"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOARD_ONBOARD_NTSHELL_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(EMSK_NTSHELL_0_ID)</highlight></codeline>
-<codeline lineno="115"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>NTSHELL_CONSOLE_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(EMSK_NTSHELL_0_ID)</highlight></codeline>
-<codeline lineno="116"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>NTSHELL_NETWORK_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(EMSK_NTSHELL_1_ID)</highlight></codeline>
+<codeline lineno="114" refid="group__BOARD__EMSK__COMMON__INIT_ga10e936569e85faad73173595811cacd1_1ga10e936569e85faad73173595811cacd1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOARD_ONBOARD_NTSHELL_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(EMSK_NTSHELL_0_ID)</highlight></codeline>
+<codeline lineno="115" refid="group__BOARD__EMSK__COMMON__INIT_ga779250835495bc58a48fda48115812a3_1ga779250835495bc58a48fda48115812a3" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>NTSHELL_CONSOLE_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(EMSK_NTSHELL_0_ID)</highlight></codeline>
+<codeline lineno="116" refid="group__BOARD__EMSK__COMMON__INIT_ga50c898f4db4f1bd2ef777180682a37c6_1ga50c898f4db4f1bd2ef777180682a37c6" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>NTSHELL_NETWORK_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(EMSK_NTSHELL_1_ID)</highlight></codeline>
 <codeline lineno="117"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WF_IPADDR_1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(192)</highlight></codeline>
-<codeline lineno="119"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_IPADDR_2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(168)</highlight></codeline>
-<codeline lineno="120"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_IPADDR_3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(43)</highlight></codeline>
-<codeline lineno="121"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_IPADDR_4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(102)</highlight></codeline>
+<codeline lineno="118" refid="group__BOARD__EMSK__COMMON__INIT_ga7fdbbfa16209827cb230b7e28a92dd37_1ga7fdbbfa16209827cb230b7e28a92dd37" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WF_IPADDR_1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(192)</highlight></codeline>
+<codeline lineno="119" refid="group__BOARD__EMSK__COMMON__INIT_ga3cb7f87be2010a35e47352bea797fbaf_1ga3cb7f87be2010a35e47352bea797fbaf" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_IPADDR_2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(168)</highlight></codeline>
+<codeline lineno="120" refid="group__BOARD__EMSK__COMMON__INIT_ga3227fa006b1245f5d7bdc553b823eae9_1ga3227fa006b1245f5d7bdc553b823eae9" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_IPADDR_3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(43)</highlight></codeline>
+<codeline lineno="121" refid="group__BOARD__EMSK__COMMON__INIT_gae4d8bd39ae83fd00725d1364e578cb26_1gae4d8bd39ae83fd00725d1364e578cb26" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_IPADDR_4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(102)</highlight></codeline>
 <codeline lineno="122"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WF_NETMASK_1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(255)</highlight></codeline>
-<codeline lineno="124"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_NETMASK_2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(255)</highlight></codeline>
-<codeline lineno="125"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_NETMASK_3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(255)</highlight></codeline>
-<codeline lineno="126"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_NETMASK_4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight></codeline>
+<codeline lineno="123" refid="group__BOARD__EMSK__COMMON__INIT_gad8b38f7aeeffaad7469db86650d5e5b8_1gad8b38f7aeeffaad7469db86650d5e5b8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WF_NETMASK_1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(255)</highlight></codeline>
+<codeline lineno="124" refid="group__BOARD__EMSK__COMMON__INIT_gac631f7d54c342a5971a2ce96b2a2fd5a_1gac631f7d54c342a5971a2ce96b2a2fd5a" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_NETMASK_2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(255)</highlight></codeline>
+<codeline lineno="125" refid="group__BOARD__EMSK__COMMON__INIT_ga5ea450b203ccd1540cd13bb07ea8ab41_1ga5ea450b203ccd1540cd13bb07ea8ab41" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_NETMASK_3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(255)</highlight></codeline>
+<codeline lineno="126" refid="group__BOARD__EMSK__COMMON__INIT_ga97e54858c85428ec57acab5616152787_1ga97e54858c85428ec57acab5616152787" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_NETMASK_4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight></codeline>
 <codeline lineno="127"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WF_GATEWAY_1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(192)</highlight></codeline>
-<codeline lineno="129"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_GATEWAY_2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(168)</highlight></codeline>
-<codeline lineno="130"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_GATEWAY_3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(43)</highlight></codeline>
-<codeline lineno="131"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_GATEWAY_4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1)</highlight></codeline>
+<codeline lineno="128" refid="group__BOARD__EMSK__COMMON__INIT_gafff963095feb18f21e06aa534921c0eb_1gafff963095feb18f21e06aa534921c0eb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WF_GATEWAY_1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(192)</highlight></codeline>
+<codeline lineno="129" refid="group__BOARD__EMSK__COMMON__INIT_ga97071e2cee0ca3566d29c387b390e42e_1ga97071e2cee0ca3566d29c387b390e42e" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_GATEWAY_2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(168)</highlight></codeline>
+<codeline lineno="130" refid="group__BOARD__EMSK__COMMON__INIT_gaa0824841678ded03d1f00a43aea928b3_1gaa0824841678ded03d1f00a43aea928b3" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_GATEWAY_3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(43)</highlight></codeline>
+<codeline lineno="131" refid="group__BOARD__EMSK__COMMON__INIT_ga32f5761c3bdc91e15062024633f3bfef_1ga32f5761c3bdc91e15062024633f3bfef" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_GATEWAY_4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1)</highlight></codeline>
 <codeline lineno="132"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WF_HOTSPOT_IS_OPEN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight></codeline>
+<codeline lineno="133" refid="group__BOARD__EMSK__COMMON__INIT_ga94364251911ea47e212ad79233ebb5e0_1ga94364251911ea47e212ad79233ebb5e0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WF_HOTSPOT_IS_OPEN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight></codeline>
 <codeline lineno="134"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="135"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WF_IPADDR_DHCP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1)</highlight></codeline>
+<codeline lineno="135" refid="group__BOARD__EMSK__COMMON__INIT_gaf380b71a6f9a7188a40dfd92c925dc39_1gaf380b71a6f9a7188a40dfd92c925dc39" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WF_IPADDR_DHCP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1)</highlight></codeline>
 <codeline lineno="136"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="137"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WF_HOTSPOT_NAME<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;embARC&quot;</highlight></codeline>
-<codeline lineno="138"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_HOTSPOT_PASSWD<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;qazwsxedc&quot;</highlight></codeline>
+<codeline lineno="137" refid="group__BOARD__EMSK__COMMON__INIT_ga5a633e260ba8bc86461e7665662911a3_1ga5a633e260ba8bc86461e7665662911a3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WF_HOTSPOT_NAME<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;embARC&quot;</highlight></codeline>
+<codeline lineno="138" refid="group__BOARD__EMSK__COMMON__INIT_ga8ee6af55664839a23a804c21267cac97_1ga8ee6af55664839a23a804c21267cac97" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_HOTSPOT_PASSWD<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;qazwsxedc&quot;</highlight></codeline>
 <codeline lineno="139"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="140"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WF_ENABLE_MANUAL_SET_MAC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight></codeline>
+<codeline lineno="140" refid="group__BOARD__EMSK__COMMON__INIT_ga840e5288d289411b1992df0634dacb6e_1ga840e5288d289411b1992df0634dacb6e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WF_ENABLE_MANUAL_SET_MAC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight></codeline>
 <codeline lineno="141"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="142"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WF_MAC_ADDR0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(EMSK_PMWIFI_0_MAC_ADDR0)</highlight></codeline>
-<codeline lineno="143"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_MAC_ADDR1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(EMSK_PMWIFI_0_MAC_ADDR1)</highlight></codeline>
-<codeline lineno="144"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_MAC_ADDR2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(EMSK_PMWIFI_0_MAC_ADDR2)</highlight></codeline>
-<codeline lineno="145"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_MAC_ADDR3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(EMSK_PMWIFI_0_MAC_ADDR3)</highlight></codeline>
-<codeline lineno="146"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_MAC_ADDR4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(EMSK_PMWIFI_0_MAC_ADDR4)</highlight></codeline>
-<codeline lineno="147"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_MAC_ADDR5<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(EMSK_PMWIFI_0_MAC_ADDR5)</highlight></codeline>
+<codeline lineno="142" refid="group__BOARD__EMSK__COMMON__INIT_gabf7bf875fb08ed16a8d62a91a94a3958_1gabf7bf875fb08ed16a8d62a91a94a3958" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WF_MAC_ADDR0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(EMSK_PMWIFI_0_MAC_ADDR0)</highlight></codeline>
+<codeline lineno="143" refid="group__BOARD__EMSK__COMMON__INIT_ga609811ce42a95bb4236a084758194ee3_1ga609811ce42a95bb4236a084758194ee3" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_MAC_ADDR1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(EMSK_PMWIFI_0_MAC_ADDR1)</highlight></codeline>
+<codeline lineno="144" refid="group__BOARD__EMSK__COMMON__INIT_gab38020a5bf8a6dc4d0a7c43c9bd36a6e_1gab38020a5bf8a6dc4d0a7c43c9bd36a6e" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_MAC_ADDR2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(EMSK_PMWIFI_0_MAC_ADDR2)</highlight></codeline>
+<codeline lineno="145" refid="group__BOARD__EMSK__COMMON__INIT_ga28285b357ef2a9df82488e8584fda806_1ga28285b357ef2a9df82488e8584fda806" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_MAC_ADDR3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(EMSK_PMWIFI_0_MAC_ADDR3)</highlight></codeline>
+<codeline lineno="146" refid="group__BOARD__EMSK__COMMON__INIT_gafd1e445be45818827b55ee83a2c880f0_1gafd1e445be45818827b55ee83a2c880f0" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_MAC_ADDR4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(EMSK_PMWIFI_0_MAC_ADDR4)</highlight></codeline>
+<codeline lineno="147" refid="group__BOARD__EMSK__COMMON__INIT_ga0e666e3d4456ba928cb3e5c7cc85f170_1ga0e666e3d4456ba928cb3e5c7cc85f170" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>WF_MAC_ADDR5<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(EMSK_PMWIFI_0_MAC_ADDR5)</highlight></codeline>
 <codeline lineno="148"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="149"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOARD_PMWIFI_0_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSK_PMWIFI_0_ID</highlight></codeline>
-<codeline lineno="150"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_PMWIFI_ID_MAX<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSK_PMWIFI_0_ID</highlight></codeline>
-<codeline lineno="151"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SLIPWIFI_0_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSK_SLIPWIFI_0_ID</highlight></codeline>
+<codeline lineno="149" refid="group__BOARD__EMSK__COMMON__INIT_ga5f610d765d2b1871d8776a6a393d2e87_1ga5f610d765d2b1871d8776a6a393d2e87" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOARD_PMWIFI_0_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSK_PMWIFI_0_ID</highlight></codeline>
+<codeline lineno="150" refid="group__BOARD__EMSK__COMMON__INIT_gafbbcb0babc48b4a4e6598b80c03a583d_1gafbbcb0babc48b4a4e6598b80c03a583d" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_PMWIFI_ID_MAX<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSK_PMWIFI_0_ID</highlight></codeline>
+<codeline lineno="151" refid="group__BOARD__EMSK__COMMON__INIT_gad6947c3572bfd9a177242f55180fac7d_1gad6947c3572bfd9a177242f55180fac7d" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SLIPWIFI_0_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSK_SLIPWIFI_0_ID</highlight></codeline>
 <codeline lineno="152"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="153"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>_EMSK_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="154"><highlight class="preprocessor"></highlight></codeline>

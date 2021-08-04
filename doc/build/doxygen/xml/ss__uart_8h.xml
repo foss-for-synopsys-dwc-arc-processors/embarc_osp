@@ -1,0 +1,375 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="ss__uart_8h" kind="file">
+    <compoundname>ss_uart.h</compoundname>
+    <includes refid="dev__uart_8h" local="yes">device/ip_hal/dev_uart.h</includes>
+    <includedby refid="emsdp_2drivers_2ip_2subsystem_2uart_2dfss__uart__obj_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/subsystem/uart/dfss_uart_obj.c</includedby>
+    <includedby refid="iotdk_2drivers_2ip_2subsystem_2uart_2dfss__uart__obj_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/ip/subsystem/uart/dfss_uart_obj.c</includedby>
+    <incdepgraph>
+      <node id="5281">
+        <label>stdint.h</label>
+      </node>
+      <node id="5278">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_uart.h</label>
+        <link refid="ss_uart.h"/>
+        <childnode refid="5279" relation="include">
+        </childnode>
+      </node>
+      <node id="5280">
+        <label>device/dev_common.h</label>
+        <link refid="dev__common_8h"/>
+        <childnode refid="5281" relation="include">
+        </childnode>
+      </node>
+      <node id="5279">
+        <label>device/ip_hal/dev_uart.h</label>
+        <link refid="dev__uart_8h"/>
+        <childnode refid="5280" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5282">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_uart.h</label>
+        <link refid="ss_uart.h"/>
+        <childnode refid="5283" relation="include">
+        </childnode>
+        <childnode refid="5284" relation="include">
+        </childnode>
+      </node>
+      <node id="5283">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/subsystem/uart/dfss_uart_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2subsystem_2uart_2dfss__uart__obj_8c"/>
+      </node>
+      <node id="5284">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/ip/subsystem/uart/dfss_uart_obj.c</label>
+        <link refid="iotdk_2drivers_2ip_2subsystem_2uart_2dfss__uart__obj_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structss__uart__dev__context" prot="public">ss_uart_dev_context</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="ss__uart_8h_a848c268888303787dcd23ebf3093011c_1a848c268888303787dcd23ebf3093011c" prot="public" static="no">
+        <name>SS_UART_FLAG_TX</name>
+        <initializer>(1 &lt;&lt; 0)                /* interrupt tx */</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_uart.h" line="36" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_uart.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="ss__uart_8h_a7cb08dcf885a6b4ba97d4ab95fa02872_1a7cb08dcf885a6b4ba97d4ab95fa02872" prot="public" static="no">
+        <name>SS_UART_FLAG_RX</name>
+        <initializer>(1 &lt;&lt; 1)                /* interrupt rx */</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_uart.h" line="37" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_uart.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="ss__uart_8h_a1927b0fb2e428ae5e9359fe4d1cffc38_1a1927b0fb2e428ae5e9359fe4d1cffc38" prot="public" static="no">
+        <name>SS_UART_FLAG_BUSY</name>
+        <initializer>(1 &lt;&lt; 2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_uart.h" line="38" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_uart.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="ss__uart_8h_af4ae5cea4e250c2ebe0a5b3adc2ade38_1af4ae5cea4e250c2ebe0a5b3adc2ade38" prot="public" static="no">
+        <name>SS_UART_FLAG_TX_RX</name>
+        <initializer>(1 &lt;&lt; 3)        /* both tx and rx */</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_uart.h" line="39" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_uart.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="ss__uart_8h_a265d4df333b0fd421d66f0a1c105141c_1a265d4df333b0fd421d66f0a1c105141c" prot="public" static="no">
+        <name>SS_UART_FLAG_ERROR</name>
+        <initializer>(1 &lt;&lt; 4)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_uart.h" line="40" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_uart.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="ss__uart_8h_ad4b7a27864674a02e197a3a7a38f00a1_1ad4b7a27864674a02e197a3a7a38f00a1" prot="public" static="no">
+        <type>struct <ref refid="structss__uart__dev__context" kindref="compound">ss_uart_dev_context</ref></type>
+        <definition>typedef struct ss_uart_dev_context  SS_UART_DEV_CONTEXT</definition>
+        <argsstring></argsstring>
+        <name>SS_UART_DEV_CONTEXT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_uart.h" line="56" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="ss__uart_8h_a0e895828c5db1a98d811bd88a43b9120_1a0e895828c5db1a98d811bd88a43b9120" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t ss_uart_open</definition>
+        <argsstring>(SS_UART_DEV_CONTEXT *ctx, uint32_t baud)</argsstring>
+        <name>ss_uart_open</name>
+        <param>
+          <type><ref refid="ss__uart_8h_ad4b7a27864674a02e197a3a7a38f00a1_1ad4b7a27864674a02e197a3a7a38f00a1" kindref="member">SS_UART_DEV_CONTEXT</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>baud</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_uart.h" line="58" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="ss__uart_8h_a17aa053769683f7058f32d304cf0c919_1a17aa053769683f7058f32d304cf0c919" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t ss_uart_close</definition>
+        <argsstring>(SS_UART_DEV_CONTEXT *ctx)</argsstring>
+        <name>ss_uart_close</name>
+        <param>
+          <type><ref refid="ss__uart_8h_ad4b7a27864674a02e197a3a7a38f00a1_1ad4b7a27864674a02e197a3a7a38f00a1" kindref="member">SS_UART_DEV_CONTEXT</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_uart.h" line="59" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="ss__uart_8h_a3a5a86a3504641ee59dd665f232dda0a_1a3a5a86a3504641ee59dd665f232dda0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t ss_uart_control</definition>
+        <argsstring>(SS_UART_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void *param)</argsstring>
+        <name>ss_uart_control</name>
+        <param>
+          <type><ref refid="ss__uart_8h_ad4b7a27864674a02e197a3a7a38f00a1_1ad4b7a27864674a02e197a3a7a38f00a1" kindref="member">SS_UART_DEV_CONTEXT</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>ctrl_cmd</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>param</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_uart.h" line="60" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="ss__uart_8h_af5adaadcd3b185671ae439df50b6a9d0_1af5adaadcd3b185671ae439df50b6a9d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t ss_uart_write</definition>
+        <argsstring>(SS_UART_DEV_CONTEXT *ctx, const void *data, uint32_t len)</argsstring>
+        <name>ss_uart_write</name>
+        <param>
+          <type><ref refid="ss__uart_8h_ad4b7a27864674a02e197a3a7a38f00a1_1ad4b7a27864674a02e197a3a7a38f00a1" kindref="member">SS_UART_DEV_CONTEXT</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_uart.h" line="61" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="ss__uart_8h_a9a0a44b9660a3fccb0534e19231ed3d8_1a9a0a44b9660a3fccb0534e19231ed3d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t ss_uart_read</definition>
+        <argsstring>(SS_UART_DEV_CONTEXT *ctx, void *data, uint32_t len)</argsstring>
+        <name>ss_uart_read</name>
+        <param>
+          <type><ref refid="ss__uart_8h_ad4b7a27864674a02e197a3a7a38f00a1_1ad4b7a27864674a02e197a3a7a38f00a1" kindref="member">SS_UART_DEV_CONTEXT</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_uart.h" line="62" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="ss__uart_8h_a96d59653ffa6e7cfa08cc2effa59732c_1a96d59653ffa6e7cfa08cc2effa59732c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ss_uart_tx_cb</definition>
+        <argsstring>(SS_UART_DEV_CONTEXT *ctx, void *param)</argsstring>
+        <name>ss_uart_tx_cb</name>
+        <param>
+          <type><ref refid="ss__uart_8h_ad4b7a27864674a02e197a3a7a38f00a1_1ad4b7a27864674a02e197a3a7a38f00a1" kindref="member">SS_UART_DEV_CONTEXT</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>param</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_uart.h" line="63" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="ss__uart_8h_aada82f9ba88cddc2007622e3dc4bfd30_1aada82f9ba88cddc2007622e3dc4bfd30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ss_uart_rx_cb</definition>
+        <argsstring>(SS_UART_DEV_CONTEXT *ctx, void *param)</argsstring>
+        <name>ss_uart_rx_cb</name>
+        <param>
+          <type><ref refid="ss__uart_8h_ad4b7a27864674a02e197a3a7a38f00a1_1ad4b7a27864674a02e197a3a7a38f00a1" kindref="member">SS_UART_DEV_CONTEXT</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>param</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_uart.h" line="64" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="ss__uart_8h_aa4714a0d9680d2887651752e327bf3ea_1aa4714a0d9680d2887651752e327bf3ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ss_uart_err_cb</definition>
+        <argsstring>(SS_UART_DEV_CONTEXT *ctx, void *param)</argsstring>
+        <name>ss_uart_err_cb</name>
+        <param>
+          <type><ref refid="ss__uart_8h_ad4b7a27864674a02e197a3a7a38f00a1_1ad4b7a27864674a02e197a3a7a38f00a1" kindref="member">SS_UART_DEV_CONTEXT</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>param</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_uart.h" line="65" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/>------------------------------------------</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2018,<sp/>Synopsys,<sp/>Inc.<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"></highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>1)<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"></highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>2)<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"></highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>3)<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>Synopsys,<sp/>Inc.,<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"></highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/>---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_SS_UART_H_</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_SS_UART_H_</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="comment">/*<sp/>the<sp/>wrapper<sp/>of<sp/>subsystem<sp/>uart<sp/>driver<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dev__uart_8h" kindref="compound">device/ip_hal/dev_uart.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="ss__uart_8h_a848c268888303787dcd23ebf3093011c_1a848c268888303787dcd23ebf3093011c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SS_UART_FLAG_TX<sp/>(1<sp/>&lt;&lt;<sp/>0)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>interrupt<sp/>tx<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="37" refid="ss__uart_8h_a7cb08dcf885a6b4ba97d4ab95fa02872_1a7cb08dcf885a6b4ba97d4ab95fa02872" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SS_UART_FLAG_RX<sp/>(1<sp/>&lt;&lt;<sp/>1)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>interrupt<sp/>rx<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="38" refid="ss__uart_8h_a1927b0fb2e428ae5e9359fe4d1cffc38_1a1927b0fb2e428ae5e9359fe4d1cffc38" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SS_UART_FLAG_BUSY<sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1<sp/>&lt;&lt;<sp/>2)</highlight></codeline>
+<codeline lineno="39" refid="ss__uart_8h_af4ae5cea4e250c2ebe0a5b3adc2ade38_1af4ae5cea4e250c2ebe0a5b3adc2ade38" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SS_UART_FLAG_TX_RX<sp/><sp/><sp/><sp/><sp/><sp/>(1<sp/>&lt;&lt;<sp/>3)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>both<sp/>tx<sp/>and<sp/>rx<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="40" refid="ss__uart_8h_a265d4df333b0fd421d66f0a1c105141c_1a265d4df333b0fd421d66f0a1c105141c" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SS_UART_FLAG_ERROR<sp/><sp/><sp/><sp/><sp/><sp/>(1<sp/>&lt;&lt;<sp/>4)</highlight></codeline>
+<codeline lineno="41"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="structss__uart__dev__context" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structss__uart__dev__context" kindref="compound">ss_uart_dev_context</ref><sp/>{</highlight></codeline>
+<codeline lineno="43" refid="structss__uart__dev__context_add53e20c205f1377eede5bf8f3cbf466_1add53e20c205f1377eede5bf8f3cbf466" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structss__uart__dev__context_add53e20c205f1377eede5bf8f3cbf466_1add53e20c205f1377eede5bf8f3cbf466" kindref="member">reg_base</ref>;</highlight></codeline>
+<codeline lineno="44" refid="structss__uart__dev__context_a7102e42de7fe0c04eb3a7abc2d711653_1a7102e42de7fe0c04eb3a7abc2d711653" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structss__uart__dev__context_a7102e42de7fe0c04eb3a7abc2d711653_1a7102e42de7fe0c04eb3a7abc2d711653" kindref="member">dev_id</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="structss__uart__dev__context_a7411da101421f483499b8f5936ba4881_1a7411da101421f483499b8f5936ba4881" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structss__uart__dev__context_a7411da101421f483499b8f5936ba4881_1a7411da101421f483499b8f5936ba4881" kindref="member">intno</ref>;</highlight></codeline>
+<codeline lineno="47" refid="structss__uart__dev__context_a2d02536de067eaaad4598006ff9a7785_1a2d02536de067eaaad4598006ff9a7785" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>uint16_t<sp/><ref refid="structss__uart__dev__context_a2d02536de067eaaad4598006ff9a7785_1a2d02536de067eaaad4598006ff9a7785" kindref="member">flags</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="structss__uart__dev__context_a237650a29e3d01950cca3817cb64d689_1a237650a29e3d01950cca3817cb64d689" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structss__uart__dev__context_a237650a29e3d01950cca3817cb64d689_1a237650a29e3d01950cca3817cb64d689" kindref="member">bus_freq</ref>;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="structss__uart__dev__context_a4908a8b891ffd450f9d111d04f7472ef_1a4908a8b891ffd450f9d111d04f7472ef" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__COMMON_ga91091c2a8f895b2d00ae61e6b607335e_1ga91091c2a8f895b2d00ae61e6b607335e" kindref="member">DEV_CALLBACK</ref><sp/><ref refid="structss__uart__dev__context_a4908a8b891ffd450f9d111d04f7472ef_1a4908a8b891ffd450f9d111d04f7472ef" kindref="member">tx_cb</ref>;</highlight></codeline>
+<codeline lineno="52" refid="structss__uart__dev__context_a74d635b42cfaff5656aa166b8f753fd9_1a74d635b42cfaff5656aa166b8f753fd9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__COMMON_ga91091c2a8f895b2d00ae61e6b607335e_1ga91091c2a8f895b2d00ae61e6b607335e" kindref="member">DEV_CALLBACK</ref><sp/><ref refid="structss__uart__dev__context_a74d635b42cfaff5656aa166b8f753fd9_1a74d635b42cfaff5656aa166b8f753fd9" kindref="member">rx_cb</ref>;</highlight></codeline>
+<codeline lineno="53" refid="structss__uart__dev__context_adedb1df28108ad1ce85b6261d9bbdf5b_1adedb1df28108ad1ce85b6261d9bbdf5b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__COMMON_ga91091c2a8f895b2d00ae61e6b607335e_1ga91091c2a8f895b2d00ae61e6b607335e" kindref="member">DEV_CALLBACK</ref><sp/><ref refid="structss__uart__dev__context_adedb1df28108ad1ce85b6261d9bbdf5b_1adedb1df28108ad1ce85b6261d9bbdf5b" kindref="member">err_cb</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="structss__uart__dev__context_a02d7370d774d7d3bc770f294ad9c1c8d_1a02d7370d774d7d3bc770f294ad9c1c8d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structdev__uart__info" kindref="compound">DEV_UART_INFO</ref><sp/>*<ref refid="structss__uart__dev__context_a02d7370d774d7d3bc770f294ad9c1c8d_1a02d7370d774d7d3bc770f294ad9c1c8d" kindref="member">info</ref>;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}<sp/><ref refid="ss__uart_8h_ad4b7a27864674a02e197a3a7a38f00a1_1ad4b7a27864674a02e197a3a7a38f00a1" kindref="member">SS_UART_DEV_CONTEXT</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="ss__uart_8h_a0e895828c5db1a98d811bd88a43b9120_1a0e895828c5db1a98d811bd88a43b9120" kindref="member">ss_uart_open</ref>(<ref refid="structss__uart__dev__context" kindref="compound">SS_UART_DEV_CONTEXT</ref><sp/>*ctx,<sp/>uint32_t<sp/>baud);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="ss__uart_8h_a17aa053769683f7058f32d304cf0c919_1a17aa053769683f7058f32d304cf0c919" kindref="member">ss_uart_close</ref>(<ref refid="structss__uart__dev__context" kindref="compound">SS_UART_DEV_CONTEXT</ref><sp/>*ctx);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="ss__uart_8h_a3a5a86a3504641ee59dd665f232dda0a_1a3a5a86a3504641ee59dd665f232dda0a" kindref="member">ss_uart_control</ref>(<ref refid="structss__uart__dev__context" kindref="compound">SS_UART_DEV_CONTEXT</ref><sp/>*ctx,<sp/>uint32_t<sp/>ctrl_cmd,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*param);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="ss__uart_8h_af5adaadcd3b185671ae439df50b6a9d0_1af5adaadcd3b185671ae439df50b6a9d0" kindref="member">ss_uart_write</ref>(<ref refid="structss__uart__dev__context" kindref="compound">SS_UART_DEV_CONTEXT</ref><sp/>*ctx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*data,<sp/>uint32_t<sp/>len);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="ss__uart_8h_a9a0a44b9660a3fccb0534e19231ed3d8_1a9a0a44b9660a3fccb0534e19231ed3d8" kindref="member">ss_uart_read</ref>(<ref refid="structss__uart__dev__context" kindref="compound">SS_UART_DEV_CONTEXT</ref><sp/>*ctx,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*data,<sp/>uint32_t<sp/>len);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="ss__uart_8h_a96d59653ffa6e7cfa08cc2effa59732c_1a96d59653ffa6e7cfa08cc2effa59732c" kindref="member">ss_uart_tx_cb</ref>(<ref refid="structss__uart__dev__context" kindref="compound">SS_UART_DEV_CONTEXT</ref><sp/>*ctx,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*param);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="ss__uart_8h_aada82f9ba88cddc2007622e3dc4bfd30_1aada82f9ba88cddc2007622e3dc4bfd30" kindref="member">ss_uart_rx_cb</ref>(<ref refid="structss__uart__dev__context" kindref="compound">SS_UART_DEV_CONTEXT</ref><sp/>*ctx,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*param);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="ss__uart_8h_aa4714a0d9680d2887651752e327bf3ea_1aa4714a0d9680d2887651752e327bf3ea" kindref="member">ss_uart_err_cb</ref>(<ref refid="structss__uart__dev__context" kindref="compound">SS_UART_DEV_CONTEXT</ref><sp/>*ctx,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*param);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_SS_UART_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_uart.h"/>
+  </compounddef>
+</doxygen>

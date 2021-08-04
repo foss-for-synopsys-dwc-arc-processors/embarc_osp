@@ -1,0 +1,456 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="ss__i2c__master_8h" kind="file">
+    <compoundname>ss_i2c_master.h</compoundname>
+    <includes refid="dev__iic_8h" local="yes">device/ip_hal/dev_iic.h</includes>
+    <includedby refid="emsdp_2drivers_2ip_2subsystem_2iic_2dfss__iic__obj_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/subsystem/iic/dfss_iic_obj.c</includedby>
+    <includedby refid="iotdk_2drivers_2ip_2subsystem_2iic_2dfss__iic__obj_8c" local="yes">/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/ip/subsystem/iic/dfss_iic_obj.c</includedby>
+    <incdepgraph>
+      <node id="5257">
+        <label>stdint.h</label>
+      </node>
+      <node id="5254">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h</label>
+        <link refid="ss_i2c_master.h"/>
+        <childnode refid="5255" relation="include">
+        </childnode>
+      </node>
+      <node id="5256">
+        <label>device/dev_common.h</label>
+        <link refid="dev__common_8h"/>
+        <childnode refid="5257" relation="include">
+        </childnode>
+      </node>
+      <node id="5255">
+        <label>device/ip_hal/dev_iic.h</label>
+        <link refid="dev__iic_8h"/>
+        <childnode refid="5256" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5258">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h</label>
+        <link refid="ss_i2c_master.h"/>
+        <childnode refid="5259" relation="include">
+        </childnode>
+        <childnode refid="5260" relation="include">
+        </childnode>
+      </node>
+      <node id="5260">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/ip/subsystem/iic/dfss_iic_obj.c</label>
+        <link refid="iotdk_2drivers_2ip_2subsystem_2iic_2dfss__iic__obj_8c"/>
+      </node>
+      <node id="5259">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/subsystem/iic/dfss_iic_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2subsystem_2iic_2dfss__iic__obj_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structss__iic__master__dev__context" prot="public">ss_iic_master_dev_context</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="ss__i2c__master_8h_a7a49005bbf918db1784e7567f919deb7_1a7a49005bbf918db1784e7567f919deb7" prot="public" static="no">
+        <name>SS_IIC_MASTER_FLAG_TX</name>
+        <initializer>(1 &lt;&lt; 0)        /* interrupt tx */</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" line="36" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="ss__i2c__master_8h_a061ec70404fee3b14ca1089af6d925e6_1a061ec70404fee3b14ca1089af6d925e6" prot="public" static="no">
+        <name>SS_IIC_MASTER_FLAG_RX</name>
+        <initializer>(1 &lt;&lt; 1)        /* interrupt rx */</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" line="37" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="ss__i2c__master_8h_a2328b54c7a93e34dca16ca1b7c7421fc_1a2328b54c7a93e34dca16ca1b7c7421fc" prot="public" static="no">
+        <name>SS_IIC_MASTER_FLAG_BUSY</name>
+        <initializer>(1 &lt;&lt; 2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" line="38" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="ss__i2c__master_8h_a9e310e3d60b1e5d66847c64672cc5d98_1a9e310e3d60b1e5d66847c64672cc5d98" prot="public" static="no">
+        <name>SS_IIC_MASTER_FLAG_TX_RX</name>
+        <initializer>(1 &lt;&lt; 3)        /* both tx and rx */</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" line="39" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="ss__i2c__master_8h_afbed92935028c50b4c3dab05388227fa_1afbed92935028c50b4c3dab05388227fa" prot="public" static="no">
+        <name>SS_IIC_MASTER_FLAG_ERROR</name>
+        <initializer>(1 &lt;&lt; 4)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" line="40" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="ss__i2c__master_8h_a64f4d2352d3b70e7849ffa07f92d226d_1a64f4d2352d3b70e7849ffa07f92d226d" prot="public" static="no">
+        <name>IC_TX_RX_FIFO_SIZE</name>
+        <initializer>16      /* TX/RX FIFO size in hardware */</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" line="42" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="ss__i2c__master_8h_a76e44eb11592454a0c8e22f8df5bf057_1a76e44eb11592454a0c8e22f8df5bf057" prot="public" static="no">
+        <name>IC_STATUS_TFNF</name>
+        <initializer>(0x02)  /* (1 &lt;&lt; 1) */</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" line="45" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="ss__i2c__master_8h_a5b2e672b3187cfa6e2a5bc20e700d684_1a5b2e672b3187cfa6e2a5bc20e700d684" prot="public" static="no">
+        <name>IC_STATUS_RFNE</name>
+        <initializer>(0x08)  /* (1 &lt;&lt; 3) */</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" line="46" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="ss__i2c__master_8h_ade4f5422f65107777c47ee29fe5fbe3e_1ade4f5422f65107777c47ee29fe5fbe3e" prot="public" static="no">
+        <name>SS_IIC_MASTER_RDY_SND</name>
+        <initializer>(0x1)   /* ready to send callback */</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" line="49" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="ss__i2c__master_8h_a63932e559838425a3073c3590b3a050f_1a63932e559838425a3073c3590b3a050f" prot="public" static="no">
+        <name>SS_IIC_MASTER_RDY_RCV</name>
+        <initializer>(0x2)   /* ready to receive callback */</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" line="50" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="ss__i2c__master_8h_a593b46186c5a3a17ea80f02ef3b2d628_1a593b46186c5a3a17ea80f02ef3b2d628" prot="public" static="no">
+        <name>SS_IIC_MASTER_CHECK_EXP</name>
+        <param><defname>EXPR</defname></param>
+        <param><defname>ERROR_CODE</defname></param>
+        <initializer><ref refid="group__EMBARC__ERROR_ga4151670bbcb21a581f28ed6bc5baa906_1ga4151670bbcb21a581f28ed6bc5baa906" kindref="member">CHECK_EXP</ref>(EXPR, ercd, ERROR_CODE, error_exit)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>check expressions used in DFSS IIC driver implementation </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" line="53" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="ss__i2c__master_8h_a637761b5e2d08928d1bf226d5c413f15_1a637761b5e2d08928d1bf226d5c413f15" prot="public" static="no">
+        <type>struct <ref refid="structss__iic__master__dev__context" kindref="compound">ss_iic_master_dev_context</ref></type>
+        <definition>typedef struct ss_iic_master_dev_context  SS_IIC_MASTER_DEV_CONTEXT</definition>
+        <argsstring></argsstring>
+        <name>SS_IIC_MASTER_DEV_CONTEXT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" line="70" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="ss__i2c__master_8h_a39aa9c684d69f31e40e1b2d7be96d600_1a39aa9c684d69f31e40e1b2d7be96d600" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t ss_iic_master_close</definition>
+        <argsstring>(SS_IIC_MASTER_DEV_CONTEXT *ctx)</argsstring>
+        <name>ss_iic_master_close</name>
+        <param>
+          <type><ref refid="ss__i2c__master_8h_a637761b5e2d08928d1bf226d5c413f15_1a637761b5e2d08928d1bf226d5c413f15" kindref="member">SS_IIC_MASTER_DEV_CONTEXT</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" line="72" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="ss__i2c__master_8h_ac696561ef8787071baddb1dac6a0466e_1ac696561ef8787071baddb1dac6a0466e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t ss_iic_master_control</definition>
+        <argsstring>(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void *param)</argsstring>
+        <name>ss_iic_master_control</name>
+        <param>
+          <type><ref refid="ss__i2c__master_8h_a637761b5e2d08928d1bf226d5c413f15_1a637761b5e2d08928d1bf226d5c413f15" kindref="member">SS_IIC_MASTER_DEV_CONTEXT</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>ctrl_cmd</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>param</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" line="73" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="ss__i2c__master_8h_a1f6bbadc81dbed596878364ea7514cc7_1a1f6bbadc81dbed596878364ea7514cc7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t ss_iic_master_open</definition>
+        <argsstring>(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t param)</argsstring>
+        <name>ss_iic_master_open</name>
+        <param>
+          <type><ref refid="ss__i2c__master_8h_a637761b5e2d08928d1bf226d5c413f15_1a637761b5e2d08928d1bf226d5c413f15" kindref="member">SS_IIC_MASTER_DEV_CONTEXT</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>param</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" line="74" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="ss__i2c__master_8h_a72cd603c2629f59e42b3e79788d09843_1a72cd603c2629f59e42b3e79788d09843" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t ss_iic_master_write</definition>
+        <argsstring>(SS_IIC_MASTER_DEV_CONTEXT *ctx, const void *data, uint32_t len)</argsstring>
+        <name>ss_iic_master_write</name>
+        <param>
+          <type><ref refid="ss__i2c__master_8h_a637761b5e2d08928d1bf226d5c413f15_1a637761b5e2d08928d1bf226d5c413f15" kindref="member">SS_IIC_MASTER_DEV_CONTEXT</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" line="75" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="ss__i2c__master_8h_ae822cdfdd66e2fae7db5b94a87b7931d_1ae822cdfdd66e2fae7db5b94a87b7931d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t ss_iic_master_read</definition>
+        <argsstring>(SS_IIC_MASTER_DEV_CONTEXT *ctx, const void *data, uint32_t len)</argsstring>
+        <name>ss_iic_master_read</name>
+        <param>
+          <type><ref refid="ss__i2c__master_8h_a637761b5e2d08928d1bf226d5c413f15_1a637761b5e2d08928d1bf226d5c413f15" kindref="member">SS_IIC_MASTER_DEV_CONTEXT</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" line="76" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="ss__i2c__master_8h_a9c2bca0db69d1612f3fc6a79025a51d0_1a9c2bca0db69d1612f3fc6a79025a51d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ss_iic_master_rx_cb</definition>
+        <argsstring>(SS_IIC_MASTER_DEV_CONTEXT *ctx, void *param)</argsstring>
+        <name>ss_iic_master_rx_cb</name>
+        <param>
+          <type><ref refid="ss__i2c__master_8h_a637761b5e2d08928d1bf226d5c413f15_1a637761b5e2d08928d1bf226d5c413f15" kindref="member">SS_IIC_MASTER_DEV_CONTEXT</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>param</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" line="77" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="ss__i2c__master_8h_afc1e876b0050dbdbbaef0d2c74a8393a_1afc1e876b0050dbdbbaef0d2c74a8393a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ss_iic_master_tx_cb</definition>
+        <argsstring>(SS_IIC_MASTER_DEV_CONTEXT *ctx, void *param)</argsstring>
+        <name>ss_iic_master_tx_cb</name>
+        <param>
+          <type><ref refid="ss__i2c__master_8h_a637761b5e2d08928d1bf226d5c413f15_1a637761b5e2d08928d1bf226d5c413f15" kindref="member">SS_IIC_MASTER_DEV_CONTEXT</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>param</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" line="78" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="ss__i2c__master_8h_a9d09e5d6ce1fd8ea0c9742f30204836b_1a9d09e5d6ce1fd8ea0c9742f30204836b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ss_iic_master_err_cb</definition>
+        <argsstring>(SS_IIC_MASTER_DEV_CONTEXT *ctx, void *param)</argsstring>
+        <name>ss_iic_master_err_cb</name>
+        <param>
+          <type><ref refid="ss__i2c__master_8h_a637761b5e2d08928d1bf226d5c413f15_1a637761b5e2d08928d1bf226d5c413f15" kindref="member">SS_IIC_MASTER_DEV_CONTEXT</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>param</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h" line="79" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/>------------------------------------------</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2018,<sp/>Synopsys,<sp/>Inc.<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"></highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>1)<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"></highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>2)<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"></highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>3)<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>Synopsys,<sp/>Inc.,<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"></highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/>---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_SS_I2C_MASTER_H_</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_SS_I2C_MASTER_H_</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="comment">/*<sp/>the<sp/>wrapper<sp/>of<sp/>subsystem<sp/>i2c<sp/>master<sp/>driver<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dev__iic_8h" kindref="compound">device/ip_hal/dev_iic.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="ss__i2c__master_8h_a7a49005bbf918db1784e7567f919deb7_1a7a49005bbf918db1784e7567f919deb7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SS_IIC_MASTER_FLAG_TX<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1<sp/>&lt;&lt;<sp/>0)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>interrupt<sp/>tx<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="37" refid="ss__i2c__master_8h_a061ec70404fee3b14ca1089af6d925e6_1a061ec70404fee3b14ca1089af6d925e6" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SS_IIC_MASTER_FLAG_RX<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1<sp/>&lt;&lt;<sp/>1)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>interrupt<sp/>rx<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="38" refid="ss__i2c__master_8h_a2328b54c7a93e34dca16ca1b7c7421fc_1a2328b54c7a93e34dca16ca1b7c7421fc" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SS_IIC_MASTER_FLAG_BUSY<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1<sp/>&lt;&lt;<sp/>2)</highlight></codeline>
+<codeline lineno="39" refid="ss__i2c__master_8h_a9e310e3d60b1e5d66847c64672cc5d98_1a9e310e3d60b1e5d66847c64672cc5d98" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SS_IIC_MASTER_FLAG_TX_RX<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1<sp/>&lt;&lt;<sp/>3)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>both<sp/>tx<sp/>and<sp/>rx<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="40" refid="ss__i2c__master_8h_afbed92935028c50b4c3dab05388227fa_1afbed92935028c50b4c3dab05388227fa" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SS_IIC_MASTER_FLAG_ERROR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1<sp/>&lt;&lt;<sp/>4)</highlight></codeline>
+<codeline lineno="41"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="ss__i2c__master_8h_a64f4d2352d3b70e7849ffa07f92d226d_1a64f4d2352d3b70e7849ffa07f92d226d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>IC_TX_RX_FIFO_SIZE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>16<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>TX/RX<sp/>FIFO<sp/>size<sp/>in<sp/>hardware<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="43"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>IIC<sp/>STATUS<sp/>register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="ss__i2c__master_8h_a76e44eb11592454a0c8e22f8df5bf057_1a76e44eb11592454a0c8e22f8df5bf057" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>IC_STATUS_TFNF<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x02)<sp/><sp/></highlight><highlight class="comment">/*<sp/>(1<sp/>&lt;&lt;<sp/>1)<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="46" refid="ss__i2c__master_8h_a5b2e672b3187cfa6e2a5bc20e700d684_1a5b2e672b3187cfa6e2a5bc20e700d684" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IC_STATUS_RFNE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x08)<sp/><sp/></highlight><highlight class="comment">/*<sp/>(1<sp/>&lt;&lt;<sp/>3)<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>interrupt<sp/>callback<sp/>routines<sp/>select<sp/>macros<sp/>definitions<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="ss__i2c__master_8h_ade4f5422f65107777c47ee29fe5fbe3e_1ade4f5422f65107777c47ee29fe5fbe3e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SS_IIC_MASTER_RDY_SND<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x1)<sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>ready<sp/>to<sp/>send<sp/>callback<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="50" refid="ss__i2c__master_8h_a63932e559838425a3073c3590b3a050f_1a63932e559838425a3073c3590b3a050f" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SS_IIC_MASTER_RDY_RCV<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x2)<sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>ready<sp/>to<sp/>receive<sp/>callback<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="53" refid="ss__i2c__master_8h_a593b46186c5a3a17ea80f02ef3b2d628_1a593b46186c5a3a17ea80f02ef3b2d628" refkind="member"><highlight class="preprocessor">#define<sp/>SS_IIC_MASTER_CHECK_EXP(EXPR,<sp/>ERROR_CODE)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CHECK_EXP(EXPR,<sp/>ercd,<sp/>ERROR_CODE,<sp/>error_exit)</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="structss__iic__master__dev__context" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structss__iic__master__dev__context" kindref="compound">ss_iic_master_dev_context</ref><sp/>{</highlight></codeline>
+<codeline lineno="56" refid="structss__iic__master__dev__context_a3bdc2c4771816091d49da6f08fd847b3_1a3bdc2c4771816091d49da6f08fd847b3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structss__iic__master__dev__context_a3bdc2c4771816091d49da6f08fd847b3_1a3bdc2c4771816091d49da6f08fd847b3" kindref="member">reg_base</ref>;</highlight></codeline>
+<codeline lineno="57" refid="structss__iic__master__dev__context_a5258846b3c568142e22a7a93552e4bf4_1a5258846b3c568142e22a7a93552e4bf4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structss__iic__master__dev__context_a5258846b3c568142e22a7a93552e4bf4_1a5258846b3c568142e22a7a93552e4bf4" kindref="member">dev_id</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Device<sp/>ID<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="structss__iic__master__dev__context_a0a968d41c8b8a32b851d63558598ecfc_1a0a968d41c8b8a32b851d63558598ecfc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structss__iic__master__dev__context_a0a968d41c8b8a32b851d63558598ecfc_1a0a968d41c8b8a32b851d63558598ecfc" kindref="member">int_err</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Interrupt<sp/>nunmber<sp/>ERR<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="structss__iic__master__dev__context_a1e39c805f48b1179721fbe2c5f409805_1a1e39c805f48b1179721fbe2c5f409805" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structss__iic__master__dev__context_a1e39c805f48b1179721fbe2c5f409805_1a1e39c805f48b1179721fbe2c5f409805" kindref="member">int_rx_avail</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Interrupt<sp/>number<sp/>RX_AVAIL<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="structss__iic__master__dev__context_a67771cd60c8143a55b1447b942762fc8_1a67771cd60c8143a55b1447b942762fc8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structss__iic__master__dev__context_a67771cd60c8143a55b1447b942762fc8_1a67771cd60c8143a55b1447b942762fc8" kindref="member">int_tx_req</ref>;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Interrupt<sp/>TX_REQ<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="structss__iic__master__dev__context_a8a32f6992054cc8346151bba033cad72_1a8a32f6992054cc8346151bba033cad72" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structss__iic__master__dev__context_a8a32f6992054cc8346151bba033cad72_1a8a32f6992054cc8346151bba033cad72" kindref="member">int_stop_det</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Interrupt<sp/>STOP_DET<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="structss__iic__master__dev__context_aae8da1798a1b58c56aad41493a325938_1aae8da1798a1b58c56aad41493a325938" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__COMMON_ga91091c2a8f895b2d00ae61e6b607335e_1ga91091c2a8f895b2d00ae61e6b607335e" kindref="member">DEV_CALLBACK</ref><sp/><ref refid="structss__iic__master__dev__context_aae8da1798a1b58c56aad41493a325938_1aae8da1798a1b58c56aad41493a325938" kindref="member">int_rx_cb</ref>;</highlight></codeline>
+<codeline lineno="65" refid="structss__iic__master__dev__context_aea4d4e7be2e4f48bb61ffa2a806aff85_1aea4d4e7be2e4f48bb61ffa2a806aff85" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__COMMON_ga91091c2a8f895b2d00ae61e6b607335e_1ga91091c2a8f895b2d00ae61e6b607335e" kindref="member">DEV_CALLBACK</ref><sp/><ref refid="structss__iic__master__dev__context_aea4d4e7be2e4f48bb61ffa2a806aff85_1aea4d4e7be2e4f48bb61ffa2a806aff85" kindref="member">int_tx_cb</ref>;</highlight></codeline>
+<codeline lineno="66" refid="structss__iic__master__dev__context_aee080c1fae268e319be2b132df1ad2e6_1aee080c1fae268e319be2b132df1ad2e6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DEVICE__HAL__COMMON_ga91091c2a8f895b2d00ae61e6b607335e_1ga91091c2a8f895b2d00ae61e6b607335e" kindref="member">DEV_CALLBACK</ref><sp/><ref refid="structss__iic__master__dev__context_aee080c1fae268e319be2b132df1ad2e6_1aee080c1fae268e319be2b132df1ad2e6" kindref="member">int_err_cb</ref>;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="structss__iic__master__dev__context_add2736106c88e54a87e902402f260c5b_1add2736106c88e54a87e902402f260c5b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="structss__iic__master__dev__context_add2736106c88e54a87e902402f260c5b_1add2736106c88e54a87e902402f260c5b" kindref="member">flags</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="structss__iic__master__dev__context_a152659ced7339ff3ee81796b91a7ca88_1a152659ced7339ff3ee81796b91a7ca88" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structdev__iic__info" kindref="compound">DEV_IIC_INFO</ref><sp/>*<ref refid="structss__iic__master__dev__context_a152659ced7339ff3ee81796b91a7ca88_1a152659ced7339ff3ee81796b91a7ca88" kindref="member">info</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>IIC<sp/>device<sp/>information<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}<sp/><ref refid="ss__i2c__master_8h_a637761b5e2d08928d1bf226d5c413f15_1a637761b5e2d08928d1bf226d5c413f15" kindref="member">SS_IIC_MASTER_DEV_CONTEXT</ref>;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="ss__i2c__master_8h_a39aa9c684d69f31e40e1b2d7be96d600_1a39aa9c684d69f31e40e1b2d7be96d600" kindref="member">ss_iic_master_close</ref>(<ref refid="structss__iic__master__dev__context" kindref="compound">SS_IIC_MASTER_DEV_CONTEXT</ref><sp/>*ctx);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="ss__i2c__master_8h_ac696561ef8787071baddb1dac6a0466e_1ac696561ef8787071baddb1dac6a0466e" kindref="member">ss_iic_master_control</ref>(<ref refid="structss__iic__master__dev__context" kindref="compound">SS_IIC_MASTER_DEV_CONTEXT</ref><sp/>*ctx,<sp/>uint32_t<sp/>ctrl_cmd,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*param);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="ss__i2c__master_8h_a1f6bbadc81dbed596878364ea7514cc7_1a1f6bbadc81dbed596878364ea7514cc7" kindref="member">ss_iic_master_open</ref>(<ref refid="structss__iic__master__dev__context" kindref="compound">SS_IIC_MASTER_DEV_CONTEXT</ref><sp/>*ctx,<sp/>uint32_t<sp/>param);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="ss__i2c__master_8h_a72cd603c2629f59e42b3e79788d09843_1a72cd603c2629f59e42b3e79788d09843" kindref="member">ss_iic_master_write</ref>(<ref refid="structss__iic__master__dev__context" kindref="compound">SS_IIC_MASTER_DEV_CONTEXT</ref><sp/>*ctx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*data,<sp/>uint32_t<sp/>len);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="ss__i2c__master_8h_ae822cdfdd66e2fae7db5b94a87b7931d_1ae822cdfdd66e2fae7db5b94a87b7931d" kindref="member">ss_iic_master_read</ref>(<ref refid="structss__iic__master__dev__context" kindref="compound">SS_IIC_MASTER_DEV_CONTEXT</ref><sp/>*ctx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*data,<sp/>uint32_t<sp/>len);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="ss__i2c__master_8h_a9c2bca0db69d1612f3fc6a79025a51d0_1a9c2bca0db69d1612f3fc6a79025a51d0" kindref="member">ss_iic_master_rx_cb</ref>(<ref refid="structss__iic__master__dev__context" kindref="compound">SS_IIC_MASTER_DEV_CONTEXT</ref><sp/>*ctx,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*param);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="ss__i2c__master_8h_afc1e876b0050dbdbbaef0d2c74a8393a_1afc1e876b0050dbdbbaef0d2c74a8393a" kindref="member">ss_iic_master_tx_cb</ref>(<ref refid="structss__iic__master__dev__context" kindref="compound">SS_IIC_MASTER_DEV_CONTEXT</ref><sp/>*ctx,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*param);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="ss__i2c__master_8h_a9d09e5d6ce1fd8ea0c9742f30204836b_1a9d09e5d6ce1fd8ea0c9742f30204836b" kindref="member">ss_iic_master_err_cb</ref>(<ref refid="structss__iic__master__dev__context" kindref="compound">SS_IIC_MASTER_DEV_CONTEXT</ref><sp/>*ctx,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*param);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_SS_I2C_MASTER_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/subsystem/ss_i2c_master.h"/>
+  </compounddef>
+</doxygen>

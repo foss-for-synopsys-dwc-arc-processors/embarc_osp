@@ -1,0 +1,1903 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="group__ARC__HAL__MISC__UDMA" kind="group">
+    <compoundname>ARC_HAL_MISC_UDMA</compoundname>
+    <title>uDMA</title>
+    <innerfile refid="arc__udma_8h">arc_udma.h</innerfile>
+    <innerclass refid="struct__dma__ctrl__field" prot="public">_dma_ctrl_field</innerclass>
+    <innerclass refid="union__dma__ctrl" prot="public">_dma_ctrl</innerclass>
+    <innerclass refid="struct__dma__desc" prot="public">_dma_desc</innerclass>
+    <innerclass refid="struct__dma__channel" prot="public">_dma_channel</innerclass>
+    <innerclass refid="struct__dma__state" prot="public">_dma_state</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__ARC__HAL__MISC__UDMA_1ga276d4cc1d756d731dfb6ff5af7553056" prot="public" static="no">
+        <name>_dma_status</name>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_ga276d4cc1d756d731dfb6ff5af7553056_1gga276d4cc1d756d731dfb6ff5af7553056a5082e131014907719b0264eb16203d9c" prot="public">
+          <name>DMA_IDLE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Current DMA status is IDLE </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_ga276d4cc1d756d731dfb6ff5af7553056_1gga276d4cc1d756d731dfb6ff5af7553056a864f3936f41533a2fef44a17fa1acaa2" prot="public">
+          <name>DMA_BUSY</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Current DMA status is busy, in transfer </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_ga276d4cc1d756d731dfb6ff5af7553056_1gga276d4cc1d756d731dfb6ff5af7553056a84120fbc33c1119fb0eedb999cf7b44d" prot="public">
+          <name>DMA_ERROR</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Current DMA status is error, in transfer error </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_ga276d4cc1d756d731dfb6ff5af7553056_1gga276d4cc1d756d731dfb6ff5af7553056a0361aca9c7e29d7ac9c9966d7eb54610" prot="public">
+          <name>DMA_STOP</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Current DMA is stop by user </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA working status enumeration </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="150" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="150" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__ARC__HAL__MISC__UDMA_1ga498dee7f1d3792d2ddd59a0ab1a4931f" prot="public" static="no">
+        <name>_dma_channel_type</name>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_ga498dee7f1d3792d2ddd59a0ab1a4931f_1gga498dee7f1d3792d2ddd59a0ab1a4931faddf5388cd546689a825b0194475f4ecc" prot="public">
+          <name>DMA_CHN_ANY</name>
+          <initializer>= -1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Any channel, request one </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_ga498dee7f1d3792d2ddd59a0ab1a4931f_1gga498dee7f1d3792d2ddd59a0ab1a4931fa08d397f51a21ff82f2bffdba52e5ba66" prot="public">
+          <name>DMA_CHN_INVALID</name>
+          <initializer>= -2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Invalid channel </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA channel type enumeration </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="158" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="158" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__ARC__HAL__MISC__UDMA_1gafd16b7227cfdebb996c941d293ddd600" prot="public" static="no">
+        <name>_dma_request_source</name>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_gafd16b7227cfdebb996c941d293ddd600_1ggafd16b7227cfdebb996c941d293ddd600ac98b4dde779ecc897d800db2889a56b0" prot="public">
+          <name>DMA_REQ_SOFT</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Software trigger </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_gafd16b7227cfdebb996c941d293ddd600_1ggafd16b7227cfdebb996c941d293ddd600a0c2c7554242837a2803f9dc357ba1110" prot="public">
+          <name>DMA_REQ_PERIPHERAL</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Peripheral trigger </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA channel request or trigger source enumeration </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="164" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="164" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__ARC__HAL__MISC__UDMA_1gad971167f35029882a24e9f29bed2e522" prot="public" static="no">
+        <name>_dma_ctrl_op</name>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_gad971167f35029882a24e9f29bed2e522_1ggad971167f35029882a24e9f29bed2e522a28add57512b5213c49f615f66a5ba357" prot="public">
+          <name>DMA_INVALID_TRANSFER</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Invalid channel </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_gad971167f35029882a24e9f29bed2e522_1ggad971167f35029882a24e9f29bed2e522ae0b2ace77cc98900e9a40c0e35722f21" prot="public">
+          <name>DMA_SINGLE_TRANSFER</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Single Block </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_gad971167f35029882a24e9f29bed2e522_1ggad971167f35029882a24e9f29bed2e522a409e96a3476db327e7b6fb46ee1eb77c" prot="public">
+          <name>DMA_AUTO_LINKED_TRANSFER</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Link-List (Auto-Request) </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_gad971167f35029882a24e9f29bed2e522_1ggad971167f35029882a24e9f29bed2e522a7e0d2f434646943029bc014d0ad470c1" prot="public">
+          <name>DMA_MANUAL_LINKED_TRANSFER</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Link-List (Manual-Request) </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA channel control bit field enumeration - DMA Operation (OP) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="189" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="189" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__ARC__HAL__MISC__UDMA_1gaae2ba81fe06b6e3c25a58309fe2cfb91" prot="public" static="no">
+        <name>_dma_ctrl_rt</name>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_gaae2ba81fe06b6e3c25a58309fe2cfb91_1ggaae2ba81fe06b6e3c25a58309fe2cfb91a0ed188477aa87eae06f62eea636f1462" prot="public">
+          <name>DMA_AUTO_REQUEST</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Auto-request following channel arbitration </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_gaae2ba81fe06b6e3c25a58309fe2cfb91_1ggaae2ba81fe06b6e3c25a58309fe2cfb91ad082880c165df9bebb9e859191f98c10" prot="public">
+          <name>DMA_MANUAL_REQUEST</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Manual-request following channel arbitration </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA channel control bit field enumeration - Request Type (RT) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="197" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="197" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__ARC__HAL__MISC__UDMA_1gadadfb0518af231314689edd493b4f841" prot="public" static="no">
+        <name>_dma_ctrl_dtt</name>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_gadadfb0518af231314689edd493b4f841_1ggadadfb0518af231314689edd493b4f841a339b6191c55ddcc8418b38aa0ede78e2" prot="public">
+          <name>DMA_MEM2MEM</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Memory to Memory </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_gadadfb0518af231314689edd493b4f841_1ggadadfb0518af231314689edd493b4f841af46701d8d98bd89d65fb424a029955b4" prot="public">
+          <name>DMA_MEM2AUX</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Memory to Auxiliary </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_gadadfb0518af231314689edd493b4f841_1ggadadfb0518af231314689edd493b4f841a817545529fce53aa86be1c111bd9a5c9" prot="public">
+          <name>DMA_AUX2MEM</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Auxiliary to Memory </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_gadadfb0518af231314689edd493b4f841_1ggadadfb0518af231314689edd493b4f841a8c288da8f29320b08126d930189aa805" prot="public">
+          <name>DMA_AUX2AUX</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Auxiliary to Auxiliary </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA channel control bit field enumeration - Data Transfer Type (DTT) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="203" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="203" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__ARC__HAL__MISC__UDMA_1ga1f177e8a3c0fc8a0e765bb0c687655a9" prot="public" static="no">
+        <name>_dma_ctrl_dwinc</name>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_ga1f177e8a3c0fc8a0e765bb0c687655a9_1gga1f177e8a3c0fc8a0e765bb0c687655a9af6038ac5cdc71c7759b6ac662b00224a" prot="public">
+          <name>DMA_DW1INC1</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>dw=byte, inc=byte </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_ga1f177e8a3c0fc8a0e765bb0c687655a9_1gga1f177e8a3c0fc8a0e765bb0c687655a9a8a182a05b5fc4a2ae46a2d94b88f77f1" prot="public">
+          <name>DMA_DW1INC2</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>dw=byte, inc=half-word </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_ga1f177e8a3c0fc8a0e765bb0c687655a9_1gga1f177e8a3c0fc8a0e765bb0c687655a9a9b4f3f2211ecbee3f4db62862c04f151" prot="public">
+          <name>DMA_DW1INC4</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>dw=byte, inc=word </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_ga1f177e8a3c0fc8a0e765bb0c687655a9_1gga1f177e8a3c0fc8a0e765bb0c687655a9a69a4b89f42c2827718124f837da37612" prot="public">
+          <name>DMA_DW2INC2</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>dw=half-word, inc=half-word </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_ga1f177e8a3c0fc8a0e765bb0c687655a9_1gga1f177e8a3c0fc8a0e765bb0c687655a9acd4d2086fb027c440338f90b4e633e7c" prot="public">
+          <name>DMA_DW2INC4</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>dw=half-word, inc=word </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_ga1f177e8a3c0fc8a0e765bb0c687655a9_1gga1f177e8a3c0fc8a0e765bb0c687655a9a37db937d2a65fcd583ea608a9b41c680" prot="public">
+          <name>DMA_DW4INC4</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>dw=word, inc=word </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_ga1f177e8a3c0fc8a0e765bb0c687655a9_1gga1f177e8a3c0fc8a0e765bb0c687655a9ad82e3d41f288677a2ef645f7ae3f0e8c" prot="public">
+          <name>DMA_DWINC_CLR</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>clear mode (dw=word, inc=word) </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_ga1f177e8a3c0fc8a0e765bb0c687655a9_1gga1f177e8a3c0fc8a0e765bb0c687655a9ae13ed33e6357aa0b91c311537df60831" prot="public">
+          <name>DMA_DW8INC8</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>dw=double-word, inc=double-word(Only supported in HS) </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA channel control bit field enumeration - Data Width/Increment (DW/INC) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="211" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="211" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__ARC__HAL__MISC__UDMA_1gafdab70dc8716fc49745f38ddfc1df066" prot="public" static="no">
+        <name>_dma_ctrl_int</name>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_gafdab70dc8716fc49745f38ddfc1df066_1ggafdab70dc8716fc49745f38ddfc1df066ab4cd86155031538e4c2e855e99e67b6e" prot="public">
+          <name>DMA_INT_DISABLE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Interrupt disabled, no interrupt raised is on completion of a data transfer </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_gafdab70dc8716fc49745f38ddfc1df066_1ggafdab70dc8716fc49745f38ddfc1df066a5eba5fdaf8dc6d06a0f39c7f26f5edf0" prot="public">
+          <name>DMA_INT_ENABLE</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Interrupt enabled, a level interrupt raised on completion of a data transfer </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA channel control bit field enumeration - Internal/External Interrupt enable (INT) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="223" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="223" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__ARC__HAL__MISC__UDMA_1gab14325a2538ebe990ccdde4c92e586d3" prot="public" static="no">
+        <name>_dma_ctrl_am</name>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_gab14325a2538ebe990ccdde4c92e586d3_1ggab14325a2538ebe990ccdde4c92e586d3abbbb6c231515dec2aa566f5806bfc265" prot="public">
+          <name>DMA_AM_SRCNOT_DSTNOT</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>No Source or Destination Address increment </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_gab14325a2538ebe990ccdde4c92e586d3_1ggab14325a2538ebe990ccdde4c92e586d3a607efac1f9e60075c29e336e0a3c7446" prot="public">
+          <name>DMA_AM_SRCINC_DSTNOT</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Source Address incremented, Destination Address not incremented </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_gab14325a2538ebe990ccdde4c92e586d3_1ggab14325a2538ebe990ccdde4c92e586d3a69584af0032ea042fdd8cb255c661584" prot="public">
+          <name>DMA_AM_SRCNOT_DSTINC</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Source Address not incremented, Destination Address incremented </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_gab14325a2538ebe990ccdde4c92e586d3_1ggab14325a2538ebe990ccdde4c92e586d3a22d76671c5f492fa9350378691cf0ca3" prot="public">
+          <name>DMA_AM_SRCINC_DSTINC</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Source Address and Destination Address incremented </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA channel control bit field enumeration - Address update Mode (AM) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="229" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="229" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__ARC__HAL__MISC__UDMA_1ga71b0bab3c4b4272add6ba11dd273d05b" prot="public" static="no">
+        <name>_dma_chn_prio</name>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_ga71b0bab3c4b4272add6ba11dd273d05b_1gga71b0bab3c4b4272add6ba11dd273d05ba43a0de233e024dfe63e1708455c892c7" prot="public">
+          <name>DMA_CHN_NORM_PRIO</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Normal priority </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__ARC__HAL__MISC__UDMA_ga71b0bab3c4b4272add6ba11dd273d05b_1gga71b0bab3c4b4272add6ba11dd273d05baa7f4c1c5da47ceff1443afebf43c9b9b" prot="public">
+          <name>DMA_CHN_HIGH_PRIO</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>High priority </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA channel priority enumeration </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="237" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="237" bodyend="240"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__ARC__HAL__MISC__UDMA_1ga67d148aa2be7a7fe322355a6474aa91e" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* dma_callback_t)(void *param)</definition>
+        <argsstring>)(void *param)</argsstring>
+        <name>dma_callback_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>callback function for dma transfer, param should be current dma channel transfer structure dma_channel_t </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="130" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__ARC__HAL__MISC__UDMA_1gae9f686f29367668129d1562f3fea0a8b" prot="public" static="no">
+        <type>struct <ref refid="struct__dma__ctrl__field" kindref="compound">_dma_ctrl_field</ref></type>
+        <definition>typedef struct _dma_ctrl_field  dma_ctrl_field_t</definition>
+        <argsstring></argsstring>
+        <name>dma_ctrl_field_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="141" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__ARC__HAL__MISC__UDMA_1ga32ace06fabbad31be8e5248550434dbf" prot="public" static="no">
+        <type>union <ref refid="union__dma__ctrl" kindref="compound">_dma_ctrl</ref></type>
+        <definition>typedef union _dma_ctrl  dma_ctrl_t</definition>
+        <argsstring></argsstring>
+        <name>dma_ctrl_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA channel control register union </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="147" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__ARC__HAL__MISC__UDMA_1gae2b60a27d68acd095c27cab358a2ce9d" prot="public" static="no">
+        <type>enum <ref refid="group__ARC__HAL__MISC__UDMA_ga276d4cc1d756d731dfb6ff5af7553056_1ga276d4cc1d756d731dfb6ff5af7553056" kindref="member">_dma_status</ref></type>
+        <definition>typedef enum _dma_status  dma_status_t</definition>
+        <argsstring></argsstring>
+        <name>dma_status_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA working status enumeration </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="155" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__ARC__HAL__MISC__UDMA_1ga4ab1406bf196a260bfc24ec6f004eb38" prot="public" static="no">
+        <type>enum <ref refid="group__ARC__HAL__MISC__UDMA_ga498dee7f1d3792d2ddd59a0ab1a4931f_1ga498dee7f1d3792d2ddd59a0ab1a4931f" kindref="member">_dma_channel_type</ref></type>
+        <definition>typedef enum _dma_channel_type  dma_channel_type_t</definition>
+        <argsstring></argsstring>
+        <name>dma_channel_type_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA channel type enumeration </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="161" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__ARC__HAL__MISC__UDMA_1ga87fac76863c6c941e6363236dde6f58e" prot="public" static="no">
+        <type>enum <ref refid="group__ARC__HAL__MISC__UDMA_gafd16b7227cfdebb996c941d293ddd600_1gafd16b7227cfdebb996c941d293ddd600" kindref="member">_dma_request_source</ref></type>
+        <definition>typedef enum _dma_request_source  dma_request_source_t</definition>
+        <argsstring></argsstring>
+        <name>dma_request_source_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA channel request or trigger source enumeration </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="167" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__ARC__HAL__MISC__UDMA_1ga70e62b9d60cf124ecc6427a59cf5e43a" prot="public" static="no">
+        <type>struct <ref refid="struct__dma__desc" kindref="compound">_dma_desc</ref></type>
+        <definition>typedef struct _dma_desc  dma_desc_t</definition>
+        <argsstring></argsstring>
+        <name>dma_desc_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA descriptor (DMA channel registers) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="175" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__ARC__HAL__MISC__UDMA_1ga0d1854ef6ca92f26e35a4e869f8a157f" prot="public" static="no">
+        <type>struct <ref refid="struct__dma__channel" kindref="compound">_dma_channel</ref></type>
+        <definition>typedef struct _dma_channel  dma_channel_t</definition>
+        <argsstring></argsstring>
+        <name>dma_channel_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA Channel transfer structure </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="186" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__ARC__HAL__MISC__UDMA_1ga8430596640eb5771ef5a44e913a65420" prot="public" static="no">
+        <type>enum <ref refid="group__ARC__HAL__MISC__UDMA_gad971167f35029882a24e9f29bed2e522_1gad971167f35029882a24e9f29bed2e522" kindref="member">_dma_ctrl_op</ref></type>
+        <definition>typedef enum _dma_ctrl_op  dma_ctrl_op_t</definition>
+        <argsstring></argsstring>
+        <name>dma_ctrl_op_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA channel control bit field enumeration - DMA Operation (OP) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="194" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__ARC__HAL__MISC__UDMA_1gaeb82abb7da6ae9e38c45c19287b40616" prot="public" static="no">
+        <type>enum <ref refid="group__ARC__HAL__MISC__UDMA_gaae2ba81fe06b6e3c25a58309fe2cfb91_1gaae2ba81fe06b6e3c25a58309fe2cfb91" kindref="member">_dma_ctrl_rt</ref></type>
+        <definition>typedef enum _dma_ctrl_rt  dma_ctrl_rt_t</definition>
+        <argsstring></argsstring>
+        <name>dma_ctrl_rt_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA channel control bit field enumeration - Request Type (RT) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="200" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__ARC__HAL__MISC__UDMA_1ga29d38d8f435f4344d564522569e531b8" prot="public" static="no">
+        <type>enum <ref refid="group__ARC__HAL__MISC__UDMA_gadadfb0518af231314689edd493b4f841_1gadadfb0518af231314689edd493b4f841" kindref="member">_dma_ctrl_dtt</ref></type>
+        <definition>typedef enum _dma_ctrl_dtt  dma_ctrl_dtt_t</definition>
+        <argsstring></argsstring>
+        <name>dma_ctrl_dtt_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA channel control bit field enumeration - Data Transfer Type (DTT) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="208" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__ARC__HAL__MISC__UDMA_1ga9148d68057bfa06c9e32c1f17c651e68" prot="public" static="no">
+        <type>enum <ref refid="group__ARC__HAL__MISC__UDMA_ga1f177e8a3c0fc8a0e765bb0c687655a9_1ga1f177e8a3c0fc8a0e765bb0c687655a9" kindref="member">_dma_ctrl_dwinc</ref></type>
+        <definition>typedef enum _dma_ctrl_dwinc  dma_ctrl_dwinc_t</definition>
+        <argsstring></argsstring>
+        <name>dma_ctrl_dwinc_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA channel control bit field enumeration - Data Width/Increment (DW/INC) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="220" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__ARC__HAL__MISC__UDMA_1ga12b792a0d4ebffe66828afe49993541b" prot="public" static="no">
+        <type>enum <ref refid="group__ARC__HAL__MISC__UDMA_gafdab70dc8716fc49745f38ddfc1df066_1gafdab70dc8716fc49745f38ddfc1df066" kindref="member">_dma_ctrl_int</ref></type>
+        <definition>typedef enum _dma_ctrl_int  dma_ctrl_int_t</definition>
+        <argsstring></argsstring>
+        <name>dma_ctrl_int_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA channel control bit field enumeration - Internal/External Interrupt enable (INT) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="226" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__ARC__HAL__MISC__UDMA_1ga0fbf02a7ca3a2839df910e6599700085" prot="public" static="no">
+        <type>enum <ref refid="group__ARC__HAL__MISC__UDMA_gab14325a2538ebe990ccdde4c92e586d3_1gab14325a2538ebe990ccdde4c92e586d3" kindref="member">_dma_ctrl_am</ref></type>
+        <definition>typedef enum _dma_ctrl_am  dma_ctrl_am_t</definition>
+        <argsstring></argsstring>
+        <name>dma_ctrl_am_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA channel control bit field enumeration - Address update Mode (AM) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="234" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__ARC__HAL__MISC__UDMA_1ga810d6c59a45aa2f16572989a2a13a82b" prot="public" static="no">
+        <type>enum <ref refid="group__ARC__HAL__MISC__UDMA_ga71b0bab3c4b4272add6ba11dd273d05b_1ga71b0bab3c4b4272add6ba11dd273d05b" kindref="member">_dma_chn_prio</ref></type>
+        <definition>typedef enum _dma_chn_prio  dma_chn_prio_t</definition>
+        <argsstring></argsstring>
+        <name>dma_chn_prio_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA channel priority enumeration </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="240" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__ARC__HAL__MISC__UDMA_1gaf5a20874bcce56e9dfa0554ffa808322" prot="public" static="no">
+        <type>struct <ref refid="struct__dma__state" kindref="compound">_dma_state</ref></type>
+        <definition>typedef struct _dma_state  dma_state_t</definition>
+        <argsstring></argsstring>
+        <name>dma_state_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA state to maintain uDMA resources </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="270" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__ARC__HAL__MISC__UDMA_1gae06eefba765e595748af588b8d4a0fef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t dmac_init</definition>
+        <argsstring>(dma_state_t *state)</argsstring>
+        <name>dmac_init</name>
+        <param>
+          <type><ref refid="group__ARC__HAL__MISC__UDMA_gaf5a20874bcce56e9dfa0554ffa808322_1gaf5a20874bcce56e9dfa0554ffa808322" kindref="member">dma_state_t</ref> *</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>Init uDMA controller with a valid dma_state_t structure. </para>        </briefdescription>
+        <detaileddescription>
+<para>If you want to use this uDMA driver, you need to call the dmac_init function with a valid state, dmac will init the valid state. If initialized successfully, you can use the other uDMA APIs.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DMA state structure, this should not be NULL</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>-1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>state is NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Init successfully </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="284" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__ARC__HAL__MISC__UDMA_1gaa077df81d09f99dc06f9f09746bee81a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void dmac_close</definition>
+        <argsstring>(void)</argsstring>
+        <name>dmac_close</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>De-init uDMA controller. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="288" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__ARC__HAL__MISC__UDMA_1ga8e2f3e09ce52ab0b4491dcc7dbfc354a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t dmac_config_desc</definition>
+        <argsstring>(dma_desc_t *desc, void *src, void *dst, uint32_t size, dma_ctrl_t *ctrl)</argsstring>
+        <name>dmac_config_desc</name>
+        <param>
+          <type><ref refid="group__ARC__HAL__MISC__UDMA_ga70e62b9d60cf124ecc6427a59cf5e43a_1ga70e62b9d60cf124ecc6427a59cf5e43a" kindref="member">dma_desc_t</ref> *</type>
+          <declname>desc</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type><ref refid="group__ARC__HAL__MISC__UDMA_ga32ace06fabbad31be8e5248550434dbf_1ga32ace06fabbad31be8e5248550434dbf" kindref="member">dma_ctrl_t</ref> *</type>
+          <declname>ctrl</declname>
+        </param>
+        <briefdescription>
+<para>Configure uDMA descriptor with source/destination address, transfer size in bytes and ctrl mode. </para>        </briefdescription>
+        <detaileddescription>
+<para>Note: The DMALLPx of desc will be set to NULL in this function, and DMACTRLx of desc will be set with right transfer size</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>desc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uDMA descriptor, this should not be NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>src</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source address </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dst</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>destination address </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>actual transfer size in bytes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ctrl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DMA channel control value</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>-1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>desc is NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>OK </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="368" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__ARC__HAL__MISC__UDMA_1ga51f97eff40bff94fd6643a90b6b9d73e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t dmac_desc_add_linked</definition>
+        <argsstring>(dma_desc_t *head, dma_desc_t *next)</argsstring>
+        <name>dmac_desc_add_linked</name>
+        <param>
+          <type><ref refid="group__ARC__HAL__MISC__UDMA_ga70e62b9d60cf124ecc6427a59cf5e43a_1ga70e62b9d60cf124ecc6427a59cf5e43a" kindref="member">dma_desc_t</ref> *</type>
+          <declname>head</declname>
+        </param>
+        <param>
+          <type><ref refid="group__ARC__HAL__MISC__UDMA_ga70e62b9d60cf124ecc6427a59cf5e43a_1ga70e62b9d60cf124ecc6427a59cf5e43a" kindref="member">dma_desc_t</ref> *</type>
+          <declname>next</declname>
+        </param>
+        <briefdescription>
+<para>Add linked descriptor for uDMA, head -&gt; next. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>head</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>head uDMA descriptor, should not be NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>next</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>next uDMA descriptor, could be NULL</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>-1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>head is NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>OK </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="378" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__ARC__HAL__MISC__UDMA_1gaa984f158247d9697415e110803b88d89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t dmac_init_channel</definition>
+        <argsstring>(dma_channel_t *dma_chn)</argsstring>
+        <name>dmac_init_channel</name>
+        <param>
+          <type><ref refid="group__ARC__HAL__MISC__UDMA_ga0d1854ef6ca92f26e35a4e869f8a157f_1ga0d1854ef6ca92f26e35a4e869f8a157f" kindref="member">dma_channel_t</ref> *</type>
+          <declname>dma_chn</declname>
+        </param>
+        <briefdescription>
+<para>Init a dma_channel_t structure - dma_chn with initial value. </para>        </briefdescription>
+        <detaileddescription>
+<para>Note: Channel will be set to DMA_CHN_INVALID</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dma_chn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uDMA channel structure, should not be NULL</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>-1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>dma_chn is NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>OK </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="389" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__ARC__HAL__MISC__UDMA_1ga6f154bbe1f60e53ef950cfd83463bfd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t dmac_config_channel</definition>
+        <argsstring>(dma_channel_t *dma_chn, dma_desc_t *desc)</argsstring>
+        <name>dmac_config_channel</name>
+        <param>
+          <type><ref refid="group__ARC__HAL__MISC__UDMA_ga0d1854ef6ca92f26e35a4e869f8a157f_1ga0d1854ef6ca92f26e35a4e869f8a157f" kindref="member">dma_channel_t</ref> *</type>
+          <declname>dma_chn</declname>
+        </param>
+        <param>
+          <type><ref refid="group__ARC__HAL__MISC__UDMA_ga70e62b9d60cf124ecc6427a59cf5e43a_1ga70e62b9d60cf124ecc6427a59cf5e43a" kindref="member">dma_desc_t</ref> *</type>
+          <declname>desc</declname>
+        </param>
+        <briefdescription>
+<para>Configure uDMA channel with uDMA descriptor. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dma_chn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uDMA channel structure, should not be NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>desc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uDMA descriptor</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>-1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>dma_chn is NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>OK </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="399" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__ARC__HAL__MISC__UDMA_1gaaff2446b924c369ec11cd71a6aa0f185" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t dmac_reserve_channel</definition>
+        <argsstring>(int32_t channel, dma_channel_t *dma_chn, dma_request_source_t source)</argsstring>
+        <name>dmac_reserve_channel</name>
+        <param>
+          <type>int32_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type><ref refid="group__ARC__HAL__MISC__UDMA_ga0d1854ef6ca92f26e35a4e869f8a157f_1ga0d1854ef6ca92f26e35a4e869f8a157f" kindref="member">dma_channel_t</ref> *</type>
+          <declname>dma_chn</declname>
+        </param>
+        <param>
+          <type><ref refid="group__ARC__HAL__MISC__UDMA_ga87fac76863c6c941e6363236dde6f58e_1ga87fac76863c6c941e6363236dde6f58e" kindref="member">dma_request_source_t</ref></type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Reserve a DMA channel, and bind it with dma_chn, and set the dma trigger source. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>This can be DMA_CHN_ANY or any valid channel id. For DMA_CHN_ANY, it will try to peek an available channel. For any valid channel id, it will try to reserve that channel. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dma_chn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uDMA channel structure, should not be NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DMA trigger source, this can be any value in dma_request_source_t enum</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>DMA_CHN_INVALID</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>dma_chn is NULL, or channel is not a valid one, or there is no channel available now </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>0-DMA_ALL_CHANNEL_NUM</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the channel id that reserved </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="419" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__ARC__HAL__MISC__UDMA_1gaa8def3178273523539defa6f8b832b1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t dmac_start_channel</definition>
+        <argsstring>(dma_channel_t *dma_chn, dma_callback_t callback, uint32_t priority)</argsstring>
+        <name>dmac_start_channel</name>
+        <param>
+          <type><ref refid="group__ARC__HAL__MISC__UDMA_ga0d1854ef6ca92f26e35a4e869f8a157f_1ga0d1854ef6ca92f26e35a4e869f8a157f" kindref="member">dma_channel_t</ref> *</type>
+          <declname>dma_chn</declname>
+        </param>
+        <param>
+          <type><ref refid="group__ARC__HAL__MISC__UDMA_ga67d148aa2be7a7fe322355a6474aa91e_1ga67d148aa2be7a7fe322355a6474aa91e" kindref="member">dma_callback_t</ref></type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>priority</declname>
+        </param>
+        <briefdescription>
+<para>Start uDMA transfer for dma_chn, and set callback and transfer priority. </para>        </briefdescription>
+        <detaileddescription>
+<para>Note: When callback is NULL, then all INT field in DMA descriptor will be set to interrupt disable, otherwise it will be set to interrupt enable.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dma_chn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uDMA channel structure, should not be NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>callback function, when DMA transfer is done, it will be called with parameter which value is dma_chn </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">priority</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uDMA transfer priority</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>-1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>dma_chn is NULL or dma_chn-&gt;desc is NULL or channel of dma_chn is not a valid one or dma_chn is still in transfer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>-2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>When channel is a aux-based channel, the dma descriptor should not be a linked list. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>OK </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="439" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__ARC__HAL__MISC__UDMA_1ga327765a1898fb1689b29cfb206aabba9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t dmac_stop_channel</definition>
+        <argsstring>(dma_channel_t *dma_chn)</argsstring>
+        <name>dmac_stop_channel</name>
+        <param>
+          <type><ref refid="group__ARC__HAL__MISC__UDMA_ga0d1854ef6ca92f26e35a4e869f8a157f_1ga0d1854ef6ca92f26e35a4e869f8a157f" kindref="member">dma_channel_t</ref> *</type>
+          <declname>dma_chn</declname>
+        </param>
+        <briefdescription>
+<para>Stop uDMA transfer for dma_chn. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dma_chn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uDMA channel structure, should not be NULL</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>-1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>dma_chn is NULL or dma_chn-&gt;desc is NULL or channel of dma_chn is not a valid one</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>OK </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="450" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__ARC__HAL__MISC__UDMA_1ga2daa51afce8f5eefce45288a8181672b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t dmac_release_channel</definition>
+        <argsstring>(dma_channel_t *dma_chn)</argsstring>
+        <name>dmac_release_channel</name>
+        <param>
+          <type><ref refid="group__ARC__HAL__MISC__UDMA_ga0d1854ef6ca92f26e35a4e869f8a157f_1ga0d1854ef6ca92f26e35a4e869f8a157f" kindref="member">dma_channel_t</ref> *</type>
+          <declname>dma_chn</declname>
+        </param>
+        <briefdescription>
+<para>Release the channel used by dma_chn. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dma_chn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uDMA channel structure, should not be NULL</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>-1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>dma_chn is NULL or dma_chn-&gt;desc is NULL or channel of dma_chn is not a valid one </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>OK </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="460" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__ARC__HAL__MISC__UDMA_1ga2ee0fc0dcd0134c3243918961b6b1684" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t dmac_wait_channel</definition>
+        <argsstring>(dma_channel_t *dma_chn)</argsstring>
+        <name>dmac_wait_channel</name>
+        <param>
+          <type><ref refid="group__ARC__HAL__MISC__UDMA_ga0d1854ef6ca92f26e35a4e869f8a157f_1ga0d1854ef6ca92f26e35a4e869f8a157f" kindref="member">dma_channel_t</ref> *</type>
+          <declname>dma_chn</declname>
+        </param>
+        <briefdescription>
+<para>Wait until channel transfer is done. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dma_chn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uDMA channel structure, should not be NULL</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>-1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>dma_chn is NULL or dma_chn-&gt;desc is NULL or channel of dma_chn is not a valid one </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>DMA_IDLE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Transfer is done without error </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>DMA_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Transfer is done with error </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="471" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__ARC__HAL__MISC__UDMA_1ga5cdbefc94c44553c2e42d016d6cfb54f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t dmac_check_channel</definition>
+        <argsstring>(dma_channel_t *dma_chn)</argsstring>
+        <name>dmac_check_channel</name>
+        <param>
+          <type><ref refid="group__ARC__HAL__MISC__UDMA_ga0d1854ef6ca92f26e35a4e869f8a157f_1ga0d1854ef6ca92f26e35a4e869f8a157f" kindref="member">dma_channel_t</ref> *</type>
+          <declname>dma_chn</declname>
+        </param>
+        <briefdescription>
+<para>Check channel transfer status. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dma_chn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uDMA channel structure, should not be NULL</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>-1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>dma_chn is NULL or dma_chn-&gt;desc is NULL or channel of dma_chn is not a valid one </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>DMA_BUSY</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Still in transfer state </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>DMA_IDLE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Transfer is done without error </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>DMA_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Transfer is done with error </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="483" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__ARC__HAL__MISC__UDMA_1gafb0b911e1d6f13309597253cdd6e07d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t dmac_clear_channel</definition>
+        <argsstring>(dma_channel_t *dma_chn)</argsstring>
+        <name>dmac_clear_channel</name>
+        <param>
+          <type><ref refid="group__ARC__HAL__MISC__UDMA_ga0d1854ef6ca92f26e35a4e869f8a157f_1ga0d1854ef6ca92f26e35a4e869f8a157f" kindref="member">dma_channel_t</ref> *</type>
+          <declname>dma_chn</declname>
+        </param>
+        <briefdescription>
+<para>Clear channel transfer status and set it to DMA_IDLE. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dma_chn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uDMA channel structure, should not be NULL</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>-1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>dma_chn is NULL or dma_chn-&gt;desc is NULL or channel of dma_chn is not a valid one </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>OK </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="493" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1gae6d576ffb70ae165ab3cf26f1a5c24b0" prot="public" static="no">
+        <name>CORE_DMAC_INTERNAL_VERSION</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Version of the DMA controller </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="61" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1gaf6e87d0c5d43b4f136169f619243fe5a" prot="public" static="no">
+        <name>DMA_MULTI_IRQ</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Multiple interrupts for DMA </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="66" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1gaf16c6e745771a011277aabd659759eed" prot="public" static="no">
+        <name>DMA_IRQ_PRIO</name>
+        <initializer>(<ref refid="group__ARC__HAL__EXCEPTION__INTERRUPT_gaabc533409696b211335240a4140ae844_1gaabc533409696b211335240a4140ae844" kindref="member">INT_PRI_MIN</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA IRQ priority </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="71" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga8e05b31d51dbe30264e2467c9d1650c9" prot="public" static="no">
+        <name>DMA_IRQ_NUM_START</name>
+        <initializer>20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA IRQ start vector Number of all DMA channels </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="76" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga33e5192848954a63f872b0c7df80367a" prot="public" static="no">
+        <name>DMA_ALL_CHANNEL_NUM</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Number of all aux-register based DMA channels </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="84" column="10" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga662e5971b9271b6855045bb9dbf1a654" prot="public" static="no">
+        <name>DMA_REGISTER_CHANNEL_NUM</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Mask of all DMA channels at the most </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="93" column="10" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga1e656f95a8cb87b02d8a79853210ee0a" prot="public" static="no">
+        <name>DMA_ALL_CHANNEL_MASK</name>
+        <initializer>0xFFFF</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="98" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga3b5573ef57629c751ae39c5f12de6f7d" prot="public" static="no">
+        <name>DMACTRLx_OP_OFS</name>
+        <initializer>(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field offset: bit 0,1 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="100" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga2899e234bca37fbfcff7beb307416e80" prot="public" static="no">
+        <name>DMACTRLx_R_OFS</name>
+        <initializer>(2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field offset: bit 2 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="101" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga086b211216c85d46ca879d01a4ed1e98" prot="public" static="no">
+        <name>DMACTRLx_DTT_OFS</name>
+        <initializer>(3)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field offset: bit 3,4 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="102" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1gad49f849bd52d48d3f2b53ea5130251c2" prot="public" static="no">
+        <name>DMACTRLx_DWINC_OFS</name>
+        <initializer>(5)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field offset: bit 5,6,7 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="103" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga93a80795d8f15775272ce151207655a8" prot="public" static="no">
+        <name>DMACTRLx_SIZE_OFS</name>
+        <initializer>(8)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field offset: bit 8..20 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="104" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga8c0257c0859578c2754b424f9ed6561c" prot="public" static="no">
+        <name>DMACTRLx_ARB_OFS</name>
+        <initializer>(21)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field offset: bit 21..28 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="105" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga31a279ac20de678a5d95139520d61482" prot="public" static="no">
+        <name>DMACTRLx_INT_OFS</name>
+        <initializer>(29)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field offset: bit 29 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="106" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1gade1850d1b521cc9dd20a7aaf0bb9c1fb" prot="public" static="no">
+        <name>DMACTRLx_AM_OFS</name>
+        <initializer>(30)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field offset: bit 30,31 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="107" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga41d979f2c6d3f1b38eb1b9e06702d6b3" prot="public" static="no">
+        <name>DMACTRLx_OP</name>
+        <param><defname>x</defname></param>
+        <initializer>((x) &lt;&lt; <ref refid="group__ARC__HAL__MISC__UDMA_ga3b5573ef57629c751ae39c5f12de6f7d_1ga3b5573ef57629c751ae39c5f12de6f7d" kindref="member">DMACTRLx_OP_OFS</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field value: bit 0,1 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="109" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga52e6e61880941be08bfbb3de211e0229" prot="public" static="no">
+        <name>DMACTRLx_R</name>
+        <param><defname>x</defname></param>
+        <initializer>((x) &lt;&lt; <ref refid="group__ARC__HAL__MISC__UDMA_ga2899e234bca37fbfcff7beb307416e80_1ga2899e234bca37fbfcff7beb307416e80" kindref="member">DMACTRLx_R_OFS</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field value: bit 2 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="110" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1gacf6a1f73d4a4ecff800fa48f715f9cbc" prot="public" static="no">
+        <name>DMACTRLx_DTT</name>
+        <param><defname>x</defname></param>
+        <initializer>((x) &lt;&lt; <ref refid="group__ARC__HAL__MISC__UDMA_ga086b211216c85d46ca879d01a4ed1e98_1ga086b211216c85d46ca879d01a4ed1e98" kindref="member">DMACTRLx_DTT_OFS</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field value: bit 3,4 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="111" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga37fcc916a26f83883a7fee1caaa0cde0" prot="public" static="no">
+        <name>DMACTRLx_DWINC</name>
+        <param><defname>x</defname></param>
+        <initializer>((x) &lt;&lt; <ref refid="group__ARC__HAL__MISC__UDMA_gad49f849bd52d48d3f2b53ea5130251c2_1gad49f849bd52d48d3f2b53ea5130251c2" kindref="member">DMACTRLx_DWINC_OFS</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field value: bit 5,6,7 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="112" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1gac2f590aac7504e3960cf3607c973f664" prot="public" static="no">
+        <name>DMACTRLx_SIZE</name>
+        <param><defname>x</defname></param>
+        <initializer>((x) &lt;&lt; <ref refid="group__ARC__HAL__MISC__UDMA_ga93a80795d8f15775272ce151207655a8_1ga93a80795d8f15775272ce151207655a8" kindref="member">DMACTRLx_SIZE_OFS</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field value: bit 8..20 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="113" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga46a9c1990f09d7b7640534e5b396575a" prot="public" static="no">
+        <name>DMACTRLx_ARB</name>
+        <param><defname>x</defname></param>
+        <initializer>((x) &lt;&lt; <ref refid="group__ARC__HAL__MISC__UDMA_ga8c0257c0859578c2754b424f9ed6561c_1ga8c0257c0859578c2754b424f9ed6561c" kindref="member">DMACTRLx_ARB_OFS</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field value: bit 21..28 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="114" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1gad7b8fd9be8515f3be65b4809b66235f3" prot="public" static="no">
+        <name>DMACTRLx_INT</name>
+        <param><defname>x</defname></param>
+        <initializer>((x) &lt;&lt; <ref refid="group__ARC__HAL__MISC__UDMA_ga31a279ac20de678a5d95139520d61482_1ga31a279ac20de678a5d95139520d61482" kindref="member">DMACTRLx_INT_OFS</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field value: bit 29 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="115" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga6f6826c4c867b294c7744ae7ca10e1e0" prot="public" static="no">
+        <name>DMACTRLx_AM</name>
+        <param><defname>x</defname></param>
+        <initializer>((x) &lt;&lt; <ref refid="group__ARC__HAL__MISC__UDMA_gade1850d1b521cc9dd20a7aaf0bb9c1fb_1gade1850d1b521cc9dd20a7aaf0bb9c1fb" kindref="member">DMACTRLx_AM_OFS</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field value: bit 30,31 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="116" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1gae24b57a3add49e83da7ca8726b611ab4" prot="public" static="no">
+        <name>DMACTRLx_OP_MASK</name>
+        <initializer><ref refid="group__ARC__HAL__MISC__UDMA_ga41d979f2c6d3f1b38eb1b9e06702d6b3_1ga41d979f2c6d3f1b38eb1b9e06702d6b3" kindref="member">DMACTRLx_OP</ref>(0x3)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field mask: bit 0,1 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="118" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1gab75c4448785d187e51cffe9fe3348f12" prot="public" static="no">
+        <name>DMACTRLx_R_MASK</name>
+        <initializer><ref refid="group__ARC__HAL__MISC__UDMA_ga52e6e61880941be08bfbb3de211e0229_1ga52e6e61880941be08bfbb3de211e0229" kindref="member">DMACTRLx_R</ref>(0x1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field mask: bit 2 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="119" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1gad31a9e4496940638ae397b4e98eb524b" prot="public" static="no">
+        <name>DMACTRLx_DTT_MASK</name>
+        <initializer><ref refid="group__ARC__HAL__MISC__UDMA_gacf6a1f73d4a4ecff800fa48f715f9cbc_1gacf6a1f73d4a4ecff800fa48f715f9cbc" kindref="member">DMACTRLx_DTT</ref>(0x3)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field mask: bit 3,4 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="120" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1gaaae12efddb5d280847bfe8cec54dce80" prot="public" static="no">
+        <name>DMACTRLx_DWINC_MASK</name>
+        <initializer><ref refid="group__ARC__HAL__MISC__UDMA_ga37fcc916a26f83883a7fee1caaa0cde0_1ga37fcc916a26f83883a7fee1caaa0cde0" kindref="member">DMACTRLx_DWINC</ref>(0x7)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field mask: bit 5,6,7 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="121" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1gaf0b85ea535b49f78caedc2c15c1bb743" prot="public" static="no">
+        <name>DMACTRLx_SIZE_MASK</name>
+        <initializer><ref refid="group__ARC__HAL__MISC__UDMA_gac2f590aac7504e3960cf3607c973f664_1gac2f590aac7504e3960cf3607c973f664" kindref="member">DMACTRLx_SIZE</ref>(0x1FFF)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field mask: bit 8..20 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="122" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1gaea8174d2d67026a0e77aa8b6b00cd5f2" prot="public" static="no">
+        <name>DMACTRLx_ARB_MASK</name>
+        <initializer><ref refid="group__ARC__HAL__MISC__UDMA_ga46a9c1990f09d7b7640534e5b396575a_1ga46a9c1990f09d7b7640534e5b396575a" kindref="member">DMACTRLx_ARB</ref>(0xFF)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field mask: bit 21..28 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="123" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga53d0a9711055e401c57d3d654b020879" prot="public" static="no">
+        <name>DMACTRLx_INT_MASK</name>
+        <initializer><ref refid="group__ARC__HAL__MISC__UDMA_gad7b8fd9be8515f3be65b4809b66235f3_1gad7b8fd9be8515f3be65b4809b66235f3" kindref="member">DMACTRLx_INT</ref>(0x1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field mask: bit 29 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="124" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1gaf58c8da68a90d064668776f6c5cb7347" prot="public" static="no">
+        <name>DMACTRLx_AM_MASK</name>
+        <initializer><ref refid="group__ARC__HAL__MISC__UDMA_ga6f6826c4c867b294c7744ae7ca10e1e0_1ga6f6826c4c867b294c7744ae7ca10e1e0" kindref="member">DMACTRLx_AM</ref>(0x3)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bit field mask: bit 30,31 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="125" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga1ec5fe68d27f31d10ef534096fd08145" prot="public" static="no">
+        <name>DMACHANNEL</name>
+        <param><defname>x</defname></param>
+        <initializer>(0x1 &lt;&lt; (x))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Channel number to Bit </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="127" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga5bfc90842e558ba607b22779febaa55e" prot="public" static="no">
+        <name>DMA_MEMORY_CHANNEL_NUM</name>
+        <initializer>((<ref refid="group__ARC__HAL__MISC__UDMA_ga33e5192848954a63f872b0c7df80367a_1ga33e5192848954a63f872b0c7df80367a" kindref="member">DMA_ALL_CHANNEL_NUM</ref>) -(<ref refid="group__ARC__HAL__MISC__UDMA_ga662e5971b9271b6855045bb9dbf1a654_1ga662e5971b9271b6855045bb9dbf1a654" kindref="member">DMA_REGISTER_CHANNEL_NUM</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Number of Memory based DMA Channel </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="243" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="243" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1gaa05397c67f1ca927f140e195108d7334" prot="public" static="no">
+        <name>DMA_CHECK_REGISTER</name>
+        <param><defname>channel</defname></param>
+        <initializer>(channel &gt;= (<ref refid="group__ARC__HAL__MISC__UDMA_ga5bfc90842e558ba607b22779febaa55e_1ga5bfc90842e558ba607b22779febaa55e" kindref="member">DMA_MEMORY_CHANNEL_NUM</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check whether channel have register interface </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="253" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="253" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga953064c2f0d009a5077daa2433a639e3" prot="public" static="no">
+        <name>DMA_CTRL_SET_OP</name>
+        <param><defname>ctrl</defname></param>
+        <param><defname>val</defname></param>
+        <initializer>(ctrl)-&gt;bits.op = val;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set dma_ctrl_t structure ctrl bit field - OP</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ctrl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>This should be dma_ctrl_t structure, and not NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="295" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="295" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1gae16af2522ce8a6ecba90d692fcf0af91" prot="public" static="no">
+        <name>DMA_CTRL_SET_RT</name>
+        <param><defname>ctrl</defname></param>
+        <param><defname>val</defname></param>
+        <initializer>(ctrl)-&gt;bits.rt = val;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set dma_ctrl_t structure ctrl bit field - RT</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ctrl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>This should be dma_ctrl_t structure, and not NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="301" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="301" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga27adf242d61f7b91b638bbc4ad95fd7e" prot="public" static="no">
+        <name>DMA_CTRL_SET_DTT</name>
+        <param><defname>ctrl</defname></param>
+        <param><defname>val</defname></param>
+        <initializer>(ctrl)-&gt;bits.dtt = val;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set dma_ctrl_t structure ctrl bit field - DTT</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ctrl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>This should be dma_ctrl_t structure, and not NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="307" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="307" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga4a69004fd86b7cb4f58337bf9b946989" prot="public" static="no">
+        <name>DMA_CTRL_SET_DWINC</name>
+        <param><defname>ctrl</defname></param>
+        <param><defname>val</defname></param>
+        <initializer>(ctrl)-&gt;bits.dwinc = val;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set dma_ctrl_t structure ctrl bit field - DW/INC</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ctrl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>This should be dma_ctrl_t structure, and not NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="313" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="313" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga40c309561706031ad808577793a4fdd7" prot="public" static="no">
+        <name>DMA_CTRL_BLKSZ</name>
+        <param><defname>x</defname></param>
+        <initializer>(x - 1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculate right size</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>transfer size </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>(x-1)</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>value after calculation </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="319" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="319" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga32ba6fdd3f7b0d710ac4f8453bf0a186" prot="public" static="no">
+        <name>DMA_CTRL_SET_BLKSZ</name>
+        <param><defname>ctrl</defname></param>
+        <param><defname>val</defname></param>
+        <initializer>(ctrl)-&gt;bits.blksz = val;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set dma_ctrl_t structure ctrl bit field - BLOCKSIZE</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ctrl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>This should be dma_ctrl_t structure, and not NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="325" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="325" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga37aa2e14b2c8884f4b81d76c301e7c04" prot="public" static="no">
+        <name>DMA_CTRL_SET_ARB</name>
+        <param><defname>ctrl</defname></param>
+        <param><defname>val</defname></param>
+        <initializer>(ctrl)-&gt;bits.arb = val;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set dma_ctrl_t structure ctrl bit field - ARB</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ctrl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>This should be dma_ctrl_t structure, and not NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="331" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="331" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1gade35d9b6153a6be05277b5d13841c91e" prot="public" static="no">
+        <name>DMA_CTRL_SET_INT</name>
+        <param><defname>ctrl</defname></param>
+        <param><defname>val</defname></param>
+        <initializer>(ctrl)-&gt;bits.intm = val;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set dma_ctrl_t structure ctrl bit field - I</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ctrl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>This should be dma_ctrl_t structure, and not NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="337" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="337" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga3149b76bdf33d26240875f72a7954182" prot="public" static="no">
+        <name>DMA_CTRL_SET_AM</name>
+        <param><defname>ctrl</defname></param>
+        <param><defname>val</defname></param>
+        <initializer>(ctrl)-&gt;bits.am = val;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set dma_ctrl_t structure ctrl bit field - AM</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ctrl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>This should be dma_ctrl_t structure, and not NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="343" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="343" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ARC__HAL__MISC__UDMA_1ga3d1ae1072b84f3974de1105e8b03fdbb" prot="public" static="no">
+        <name>DMA_CTRL_SET_VALUE</name>
+        <param><defname>ctrl</defname></param>
+        <param><defname>val</defname></param>
+        <initializer>(ctrl)-&gt;value = val;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set dma_ctrl_t structure ctrl value</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ctrl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>This should be dma_ctrl_t structure, and not NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="350" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="350" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>uDMA related definitions and functions </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

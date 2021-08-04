@@ -1,0 +1,281 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="group__DEVICE__HAL__I2S__CTRLCMD" kind="group">
+    <compoundname>DEVICE_HAL_I2S_CTRLCMD</compoundname>
+    <title>I2S Device Control Commands</title>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group__DEVICE__HAL__I2S__CTRLCMD_1ga6f683a0ac93131c2d5dbf68d727c20d5" prot="public" static="no">
+        <name>DEV_SET_I2S_SYSCMD</name>
+        <param><defname>cmd</defname></param>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>((cmd))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Define I2S control commands for common usage </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="158" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__I2S__CTRLCMD_1gac4f584df7c0472ab6489b544e330ccb6" prot="public" static="no">
+        <name>DEV_SET_I2S_MST_SYSCMD</name>
+        <param><defname>cmd</defname></param>
+        <initializer><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(0x00010000 | (cmd))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Define I2S control commands for master usage </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="160" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__I2S__CTRLCMD_1ga037a647020b711b88bf56baf09919fed" prot="public" static="no">
+        <name>I2S_CMD_GET_STATUS</name>
+        <initializer><ref refid="group__DEVICE__HAL__I2S__CTRLCMD_ga6f683a0ac93131c2d5dbf68d727c20d5_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get <ref refid="structdev__i2s__info_ad048a278c9feb6d8fa7d75e2253f5864_1ad048a278c9feb6d8fa7d75e2253f5864" kindref="member">current device status</ref><itemizedlist>
+<listitem><para>Param type : uint32_t *</para></listitem><listitem><para>Param usage : store result of current status</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="169" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__I2S__CTRLCMD_1ga2592a778e686350849092aefaa07d918" prot="public" static="no">
+        <name>I2S_CMD_SET_TXCB</name>
+        <initializer><ref refid="group__DEVICE__HAL__I2S__CTRLCMD_ga6f683a0ac93131c2d5dbf68d727c20d5_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set <ref refid="structdev__i2s__cbs_ac9068ac4f5f4f0f76e776d92bf949076_1ac9068ac4f5f4f0f76e776d92bf949076" kindref="member">I2S transmit success callback</ref> function when all required bytes are transmitted for interrupt method<itemizedlist>
+<listitem><para>Param type : <ref refid="group__DEVICE__HAL__COMMON_ga91091c2a8f895b2d00ae61e6b607335e_1ga91091c2a8f895b2d00ae61e6b607335e" kindref="member">DEV_CALLBACK</ref> * or NULL</para></listitem><listitem><para>Param usage : transmit success callback function for I2S</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="177" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__I2S__CTRLCMD_1gaaf68019e52d5f886e1e6ff63a15f8de1" prot="public" static="no">
+        <name>I2S_CMD_SET_RXCB</name>
+        <initializer><ref refid="group__DEVICE__HAL__I2S__CTRLCMD_ga6f683a0ac93131c2d5dbf68d727c20d5_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set <ref refid="structdev__i2s__cbs_a92fc7de4510fd3712188a40e0b98f74e_1a92fc7de4510fd3712188a40e0b98f74e" kindref="member">I2S receive success callback</ref> function when all required bytes are received for interrupt method<itemizedlist>
+<listitem><para>Param type : <ref refid="group__DEVICE__HAL__COMMON_ga91091c2a8f895b2d00ae61e6b607335e_1ga91091c2a8f895b2d00ae61e6b607335e" kindref="member">DEV_CALLBACK</ref> * or NULL</para></listitem><listitem><para>Param usage : receive success callback function for I2S</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="185" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__I2S__CTRLCMD_1ga45e69392e112fd10f1305e493e72dc1c" prot="public" static="no">
+        <name>I2S_CMD_SET_ERRCB</name>
+        <initializer><ref refid="group__DEVICE__HAL__I2S__CTRLCMD_ga6f683a0ac93131c2d5dbf68d727c20d5_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(3)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set <ref refid="structdev__i2s__cbs_ab127e42d50952973972d0a7373273d6f_1ab127e42d50952973972d0a7373273d6f" kindref="member">I2S transfer error callback</ref> function when something error happened for interrupt method<itemizedlist>
+<listitem><para>Param type : <ref refid="group__DEVICE__HAL__COMMON_ga91091c2a8f895b2d00ae61e6b607335e_1ga91091c2a8f895b2d00ae61e6b607335e" kindref="member">DEV_CALLBACK</ref> * or NULL</para></listitem><listitem><para>Param usage : transfer error callback function for I2S</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="193" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__I2S__CTRLCMD_1gaad994a18db5d47151d07c42c65c7ad1d" prot="public" static="no">
+        <name>I2S_CMD_SET_TXINT</name>
+        <initializer><ref refid="group__DEVICE__HAL__I2S__CTRLCMD_ga6f683a0ac93131c2d5dbf68d727c20d5_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(4)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enable or disable transmit interrupt<itemizedlist>
+<listitem><para>Param type : uint32_t</para></listitem><listitem><para>Param usage : enable(none-zero) or disable(zero) flag</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="200" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="200" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__I2S__CTRLCMD_1ga537794ba30ce41e9976762593aec4f6b" prot="public" static="no">
+        <name>I2S_CMD_SET_RXINT</name>
+        <initializer><ref refid="group__DEVICE__HAL__I2S__CTRLCMD_ga6f683a0ac93131c2d5dbf68d727c20d5_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(5)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enable or disable receive interrupt<itemizedlist>
+<listitem><para>Param type : uint32_t</para></listitem><listitem><para>Param usage : enable(none-zero) or disable(zero) flag</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="207" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="207" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__I2S__CTRLCMD_1ga2d21ce33c2a315372e8dbb5b05589ee0" prot="public" static="no">
+        <name>I2S_CMD_RESET</name>
+        <initializer><ref refid="group__DEVICE__HAL__I2S__CTRLCMD_ga6f683a0ac93131c2d5dbf68d727c20d5_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(6)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Do a software reset for I2S device, it will stop current transfer, and clear error state and bring device to normal state, set next condition to STOP<itemizedlist>
+<listitem><para>Param type : NULL</para></listitem><listitem><para>Param usage :</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="215" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="215" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__I2S__CTRLCMD_1ga8253934e8ddf4b6787eed66dee4fa165" prot="public" static="no">
+        <name>I2S_CMD_FLUSH_TX</name>
+        <initializer><ref refid="group__DEVICE__HAL__I2S__CTRLCMD_ga6f683a0ac93131c2d5dbf68d727c20d5_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(7)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Flush I2S device transmit buffer or fifo<itemizedlist>
+<listitem><para>Param type : NULL</para></listitem><listitem><para>Param usage :</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="222" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="222" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__I2S__CTRLCMD_1gae62dfbb01e2798e7e33a09cff42e83b4" prot="public" static="no">
+        <name>I2S_CMD_FLUSH_RX</name>
+        <initializer><ref refid="group__DEVICE__HAL__I2S__CTRLCMD_ga6f683a0ac93131c2d5dbf68d727c20d5_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(8)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Flush I2S device receive buffer or fifo<itemizedlist>
+<listitem><para>Param type : NULL</para></listitem><listitem><para>Param usage :</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="229" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="229" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__I2S__CTRLCMD_1ga24bf675644bb36e8d3e7a5dcca82d405" prot="public" static="no">
+        <name>I2S_CMD_ENA_DEV</name>
+        <initializer><ref refid="group__DEVICE__HAL__I2S__CTRLCMD_ga6f683a0ac93131c2d5dbf68d727c20d5_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(9)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enable I2S device<itemizedlist>
+<listitem><para>Param type : Device channel nummber</para></listitem><listitem><para>Param usage : Specified device channel number</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="236" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="236" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__I2S__CTRLCMD_1ga9e1135e0f8e70f24eacf52f773f3a2e7" prot="public" static="no">
+        <name>I2S_CMD_DIS_DEV</name>
+        <initializer><ref refid="group__DEVICE__HAL__I2S__CTRLCMD_ga6f683a0ac93131c2d5dbf68d727c20d5_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(10)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Disable I2S device, when device is disabled, only <ref refid="group__DEVICE__HAL__I2S__CTRLCMD_ga24bf675644bb36e8d3e7a5dcca82d405_1ga24bf675644bb36e8d3e7a5dcca82d405" kindref="member">I2S_CMD_ENA_DEV</ref>, <ref refid="group__DEVICE__HAL__I2S__CTRLCMD_ga9e1135e0f8e70f24eacf52f773f3a2e7_1ga9e1135e0f8e70f24eacf52f773f3a2e7" kindref="member">I2S_CMD_DIS_DEV</ref>, <ref refid="group__DEVICE__HAL__I2S__CTRLCMD_ga037a647020b711b88bf56baf09919fed_1ga037a647020b711b88bf56baf09919fed" kindref="member">I2S_CMD_GET_STATUS</ref> and <ref refid="group__DEVICE__HAL__I2S__CTRLCMD_ga2d21ce33c2a315372e8dbb5b05589ee0_1ga2d21ce33c2a315372e8dbb5b05589ee0" kindref="member">I2S_CMD_RESET</ref> commands can be executed, other commands will return <ref refid="group__EMBARC__ERROR_gae5989e632e687010b35b613304089823_1gae5989e632e687010b35b613304089823" kindref="member">E_SYS</ref><itemizedlist>
+<listitem><para>Param type : Device channel nummber</para></listitem><listitem><para>Param usage : Specified device channel number</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="246" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="246" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__I2S__CTRLCMD_1ga1b992d2acdf80fc76c508820985b67f6" prot="public" static="no">
+        <name>I2S_CMD_SET_TXINT_BUF</name>
+        <initializer><ref refid="group__DEVICE__HAL__I2S__CTRLCMD_ga6f683a0ac93131c2d5dbf68d727c20d5_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(11)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set buffer for interrupt transmit, and it will set <ref refid="structdev__i2s__info_a69d4d988c87fd397a95d65d5e6b5bf7f_1a69d4d988c87fd397a95d65d5e6b5bf7f" kindref="member">tx_buf</ref>.<itemizedlist>
+<listitem><para>I2S transmitter command <linebreak/>
+ If setting TX buffer to NULL, when tx interrupt is enabled and entered into tx interrupt, it will automatically disable the tx interrupt, so when you want to transfer something, you need to set the tx buffer to Non-NULL and enable tx interrupt, when the tx buffer is sent, it will disable the tx interrupt and call tx callback function if available.</para></listitem><listitem><para>Param type : DEV_BUFFER * or NULL</para></listitem><listitem><para>Param usage : buffer structure pointer, if param is NULL, then it will set tx_buf to NULL</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="258" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="258" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__I2S__CTRLCMD_1gaa204cdf430eb9c973e4304d66bb1b446" prot="public" static="no">
+        <name>I2S_CMD_SET_RXINT_BUF</name>
+        <initializer><ref refid="group__DEVICE__HAL__I2S__CTRLCMD_ga6f683a0ac93131c2d5dbf68d727c20d5_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(12)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set buffer for interrupt receive, and it will set <ref refid="structdev__i2s__info_a9a724c9b669633d63ce6b717a5a62eab_1a9a724c9b669633d63ce6b717a5a62eab" kindref="member">rx_buf</ref><itemizedlist>
+<listitem><para>I2S receiver command <linebreak/>
+ Similiar to <ref refid="group__DEVICE__HAL__I2S__CTRLCMD_ga1b992d2acdf80fc76c508820985b67f6_1ga1b992d2acdf80fc76c508820985b67f6" kindref="member">I2S_CMD_SET_TXINT_BUF</ref></para></listitem><listitem><para>Param type : DEV_BUFFER * or NULL</para></listitem><listitem><para>Param usage : buffer structure pointer, if param is NULL, then it will set rx_buf to NULL</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="267" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="267" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__I2S__CTRLCMD_1gaa1affb1cc889d958982be0037863e22c" prot="public" static="no">
+        <name>I2S_CMD_SET_TXCHET_BUF</name>
+        <initializer><ref refid="group__DEVICE__HAL__I2S__CTRLCMD_ga6f683a0ac93131c2d5dbf68d727c20d5_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(13)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set buffer empty threshold in the TX FIFO, these bit program the empty trigger level in the TX FIFO<itemizedlist>
+<listitem><para>I2S transmitter command <linebreak/>
+ These command is used to set trigger level in the TX FIFO at which empty threshold reached flag/interrupt is generated.</para></listitem><listitem><para>Param type : uint32_t</para></listitem><listitem><para>Param usage : Specified trigger level value (16b) + channel (16b)</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="278" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="278" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__I2S__CTRLCMD_1ga81a3368d5b5c1472a6ec9b3c1038a169" prot="public" static="no">
+        <name>I2S_CMD_SET_RXCHDT_BUF</name>
+        <initializer><ref refid="group__DEVICE__HAL__I2S__CTRLCMD_ga6f683a0ac93131c2d5dbf68d727c20d5_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(14)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set buffer available data threshold in the TX FIFO, these bit program the trigger level in the RX FIFO<itemizedlist>
+<listitem><para>I2S receiver command <linebreak/>
+ These command is used to set trigger level in the RX FIFO at which received data available flag/interrupt is generated.</para></listitem><listitem><para>Param type : uint32_t</para></listitem><listitem><para>Param usage : Specified trigger level value (16b) + channel (16b)</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="289" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="289" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__I2S__CTRLCMD_1ga6e9d48b0520928ca24a7b0ce877c82ea" prot="public" static="no">
+        <name>I2S_CMD_MST_SET_CLK</name>
+        <initializer><ref refid="group__DEVICE__HAL__I2S__CTRLCMD_gac4f584df7c0472ab6489b544e330ccb6_1gac4f584df7c0472ab6489b544e330ccb6" kindref="member">DEV_SET_I2S_MST_SYSCMD</ref>(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enable or disable clock for master<itemizedlist>
+<listitem><para>Param type : uint32_t</para></listitem><listitem><para>Param usage : enable(none-zero) or disable(zero) flag</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="298" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="298" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__I2S__CTRLCMD_1gaa53406c0b959b9c557ed8e3e50b2f2c0" prot="public" static="no">
+        <name>I2S_CMD_MST_SET_WSS</name>
+        <initializer><ref refid="group__DEVICE__HAL__I2S__CTRLCMD_gac4f584df7c0472ab6489b544e330ccb6_1gac4f584df7c0472ab6489b544e330ccb6" kindref="member">DEV_SET_I2S_MST_SYSCMD</ref>(1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Program the number of sclk cycles for word select line stays<itemizedlist>
+<listitem><para>Param type : uint32_t</para></listitem><listitem><para>Param usage : clock cycles</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="305" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="305" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DEVICE__HAL__I2S__CTRLCMD_1ga3c143148075c2346d07e74469e95bb21" prot="public" static="no">
+        <name>I2S_CMD_MST_SET_SCLKG</name>
+        <initializer><ref refid="group__DEVICE__HAL__I2S__CTRLCMD_gac4f584df7c0472ab6489b544e330ccb6_1gac4f584df7c0472ab6489b544e330ccb6" kindref="member">DEV_SET_I2S_MST_SYSCMD</ref>(2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Program the number of gating of sclk cycles for word select line stays<itemizedlist>
+<listitem><para>Param type : uint32_t</para></listitem><listitem><para>Param usage : gating of sclk cycles</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" line="312" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_i2s.h" bodystart="312" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Definitions for I2S control command, used in <ref refid="group__DEVICE__HAL__I2S__DEVSTRUCT_ga644a0a82aeedb2c8ee2d354efe0a3366_1ga644a0a82aeedb2c8ee2d354efe0a3366" kindref="member">I2S Control</ref>. </para>    </briefdescription>
+    <detaileddescription>
+<para>These commands defined here can be used in user code directly.<itemizedlist>
+<listitem><para>Parameters Usage<itemizedlist>
+<listitem><para>For passing parameters like integer, just use uint32_t/int32_t to directly pass values</para></listitem><listitem><para>For passing parameters for a structure, please use pointer to pass values</para></listitem><listitem><para>For getting some data, please use pointer to store the return data</para></listitem></itemizedlist>
+</para></listitem><listitem><para>Common Return Values<itemizedlist>
+<listitem><para><ref refid="group__EMBARC__ERROR_ga1e7cc741c56207a8872ea58373276925_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>, Control device successfully</para></listitem><listitem><para><ref refid="group__EMBARC__ERROR_gac4e674c971a46afe82377d02a2d19451_1gac4e674c971a46afe82377d02a2d19451" kindref="member">E_CLSED</ref>, Device is not opened</para></listitem><listitem><para><ref refid="group__EMBARC__ERROR_ga33dcdca4c2e85d1b2899272d9d176553_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>, Device object is not valid or not exists</para></listitem><listitem><para><ref refid="group__EMBARC__ERROR_ga28d0303b78b18735ae91a99ecc11bc8e_1ga28d0303b78b18735ae91a99ecc11bc8e" kindref="member">E_PAR</ref>, Parameter is not valid for current control command</para></listitem><listitem><para><ref refid="group__EMBARC__ERROR_gae5989e632e687010b35b613304089823_1gae5989e632e687010b35b613304089823" kindref="member">E_SYS</ref>, Control device failed, due to hardware issues such as device is disabled</para></listitem><listitem><para><ref refid="group__EMBARC__ERROR_ga794d581c6f9c0407cbdde9f738c24e9e_1ga794d581c6f9c0407cbdde9f738c24e9e" kindref="member">E_CTX</ref>, Control device failed, due to different reasons like in transfer state</para></listitem><listitem><para><ref refid="group__EMBARC__ERROR_gac05cde47c29052935fd39d6d8a6c5ff4_1gac05cde47c29052935fd39d6d8a6c5ff4" kindref="member">E_NOSPT</ref>, Control command is not supported or not valid </para></listitem></itemizedlist>
+</para></listitem></itemizedlist>
+</para>    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>OpenThread NCP &mdash; embARC 2019.06 documentation</title>
+  <title>OpenThread NCP Example &mdash; embARC OSP Project Documentation</title>
   
 
   
@@ -37,7 +37,7 @@
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
     <link rel="next" title="SecureShield Examples" href="../../secureshield/README.html" />
-    <link rel="prev" title="OpenThread CLI" href="../cli/README.html" /> 
+    <link rel="prev" title="OpenThread CLI Example" href="../cli/README.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -166,14 +166,12 @@
         
           <li><a href="../README.html">OpenThread Examples</a> &raquo;</li>
         
-      <li>OpenThread NCP</li>
+      <li>OpenThread NCP Example</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../../../_sources/example/example/baremetal/openthread/ncp/README.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -185,111 +183,190 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="openthread-ncp">
-<span id="example-openthread-ncp"></span><h1>OpenThread NCP<a class="headerlink" href="#openthread-ncp" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><div class="line-block">
-<div class="line">This example is an OpenThread Network Co-Processor (NCP) application on PMOD RF2 (MRF24J40).</div>
-<div class="line">This example can serve as a low-power wireless Network Co-Processor (NCP) to join Thread network and communicate with Userspace WPAN Network Daemon (wpantund) on Unix-like operating systems.</div>
-<div class="line">This example can be used along with OpenThread wpantund to provide Internet connectivity to the Thread network.</div>
-</div>
-</div></blockquote>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The NCP status can not be shown on the terminal via UART, it might show messy code.</p>
-</div>
-<div class="section" id="detailed-description">
-<h3>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><ul>
-<li><dl class="simple">
-<dt>Extra Required Tools</dt><dd><p>NO</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Extra Required Peripherals</dt><dd><ul class="simple">
-<li><p>2 x EMSK</p></li>
-<li><p>2 x Digilent PMOD RF2 (MRF24J40)</p></li>
+  <div class="section" id="openthread-ncp-example">
+<span id="example-openthread-ncp"></span><h1>OpenThread NCP Example<a class="headerlink" href="#openthread-ncp-example" title="Permalink to this headline">¶</a></h1>
+<p>This application is designed to show how to use the OpenThread Network Co-Processor (NCP) example in embARC. It can serve as a low-power wireless Network Co-Processor (NCP) to communicate with Userspace WPAN Network Daemon (wpantund) on Unix-like operating systems. It can be used along with OpenThread wpantund to provide Internet connectivity to the Thread network.</p>
+<div class="section" id="hardware-and-software-setup">
+<h2>Hardware and Software Setup<a class="headerlink" href="#hardware-and-software-setup" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="required-hardware">
+<h3>Required Hardware<a class="headerlink" href="#required-hardware" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>2 x <span class="raw-html-m2r"><a href="https://www.synopsys.com/dw/ipdir.php?ds=arc_em_starter_kit" title="DesignWare ARC EM Starter Kit(EMSK)">DesignWare ARC EM Starter Kit(EMSK)</a></span>, recommended version 2.3</p></li>
+<li><p>2 x <span class="raw-html-m2r"><a href="http://store.digilentinc.com/pmod-rf2-ieee-802-15-rf-transceiver/" title="Digilent Pmod RF2">Digilent Pmod RF2</a></span></p></li>
 <li><p>2 x SD card</p></li>
+<li><p>1 x <span class="raw-html-m2r"><a href="https://www.raspberrypi.org/products/raspberry-pi-3-model-b/" title="Raspberry Pi 3">Raspberry Pi 3</a></span> or PC for running <span class="raw-html-m2r"><a href="https://github.com/openthread/wpantund/tree/full/latest-release" title="OpenThread wpantund">OpenThread wpantund</a></span></p></li>
 </ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Design Concept</dt><dd><ul class="simple">
-<li><p>This example is an OpenThread Network Co-Processor (NCP) application on PMOD RF2 (MRF24J40).</p></li>
-<li><p>This example can serve as a low-power wireless Network Co-Processor (NCP) to join Thread network and communicate with Userspace WPAN Network Daemon (wpantund) on Unix-like operating systems.</p></li>
-<li><p>This example can be used along with OpenThread wpantund to provide Internet connectivity to the Thread network.</p></li>
-<li><p>For more information about NCP and wpantund, see README.md for reference.</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Usage Manual</dt><dd><ul class="simple">
-<li><p>See ref EMBARC_BOARD_CONNECTION “EMSK” to connect PMOD RF2 (MRF24J40).</p></li>
-<li><dl class="simple">
-<dt>How to use this example</dt><dd><ul>
-<li><p>Program the secondary bootloader application into onboard SPI flash of EMSKs.</p></li>
-<li><p>Generate boot.bin of the Openthread NCP example using “make bin”.</p></li>
-<li><dl class="simple">
-<dt>Run an Openthread CLI example first with boot.bin from SD card, see <cite>cliREADME.md</cite> for more information.</dt><dd><ul>
-<li><p>Insert SD Card back to one EMSK. It will run the CLI example. Press the reset button to reboot it. Wait for loading boot.bin from</p></li>
-<li><p>Enter “1” and press Enter button in the Tera Term. Enter the number here to generate pseudo random number for OpenThread.</p></li>
-<li><p>Enter the following commands in the two terminal windows, “panid 0x1234”, “ifconfig up”, “thread start”, to start Thread process.</p></li>
-<li><p>Wait 20 seconds for completing Thread configuration. Enter “state” to see the state of the node, it will be the leader.</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Run Openthread NCP example with boot.bin from SD card. Make sure Bit 4 of the onboard DIP switch is ON to enable the secondary bootloader.</dt><dd><ul>
-<li><p>Insert the other SD card to the other EMSK. It will run the NCP example. Press the reset button to reboot it. Wait for loading bo</p></li>
-<li><p>Enter <strong>2</strong> and press Enter button in the NCP’s Tera Term.</p></li>
-<li><p>After entering <strong>2</strong> in the NCP’s Tera Term, the NCP will start up automatically. It will show you some messy code in the last line, just ignore it.</p></li>
-<li><p>Install and Run OpenThread wpantund, and join the NCP to the Thread network created by CLI. See README.md for more information.</p></li>
-<li><p>Ping to each other between Linux host and CLI Node.</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-</ul>
-</dd>
-</dl>
-</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt>Extra Comments</dt><dd><div class="line-block">
-<div class="line">Use AC adapter to ensure a steady power supply.</div>
-<div class="line">The self-boot mode preparation is included in the above steps.</div>
-<div class="line">“make run” is not supported because EMSK boards are both v2.x and it can lead to conflict. See sect_example_usage_HowToDebugMultiBoards “how to debug multiple boards in embARC” for more information.</div>
-<div class="line">Enter number to generate the pseudo-random number for OpenThread. Recommend enter number in order, such as “1”, “2” and “3”. Using same number in different nodes may lead error.</div>
-<div class="line">Make sure the compiler configuration (TOOLCHAIN, BD_VER, CUR_CORE) of the secondary bootloader and bin file. For example, the bootloader for EMSK 2.3/ARCEM7D cannot boot the program for EMSK 2.3/ARCEM11D.</div>
 </div>
-</dd>
-</dl>
-</li>
+<div class="section" id="required-software">
+<h3>Required Software<a class="headerlink" href="#required-software" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Metaware or ARC GNU Toolset</p></li>
+<li><p>Serial port terminal, such as putty, tera-term or minicom</p></li>
+<li><p><span class="raw-html-m2r"><a href="https://github.com/openthread/wpantund/tree/full/latest-release" title="OpenThread wpantund">OpenThread wpantund</a></span></p></li>
 </ul>
-</div></blockquote>
+</div>
+<div class="section" id="hardware-connection">
+<h3>Hardware Connection<a class="headerlink" href="#hardware-connection" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Connect PmodRF2 to J6.</p></li>
+</ul>
+<a class="reference external image-reference" href="doc/screenshots/emsk_connections.jpg"><img alt="EMSK Connections" src="../../../../../_images/emsk_connections1.jpg" /></a>
+<ul class="simple">
+<li><p>Configure your hardware with proper core configuration. ARCEM7D on EMSK 2.3 is used as an example in the following document.</p></li>
+</ul>
 </div>
 </div>
-<div class="section" id="buidling-and-running">
-<h2>Buidling and Running<a class="headerlink" href="#buidling-and-running" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>See the usage manual.</p>
-</div></blockquote>
-<div class="section" id="sample-output">
-<h3>Sample Output<a class="headerlink" href="#sample-output" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>See the usage manual.</p>
-</div></blockquote>
+<div class="section" id="user-manual">
+<h2>User Manual<a class="headerlink" href="#user-manual" title="Permalink to this headline">¶</a></h2>
 </div>
+<div class="section" id="run-openthread-in-self-boot-mode">
+<h2>Run OpenThread in self-boot mode<a class="headerlink" href="#run-openthread-in-self-boot-mode" title="Permalink to this headline">¶</a></h2>
+<p>Two EMSKs will be used as two Thread nodes, one is CLI Node and the other is NCP Node. They are set automatically by OpenThread stack. The following example is to run the OpenThread CLI and NCP in the EMSK self-boot mode with using SD card.</p>
+<ul class="simple">
+<li><p>The Digilent PmodRF2 and the self-made MRF24J40 module are both supported.</p></li>
+<li><p>Use AC adapter to ensure a steady power supply.</p></li>
+<li><p>Open two Tera Term emulators to connect EMSKs with different COM ports.</p></li>
+<li><p>The self-boot mode preparation is included in the following steps.</p></li>
+<li><p><strong>make run</strong> is not supported because both EMSK board is v2.3 and it will lead to conflict.</p></li>
+</ul>
+</div>
+<div class="section" id="build-and-run-openthread-example">
+<h2>Build and Run OpenThread example<a class="headerlink" href="#build-and-run-openthread-example" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Program the secondary bootloader application into onboard SPI Flash.</p>
+<ul>
+<li><p>Go to <code class="docutils literal notranslate"><span class="pre">\embARC\example\baremetal\bootloader</span></code> in command line.</p></li>
+<li><p>Enter <strong>make TOOLCHAIN=gnu BD_VER=23 CUR_CORE=arcem7d bin</strong></p>
+<ul class="simple">
+<li><p>Select configuration 1 on the EMSK for ARCEM7D by setting all DIP switches to the OFF position.</p></li>
+</ul>
+</li>
+<li><p>Insert the SD card to your PC, and copy the binary file <code class="docutils literal notranslate"><span class="pre">obj_emsk_23/gnu_arcem7d/emsk_bootloader_gnu_arcem7d.bin</span></code> to the SD Card root directory.  Rename it to <code class="docutils literal notranslate"><span class="pre">em7d_2bt.bin</span></code> as the secondary bootloader.</p>
+<ul class="simple">
+<li><p>The bootloader has been modified in embARC. Please perform the following steps to update the bootloader in the EMSK SPI flash.</p></li>
+<li><p>Update the bootloader in both EMSK boards. The other EMSK board should be updated by performing the same steps.</p></li>
+</ul>
+</li>
+<li><p>Connect one EMSK board to the host with USB. Insert the SD Card into the EMSK board SD Card slot.</p>
+<ul class="simple">
+<li><p>Go to <code class="docutils literal notranslate"><span class="pre">\embARC\example\freertos\net\ntshell</span></code> in command line. Enter <strong>make TOOLCHAIN=gnu BD_VER=23 CUR_CORE=arcem7d</strong>. Once the application builds successfully, enter <strong>make TOOLCHAIN=gnu BD_VER=23 CUR_CORE=arcem7d run</strong> in command line to start NT-Shell.</p></li>
+</ul>
+</li>
+<li><p>Use NT-Shell command <strong>spirw</strong> in the terminal window to write the <code class="docutils literal notranslate"><span class="pre">em7d_2bt.bin</span></code> to SPI flash.</p>
+<ul>
+<li><p>run <strong>spirw -h</strong> to show help.</p></li>
+<li><p>run <strong>spirw -w em7d_2bt.bin 0x17f00000 0x17f00004</strong> to program SPI flash.</p></li>
+<li><p>Check the output message to see if it is programmed successfully. The process may take some time. If <code class="docutils literal notranslate"><span class="pre">WF</span> <span class="pre">INIT</span> <span class="pre">FAILED</span></code> and <code class="docutils literal notranslate"><span class="pre">MRF24G</span> <span class="pre">Init</span> <span class="pre">Failed</span></code> is shown in the Tera Term, there is no error since the WiFi module has not been used here.</p>
+<a class="reference external image-reference" href="doc/screenshots/spirw_em7d_2bt.jpg"><img alt="spirw_em7d_2bt" src="../../../../../_images/spirw_em7d_2bt1.jpg" /></a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Generate <code class="docutils literal notranslate"><span class="pre">boot.bin</span></code> of the OpenThread CLI and NCP example.</p>
+<ul class="simple">
+<li><p>Go to <code class="docutils literal notranslate"><span class="pre">\embARC\example\baremetal\openthread\cli</span></code> and <code class="docutils literal notranslate"><span class="pre">\embARC\example\baremetal\openthread\ncp</span></code> in command line.</p></li>
+<li><p>Enter <strong>make TOOLCHAIN=gnu BD_VER=23 CUR_CORE=arcem7d bin</strong>.</p></li>
+<li><p>Insert SD Card to PC. Copy the generated binary file <code class="docutils literal notranslate"><span class="pre">obj_emsk_23/gnu_arcem7d/openthread_gnu_arcem7d.bin</span></code> to SD cards root. And rename it to <code class="docutils literal notranslate"><span class="pre">boot.bin</span></code>. Note that the secondary bootloader can only identify <code class="docutils literal notranslate"><span class="pre">boot.bin</span></code> in the SD card root.</p></li>
+</ul>
+</li>
+<li><p>Run OpenThread CLI and NCP example. Before resetting the EMSK boards, make sure Bit 4 of the onboard DIP switch is ON to enable secondary bootloader to run.</p>
+<ul>
+<li><p>Insert SD Card back to one EMSK. It will run the <strong>CLI</strong> example. Press the reset button to reboot it. Wait for loading boot.bin from SD card. The response in the terminal window is shown as below.</p>
+<a class="reference external image-reference" href="doc/screenshots/enter_no_cli_emsk.PNG"><img alt="enter_no_cli_emsk" src="../../../../../_images/enter_no_cli_emsk.PNG" /></a>
+</li>
+<li><p>Insert the other SD card to the other EMSK. It will run the <strong>NCP</strong> example. Press the reset button to reboot it. Wait for loading boot.bin from SD card.</p>
+<a class="reference external image-reference" href="doc/screenshots/enter_no_ncp_emsk.PNG"><img alt="enter_no_ncp_emsk" src="../../../../../_images/enter_no_ncp_emsk.PNG" /></a>
+</li>
+<li><p>Enter <strong>1</strong> and press Enter button in CLI’s Tera Term. Enter <strong>2</strong> and press Enter button in the NCP’s. Enter the number here to generate pseudo random number for OpenThread. Recommend to enter numbers in order, such as <strong>1</strong>, <strong>2</strong> and <strong>3</strong>. Using same number in different nodes may lead error. The number will not be shown directly in the Tera Term until pressing Enter button from the keyboard.</p></li>
+<li><p>After entering <strong>2</strong> in the NCP’s Tera Term, the NCP will start up automatically. It will show you some messy code in the last line, just ignore it. And after that this Tera Term won’t be used any more.</p>
+<a class="reference external image-reference" href="doc/screenshots/show_no_emsk.PNG"><img alt="show_no_emsk" src="../../../../../_images/show_no_emsk1.PNG" /></a>
+</li>
+<li><p>Enter the following commands in the CLI’s Tera Term windows.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">panid</span> <span class="mh">0x1234</span>
+<span class="o">&gt;</span> <span class="n">ifconfig</span> <span class="n">up</span>
+<span class="o">&gt;</span> <span class="n">thread</span> <span class="n">start</span>
+</pre></div>
+</div>
+</li>
+<li><p>Wait 20 seconds for completing Thread configuration. Enter “state” to see the state of the node, it will be the <strong>leader</strong>.</p>
+<a class="reference external image-reference" href="doc/screenshots/start_cli_emsk.PNG"><img alt="start_cli_emsk" src="../../../../../_images/start_cli_emsk.PNG" /></a>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="install-and-run-openthread-wpantund">
+<h2>Install and Run OpenThread wpantund<a class="headerlink" href="#install-and-run-openthread-wpantund" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Download <span class="raw-html-m2r"><a href="https://github.com/openthread/wpantund/tree/full/latest-release" title="OpenThread wpantund">OpenThread wpantund</a></span>. Install wpantund on the Linux host. Here we take the <span class="raw-html-m2r"><a href="https://www.ubuntu.com/download/desktop" title="Ubuntu Desktop 16.04.3 LTS">Ubuntu Desktop 16.04.3 LTS</a></span> for example.</p>
+<ul>
+<li><p>Install python-software-properties</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install -y python-software-properties
+$ sudo add-apt-repository -y ppa:terry.guo/gcc-arm-embedded
+$ sudo apt-get update -qq
+</pre></div>
+</div>
+</li>
+<li><p>Install packages needed for wpantund build and runtime</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install -y build-essential git make autoconf autoconf-archive automake dbus libtool gcc g++ gperf flex bison texinfo ncurses-dev libexpat-dev python sed python-pip gawk libreadline6-dev libreadline6 libdbus-1-dev libboost-dev
+$ sudo apt-get install -y --force-yes gcc-arm-none-eabi
+$ sudo pip install pexpect
+</pre></div>
+</div>
+</li>
+<li><p>Install <em>wpantund</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd wpantund
+$ ./configure --sysconfdir=/etc
+$ make
+$ sudo make install
+</pre></div>
+</div>
+<p>See <span class="raw-html-m2r"><a href="https://codelabs.developers.google.com/codelabs/openthread-simulation/index.html" title="Simulation Codelab">Simulation Codelab</a></span> for more detailed information.</p>
+</li>
+</ul>
+</li>
+<li><p>Connect NCP to the Linux host via USB cable. Type <strong>ls /dev/</strong> to find out which descriptor stands for NCP’s UART interface. Here it is <code class="docutils literal notranslate"><span class="pre">ttyUSB1</span></code>. The communication between NCP and wpantund is based on spinel protocol.</p></li>
+<li><p>Run OpenThread wpantund and join the network created by CLI Node.</p>
+<ul>
+<li><p>Run a terminal and type the following commands to start wpantund:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">wpantund</span> <span class="o">-</span><span class="n">o</span> <span class="n">Config</span><span class="p">:</span><span class="n">NCP</span><span class="p">:</span><span class="n">SocketPath</span> <span class="s2">&quot;/dev/ttyUSB1&quot;</span> <span class="o">-</span><span class="n">o</span> <span class="n">Daemon</span><span class="p">:</span><span class="n">SyslogMask</span> <span class="s2">&quot; -info&quot;</span> <span class="o">-</span><span class="n">o</span> <span class="n">Config</span><span class="p">:</span><span class="n">TUN</span><span class="p">:</span><span class="n">InterfaceName</span> <span class="n">utun6</span>
+</pre></div>
+</div>
+<a class="reference external image-reference" href="doc/screenshots/start_wpantund_pc.png"><img alt="start_wpantund_pc" src="../../../../../_images/start_wpantund_pc.png" /></a>
+</li>
+<li><p>Run another terminal and type the following commands to enter wpanctl:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">wpanctl</span> <span class="o">-</span><span class="n">I</span> <span class="n">utun6</span>
+</pre></div>
+</div>
+<a class="reference external image-reference" href="doc/screenshots/start_wpanctl_pc.png"><img alt="start_wpanctl_pc" src="../../../../../_images/start_wpanctl_pc.png" /></a>
+</li>
+<li><p>In the wpanctl, type the following commands to scan and join the Thread network:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wpanctl</span><span class="p">:</span><span class="n">utun6</span><span class="o">&gt;</span> <span class="n">scan</span>
+<span class="n">wpanctl</span><span class="p">:</span><span class="n">utun6</span><span class="o">&gt;</span> <span class="nb">set</span> <span class="n">Network</span><span class="p">:</span><span class="n">Key</span> <span class="o">--</span><span class="n">data</span> <span class="n">masterkey</span>
+<span class="n">wpanctl</span><span class="p">:</span><span class="n">utun6</span><span class="o">&gt;</span> <span class="n">join</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<a class="reference external image-reference" href="doc/screenshots/join_wpanctl_pc.png"><img alt="join_wpanctl_pc" src="../../../../../_images/join_wpanctl_pc.png" /></a>
+</li>
+<li><p>Run a terminal on PC and type <strong>ifconfig</strong>, it will show you some information about a virtual IPv6 network interface (utun6):</p>
+<a class="reference external image-reference" href="doc/screenshots/show_ni_pc.png"><img alt="show_ni_pc" src="../../../../../_images/show_ni_pc.png" /></a>
+<p>Note the IPv6 address, here it is <code class="docutils literal notranslate"><span class="pre">fdde:ad00:beef:0:4f6e:7e53:67c8:f5b0</span></code>.</p>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="ping-to-each-other-the-cli-and-linux-host">
+<h2>Ping to each other, the CLI and Linux Host<a class="headerlink" href="#ping-to-each-other-the-cli-and-linux-host" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Go to the CLI’s Tera Term. Type <strong>ipaddr</strong> and note it’s IPv6 address, here it is <code class="docutils literal notranslate"><span class="pre">fdde:ad00:beef:0:63a8:7376:c6ad:828c</span></code>. Type <strong>ping fdde:ad00:beef:0:4f6e:7e53:67c8:f5b0</strong>, it will ping the Linux host from CLI:</p>
+<a class="reference external image-reference" href="doc/screenshots/ping_pc_from_cli.PNG"><img alt="ping_pc_from_cli" src="../../../../../_images/ping_pc_from_cli.PNG" /></a>
+</li>
+<li><p>Go to the Linux host, run a terminal and type <strong>ping6 fdde:ad00:beef:0:63a8:7376:c6ad:828c</strong>, it will ping the CLI from Linux host:</p>
+<a class="reference external image-reference" href="doc/screenshots/ping_cli_from_pc.png"><img alt="ping_cli_from_pc" src="../../../../../_images/ping_cli_from_pc.png" /></a>
+</li>
+</ul>
 </div>
 </div>
 
@@ -299,25 +376,18 @@
           </div>
           <footer>
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../../secureshield/README.html" class="btn btn-neutral float-right" title="SecureShield Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../cli/README.html" class="btn btn-neutral float-left" title="OpenThread CLI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
         &copy; Copyright 2019, Synopsys
+      <span class="lastupdated">
+        Last updated on Aug 04, 2021.
+      </span>
 
     </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
 

@@ -1,265 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="iotdk_2drivers_2sdcard_2sdcard__sdio_8c" kind="file">
-    <compoundname>iotdk/drivers/sdcard/sdcard_sdio.c</compoundname>
-    <includes local="no">stddef.h</includes>
-    <includes local="no">string.h</includes>
-    <includes local="yes">arc/arc.h</includes>
-    <includes local="yes">arc/arc_builtin.h</includes>
-    <includes local="yes">embARC_toolchain.h</includes>
-    <includes local="yes">embARC_error.h</includes>
-    <includes local="yes">arc/arc_exception.h</includes>
-    <includes refid="board_8h" local="yes">board.h</includes>
-    <includes refid="os__hal__inc_8h" local="yes">os_hal_inc.h</includes>
-    <includes local="yes">ff_diskio.h</includes>
-    <includes local="yes">ff_sdcard.h</includes>
-    <includes refid="iotdk_2drivers_2sdcard_2sdcard__sdio_8h" local="yes">sdcard_sdio.h</includes>
-    <incdepgraph>
-      <node id="3545">
-        <label>arc/arc_exception.h</label>
-      </node>
-      <node id="3542">
-        <label>arc/arc_builtin.h</label>
-      </node>
-      <node id="3538">
-        <label>sdcard_sdio.c</label>
-        <link refid="iotdk/drivers/sdcard/sdcard_sdio.c"/>
-        <childnode refid="3539" relation="include">
-        </childnode>
-        <childnode refid="3540" relation="include">
-        </childnode>
-        <childnode refid="3541" relation="include">
-        </childnode>
-        <childnode refid="3542" relation="include">
-        </childnode>
-        <childnode refid="3543" relation="include">
-        </childnode>
-        <childnode refid="3544" relation="include">
-        </childnode>
-        <childnode refid="3545" relation="include">
-        </childnode>
-        <childnode refid="3546" relation="include">
-        </childnode>
-        <childnode refid="3547" relation="include">
-        </childnode>
-        <childnode refid="3548" relation="include">
-        </childnode>
-        <childnode refid="3549" relation="include">
-        </childnode>
-        <childnode refid="3550" relation="include">
-        </childnode>
-      </node>
-      <node id="3550">
-        <label>sdcard_sdio.h</label>
-        <link refid="iotdk_2drivers_2sdcard_2sdcard__sdio_8h_source"/>
-        <childnode refid="3548" relation="include">
-        </childnode>
-      </node>
-      <node id="3539">
-        <label>stddef.h</label>
-      </node>
-      <node id="3544">
-        <label>embARC_error.h</label>
-      </node>
-      <node id="3540">
-        <label>string.h</label>
-      </node>
-      <node id="3549">
-        <label>ff_sdcard.h</label>
-      </node>
-      <node id="3543">
-        <label>embARC_toolchain.h</label>
-      </node>
-      <node id="3548">
-        <label>ff_diskio.h</label>
-      </node>
-      <node id="3547">
-        <label>os_hal_inc.h</label>
-        <link refid="os__hal__inc_8h"/>
-      </node>
-      <node id="3541">
-        <label>arc/arc.h</label>
-      </node>
-      <node id="3546">
-        <label>board.h</label>
-        <link refid="board_8h"/>
-      </node>
-    </incdepgraph>
-      <sectiondef kind="define">
-      <memberdef kind="define" id="iotdk_2drivers_2sdcard_2sdcard__sdio_8c_1a7095d8f169e64080de15aa25e8feb3df" prot="public" static="no">
-        <name>SDCARD_SDIO_ID</name>
-        <initializer>0</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" line="51" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" bodystart="51" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="var">
-      <memberdef kind="variable" id="iotdk_2drivers_2sdcard_2sdcard__sdio_8c_1a5cb6d132bea3b9cc56e859e9fcaca572" prot="public" static="yes" mutable="no">
-        <type>FS_SDCARD_SDIO_CTRL</type>
-        <definition>FS_SDCARD_SDIO_CTRL sdcard_sdio0</definition>
-        <argsstring></argsstring>
-        <name>sdcard_sdio0</name>
-        <initializer>= {
-	.id = 0,
-	.drv_status = STA_NOINIT
-}</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" line="55" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="iotdk_2drivers_2sdcard_2sdcard__sdio_8c_1a10c47da3d14da5d2ed98fd97fee7527c" prot="public" static="no" mutable="no">
-        <type>FATFS_DISKIO</type>
-        <definition>FATFS_DISKIO sdcard_sdio_0_diskio</definition>
-        <argsstring></argsstring>
-        <name>sdcard_sdio_0_diskio</name>
-        <initializer>= {
-	(void *) &amp;sdcard_sdio0,
-	sdcard_sdio_0_diskio_initialize,
-	sdcard_sdio_0_diskio_status,
-	sdcard_sdio_0_diskio_read,
-	sdcard_sdio_0_diskio_write,
-	sdcard_sdio_0_diskio_ioctl,
-	sdcard_sdio_0_diskio_timerproc
-}</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" line="91" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" bodystart="91" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="func">
-      <memberdef kind="function" id="iotdk_2drivers_2sdcard_2sdcard__sdio_8c_1a2db2a1c934b9f9e2d6a1503142595b70" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>static int32_t sdcard_sdio_0_diskio_initialize</definition>
-        <argsstring>(void)</argsstring>
-        <name>sdcard_sdio_0_diskio_initialize</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" line="60" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" bodystart="60" bodyend="64"/>
-      </memberdef>
-      <memberdef kind="function" id="iotdk_2drivers_2sdcard_2sdcard__sdio_8c_1abcbe6be00a00bc55205d458320a4ed23" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>static int32_t sdcard_sdio_0_diskio_status</definition>
-        <argsstring>(void)</argsstring>
-        <name>sdcard_sdio_0_diskio_status</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" line="66" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" bodystart="66" bodyend="69"/>
-      </memberdef>
-      <memberdef kind="function" id="iotdk_2drivers_2sdcard_2sdcard__sdio_8c_1a003af33fbfeec84ab1628e9395878661" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>static int32_t sdcard_sdio_0_diskio_read</definition>
-        <argsstring>(void *buf, uint32_t sector, uint32_t count)</argsstring>
-        <name>sdcard_sdio_0_diskio_read</name>
-        <param>
-          <type>void *</type>
-          <declname>buf</declname>
-        </param>
-        <param>
-          <type>uint32_t</type>
-          <declname>sector</declname>
-        </param>
-        <param>
-          <type>uint32_t</type>
-          <declname>count</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" line="71" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" bodystart="71" bodyend="74"/>
-      </memberdef>
-      <memberdef kind="function" id="iotdk_2drivers_2sdcard_2sdcard__sdio_8c_1a8cc61e7ef173a31cdeb92f139f50e181" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>static int32_t sdcard_sdio_0_diskio_write</definition>
-        <argsstring>(const void *buf, uint32_t sector, uint32_t count)</argsstring>
-        <name>sdcard_sdio_0_diskio_write</name>
-        <param>
-          <type>const void *</type>
-          <declname>buf</declname>
-        </param>
-        <param>
-          <type>uint32_t</type>
-          <declname>sector</declname>
-        </param>
-        <param>
-          <type>uint32_t</type>
-          <declname>count</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" line="76" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" bodystart="76" bodyend="79"/>
-      </memberdef>
-      <memberdef kind="function" id="iotdk_2drivers_2sdcard_2sdcard__sdio_8c_1a0cce240a222451c5d7b34659892d61b0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>static int32_t sdcard_sdio_0_diskio_ioctl</definition>
-        <argsstring>(uint32_t cmd, void *buf)</argsstring>
-        <name>sdcard_sdio_0_diskio_ioctl</name>
-        <param>
-          <type>uint32_t</type>
-          <declname>cmd</declname>
-        </param>
-        <param>
-          <type>void *</type>
-          <declname>buf</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" line="81" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" bodystart="81" bodyend="84"/>
-      </memberdef>
-      <memberdef kind="function" id="iotdk_2drivers_2sdcard_2sdcard__sdio_8c_1abdeecb9759a8e13422de2e0b247dae7f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>static void sdcard_sdio_0_diskio_timerproc</definition>
-        <argsstring>(void)</argsstring>
-        <name>sdcard_sdio_0_diskio_timerproc</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" line="86" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" bodystart="86" bodyend="89"/>
-      </memberdef>
-      </sectiondef>
+    <compoundname>sdcard_sdio.c</compoundname>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -298,11 +40,11 @@
 <codeline lineno="31"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc_builtin.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;embARC_toolchain.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;embARC_error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc_exception.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc_8h" kindref="compound">arc/arc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__builtin_8h" kindref="compound">arc/arc_builtin.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="embARC__toolchain_8h" kindref="compound">embARC_toolchain.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="embARC__error_8h" kindref="compound">embARC_error.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__exception_8h" kindref="compound">arc/arc_exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="board_8h" kindref="compound">board.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
@@ -320,49 +62,49 @@
 <codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(USE_IOTDK_SDCARD_SDIO_0)</highlight></codeline>
 <codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>FS_SDCARD_SDIO_CTRL<sp/>sdcard_sdio0<sp/>=<sp/>{</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.id<sp/>=<sp/>0,</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.drv_status<sp/>=<sp/>STA_NOINIT</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>.id<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>.drv_status<sp/>=<sp/>STA_NOINIT</highlight></codeline>
 <codeline lineno="58"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>sdcard_sdio_0_diskio_initialize(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="61"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sdcard_sdio0.host<sp/>=<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)sdio_get_dev(SDCARD_SDIO_ID);</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sdcard_sdio_diskio_initialize(&amp;sdcard_sdio_0_diskio);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>sdcard_sdio0.host<sp/>=<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)<ref refid="dev__sdio_8h_a0e077c4695dbe968be66940e95d78ade_1a0e077c4695dbe968be66940e95d78ade" kindref="member">sdio_get_dev</ref>(SDCARD_SDIO_ID);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sdcard_sdio_diskio_initialize(&amp;sdcard_sdio_0_diskio);</highlight></codeline>
 <codeline lineno="64"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>sdcard_sdio_0_diskio_status(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="67"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sdcard_sdio_diskio_status(&amp;sdcard_sdio_0_diskio);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sdcard_sdio_diskio_status(&amp;sdcard_sdio_0_diskio);</highlight></codeline>
 <codeline lineno="69"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
 <codeline lineno="71"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>sdcard_sdio_0_diskio_read(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*buf,<sp/>uint32_t<sp/>sector,<sp/>uint32_t<sp/>count)</highlight></codeline>
 <codeline lineno="72"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sdcard_sdio_diskio_read(&amp;sdcard_sdio_0_diskio,<sp/>buf,<sp/>sector,<sp/>count);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sdcard_sdio_diskio_read(&amp;sdcard_sdio_0_diskio,<sp/>buf,<sp/>sector,<sp/>count);</highlight></codeline>
 <codeline lineno="74"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"></highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>sdcard_sdio_0_diskio_write(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*buf,<sp/>uint32_t<sp/>sector,<sp/>uint32_t<sp/>count)</highlight></codeline>
 <codeline lineno="77"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sdcard_sdio_diskio_write(&amp;sdcard_sdio_0_diskio,<sp/>buf,<sp/>sector,<sp/>count);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sdcard_sdio_diskio_write(&amp;sdcard_sdio_0_diskio,<sp/>buf,<sp/>sector,<sp/>count);</highlight></codeline>
 <codeline lineno="79"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight></codeline>
 <codeline lineno="81"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>sdcard_sdio_0_diskio_ioctl(uint32_t<sp/>cmd,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*buf)</highlight></codeline>
 <codeline lineno="82"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sdcard_sdio_diskio_ioctl(&amp;sdcard_sdio_0_diskio,<sp/>cmd,<sp/>buf);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sdcard_sdio_diskio_ioctl(&amp;sdcard_sdio_0_diskio,<sp/>cmd,<sp/>buf);</highlight></codeline>
 <codeline lineno="84"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight></codeline>
 <codeline lineno="86"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>sdcard_sdio_0_diskio_timerproc(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="87"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="89"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"></highlight></codeline>
 <codeline lineno="91"><highlight class="normal">FATFS_DISKIO<sp/>sdcard_sdio_0_diskio<sp/>=<sp/>{</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)<sp/>&amp;sdcard_sdio0,</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sdcard_sdio_0_diskio_initialize,</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sdcard_sdio_0_diskio_status,</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sdcard_sdio_0_diskio_read,</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sdcard_sdio_0_diskio_write,</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sdcard_sdio_0_diskio_ioctl,</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sdcard_sdio_0_diskio_timerproc</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)<sp/>&amp;sdcard_sdio0,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>sdcard_sdio_0_diskio_initialize,</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>sdcard_sdio_0_diskio_status,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>sdcard_sdio_0_diskio_read,</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>sdcard_sdio_0_diskio_write,</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>sdcard_sdio_0_diskio_ioctl,</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>sdcard_sdio_0_diskio_timerproc</highlight></codeline>
 <codeline lineno="99"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"></highlight></codeline>
 <codeline lineno="101"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>USE_IOTDK_SDCARD_SDIO_0<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>

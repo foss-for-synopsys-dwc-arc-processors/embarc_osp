@@ -2,33 +2,80 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="hsdk__io_8c" kind="file">
     <compoundname>hsdk_io.c</compoundname>
-    <includes local="yes">embARC_error.h</includes>
+    <includes refid="embARC__error_8h" local="yes">embARC_error.h</includes>
     <includes local="yes">cy8c95xx.h</includes>
     <includes refid="board_8h" local="yes">board.h</includes>
     <incdepgraph>
-      <node id="2403">
-        <label>hsdk_io.c</label>
+      <node id="2908">
+        <label>stdbool.h</label>
+      </node>
+      <node id="2909">
+        <label>arc/arc.h</label>
+        <link refid="arc_8h"/>
+        <childnode refid="2910" relation="include">
+        </childnode>
+      </node>
+      <node id="2904">
+        <label>arc/arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="2905" relation="include">
+        </childnode>
+        <childnode refid="2909" relation="include">
+        </childnode>
+      </node>
+      <node id="2903">
+        <label>stdint.h</label>
+      </node>
+      <node id="2901">
+        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.c</label>
         <link refid="hsdk_io.c"/>
-        <childnode refid="2404" relation="include">
+        <childnode refid="2902" relation="include">
         </childnode>
-        <childnode refid="2405" relation="include">
+        <childnode refid="2911" relation="include">
         </childnode>
-        <childnode refid="2406" relation="include">
+        <childnode refid="2912" relation="include">
         </childnode>
       </node>
-      <node id="2404">
-        <label>embARC_error.h</label>
+      <node id="2907">
+        <label>stddef.h</label>
       </node>
-      <node id="2405">
+      <node id="2905">
+        <label>embARC_toolchain.h</label>
+        <link refid="embARC__toolchain_8h"/>
+        <childnode refid="2903" relation="include">
+        </childnode>
+        <childnode refid="2906" relation="include">
+        </childnode>
+        <childnode refid="2907" relation="include">
+        </childnode>
+        <childnode refid="2908" relation="include">
+        </childnode>
+      </node>
+      <node id="2906">
+        <label>limits.h</label>
+      </node>
+      <node id="2911">
         <label>cy8c95xx.h</label>
       </node>
-      <node id="2406">
+      <node id="2912">
         <label>board.h</label>
         <link refid="board_8h"/>
       </node>
+      <node id="2910">
+        <label>arc/arc_feature_config.h</label>
+        <link refid="arc__feature__config_8h"/>
+      </node>
+      <node id="2902">
+        <label>embARC_error.h</label>
+        <link refid="embARC__error_8h"/>
+        <childnode refid="2903" relation="include">
+        </childnode>
+        <childnode refid="2904" relation="include">
+        </childnode>
+      </node>
     </incdepgraph>
       <sectiondef kind="define">
-      <memberdef kind="define" id="hsdk__io_8c_1a82b59e32d0623ccb7e400a493a71185a" prot="public" static="no">
+      <memberdef kind="define" id="hsdk__io_8c_a82b59e32d0623ccb7e400a493a71185a_1a82b59e32d0623ccb7e400a493a71185a" prot="public" static="no">
         <name>HSDK_LED_GPORT_OFFSET</name>
         <initializer>0</initializer>
         <briefdescription>
@@ -41,7 +88,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
-      <memberdef kind="variable" id="hsdk__io_8c_1aa646b78cf2ea90f623e720f554559b14" prot="public" static="yes" mutable="no">
+      <memberdef kind="variable" id="hsdk__io_8c_aa646b78cf2ea90f623e720f554559b14_1aa646b78cf2ea90f623e720f554559b14" prot="public" static="yes" mutable="no">
         <type>CY8C95XX_DEF</type>
         <definition>CY8C95XX_DEF cy8c95xx_obj</definition>
         <argsstring></argsstring>
@@ -56,7 +103,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
-      <memberdef kind="function" id="hsdk__io_8c_1a56409a4fef3e60db140392a64d7d9d57" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="hsdk__io_8c_a56409a4fef3e60db140392a64d7d9d57_1a56409a4fef3e60db140392a64d7d9d57" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>static void cy8c95xx_delay_us</definition>
         <argsstring>(uint32_t us)</argsstring>
@@ -73,7 +120,7 @@
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.c" line="39" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.c" bodystart="39" bodyend="48"/>
       </memberdef>
-      <memberdef kind="function" id="hsdk__io_8c_1a701d2fab00f692f41c27c1b5d0a5d24d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="hsdk__io_8c_a701d2fab00f692f41c27c1b5d0a5d24d_1a701d2fab00f692f41c27c1b5d0a5d24d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hsdk_led_init</definition>
         <argsstring>(void)</argsstring>
@@ -82,14 +129,14 @@
           <type>void</type>
         </param>
         <briefdescription>
-<para>hsdk on-board led init, led default off </para>        </briefdescription>
+        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>hsdk on-board led init, led default off </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.c" line="51" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.c" bodystart="51" bodyend="94"/>
       </memberdef>
-      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga0d116692517e4c11de41ec07145b8404" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__BOARD__EMSK__DRV__GPIO_ga0d116692517e4c11de41ec07145b8404_1ga0d116692517e4c11de41ec07145b8404" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void led_write</definition>
         <argsstring>(uint32_t led_val, uint32_t mask)</argsstring>
@@ -103,15 +150,14 @@
           <declname>mask</declname>
         </param>
         <briefdescription>
-<para>write 1 to light on led bit, else light off led </para>        </briefdescription>
+        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>write 1 to light on led bit, else light off led </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.c" line="97" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.c" bodystart="97" bodyend="104"/>
-        <referencedby refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1gac9f916612edd3260bf1282c25ceea192" compoundref="emsk__gpio_8c" startline="70" endline="85">emsk_led_init</referencedby>
       </memberdef>
-      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga0dc68bc0b79209469f458809e464b178" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__BOARD__EMSK__DRV__GPIO_ga0dc68bc0b79209469f458809e464b178_1ga0dc68bc0b79209469f458809e464b178" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
         <definition>uint32_t led_read</definition>
         <argsstring>(uint32_t mask)</argsstring>
@@ -121,14 +167,14 @@
           <declname>mask</declname>
         </param>
         <briefdescription>
-<para>read led value, on for 1, off for 0 </para>        </briefdescription>
+        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>read led value, on for 1, off for 0 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.c" line="107" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.c" bodystart="107" bodyend="118"/>
       </memberdef>
-      <memberdef kind="function" id="hsdk__io_8c_1af6d565dffaac6c29217ffb23e5cad4d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="hsdk__io_8c_af6d565dffaac6c29217ffb23e5cad4d7_1af6d565dffaac6c29217ffb23e5cad4d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hsdk_io_init</definition>
         <argsstring>(void)</argsstring>
@@ -137,9 +183,9 @@
           <type>void</type>
         </param>
         <briefdescription>
-<para>hsdk on board io init </para>        </briefdescription>
+        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>hsdk on board io init </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.c" line="121" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.c" bodystart="121" bodyend="124"/>
@@ -179,96 +225,96 @@
 <codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
 <codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
 <codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/>---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;embARC_error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="embARC__error_8h" kindref="compound">embARC_error.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;cy8c95xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="board_8h" kindref="compound">board.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HSDK_LED_GPORT_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0</highlight></codeline>
 <codeline lineno="36"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>CY8C95XX_DEF<sp/>cy8c95xx_obj;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>CY8C95XX_DEF<sp/><ref refid="hsdk__io_8c_aa646b78cf2ea90f623e720f554559b14_1aa646b78cf2ea90f623e720f554559b14" kindref="member">cy8c95xx_obj</ref>;</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>cy8c95xx_delay_us(uint32_t<sp/>us)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="hsdk__io_8c_a56409a4fef3e60db140392a64d7d9d57_1a56409a4fef3e60db140392a64d7d9d57" kindref="member">cy8c95xx_delay_us</ref>(uint32_t<sp/>us)</highlight></codeline>
 <codeline lineno="40"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>start_us,<sp/>us_delayed;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/>start_us,<sp/>us_delayed;</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>us_delayed<sp/>=<sp/>(uint64_t)us;</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>start_us<sp/>=<sp/><ref refid="group___b_o_a_r_d___c_o_m_m_o_n_1gac804f2adaefaef9ae3d123dbe4abb123" kindref="member">board_get_cur_us</ref>();</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>((<ref refid="group___b_o_a_r_d___c_o_m_m_o_n_1gac804f2adaefaef9ae3d123dbe4abb123" kindref="member">board_get_cur_us</ref>()<sp/>-<sp/>start_us)<sp/>&lt;<sp/>us_delayed)<sp/>{</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>us_delayed<sp/>=<sp/>(uint64_t)us;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>start_us<sp/>=<sp/><ref refid="group__BOARD__COMMON_gac804f2adaefaef9ae3d123dbe4abb123_1gac804f2adaefaef9ae3d123dbe4abb123" kindref="member">board_get_cur_us</ref>();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>((<ref refid="group__BOARD__COMMON_gac804f2adaefaef9ae3d123dbe4abb123_1gac804f2adaefaef9ae3d123dbe4abb123" kindref="member">board_get_cur_us</ref>()<sp/>-<sp/>start_us)<sp/>&lt;<sp/>us_delayed)<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="48"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>hsdk_led_init(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="51"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="hsdk__io_8c_a701d2fab00f692f41c27c1b5d0a5d24d_1a701d2fab00f692f41c27c1b5d0a5d24d" kindref="member">hsdk_led_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="52"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/>E_OK;</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>rv<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>buffer_tx[1];</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>val<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group__EMBARC__ERROR_ga1e7cc741c56207a8872ea58373276925_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>rv<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>buffer_tx[1];</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>val<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cy8c95xx_obj.i2c_id<sp/>=<sp/>HSDK_I2C_ID_CY8C95XX;</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cy8c95xx_obj.slvaddr_io<sp/>=<sp/>HSDK_I2C_ADDR_CY8C95XX_IO;</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cy8c95xx_obj.slvaddr_eep<sp/>=<sp/>HSDK_I2C_ADDR_CY8C95XX_EEP;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hsdk__io_8c_aa646b78cf2ea90f623e720f554559b14_1aa646b78cf2ea90f623e720f554559b14" kindref="member">cy8c95xx_obj</ref>.i2c_id<sp/>=<sp/><ref refid="hsdk__io_8h_aa1039577ad6017835a87ccc433b8b117_1aa1039577ad6017835a87ccc433b8b117" kindref="member">HSDK_I2C_ID_CY8C95XX</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hsdk__io_8c_aa646b78cf2ea90f623e720f554559b14_1aa646b78cf2ea90f623e720f554559b14" kindref="member">cy8c95xx_obj</ref>.slvaddr_io<sp/>=<sp/><ref refid="hsdk__io_8h_adda11df6d7fed916a5ee7fc49cbf3b5e_1adda11df6d7fed916a5ee7fc49cbf3b5e" kindref="member">HSDK_I2C_ADDR_CY8C95XX_IO</ref>;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hsdk__io_8c_aa646b78cf2ea90f623e720f554559b14_1aa646b78cf2ea90f623e720f554559b14" kindref="member">cy8c95xx_obj</ref>.slvaddr_eep<sp/>=<sp/><ref refid="hsdk__io_8h_adb932469b9aaf2682ec51c2f3b1dcdca_1adb932469b9aaf2682ec51c2f3b1dcdca" kindref="member">HSDK_I2C_ADDR_CY8C95XX_EEP</ref>;</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_IIC_PTR<sp/>iic_obj<sp/>=<sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___i_i_c___o_b_j_1ga0ce322e609d92e655c3bd4a16d6bff6c" kindref="member">iic_get_dev</ref>(cy8c95xx_obj.i2c_id);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structdev__iic" kindref="compound">DEV_IIC_PTR</ref><sp/>iic_obj<sp/>=<sp/><ref refid="group__DEVICE__HAL__IIC_ga0ce322e609d92e655c3bd4a16d6bff6c_1ga0ce322e609d92e655c3bd4a16d6bff6c" kindref="member">iic_get_dev</ref>(<ref refid="hsdk__io_8c_aa646b78cf2ea90f623e720f554559b14_1aa646b78cf2ea90f623e720f554559b14" kindref="member">cy8c95xx_obj</ref>.i2c_id);</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>iic_obj-&gt;iic_open(DEV_MASTER_MODE,<sp/>IIC_SPEED_STANDARD);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>iic_obj-&gt;<ref refid="group__DEVICE__HAL__IIC__DEVSTRUCT_ga0d6e561d2179ad140a99cc270d4ae958_1ga0d6e561d2179ad140a99cc270d4ae958" kindref="member">iic_open</ref>(<ref refid="group__DEVICE__HAL__COMMON__DEVMODE_ga9b1ad5abdf677288f655dd4bc9dc188d_1ga9b1ad5abdf677288f655dd4bc9dc188d" kindref="member">DEV_MASTER_MODE</ref>,<sp/><ref refid="group__DEVICE__HAL__IIC__CFG_ga82ea200aecdbcda84ee6e118f7098fa8_1gga82ea200aecdbcda84ee6e118f7098fa8ab314670a486e8922eea476940ccab620" kindref="member">IIC_SPEED_STANDARD</ref>);</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((ercd<sp/>==<sp/>E_OK)<sp/>||<sp/>(ercd<sp/>==<sp/>E_OPNED))<sp/>{</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>iic_obj-&gt;iic_control(IIC_CMD_MST_SET_TAR_ADDR,<sp/>CONV2VOID(cy8c95xx_obj.slvaddr_io));</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((ercd<sp/>==<sp/><ref refid="group__EMBARC__ERROR_ga1e7cc741c56207a8872ea58373276925_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>)<sp/>||<sp/>(ercd<sp/>==<sp/><ref refid="group__EMBARC__ERROR_gaa5935765e74b9d1a7e72c9c8f9018b42_1gaa5935765e74b9d1a7e72c9c8f9018b42" kindref="member">E_OPNED</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>iic_obj-&gt;<ref refid="group__DEVICE__HAL__IIC__DEVSTRUCT_gae81e4eb8e99d15f417da9f63bf7fe7fd_1gae81e4eb8e99d15f417da9f63bf7fe7fd" kindref="member">iic_control</ref>(<ref refid="group__DEVICE__HAL__IIC__CTRLCMD_gaac993b7b841b248ac1a33a32e39469b2_1gaac993b7b841b248ac1a33a32e39469b2" kindref="member">IIC_CMD_MST_SET_TAR_ADDR</ref>,<sp/><ref refid="group__DEVICE__HAL__COMMON__DEFCMD_gaf3c5dc8db3ff175533e07d6a7c275520_1gaf3c5dc8db3ff175533e07d6a7c275520" kindref="member">CONV2VOID</ref>(<ref refid="hsdk__io_8c_aa646b78cf2ea90f623e720f554559b14_1aa646b78cf2ea90f623e720f554559b14" kindref="member">cy8c95xx_obj</ref>.slvaddr_io));</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Select<sp/>port<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buffer_tx[0]<sp/>=<sp/>CY8C95XX_PORT_1;</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rv<sp/>=<sp/>cy8c95xx_reg_write(&amp;cy8c95xx_obj,<sp/>CY8C95XX_DEV_IO,<sp/>CY8C95XX_PORT_SELECT_REG,<sp/>buffer_tx,<sp/>1);</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cy8c95xx_delay_us(100);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Select<sp/>port<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>buffer_tx[0]<sp/>=<sp/>CY8C95XX_PORT_1;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>rv<sp/>=<sp/>cy8c95xx_reg_write(&amp;<ref refid="hsdk__io_8c_aa646b78cf2ea90f623e720f554559b14_1aa646b78cf2ea90f623e720f554559b14" kindref="member">cy8c95xx_obj</ref>,<sp/>CY8C95XX_DEV_IO,<sp/>CY8C95XX_PORT_SELECT_REG,<sp/>buffer_tx,<sp/>1);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hsdk__io_8c_a56409a4fef3e60db140392a64d7d9d57_1a56409a4fef3e60db140392a64d7d9d57" kindref="member">cy8c95xx_delay_us</ref>(100);</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cy8c95xx_reg_read(&amp;cy8c95xx_obj,<sp/>CY8C95XX_DEV_IO,<sp/>CY8C95XX_PORT_SELECT_REG,<sp/>&amp;val,<sp/>1);</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(val<sp/>!=<sp/>buffer_tx[0]);</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>direction:<sp/>all<sp/>pins<sp/>output<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buffer_tx[0]<sp/>=<sp/>0x00;</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rv<sp/>=<sp/>cy8c95xx_reg_write(&amp;cy8c95xx_obj,<sp/>CY8C95XX_DEV_IO,<sp/>CY8C95XX_PIN_DIRECTION_REG,<sp/>buffer_tx,<sp/>1);</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cy8c95xx_delay_us(100);</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cy8c95xx_reg_read(&amp;cy8c95xx_obj,<sp/>CY8C95XX_DEV_IO,<sp/>CY8C95XX_PIN_DIRECTION_REG,<sp/>&amp;val,<sp/>1);</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(val<sp/>!=<sp/>buffer_tx[0]);</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cy8c95xx_delay_us(100);</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>driver<sp/>mode:<sp/>Pull<sp/>Up<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cy8c95xx_reg_read(&amp;cy8c95xx_obj,<sp/>CY8C95XX_DEV_IO,<sp/>CY8C95XX_DRIVE_MODE_PU_REG,<sp/>&amp;val,<sp/>1);</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buffer_tx[0]<sp/>=<sp/>0xFF;</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rv<sp/>=<sp/>cy8c95xx_reg_write(&amp;cy8c95xx_obj,<sp/>CY8C95XX_DEV_IO,<sp/>CY8C95XX_DRIVE_MODE_PU_REG,<sp/>buffer_tx,<sp/>1);</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cy8c95xx_delay_us(100);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cy8c95xx_reg_read(&amp;<ref refid="hsdk__io_8c_aa646b78cf2ea90f623e720f554559b14_1aa646b78cf2ea90f623e720f554559b14" kindref="member">cy8c95xx_obj</ref>,<sp/>CY8C95XX_DEV_IO,<sp/>CY8C95XX_PORT_SELECT_REG,<sp/>&amp;val,<sp/>1);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(val<sp/>!=<sp/>buffer_tx[0]);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>direction:<sp/>all<sp/>pins<sp/>output<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>buffer_tx[0]<sp/>=<sp/>0x00;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>rv<sp/>=<sp/>cy8c95xx_reg_write(&amp;<ref refid="hsdk__io_8c_aa646b78cf2ea90f623e720f554559b14_1aa646b78cf2ea90f623e720f554559b14" kindref="member">cy8c95xx_obj</ref>,<sp/>CY8C95XX_DEV_IO,<sp/>CY8C95XX_PIN_DIRECTION_REG,<sp/>buffer_tx,<sp/>1);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hsdk__io_8c_a56409a4fef3e60db140392a64d7d9d57_1a56409a4fef3e60db140392a64d7d9d57" kindref="member">cy8c95xx_delay_us</ref>(100);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cy8c95xx_reg_read(&amp;<ref refid="hsdk__io_8c_aa646b78cf2ea90f623e720f554559b14_1aa646b78cf2ea90f623e720f554559b14" kindref="member">cy8c95xx_obj</ref>,<sp/>CY8C95XX_DEV_IO,<sp/>CY8C95XX_PIN_DIRECTION_REG,<sp/>&amp;val,<sp/>1);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(val<sp/>!=<sp/>buffer_tx[0]);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hsdk__io_8c_a56409a4fef3e60db140392a64d7d9d57_1a56409a4fef3e60db140392a64d7d9d57" kindref="member">cy8c95xx_delay_us</ref>(100);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>driver<sp/>mode:<sp/>Pull<sp/>Up<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>cy8c95xx_reg_read(&amp;<ref refid="hsdk__io_8c_aa646b78cf2ea90f623e720f554559b14_1aa646b78cf2ea90f623e720f554559b14" kindref="member">cy8c95xx_obj</ref>,<sp/>CY8C95XX_DEV_IO,<sp/>CY8C95XX_DRIVE_MODE_PU_REG,<sp/>&amp;val,<sp/>1);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>buffer_tx[0]<sp/>=<sp/>0xFF;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>rv<sp/>=<sp/>cy8c95xx_reg_write(&amp;<ref refid="hsdk__io_8c_aa646b78cf2ea90f623e720f554559b14_1aa646b78cf2ea90f623e720f554559b14" kindref="member">cy8c95xx_obj</ref>,<sp/>CY8C95XX_DEV_IO,<sp/>CY8C95XX_DRIVE_MODE_PU_REG,<sp/>buffer_tx,<sp/>1);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hsdk__io_8c_a56409a4fef3e60db140392a64d7d9d57_1a56409a4fef3e60db140392a64d7d9d57" kindref="member">cy8c95xx_delay_us</ref>(100);</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"></highlight></codeline>
 <codeline lineno="92"><highlight class="normal">error_exit:</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="94"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight></codeline>
-<codeline lineno="97" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga0d116692517e4c11de41ec07145b8404" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga0d116692517e4c11de41ec07145b8404" kindref="member">led_write</ref>(uint32_t<sp/>led_val,<sp/>uint32_t<sp/>mask)</highlight></codeline>
+<codeline lineno="97"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="axs_8h_a9dd2c6696976e4f10afeef472985e0aa_1a9dd2c6696976e4f10afeef472985e0aa" kindref="member">led_write</ref>(uint32_t<sp/>led_val,<sp/>uint32_t<sp/>mask)</highlight></codeline>
 <codeline lineno="98"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led_val<sp/>=<sp/>(~led_val)<sp/>&amp;<sp/>mask;</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cy8c95xx_writeport(&amp;cy8c95xx_obj,<sp/>CY8C95XX_PORT_1,<sp/>(uint8_t)(led_val<sp/>&lt;&lt;<sp/>HSDK_LED_GPORT_OFFSET));</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>led_val<sp/>=<sp/>(~led_val)<sp/>&amp;<sp/>mask;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>cy8c95xx_writeport(&amp;<ref refid="hsdk__io_8c_aa646b78cf2ea90f623e720f554559b14_1aa646b78cf2ea90f623e720f554559b14" kindref="member">cy8c95xx_obj</ref>,<sp/>CY8C95XX_PORT_1,<sp/>(uint8_t)(led_val<sp/>&lt;&lt;<sp/><ref refid="hsdk__io_8c_a82b59e32d0623ccb7e400a493a71185a_1a82b59e32d0623ccb7e400a493a71185a" kindref="member">HSDK_LED_GPORT_OFFSET</ref>));</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"></highlight></codeline>
 <codeline lineno="102"><highlight class="normal">error_exit:</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="104"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="107" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga0dc68bc0b79209469f458809e464b178" refkind="member"><highlight class="normal">uint32_t<sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga0dc68bc0b79209469f458809e464b178" kindref="member">led_read</ref>(uint32_t<sp/>mask)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">uint32_t<sp/><ref refid="axs_8h_a8db463c7e8ea419238926918318a31b6_1a8db463c7e8ea419238926918318a31b6" kindref="member">led_read</ref>(uint32_t<sp/>mask)</highlight></codeline>
 <codeline lineno="108"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>value;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>value;</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cy8c95xx_readport(&amp;cy8c95xx_obj,<sp/>CY8C95XX_PORT_1,<sp/>(uint8_t<sp/>*)&amp;value);</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value<sp/>&amp;=<sp/>mask;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>cy8c95xx_readport(&amp;<ref refid="hsdk__io_8c_aa646b78cf2ea90f623e720f554559b14_1aa646b78cf2ea90f623e720f554559b14" kindref="member">cy8c95xx_obj</ref>,<sp/>CY8C95XX_PORT_1,<sp/>(uint8_t<sp/>*)&amp;value);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>value<sp/>&amp;=<sp/>mask;</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value;</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"></highlight></codeline>
 <codeline lineno="116"><highlight class="normal">error_exit:</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="118"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="119"><highlight class="normal"></highlight></codeline>
-<codeline lineno="121"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>hsdk_io_init(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="121"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="hsdk__io_8c_af6d565dffaac6c29217ffb23e5cad4d7_1af6d565dffaac6c29217ffb23e5cad4d7" kindref="member">hsdk_io_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="122"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hsdk_led_init();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hsdk__io_8c_a701d2fab00f692f41c27c1b5d0a5d24d_1a701d2fab00f692f41c27c1b5d0a5d24d" kindref="member">hsdk_led_init</ref>();</highlight></codeline>
 <codeline lineno="124"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.c"/>
