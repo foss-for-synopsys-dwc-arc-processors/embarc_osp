@@ -72,6 +72,5 @@ The following application notes provide step-by-step instructions on a broad ran
 * `How to create your own peripheral modules for use with the ARC EMSK and embARC <https://foss-for-synopsys-dwc-arc-processors.github.io/pdf/20151013_embARC_application_note_create_module_EMSK_embARC_v3.pdf>`_
 * `Timer and ISR <https://foss-for-synopsys-dwc-arc-processors.github.io/pdf/20150805_embARC_application_note_timer_and_isr.pdf>`_
 * `Using a secondary bootloader on the EMSK <https://foss-for-synopsys-dwc-arc-processors.github.io/pdf/20150710_embARC_application_note_secondary_bootloader.pdf>`_
-* `Using a smart home IoT application with EMSK <https://foss-for-synopsys-dwc-arc-processors.github.io/pdf/embARC_appnote_how_to_use_smart_home_iot.pdf>`_
 
 .. note:: Confirm that the version of embARC OSP and board is the correct one as noted in the application note documents

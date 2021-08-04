@@ -47,7 +47,7 @@ What should I know before I get started?
 Code of Conduct
 ===============
 
-This project adheres to the Contributor Covenant `code of conduct <./CODE_OF_CONDUCT.md>`_.
+This project adheres to the Contributor Covenant :ref:`code of conduct <code_guidelines>`.
 By participating, you are expected to uphold this code.
 Please report unacceptable behavior to `info@embarc.org <mailto:info@embarc.org>`_.
 
@@ -160,7 +160,7 @@ Enhancement suggestions are tracked as `GitHub issues <https://guides.github.com
 * **List some other text software platform where this enhancement exists.**
 * **Specify the name and version of the OS you're using.**
 
-`Template For Submitting Enhancement Suggestions <./ISSUE_TEMPLATE.md>`_
+:ref:`Template For Submitting Enhancement Suggestions <issue_guidelines>`
 ------------------------------------------------------------------------
 
 Your First Code Contribution
