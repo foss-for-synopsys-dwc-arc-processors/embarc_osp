@@ -79,7 +79,7 @@ AWS IoT Device C SDK
 ********************
 
 :Project homepage: https://github.com/aws/aws-iot-device-sdk-embedded-C
-:Project licensing: https://github.com/aws/aws-iot-device-sdk-embedded-C/blob/master/LICENSE.txt
+:Project licensing: https://github.com/aws/aws-iot-device-sdk-embedded-C/blob/master/LICENSE
 :LICENSE: `Apache License`_
  
 Doxygen
@@ -227,8 +227,8 @@ MRF24WG0MA PMOD WiFi
 NT-Shell
 ********
 
-:Project homepage: https://www.cubeatsystems.com/ntshell/
-:Project licensing: | https://www.cubeatsystems.com/ntshell/license.html
+:Project homepage: https://cubeatsystems.com/ntshell/
+:Project licensing: | https://cubeatsystems.com/ntshell/license.html
 			| The license
 			| • vtparse, vtparse_table are in the public domain.
 			| • ntshell, ntopt, ntlibc, text_editor, text_history are in the MIT license.

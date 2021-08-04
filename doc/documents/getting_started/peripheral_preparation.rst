@@ -74,7 +74,7 @@ Other PMOD or Compatible Modules
 `Pmod AD2 <https://reference.digilentinc.com/reference/pmod/pmodad2/start>`_ : ADC type is AD7991, use **I2C** for data collection.
 Driver code at ``embarc_osp/device/peripheral/adc/ad7991``.
 
-`ESP01\/ESP01S <https://wiki.ai-thinker.com/esp8266/docs>`_ : Primary IC type is ESP8266, use **UART** interface for data changing and controlling.
+`ESP01\/ESP01S <https://www.espressif.com/en/support/documents/technical-documents>`_ : Primary IC type is ESP8266, use **UART** interface for data changing and controlling.
 Driver code at ``embarc_osp/device/peripheral/wifi/slip_esp``.
 
-The ESP01/ESP01S module is not originally a PMOD module, however it is PMOD compatible, meaning that you can wire it to PMOD interface on board. You need to connect GND(embARC) to GND(ESP) , 3.3V(embARC) to VCC(ESP), RXD(embARC) to TXD(ESP), and TXD(embARC) to RXD(ESP), respectively. Please take reference from datasheet of `ESP01\/ESP01S <https://wiki.ai-thinker.com/esp8266/docs>`_ and UART (type 4A) part of `Digilent Pmod Spec <https://www.digilentinc.com/Pmods/Digilent-Pmod_%20Interface_Specification.pdf>`_ for pin layout. 
+The ESP01/ESP01S module is not originally a PMOD module, however it is PMOD compatible, meaning that you can wire it to PMOD interface on board. You need to connect GND(embARC) to GND(ESP) , 3.3V(embARC) to VCC(ESP), RXD(embARC) to TXD(ESP), and TXD(embARC) to RXD(ESP), respectively. Please take reference from datasheet of `ESP01\/ESP01S <https://www.espressif.com/en/support/documents/technical-documents>`_ and UART (type 4A) part of `Digilent Pmod Spec <https://www.digilentinc.com/Pmods/Digilent-Pmod_%20Interface_Specification.pdf>`_ for pin layout. 
