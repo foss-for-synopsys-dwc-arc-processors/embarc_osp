@@ -135,7 +135,7 @@ help :
 	@$(ECHO) '  DIG_NUM=xxx                                 - Specify device serial number which to be used for OpenOCD, most useful when more than one device plugged in'
 	@$(ECHO) '  HEAPSZ=xxx                                  - Specify heap size for program, xxx stands for size in bytes'
 	@$(ECHO) '  STACKSZ=xxx                                 - Specify stack size for program, xxx stands for size in bytes'
-	@$(ECHO) '  LINKER_SCRIPT_FILE=xxx                      - Specify customized linker script, xxx stands for the relative path of linker script file to current directory'
+	@$(ECHO) '  LINKER_SCRIPT_FILE=xxx                      - Specify customized linker script (.ld .lcf), xxx stands for the relative path of linker script file to current directory'
 	@$(ECHO) 'Example Usage:'
 	@$(ECHO) '  make all                                                                - build example in current directory using default configuration'
 	@$(ECHO) '  make BOARD=emsk BD_VER=22 CUR_CORE=arcem7d OLEVEL=O2 TOOLCHAIN=gnu all  - build example using configuration (emsk, 22, arcem7d, O2, gnu)'
