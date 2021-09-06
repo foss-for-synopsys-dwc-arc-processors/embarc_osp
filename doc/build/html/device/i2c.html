@@ -1,39 +1,42 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>I2C HAL &mdash; embARC OSP Project Documentation</title>
   
 
   
-  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
+
   
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="I2S HAL" href="i2s.html" />
@@ -78,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -128,6 +132,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -162,11 +167,13 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="device.html">Devices</a> &raquo;</li>
         
@@ -175,7 +182,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
     
@@ -196,179 +203,220 @@ driver to implement. Here is a diagram for the i2c interface.</p>
 <h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h2>
 <dl class="group">
 <dt>
-<span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT"></span><em>group</em> <code class="sig-name descname">DEVICE_HAL_IIC_DEVSTRUCT</code></dt>
+<span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT"></span><em><span class="pre">group</span></em> <code class="sig-name descname"><span class="pre">DEVICE_HAL_IIC_DEVSTRUCT</span></code></dt>
 <dd><p>contains definitions of iic device structure. </p>
 <p>this structure will be used in user implemented code, which was called Device Driver Implement Layer for iic to realize in user code. </p>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Defines</p>
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="cpp macro">
 <dt id="c.DEV_IIC_INFO_SET_EXTRA_OBJECT">
-<span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT_1ga2b2874f0d63d9be74e65f0cad06c0af4"></span><code class="sig-name descname">DEV_IIC_INFO_SET_EXTRA_OBJECT</code><span class="sig-paren">(</span><em>iic_info_ptr</em>, <em>extra_info</em><span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_IIC_INFO_SET_EXTRA_OBJECT" title="Permalink to this definition">¶</a><br /></dt>
+<span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT_1ga2b2874f0d63d9be74e65f0cad06c0af4"></span><code class="sig-name descname"><span class="pre">DEV_IIC_INFO_SET_EXTRA_OBJECT</span></code><span class="sig-paren">(</span><em><span class="pre">iic_info_ptr</span></em>, <em><span class="pre">extra_info</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_IIC_INFO_SET_EXTRA_OBJECT" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set extra information pointer of iic info </p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt id="c.DEV_IIC_INFO_GET_EXTRA_OBJECT">
-<span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT_1ga8dd9dee0a52f1a8185dae6929530aa18"></span><code class="sig-name descname">DEV_IIC_INFO_GET_EXTRA_OBJECT</code><span class="sig-paren">(</span><em>iic_info_ptr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_IIC_INFO_GET_EXTRA_OBJECT" title="Permalink to this definition">¶</a><br /></dt>
+<span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT_1ga8dd9dee0a52f1a8185dae6929530aa18"></span><code class="sig-name descname"><span class="pre">DEV_IIC_INFO_GET_EXTRA_OBJECT</span></code><span class="sig-paren">(</span><em><span class="pre">iic_info_ptr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_IIC_INFO_GET_EXTRA_OBJECT" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get extra information pointer of iic info </p>
 </dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Typedefs</p>
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
 <dl class="cpp type">
 <dt id="_CPPv412DEV_IIC_INFO">
-<span id="_CPPv312DEV_IIC_INFO"></span><span id="_CPPv212DEV_IIC_INFO"></span><span id="DEV_IIC_INFO"></span><span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT_1ga110fe78b9c1d4bfd1f31bb73d44744a9"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv412dev_iic_info" title="dev_iic_info">dev_iic_info</a> <code class="sig-name descname">DEV_IIC_INFO</code><a class="headerlink" href="#_CPPv412DEV_IIC_INFO" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv312DEV_IIC_INFO"></span><span id="_CPPv212DEV_IIC_INFO"></span><span id="DEV_IIC_INFO"></span><span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT_1ga632cf4a53083659b3c8b800147c9a85e"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv412dev_iic_info" title="dev_iic_info"><span class="pre">dev_iic_info</span></a> <code class="sig-name descname"><span class="pre">DEV_IIC_INFO</span></code><a class="headerlink" href="#_CPPv412DEV_IIC_INFO" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>iic information struct definition </p>
 <p>informations about iic open state, working state, baurate, iic registers, working method, interrupt number </p>
 </dd></dl>
 
 <dl class="cpp type">
 <dt id="_CPPv416DEV_IIC_INFO_PTR">
-<span id="_CPPv316DEV_IIC_INFO_PTR"></span><span id="_CPPv216DEV_IIC_INFO_PTR"></span><span id="DEV_IIC_INFO_PTR"></span><span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT_1ga3619e50175db786fa7579933f744d832"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv412dev_iic_info" title="dev_iic_info">dev_iic_info</a> *<code class="sig-name descname">DEV_IIC_INFO_PTR</code><a class="headerlink" href="#_CPPv416DEV_IIC_INFO_PTR" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv316DEV_IIC_INFO_PTR"></span><span id="_CPPv216DEV_IIC_INFO_PTR"></span><span id="DEV_IIC_INFO_PTR"></span><span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT_1ga3619e50175db786fa7579933f744d832"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv412dev_iic_info" title="dev_iic_info"><span class="pre">dev_iic_info</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">DEV_IIC_INFO_PTR</span></code><a class="headerlink" href="#_CPPv416DEV_IIC_INFO_PTR" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp type">
 <dt id="_CPPv47DEV_IIC">
-<span id="_CPPv37DEV_IIC"></span><span id="_CPPv27DEV_IIC"></span><span id="DEV_IIC"></span><span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT_1gaf976c496ff5f91bfaa0eeb8383fbdd5a"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv47dev_iic" title="dev_iic">dev_iic</a> <code class="sig-name descname">DEV_IIC</code><a class="headerlink" href="#_CPPv47DEV_IIC" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv37DEV_IIC"></span><span id="_CPPv27DEV_IIC"></span><span id="DEV_IIC"></span><span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT_1ga0c9427f84de35587d8950e3a3d1ad1d8"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv47dev_iic" title="dev_iic"><span class="pre">dev_iic</span></a> <code class="sig-name descname"><span class="pre">DEV_IIC</span></code><a class="headerlink" href="#_CPPv47DEV_IIC" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>iic device interface definition </p>
-<p>define iic device interface, like iic information structure, fuctions to get iic info, open/close/control iic, send/receive data by iic <dl class="simple">
-<dt><strong>Note</strong></dt><dd><p>all this details are implemented by user in user porting code </p>
-</dd>
-</dl>
-</p>
+<p>define iic device interface, like iic information structure, fuctions to get iic info, open/close/control iic, send/receive data by iic </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>all this details are implemented by user in user porting code </p>
+</div>
 </dd></dl>
 
 <dl class="cpp type">
 <dt id="_CPPv411DEV_IIC_PTR">
-<span id="_CPPv311DEV_IIC_PTR"></span><span id="_CPPv211DEV_IIC_PTR"></span><span id="DEV_IIC_PTR"></span><span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT_1ga7f9c19c2e162712a47fb0f61e269d6ae"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv47dev_iic" title="dev_iic">dev_iic</a> *<code class="sig-name descname">DEV_IIC_PTR</code><a class="headerlink" href="#_CPPv411DEV_IIC_PTR" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv311DEV_IIC_PTR"></span><span id="_CPPv211DEV_IIC_PTR"></span><span id="DEV_IIC_PTR"></span><span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT_1ga7f9c19c2e162712a47fb0f61e269d6ae"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv47dev_iic" title="dev_iic"><span class="pre">dev_iic</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">DEV_IIC_PTR</span></code><a class="headerlink" href="#_CPPv411DEV_IIC_PTR" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Variables</p>
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-variables">Variables</p>
 <dl class="cpp var">
 <dt id="_CPPv48iic_open">
-<span id="_CPPv38iic_open"></span><span id="_CPPv28iic_open"></span><span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT_1ga0d6e561d2179ad140a99cc270d4ae958"></span>int32_t (*<code class="sig-name descname">iic_open</code>)<span class="sig-paren">(</span>uint32_t mode, uint32_t param<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48iic_open" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv38iic_open"></span><span id="_CPPv28iic_open"></span><span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT_1ga0d6e561d2179ad140a99cc270d4ae958"></span><span class="pre">int32_t</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">iic_open</span></code><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">uint32_t</span> <span class="pre">mode</span>, <span class="pre">uint32_t</span> <span class="pre">param</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48iic_open" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>open iic device in master/slave mode, \ when in master mode, param stands for speed mode, \ when in slave mode, param stands for slave address</p>
-<p>open an iic device with selected mode (master or slave) with defined param <dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">mode</span></code>: working mode (master or slave) </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">param</span></code>: When mode is DEV_MASTER_MODE, param stands for speed mode, when mode is DEV_SLAVE_MODE, param stands for slave device 7bit address </p></li>
+<p>open an iic device with selected mode (master or slave) with defined param </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> – <strong>[in]</strong> working mode (master or slave) </p></li>
+<li><p><strong>param</strong> – <strong>[in]</strong> When mode is DEV_MASTER_MODE, param stands for speed mode, when mode is DEV_SLAVE_MODE, param stands for slave device 7bit address </p></li>
 </ul>
 </dd>
-<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Open successfully without any issues </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: If device was opened before with different parameters, then just increase the opn_cnt and return E_OPNED </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Device is opened for different mode before, if you want to open it with different mode, you need to fully close it first. </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_NOSPT</span></code>: Open settings are not supported </p></li>
-</ul>
+<dt class="field-even">Returns E_OK</dt>
+<dd class="field-even"><p>Open successfully without any issues </p>
+</dd>
+<dt class="field-odd">Returns E_OPNED</dt>
+<dd class="field-odd"><p>If device was opened before with different parameters, then just increase the opn_cnt and return E_OPNED </p>
+</dd>
+<dt class="field-even">Returns E_OBJ</dt>
+<dd class="field-even"><p>Device object is not valid </p>
+</dd>
+<dt class="field-odd">Returns E_SYS</dt>
+<dd class="field-odd"><p>Device is opened for different mode before, if you want to open it with different mode, you need to fully close it first. </p>
+</dd>
+<dt class="field-even">Returns E_PAR</dt>
+<dd class="field-even"><p>Parameter is not valid </p>
+</dd>
+<dt class="field-odd">Returns E_NOSPT</dt>
+<dd class="field-odd"><p>Open settings are not supported </p>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 <dl class="cpp var">
 <dt id="_CPPv49iic_close">
-<span id="_CPPv39iic_close"></span><span id="_CPPv29iic_close"></span><span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT_1ga0bcfec862c7286995496cd125b0192e2"></span>int32_t (*<code class="sig-name descname">iic_close</code>)<span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49iic_close" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv39iic_close"></span><span id="_CPPv29iic_close"></span><span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT_1ga0bcfec862c7286995496cd125b0192e2"></span><span class="pre">int32_t</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">iic_close</span></code><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49iic_close" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>close iic device</p>
-<p>close an iic device, just decrease the opn_cnt, if opn_cnt equals 0, then close the device <dl class="simple">
-<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Close successfully without any issues(including scenario that device is already closed) </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: Device is still opened, the device opn_cnt decreased by 1 </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid </p></li>
-</ul>
+<p>close an iic device, just decrease the opn_cnt, if opn_cnt equals 0, then close the device </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns E_OK</dt>
+<dd class="field-odd"><p>Close successfully without any issues(including scenario that device is already closed) </p>
+</dd>
+<dt class="field-even">Returns E_OPNED</dt>
+<dd class="field-even"><p>Device is still opened, the device opn_cnt decreased by 1 </p>
+</dd>
+<dt class="field-odd">Returns E_OBJ</dt>
+<dd class="field-odd"><p>Device object is not valid </p>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 <dl class="cpp var">
 <dt id="_CPPv411iic_control">
-<span id="_CPPv311iic_control"></span><span id="_CPPv211iic_control"></span><span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT_1gae81e4eb8e99d15f417da9f63bf7fe7fd"></span>int32_t (*<code class="sig-name descname">iic_control</code>)<span class="sig-paren">(</span>uint32_t ctrl_cmd, void *param<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411iic_control" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv311iic_control"></span><span id="_CPPv211iic_control"></span><span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT_1gae81e4eb8e99d15f417da9f63bf7fe7fd"></span><span class="pre">int32_t</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">iic_control</span></code><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">uint32_t</span> <span class="pre">ctrl_cmd</span>, <span class="pre">void</span> <span class="pre">*</span><span class="pre">param</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411iic_control" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>control iic device</p>
-<p>control an iic device by ctrl_cmd, with passed param. you can control iic device using predefined iic control commands defined using DEV_SET_SYSCMD (which must be implemented by bsp developer), such as set iic speed mode, flush tx and more. And you can also control iic device using your own specified commands defined using DEV_SET_USRCMD, but these specified commands should be defined in your own iic device driver implementation. <dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">ctrl_cmd</span></code>: control command, to change or get some thing related to iic </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[inout]</span> <span class="pre">param</span></code>: parameters that maybe argument of the command, or return values of the command, must not be NULL </p></li>
+<p>control an iic device by ctrl_cmd, with passed param. you can control iic device using predefined iic control commands defined using DEV_SET_SYSCMD (which must be implemented by bsp developer), such as set iic speed mode, flush tx and more. And you can also control iic device using your own specified commands defined using DEV_SET_USRCMD, but these specified commands should be defined in your own iic device driver implementation. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ctrl_cmd</strong> – <strong>[in]</strong> control command, to change or get some thing related to iic </p></li>
+<li><p><strong>param</strong> – <strong>[inout]</strong> parameters that maybe argument of the command, or return values of the command, must not be NULL </p></li>
 </ul>
 </dd>
-<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Control device successfully </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_CLSED</span></code>: Device is not opened </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid for current control command </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Control device failed, due to hardware issues, such as device is disabled </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Control device failed, due to different reasons like in transfer state </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_NOSPT</span></code>: Control command is not supported or not valid </p></li>
-</ul>
+<dt class="field-even">Returns E_OK</dt>
+<dd class="field-even"><p>Control device successfully </p>
+</dd>
+<dt class="field-odd">Returns E_CLSED</dt>
+<dd class="field-odd"><p>Device is not opened </p>
+</dd>
+<dt class="field-even">Returns E_OBJ</dt>
+<dd class="field-even"><p>Device object is not valid or not exists </p>
+</dd>
+<dt class="field-odd">Returns E_PAR</dt>
+<dd class="field-odd"><p>Parameter is not valid for current control command </p>
+</dd>
+<dt class="field-even">Returns E_SYS</dt>
+<dd class="field-even"><p>Control device failed, due to hardware issues, such as device is disabled </p>
+</dd>
+<dt class="field-odd">Returns E_CTX</dt>
+<dd class="field-odd"><p>Control device failed, due to different reasons like in transfer state </p>
+</dd>
+<dt class="field-even">Returns E_NOSPT</dt>
+<dd class="field-even"><p>Control command is not supported or not valid </p>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 <dl class="cpp var">
 <dt id="_CPPv49iic_write">
-<span id="_CPPv39iic_write"></span><span id="_CPPv29iic_write"></span><span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT_1gac8d366fcedfd479e5f00c4680e89e2c6"></span>int32_t (*<code class="sig-name descname">iic_write</code>)<span class="sig-paren">(</span><em class="property">const</em> void *data, uint32_t len<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49iic_write" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv39iic_write"></span><span id="_CPPv29iic_write"></span><span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT_1gac8d366fcedfd479e5f00c4680e89e2c6"></span><span class="pre">int32_t</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">iic_write</span></code><span class="pre">)</span><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><span class="pre">data</span>, <span class="pre">uint32_t</span> <span class="pre">len</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49iic_write" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>send data by iic device (blocking method)</p>
-<p>send data through iic with defined len to slave device which slave address is slv_addr. <dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">data</span></code>: pointer to data need to send by iic </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">len</span></code>: length of data to be sent </p></li>
+<p>send data through iic with defined len to slave device which slave address is slv_addr. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – <strong>[in]</strong> pointer to data need to send by iic </p></li>
+<li><p><strong>len</strong> – <strong>[in]</strong> length of data to be sent </p></li>
 </ul>
 </dd>
-<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;0</span></code>: Byte count that was successfully sent for poll method, it might can’t send that much due to different error state. </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Device is still in transfer state </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Can’t write data to hardware due to hardware issues, such as device is disabled </p></li>
-</ul>
+<dt class="field-even">Returns &gt;0</dt>
+<dd class="field-even"><p>Byte count that was successfully sent for poll method, it might can’t send that much due to different error state. </p>
+</dd>
+<dt class="field-odd">Returns E_OBJ</dt>
+<dd class="field-odd"><p>Device object is not valid or not exists </p>
+</dd>
+<dt class="field-even">Returns E_PAR</dt>
+<dd class="field-even"><p>Parameter is not valid </p>
+</dd>
+<dt class="field-odd">Returns E_CTX</dt>
+<dd class="field-odd"><p>Device is still in transfer state </p>
+</dd>
+<dt class="field-even">Returns E_SYS</dt>
+<dd class="field-even"><p>Can’t write data to hardware due to hardware issues, such as device is disabled </p>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 <dl class="cpp var">
 <dt id="_CPPv48iic_read">
-<span id="_CPPv38iic_read"></span><span id="_CPPv28iic_read"></span><span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT_1gaf907d1ec86dd20714b655241f9804adb"></span>int32_t (*<code class="sig-name descname">iic_read</code>)<span class="sig-paren">(</span>void *data, uint32_t len<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48iic_read" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv38iic_read"></span><span id="_CPPv28iic_read"></span><span class="target" id="group__DEVICE__HAL__IIC__DEVSTRUCT_1gaf907d1ec86dd20714b655241f9804adb"></span><span class="pre">int32_t</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">iic_read</span></code><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><span class="pre">data</span>, <span class="pre">uint32_t</span> <span class="pre">len</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48iic_read" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>read data from iic device (blocking method)</p>
-<p>receive data of defined len through iic from slave device which slave address is slv_addr. <dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[out]</span> <span class="pre">data</span></code>: pointer to data need to received by iic </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">len</span></code>: length of data to be received </p></li>
+<p>receive data of defined len through iic from slave device which slave address is slv_addr. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – <strong>[out]</strong> pointer to data need to received by iic </p></li>
+<li><p><strong>len</strong> – <strong>[in]</strong> length of data to be received </p></li>
 </ul>
 </dd>
-<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;0</span></code>: Byte count that was successfully received for poll method, it might can’t send that much due to different error state. </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Device is still in transfer state </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Can’t receive data from hardware due to hardware issues, such as device is disabled </p></li>
-</ul>
+<dt class="field-even">Returns &gt;0</dt>
+<dd class="field-even"><p>Byte count that was successfully received for poll method, it might can’t send that much due to different error state. </p>
+</dd>
+<dt class="field-odd">Returns E_OBJ</dt>
+<dd class="field-odd"><p>Device object is not valid or not exists </p>
+</dd>
+<dt class="field-even">Returns E_CTX</dt>
+<dd class="field-even"><p>Device is still in transfer state </p>
+</dd>
+<dt class="field-odd">Returns E_PAR</dt>
+<dd class="field-odd"><p>Parameter is not valid </p>
+</dd>
+<dt class="field-even">Returns E_SYS</dt>
+<dd class="field-even"><p>Can’t receive data from hardware due to hardware issues, such as device is disabled </p>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 </div>
 <dl class="cpp struct">
 <dt id="_CPPv412dev_iic_info">
-<span id="_CPPv312dev_iic_info"></span><span id="_CPPv212dev_iic_info"></span><span id="dev_iic_info"></span><span class="target" id="structdev__iic__info"></span><em class="property">struct </em><code class="sig-name descname">dev_iic_info</code><a class="headerlink" href="#_CPPv412dev_iic_info" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv312dev_iic_info"></span><span id="_CPPv212dev_iic_info"></span><span id="dev_iic_info"></span><span class="target" id="structdev__iic__info"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">dev_iic_info</span></code><a class="headerlink" href="#_CPPv412dev_iic_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><em>#include &lt;dev_iic.h&gt;</em><p>iic information struct definition </p>
 <p>informations about iic open state, working state, baurate, iic registers, working method, interrupt number </p>
 </dd></dl>
 
 <dl class="cpp struct">
 <dt id="_CPPv47dev_iic">
-<span id="_CPPv37dev_iic"></span><span id="_CPPv27dev_iic"></span><span id="dev_iic"></span><span class="target" id="structdev__iic"></span><em class="property">struct </em><code class="sig-name descname">dev_iic</code><a class="headerlink" href="#_CPPv47dev_iic" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv37dev_iic"></span><span id="_CPPv27dev_iic"></span><span id="dev_iic"></span><span class="target" id="structdev__iic"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">dev_iic</span></code><a class="headerlink" href="#_CPPv47dev_iic" title="Permalink to this definition">¶</a><br /></dt>
 <dd><em>#include &lt;dev_iic.h&gt;</em><p>iic device interface definition </p>
-<p>define iic device interface, like iic information structure, fuctions to get iic info, open/close/control iic, send/receive data by iic <dl class="simple">
-<dt><strong>Note</strong></dt><dd><p>all this details are implemented by user in user porting code </p>
-</dd>
-</dl>
+<p>define iic device interface, like iic information structure, fuctions to get iic info, open/close/control iic, send/receive data by iic <div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>all this details are implemented by user in user porting code </p>
+</div>
 </p>
 </dd></dl>
 
@@ -382,22 +430,20 @@ driver to implement. Here is a diagram for the i2c interface.</p>
            
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Synopsys
+        &#169; Copyright 2019, Synopsys.
       <span class="lastupdated">
-        Last updated on Aug 04, 2021.
+        Last updated on Sep 06, 2021.
       </span>
 
     </p>
   </div> 
 
 </footer>
-
         </div>
       </div>
 
@@ -405,7 +451,6 @@ driver to implement. Here is a diagram for the i2c interface.</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

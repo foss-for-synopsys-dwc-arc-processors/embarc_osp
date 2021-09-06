@@ -1,77 +1,78 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
-  <compounddef id="emsk_2drivers_2ntshell_2ntshell__io__uart_8c" kind="file">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="emsk_2drivers_2ntshell_2ntshell__io__uart_8c" kind="file" language="C++">
     <compoundname>ntshell_io_uart.c</compoundname>
     <includes refid="embARC__toolchain_8h" local="yes">embARC_toolchain.h</includes>
     <includes refid="embARC__error_8h" local="yes">embARC_error.h</includes>
     <includes local="no">stdarg.h</includes>
     <incdepgraph>
-      <node id="2229">
+      <node id="6">
         <label>stdbool.h</label>
       </node>
-      <node id="2232">
-        <label>arc/arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="2233" relation="include">
-        </childnode>
-      </node>
-      <node id="2234">
+      <node id="11">
         <label>stdarg.h</label>
       </node>
-      <node id="2231">
-        <label>arc/arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="2225" relation="include">
-        </childnode>
-        <childnode refid="2232" relation="include">
-        </childnode>
-      </node>
-      <node id="2224">
-        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ntshell/ntshell_io_uart.c</label>
-        <link refid="emsk/drivers/ntshell/ntshell_io_uart.c"/>
-        <childnode refid="2225" relation="include">
-        </childnode>
-        <childnode refid="2230" relation="include">
-        </childnode>
-        <childnode refid="2234" relation="include">
-        </childnode>
-      </node>
-      <node id="2226">
+      <node id="3">
         <label>stdint.h</label>
       </node>
-      <node id="2228">
+      <node id="9">
+        <label>arc/arc.h</label>
+        <link refid="arc_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/embarc_osp/embarc_osp/board/emsk/drivers/ntshell/ntshell_io_uart.c</label>
+        <link refid="emsk_2drivers_2ntshell_2ntshell__io__uart_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
         <label>stddef.h</label>
       </node>
-      <node id="2225">
-        <label>embARC_toolchain.h</label>
-        <link refid="embARC__toolchain_8h"/>
-        <childnode refid="2226" relation="include">
+      <node id="8">
+        <label>arc/arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="2227" relation="include">
-        </childnode>
-        <childnode refid="2228" relation="include">
-        </childnode>
-        <childnode refid="2229" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="2227">
+      <node id="4">
         <label>limits.h</label>
       </node>
-      <node id="2233">
+      <node id="7">
+        <label>embARC_error.h</label>
+        <link refid="embARC__error_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
         <label>arc/arc_feature_config.h</label>
         <link refid="arc__feature__config_8h"/>
       </node>
-      <node id="2230">
-        <label>embARC_error.h</label>
-        <link refid="embARC__error_8h"/>
-        <childnode refid="2226" relation="include">
+      <node id="2">
+        <label>embARC_toolchain.h</label>
+        <link refid="embARC__toolchain_8h"/>
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="2231" relation="include">
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <briefdescription>
-<para>middleware ntshell io uart interface driver </para>    </briefdescription>
+<para>middleware ntshell io uart interface driver </para>
+    </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <programlisting>
@@ -109,8 +110,8 @@
 <codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="embARC__error_8h" kindref="compound">embARC_error.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdarg.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MID_NTSHELL<sp/></highlight><highlight class="comment">/*<sp/>only<sp/>available<sp/>when<sp/>enable<sp/>ntshell<sp/>middleware<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="55"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dev__uart_8h" kindref="compound">device/ip_hal/dev_uart.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MID_NTSHELL<sp/></highlight><highlight class="comment">/*<sp/>only<sp/>available<sp/>when<sp/>enable<sp/>ntshell<sp/>middleware<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dev__uart_8h" kindref="compound">device/ip_hal/dev_uart.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;xprintf.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ntshell_io_uart.h&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -118,12 +119,12 @@
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>
 <codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="board_8h" kindref="compound">board.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="62"><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>ENABLE_OS</highlight></codeline>
-<codeline lineno="64"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="os__hal__inc_8h" kindref="compound">os_hal_inc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="66"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EMSK_NTSHELL_UART_CHECK_EXP(EXPR,<sp/>ERROR_CODE)<sp/><sp/><sp/>CHECK_EXP(EXPR,<sp/>ercd,<sp/>ERROR_CODE,<sp/>error_exit)</highlight></codeline>
-<codeline lineno="68"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>ENABLE_OS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="os__hal__inc_8h" kindref="compound">os_hal_inc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EMSK_NTSHELL_UART_CHECK_EXP(EXPR,<sp/>ERROR_CODE)<sp/><sp/><sp/>CHECK_EXP(EXPR,<sp/>ercd,<sp/>ERROR_CODE,<sp/>error_exit)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">ntshell_io_uart<sp/>NTSHELL_IO_UART,<sp/>*NTSHELL_IO_UART_PTR;</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
 <codeline lineno="71"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">ntshell_io_uart<sp/>{</highlight></codeline>
@@ -179,10 +180,10 @@
 <codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buf<sp/>=<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(((uint32_t)buf)<sp/>+<sp/>rd_avail);</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cnt<sp/>-=<sp/>rd_avail;</highlight></codeline>
 <codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>OS_FREERTOS</highlight></codeline>
-<codeline lineno="125"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vTaskDelay(5);</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="127"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>OS_FREERTOS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vTaskDelay(5);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(cnt<sp/>&gt;<sp/>0);</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"></highlight></codeline>
 <codeline lineno="130"><highlight class="normal">error_exit:</highlight></codeline>
@@ -232,7 +233,7 @@
 <codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="175"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_uart_write_byte(NTSHELL_IO_UART<sp/>*nt_uart,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>byte)</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_uart_write_byte(NTSHELL_IO_UART<sp/>*nt_uart,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="178"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group__EMBARC__ERROR_ga1e7cc741c56207a8872ea58373276925_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
 <codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structdev__uart" kindref="compound">DEV_UART</ref><sp/>*uart_dev;</highlight></codeline>
@@ -242,14 +243,14 @@
 <codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>uart_dev<sp/>=<sp/><ref refid="group__DEVICE__HAL__UART_gade938afe2174b43b8522bf05cdcb1202_1gade938afe2174b43b8522bf05cdcb1202" kindref="member">uart_get_dev</ref>(nt_uart-&gt;uart_id);</highlight></codeline>
 <codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>EMSK_NTSHELL_UART_CHECK_EXP(uart_dev<sp/>!=<sp/>NULL,<sp/><ref refid="group__EMBARC__ERROR_ga28d0303b78b18735ae91a99ecc11bc8e_1ga28d0303b78b18735ae91a99ecc11bc8e" kindref="member">E_PAR</ref>);</highlight></codeline>
 <codeline lineno="186"><highlight class="normal"></highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>uart_dev-&gt;<ref refid="group__DEVICE__HAL__UART__DEVSTRUCT_gadb3f65e65636442af53578c64f2ea2a4_1gadb3f65e65636442af53578c64f2ea2a4" kindref="member">uart_write</ref>((</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)&amp;byte,<sp/>1);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>uart_dev-&gt;<ref refid="group__DEVICE__HAL__UART__DEVSTRUCT_gadb3f65e65636442af53578c64f2ea2a4_1gadb3f65e65636442af53578c64f2ea2a4" kindref="member">uart_write</ref>((</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)&amp;</highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">,<sp/>1);</highlight></codeline>
 <codeline lineno="188"><highlight class="normal"></highlight></codeline>
 <codeline lineno="189"><highlight class="normal">error_exit:</highlight></codeline>
 <codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="191"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="192"><highlight class="normal"></highlight></codeline>
-<codeline lineno="193"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>USE_EMSK_NTSHELL_UART_1</highlight></codeline>
-<codeline lineno="194"><highlight class="preprocessor"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>ntshell_uart_1_nt_ioinit(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>USE_EMSK_NTSHELL_UART_1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>ntshell_uart_1_nt_ioinit(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="195"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ntshell_uart_nt_ioinit(&amp;ntshell_uart_1);</highlight></codeline>
 <codeline lineno="197"><highlight class="normal">}</highlight></codeline>
@@ -273,7 +274,7 @@
 <codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>va_end(arp);</highlight></codeline>
 <codeline lineno="216"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="217"><highlight class="normal"></highlight></codeline>
-<codeline lineno="218"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_uart_1_write_byte(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>byte);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_uart_1_write_byte(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="219"><highlight class="normal"></highlight></codeline>
 <codeline lineno="220"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>ntshell_t<sp/>uart_ntshell_1;</highlight></codeline>
 <codeline lineno="221"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>NTSHELL_IO_UART<sp/>ntshell_uart_1_info<sp/>=<sp/>{</highlight></codeline>
@@ -281,9 +282,9 @@
 <codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>ntshell_uart_1_write_byte</highlight></codeline>
 <codeline lineno="224"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="225"><highlight class="normal"></highlight></codeline>
-<codeline lineno="226"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_uart_1_write_byte(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>byte)</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_uart_1_write_byte(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="227"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>ntshell_uart_write_byte(&amp;ntshell_uart_1_info,<sp/>byte);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>ntshell_uart_write_byte(&amp;ntshell_uart_1_info,<sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="229"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="230"><highlight class="normal"></highlight></codeline>
 <codeline lineno="231"><highlight class="normal">NTSHELL_IO<sp/>ntshell_uart_1<sp/>=<sp/>{</highlight></codeline>
@@ -301,6 +302,6 @@
 <codeline lineno="243"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight></codeline>
 <codeline lineno="245"><highlight class="preprocessor">#endif<sp/><sp/></highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ntshell/ntshell_io_uart.c"/>
+    <location file="/home/runner/work/embarc_osp/embarc_osp/board/emsk/drivers/ntshell/ntshell_io_uart.c"/>
   </compounddef>
 </doxygen>

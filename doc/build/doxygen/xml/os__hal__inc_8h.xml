@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
-  <compounddef id="os__hal__inc_8h" kind="file">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="os__hal__inc_8h" kind="file" language="C++">
     <compoundname>os_hal_inc.h</compoundname>
       <sectiondef kind="define">
       <memberdef kind="define" id="group__OS__HAL__INC_ga3b32ebc1e3ed73a5e8a20a27176e0e94_1ga3b32ebc1e3ed73a5e8a20a27176e0e94" prot="public" static="no">
@@ -9,15 +9,18 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="note"><para>the following macros must use the same name, because they are used by middleware and other applicationsglobal macros that may need </para></simplesect>
-</para>        </detaileddescription>
+<para><simplesect kind="note"><para>the following macros must use the same name, because they are used by middleware and other applications global macros that may need </para>
+</simplesect>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/os/hal/inc/os_hal_inc.h" line="75" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/os/hal/inc/os_hal_inc.h" bodystart="75" bodyend="-1"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/os/hal/inc/os_hal_inc.h" line="75" column="9" bodyfile="/home/runner/work/embarc_osp/embarc_osp/os/hal/inc/os_hal_inc.h" bodystart="75" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>os hal header file </para>    </briefdescription>
+<para>os hal header file </para>
+    </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <programlisting>
@@ -51,10 +54,10 @@
 <codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
 <codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/>---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="preprocessor">#ifdef<sp/>ENABLE_OS</highlight></codeline>
-<codeline lineno="47"><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="49"><highlight class="preprocessor">#ifdef<sp/>OS_FREERTOS</highlight></codeline>
-<codeline lineno="50"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="46"><highlight class="preprocessor">#ifdef<sp/>ENABLE_OS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor">#ifdef<sp/>OS_FREERTOS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="preprocessor">#include<sp/>&quot;FreeRTOS.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;croutine.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;event_groups.h&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -71,17 +74,17 @@
 <codeline lineno="64"><highlight class="normal"></highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc_freertos_exceptions.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="preprocessor">#define<sp/>os_hal_exc_init()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>freertos_exc_init()</highlight></codeline>
-<codeline lineno="69"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>OS_FREERTOS<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="71"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#else<sp/></highlight><highlight class="comment">/*<sp/>NO<sp/>OS<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="73"><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="75" refid="group__OS__HAL__INC_ga3b32ebc1e3ed73a5e8a20a27176e0e94_1ga3b32ebc1e3ed73a5e8a20a27176e0e94" refkind="member"><highlight class="preprocessor">#define<sp/>os_hal_exc_init()</highlight></codeline>
-<codeline lineno="76"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>ENABLE_OS<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="78"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/></highlight><highlight class="comment">/*<sp/>OS_HAL_INC<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor">#define<sp/>os_hal_exc_init()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>freertos_exc_init()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>OS_FREERTOS<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#else<sp/></highlight><highlight class="comment">/*<sp/>NO<sp/>OS<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="group__OS__HAL__INC_ga3b32ebc1e3ed73a5e8a20a27176e0e94_1ga3b32ebc1e3ed73a5e8a20a27176e0e94" refkind="member"><highlight class="preprocessor">#define<sp/>os_hal_exc_init()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>ENABLE_OS<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/></highlight><highlight class="comment">/*<sp/>OS_HAL_INC<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/os/hal/inc/os_hal_inc.h"/>
+    <location file="/home/runner/work/embarc_osp/embarc_osp/os/hal/inc/os_hal_inc.h"/>
   </compounddef>
 </doxygen>

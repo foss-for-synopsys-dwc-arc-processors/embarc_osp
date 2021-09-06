@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="group__BOARD__COMMON" kind="group">
     <compoundname>BOARD_COMMON</compoundname>
     <title>Common Definitions</title>
@@ -14,13 +14,18 @@
           <type>void</type>
         </param>
         <briefdescription>
-<para>Board init routine MUST be called in each application. </para>        </briefdescription>
+<para>Board init routine MUST be called in each application. </para>
+        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="note"><para>the following macros must use the same name, because they are used by middleware and other applicationshere is a sample of EMSK board resource definitions you can add your board configuration as BOARD_EMSK defined up nsim related definition</para><simplesectsep/><para>It is better to disable interrupts when calling this function remember to enable interrupt when you want to use them </para></simplesect>
-</para>        </detaileddescription>
+<para><simplesect kind="note"><para>the following macros must use the same name, because they are used by middleware and other applications here is a sample of EMSK board resource definitions you can add your board configuration as BOARD_EMSK defined up nsim related definition</para>
+</simplesect>
+<simplesect kind="note"><para>It is better to disable interrupts when calling this function remember to enable interrupt when you want to use them </para>
+</simplesect>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="86" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/axs/common/axs_init.c" bodystart="38" bodyend="42"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/board/board.h" line="86" column="13" bodyfile="/home/runner/work/embarc_osp/embarc_osp/board/axs/common/axs_init.c" bodystart="38" bodyend="42" declfile="/home/runner/work/embarc_osp/embarc_osp/board/board.h" declline="86" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="group__BOARD__COMMON_1ga2d400eb191882aeb5b35143ffe7ea9ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -32,20 +37,25 @@
           <declname>precision</declname>
         </param>
         <briefdescription>
-<para>Update timer counter and other MS period operation in cycling interrupt and must be called periodically. </para>        </briefdescription>
+<para>Update timer counter and other MS period operation in cycling interrupt and must be called periodically. </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>precision</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>interrupt-period precision in Hz </para></parameterdescription>
+<para>interrupt-period precision in Hz </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
-<para>count sys hz</para><para>count ms </para>        </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="87" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.c" bodystart="344" bodyend="365"/>
+<para>count sys hz</para>
+<para>count ms</para>
+        </inbodydescription>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/board/board.h" line="87" column="13" bodyfile="/home/runner/work/embarc_osp/embarc_osp/board/board.c" bodystart="344" bodyend="365" declfile="/home/runner/work/embarc_osp/embarc_osp/board/board.h" declline="87" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="group__BOARD__COMMON_1gadf80b95e6ceb5c1014e3e1a6f243fe8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -61,32 +71,31 @@
           <declname>os_compat</declname>
         </param>
         <briefdescription>
-<para>provide MS delay function </para>        </briefdescription>
+<para>provide MS delay function </para>
+        </briefdescription>
         <detaileddescription>
-<para><verbatim>    this function needs a 1-MS timer interrupt to work.
-For bare-metal, it is implemented in this file.
-For OS, you must call @ref board_timer_update in
-the OS 1-MS timer interrupt when the bare-metal timer interrupt
-is not ready
-</verbatim> <parameterlist kind="param"><parameteritem>
+<para>this function needs a 1-MS timer interrupt to work. For bare-metal, it is implemented in this file. For OS, you must call <ref refid="group__BOARD__COMMON_ga2d400eb191882aeb5b35143ffe7ea9ef_1ga2d400eb191882aeb5b35143ffe7ea9ef" kindref="member">board_timer_update</ref> in the OS 1-MS timer interrupt when the bare-metal timer interrupt is not ready <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">ms</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>MS to delay </para></parameterdescription>
+<para>MS to delay </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername direction="in">os_compat</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Enable or disable When this delay is enabled, use the OS delay function, if one is provided. See <ref refid="group__BOARD__COMMON_ga0925d758144e37de4158bb2faadea9e9_1ga0925d758144e37de4158bb2faadea9e9" kindref="member">OSP_DELAY_OS_COMPAT_ENABLE</ref> and <ref refid="group__BOARD__COMMON_ga0a78908e297806f4ae43488e59f3e682_1ga0a78908e297806f4ae43488e59f3e682" kindref="member">OSP_DELAY_OS_COMPAT_DISABLE</ref> </para></parameterdescription>
+<para>Enable or disable When this delay is enabled, use the OS delay function, if one is provided. See <ref refid="group__BOARD__COMMON_ga0925d758144e37de4158bb2faadea9e9_1ga0925d758144e37de4158bb2faadea9e9" kindref="member">OSP_DELAY_OS_COMPAT_ENABLE</ref> and <ref refid="group__BOARD__COMMON_ga0a78908e297806f4ae43488e59f3e682_1ga0a78908e297806f4ae43488e59f3e682" kindref="member">OSP_DELAY_OS_COMPAT_DISABLE</ref> </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="88" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.c" bodystart="433" bodyend="451"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/board/board.h" line="88" column="13" bodyfile="/home/runner/work/embarc_osp/embarc_osp/board/board.c" bodystart="433" bodyend="451" declfile="/home/runner/work/embarc_osp/embarc_osp/board/board.h" declline="88" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="group__BOARD__COMMON_1gac019f96ffa35670f7013ab1e3c91b230" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint64_t</type>
@@ -97,20 +106,23 @@ is not ready
           <type>void</type>
         </param>
         <briefdescription>
-<para>Get current timer&apos;s counter value in ticks. </para>        </briefdescription>
+<para>Get current timer&apos;s counter value in ticks. </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="retval"><parameteritem>
 <parameternamelist>
 <parametername>Ticks</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>count in 64 bit format </para></parameterdescription>
+<para>count in 64 bit format </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="89" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.c" bodystart="371" bodyend="382"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/board/board.h" line="89" column="17" bodyfile="/home/runner/work/embarc_osp/embarc_osp/board/board.c" bodystart="371" bodyend="382" declfile="/home/runner/work/embarc_osp/embarc_osp/board/board.h" declline="89" declcolumn="17"/>
       </memberdef>
       <memberdef kind="function" id="group__BOARD__COMMON_1gac804f2adaefaef9ae3d123dbe4abb123" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint64_t</type>
@@ -121,20 +133,23 @@ is not ready
           <type>void</type>
         </param>
         <briefdescription>
-<para>Get current passed us since timer init. </para>        </briefdescription>
+<para>Get current passed us since timer init. </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="retval"><parameteritem>
 <parameternamelist>
 <parametername>us</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Count in 64 bit format </para></parameterdescription>
+<para>Count in 64 bit format </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="90" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.c" bodystart="388" bodyend="399"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/board/board.h" line="90" column="17" bodyfile="/home/runner/work/embarc_osp/embarc_osp/board/board.c" bodystart="388" bodyend="399" declfile="/home/runner/work/embarc_osp/embarc_osp/board/board.h" declline="90" declcolumn="17"/>
       </memberdef>
       <memberdef kind="function" id="group__BOARD__COMMON_1gad78111cf910063b70a901aa3fbcf7c86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint64_t</type>
@@ -145,20 +160,23 @@ is not ready
           <type>void</type>
         </param>
         <briefdescription>
-<para>Get board timer counter in timer interrupt. </para>        </briefdescription>
+<para>Get board timer counter in timer interrupt. </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="retval"><parameteritem>
 <parameternamelist>
 <parametername>Count</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>in 64 bit format </para></parameterdescription>
+<para>in 64 bit format </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="91" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.c" bodystart="414" bodyend="417"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/board/board.h" line="91" column="17" bodyfile="/home/runner/work/embarc_osp/embarc_osp/board/board.c" bodystart="414" bodyend="417" declfile="/home/runner/work/embarc_osp/embarc_osp/board/board.h" declline="91" declcolumn="17"/>
       </memberdef>
       <memberdef kind="function" id="group__BOARD__COMMON_1ga0a2cbc20d3612af27543fde270ad862c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -169,20 +187,23 @@ is not ready
           <type>void</type>
         </param>
         <briefdescription>
-<para>Get current passed ms since timer init. </para>        </briefdescription>
+<para>Get current passed ms since timer init. </para>
+        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="retval"><parameteritem>
 <parameternamelist>
 <parametername>ms</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Count in 32 bit format </para></parameterdescription>
+<para>Count in 32 bit format </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="92" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.c" bodystart="405" bodyend="408"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/board/board.h" line="92" column="17" bodyfile="/home/runner/work/embarc_osp/embarc_osp/board/board.c" bodystart="405" bodyend="408" declfile="/home/runner/work/embarc_osp/embarc_osp/board/board.h" declline="92" declcolumn="17"/>
       </memberdef>
       <memberdef kind="function" id="group__BOARD__COMMON_1ga93e410eda85f9b5da900bcf582ff0043" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -198,7 +219,7 @@ is not ready
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="93" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.c" bodystart="298" bodyend="313"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/board/board.h" line="93" column="13" bodyfile="/home/runner/work/embarc_osp/embarc_osp/board/board.c" bodystart="298" bodyend="313" declfile="/home/runner/work/embarc_osp/embarc_osp/board/board.h" declline="93" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="group__BOARD__COMMON_1gaebe394b3306ee36bba1a23f2ea9e6d2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -214,7 +235,7 @@ is not ready
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="94" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.c" bodystart="315" bodyend="336"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/board/board.h" line="94" column="13" bodyfile="/home/runner/work/embarc_osp/embarc_osp/board/board.c" bodystart="315" bodyend="336" declfile="/home/runner/work/embarc_osp/embarc_osp/board/board.h" declline="94" declcolumn="13"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="define">
@@ -227,7 +248,7 @@ is not ready
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="100" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" bodystart="100" bodyend="-1"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/board/board.h" line="100" column="9" bodyfile="/home/runner/work/embarc_osp/embarc_osp/board/board.h" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__BOARD__COMMON_1ga0a78908e297806f4ae43488e59f3e682" prot="public" static="no">
         <name>OSP_DELAY_OS_COMPAT_DISABLE</name>
@@ -238,7 +259,7 @@ is not ready
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="101" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" bodystart="101" bodyend="-1"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/board/board.h" line="101" column="9" bodyfile="/home/runner/work/embarc_osp/embarc_osp/board/board.h" bodystart="101" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__BOARD__COMMON_1gabd10baafda4f7905848d2a6741be5888" prot="public" static="no">
         <name>OSP_GET_CUR_SYSHZ</name>
@@ -250,7 +271,7 @@ is not ready
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="103" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" bodystart="103" bodyend="-1"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/board/board.h" line="103" column="9" bodyfile="/home/runner/work/embarc_osp/embarc_osp/board/board.h" bodystart="103" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__BOARD__COMMON_1ga1aeaa7e8387adcad735b59293caa0078" prot="public" static="no">
         <name>OSP_GET_CUR_MS</name>
@@ -262,7 +283,7 @@ is not ready
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="104" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" bodystart="104" bodyend="-1"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/board/board.h" line="104" column="9" bodyfile="/home/runner/work/embarc_osp/embarc_osp/board/board.h" bodystart="104" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__BOARD__COMMON_1gabfd80da126409074c73a5a633f2909bf" prot="public" static="no">
         <name>OSP_GET_CUR_US</name>
@@ -274,7 +295,7 @@ is not ready
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="105" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" bodystart="105" bodyend="-1"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/board/board.h" line="105" column="9" bodyfile="/home/runner/work/embarc_osp/embarc_osp/board/board.h" bodystart="105" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__BOARD__COMMON_1gad5344be95b93a72c0901d34027240b9c" prot="public" static="no">
         <name>OSP_GET_CUR_HWTICKS</name>
@@ -286,12 +307,14 @@ is not ready
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" line="106" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/board.h" bodystart="106" bodyend="-1"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/board/board.h" line="106" column="9" bodyfile="/home/runner/work/embarc_osp/embarc_osp/board/board.h" bodystart="106" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>all the common resources definitions for all boards </para>    </briefdescription>
+<para>all the common resources definitions for all boards </para>
+    </briefdescription>
     <detaileddescription>
-<para>To let more applications can run on different boards, here we need to make many definitions for common resources, like uart, sdcard, wifi, button, led and so on. So that you can just use it without considering board difference. </para>    </detaileddescription>
+<para>To let more applications can run on different boards, here we need to make many definitions for common resources, like uart, sdcard, wifi, button, led and so on. So that you can just use it without considering board difference. </para>
+    </detaileddescription>
   </compounddef>
 </doxygen>

@@ -1,72 +1,72 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
-  <compounddef id="hsdk_2drivers_2ntshell_2ntshell__io__netconn_8c" kind="file">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="hsdk_2drivers_2ntshell_2ntshell__io__netconn_8c" kind="file" language="C++">
     <compoundname>ntshell_io_netconn.c</compoundname>
     <includes refid="embARC__toolchain_8h" local="yes">embARC_toolchain.h</includes>
     <includes refid="embARC__error_8h" local="yes">embARC_error.h</includes>
     <includes local="no">stdarg.h</includes>
     <incdepgraph>
-      <node id="2165">
+      <node id="6">
         <label>stdbool.h</label>
       </node>
-      <node id="2168">
-        <label>arc/arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="2169" relation="include">
-        </childnode>
-      </node>
-      <node id="2170">
+      <node id="11">
         <label>stdarg.h</label>
       </node>
-      <node id="2167">
-        <label>arc/arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="2161" relation="include">
+      <node id="1">
+        <label>/home/runner/work/embarc_osp/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c</label>
+        <link refid="hsdk_2drivers_2ntshell_2ntshell__io__netconn_8c"/>
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="2168" relation="include">
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="2162">
+      <node id="3">
         <label>stdint.h</label>
       </node>
-      <node id="2164">
+      <node id="9">
+        <label>arc/arc.h</label>
+        <link refid="arc_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
         <label>stddef.h</label>
       </node>
-      <node id="2161">
-        <label>embARC_toolchain.h</label>
-        <link refid="embARC__toolchain_8h"/>
-        <childnode refid="2162" relation="include">
+      <node id="8">
+        <label>arc/arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="2163" relation="include">
-        </childnode>
-        <childnode refid="2164" relation="include">
-        </childnode>
-        <childnode refid="2165" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="2163">
+      <node id="4">
         <label>limits.h</label>
       </node>
-      <node id="2160">
-        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c</label>
-        <link refid="hsdk/drivers/ntshell/ntshell_io_netconn.c"/>
-        <childnode refid="2161" relation="include">
+      <node id="7">
+        <label>embARC_error.h</label>
+        <link refid="embARC__error_8h"/>
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="2166" relation="include">
-        </childnode>
-        <childnode refid="2170" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="2169">
+      <node id="10">
         <label>arc/arc_feature_config.h</label>
         <link refid="arc__feature__config_8h"/>
       </node>
-      <node id="2166">
-        <label>embARC_error.h</label>
-        <link refid="embARC__error_8h"/>
-        <childnode refid="2162" relation="include">
+      <node id="2">
+        <label>embARC_toolchain.h</label>
+        <link refid="embARC__toolchain_8h"/>
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="2167" relation="include">
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -109,8 +109,8 @@
 <codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdarg.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(MID_NTSHELL)<sp/>&amp;&amp;<sp/>defined(MID_LWIP)<sp/>\</highlight></codeline>
-<codeline lineno="35"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>&amp;&amp;<sp/>defined(ENABLE_OS)<sp/><sp/></highlight><highlight class="comment">/*<sp/>only<sp/>available<sp/>when<sp/>enable<sp/>ntshell<sp/>&amp;<sp/>lwip<sp/>middleware<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="36"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>&amp;&amp;<sp/>defined(ENABLE_OS)<sp/><sp/></highlight><highlight class="comment">/*<sp/>only<sp/>available<sp/>when<sp/>enable<sp/>ntshell<sp/>&amp;<sp/>lwip<sp/>middleware<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dev__uart_8h" kindref="compound">device/ip_hal/dev_uart.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;xprintf.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
@@ -124,39 +124,39 @@
 <codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;lwip/api.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;lwip/pbuf.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/><sp/>DEBUG</highlight></codeline>
-<codeline lineno="51"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="embARC__debug_8h" kindref="compound">embARC_debug.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/><sp/>DEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="embARC__debug_8h" kindref="compound">embARC_debug.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HSDK_NTSHELL_NETCONN_CHECK_EXP(EXPR,<sp/>ERROR_CODE)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CHECK_EXP(EXPR,<sp/>ercd,<sp/>ERROR_CODE,<sp/>error_exit)</highlight></codeline>
-<codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONN_NOTCONNECT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight></codeline>
-<codeline lineno="56"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>CONN_SUCCESS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1)</highlight></codeline>
-<codeline lineno="57"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>CONN_LOST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(2)</highlight></codeline>
-<codeline lineno="58"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>CONN_PORT_EXIST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(3)</highlight></codeline>
-<codeline lineno="59"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>CONN_FAILED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(4)</highlight></codeline>
-<codeline lineno="60"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONN_CTRL_ECHO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x1)</highlight></codeline>
-<codeline lineno="62"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>CONN_CTRL_CRLF<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x2)</highlight></codeline>
-<codeline lineno="63"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HSDK_NTSHELL_NETCONN_CHECK_EXP(EXPR,<sp/>ERROR_CODE)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CHECK_EXP(EXPR,<sp/>ercd,<sp/>ERROR_CODE,<sp/>error_exit)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONN_NOTCONNECT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONN_SUCCESS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONN_LOST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONN_PORT_EXIST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(3)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONN_FAILED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(4)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONN_CTRL_ECHO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONN_CTRL_CRLF<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
 <codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>TELNET<sp/>option<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_SE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(240)</highlight></codeline>
-<codeline lineno="67"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_NOP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(241)</highlight></codeline>
-<codeline lineno="68"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_DM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(242)</highlight></codeline>
-<codeline lineno="69"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_BRK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(243)</highlight></codeline>
-<codeline lineno="70"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_IP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(244)</highlight></codeline>
-<codeline lineno="71"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_AO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(245)</highlight></codeline>
-<codeline lineno="72"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_AYT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(246)</highlight></codeline>
-<codeline lineno="73"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_EC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(247)</highlight></codeline>
-<codeline lineno="74"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_EL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(248)</highlight></codeline>
-<codeline lineno="75"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_GA<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(249)</highlight></codeline>
-<codeline lineno="76"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_SB<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(250)</highlight></codeline>
-<codeline lineno="77"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_WILL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(251)</highlight></codeline>
-<codeline lineno="78"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_WONT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(252)</highlight></codeline>
-<codeline lineno="79"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_DO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(253)</highlight></codeline>
-<codeline lineno="80"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_DONT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(254)</highlight></codeline>
-<codeline lineno="81"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_IAC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(255)</highlight></codeline>
-<codeline lineno="82"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_SE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(240)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_NOP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(241)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_DM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(242)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_BRK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(243)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_IP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(244)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_AO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(245)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_AYT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(246)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_EC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(247)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_EL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(248)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_GA<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(249)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_SB<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(250)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_WILL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(251)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_WONT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(252)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_DO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(253)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_DONT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(254)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_IAC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(255)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
 <codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">ntshell_io_netconn<sp/>NTSHELL_IO_NETCONN,<sp/>*NTSHELL_IO_NETCONN_PTR;</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">netconn_thread<sp/>NETCONN_THREAD,<sp/>*NETCONN_THREAD_PTR;</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight></codeline>
@@ -397,13 +397,13 @@
 <codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="322"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="323"><highlight class="normal"></highlight></codeline>
-<codeline lineno="324"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_netconn_write_byte(NTSHELL_IO_NETCONN<sp/>*nt_netconn,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>byte)</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_netconn_write_byte(NTSHELL_IO_NETCONN<sp/>*nt_netconn,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="325"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>ntshell_netconn_nt_write(nt_netconn,<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(&amp;byte),<sp/>1);</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>ntshell_netconn_nt_write(nt_netconn,<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(&amp;</highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">),<sp/>1);</highlight></codeline>
 <codeline lineno="327"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="328"><highlight class="normal"></highlight></codeline>
-<codeline lineno="329"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>USE_HSDK_NTSHELL_NETCONN_0</highlight></codeline>
-<codeline lineno="330"><highlight class="preprocessor"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>ntshell_netconn_0_nt_ioinit(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>USE_HSDK_NTSHELL_NETCONN_0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>ntshell_netconn_0_nt_ioinit(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="331"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ntshell_netconn_nt_ioinit((NTSHELL_IO_NETCONN<sp/>*)(ntshell_netconn_0.extra_info));</highlight></codeline>
 <codeline lineno="333"><highlight class="normal">}</highlight></codeline>
@@ -427,7 +427,7 @@
 <codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/>va_end(arp);</highlight></codeline>
 <codeline lineno="352"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="353"><highlight class="normal"></highlight></codeline>
-<codeline lineno="354"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_netconn_0_write_byte(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>byte);</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_netconn_0_write_byte(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="355"><highlight class="normal"></highlight></codeline>
 <codeline lineno="356"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>NETCONN_THREAD<sp/>netconn_0_thread<sp/>=<sp/>{</highlight></codeline>
 <codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;NT_NTCONN_0&quot;</highlight><highlight class="normal">,<sp/>NT_NETCONN_0_PRIO,<sp/>512,<sp/>\</highlight></codeline>
@@ -442,9 +442,9 @@
 <codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/>&amp;netconn_0_thread,<sp/>ntshell_netconn_0_write_byte</highlight></codeline>
 <codeline lineno="367"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="368"><highlight class="normal"></highlight></codeline>
-<codeline lineno="369"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_netconn_0_write_byte(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>byte)</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_netconn_0_write_byte(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="370"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/>ntshell_netconn_write_byte(&amp;ntshell_netconn_0_info,<sp/>byte);</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/>ntshell_netconn_write_byte(&amp;ntshell_netconn_0_info,<sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="372"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="373"><highlight class="normal"></highlight></codeline>
 <codeline lineno="374"><highlight class="normal">NTSHELL_IO<sp/>ntshell_netconn_0<sp/>=<sp/>{</highlight></codeline>
@@ -462,6 +462,6 @@
 <codeline lineno="386"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight></codeline>
 <codeline lineno="388"><highlight class="preprocessor">#endif<sp/><sp/></highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c"/>
+    <location file="/home/runner/work/embarc_osp/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c"/>
   </compounddef>
 </doxygen>

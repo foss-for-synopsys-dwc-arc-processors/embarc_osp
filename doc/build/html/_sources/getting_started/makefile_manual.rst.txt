@@ -78,7 +78,7 @@ In the following part of this manual, we will only use ``make`` in example, you 
 	"  DIG_NAME=xxx                                - Specify Digilent JTAG which to be used, most useful when more than one Digilent USB-JTAG plugged in"
 	"  HEAPSZ=xxx                                  - Specify heap size for program, xxx stands for size in bytes"
 	"  STACKSZ=xxx                                 - Specify stack size for program, xxx stands for size in bytes"
-	"  LINKER_SCRIPT_FILE=xxx                      - Specify customized linker script, xxx stands for the relative path of linker script file to current directory"
+	"  LINKER_SCRIPT_FILE=xxx                      - Specify customized linker script (.ld .lcf), xxx stands for the relative path of linker script file to current directory"
 	"Example Usage:"
 	"  make all                                                                - build example in current directory using default configuration"
 	"  make BOARD=emsk BD_VER=22 CUR_CORE=arcem7d OLEVEL=O2 TOOLCHAIN=gnu all  - build example using configuration (emsk, 22, arcem7d, O2, gnu)"

@@ -1,73 +1,73 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
-  <compounddef id="emsdp__init_8c" kind="file">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="emsdp__init_8c" kind="file" language="C++">
     <compoundname>emsdp_init.c</compoundname>
     <includes refid="arc__timer_8h" local="yes">arc/arc_timer.h</includes>
     <includes refid="board_8h" local="yes">board.h</includes>
     <incdepgraph>
-      <node id="650">
+      <node id="10">
         <label>stdbool.h</label>
       </node>
-      <node id="643">
-        <label>arc/arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="644" relation="include">
-        </childnode>
-      </node>
-      <node id="645">
-        <label>arc/arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="646" relation="include">
-        </childnode>
-        <childnode refid="643" relation="include">
-        </childnode>
-      </node>
-      <node id="647">
-        <label>stdint.h</label>
-      </node>
-      <node id="649">
-        <label>stddef.h</label>
-      </node>
-      <node id="646">
-        <label>embARC_toolchain.h</label>
-        <link refid="embARC__toolchain_8h"/>
-        <childnode refid="647" relation="include">
-        </childnode>
-        <childnode refid="648" relation="include">
-        </childnode>
-        <childnode refid="649" relation="include">
-        </childnode>
-        <childnode refid="650" relation="include">
-        </childnode>
-      </node>
-      <node id="648">
-        <label>limits.h</label>
-      </node>
-      <node id="642">
+      <node id="2">
         <label>arc/arc_timer.h</label>
         <link refid="arc__timer_8h"/>
-        <childnode refid="643" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="645" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="646" relation="include">
-        </childnode>
-      </node>
-      <node id="641">
-        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/common/emsdp_init.c</label>
-        <link refid="emsdp_init.c"/>
-        <childnode refid="642" relation="include">
-        </childnode>
-        <childnode refid="651" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="651">
+      <node id="7">
+        <label>stdint.h</label>
+      </node>
+      <node id="3">
+        <label>arc/arc.h</label>
+        <link refid="arc_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
         <label>board.h</label>
         <link refid="board_8h"/>
       </node>
-      <node id="644">
+      <node id="9">
+        <label>stddef.h</label>
+      </node>
+      <node id="5">
+        <label>arc/arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>limits.h</label>
+      </node>
+      <node id="4">
         <label>arc/arc_feature_config.h</label>
         <link refid="arc__feature__config_8h"/>
+      </node>
+      <node id="6">
+        <label>embARC_toolchain.h</label>
+        <link refid="embARC__toolchain_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/embarc_osp/embarc_osp/board/emsdp/common/emsdp_init.c</label>
+        <link refid="emsdp__init_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
       </node>
     </incdepgraph>
       <sectiondef kind="func">
@@ -80,13 +80,16 @@
           <type>void</type>
         </param>
         <briefdescription>
-<para>Board init routine MUST be called in each application. </para>        </briefdescription>
+<para>Board init routine MUST be called in each application. </para>
+        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="note"><para>It is better to disable interrupts when calling this function remember to enable interrupt when you want to use them </para></simplesect>
-</para>        </detaileddescription>
+<para><simplesect kind="note"><para>It is better to disable interrupts when calling this function remember to enable interrupt when you want to use them </para>
+</simplesect>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/common/emsdp_init.c" line="38" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/common/emsdp_init.c" bodystart="38" bodyend="43"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/board/emsdp/common/emsdp_init.c" line="38" column="6" bodyfile="/home/runner/work/embarc_osp/embarc_osp/board/emsdp/common/emsdp_init.c" bodystart="38" bodyend="43"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -133,6 +136,6 @@
 <codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__ARC__HAL__MISC__TIMER_gac4edf3c4dbed2f2a41f0880ed8f7a5b7_1gac4edf3c4dbed2f2a41f0880ed8f7a5b7" kindref="member">arc_timer_init</ref>();</highlight></codeline>
 <codeline lineno="43"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/common/emsdp_init.c"/>
+    <location file="/home/runner/work/embarc_osp/embarc_osp/board/emsdp/common/emsdp_init.c"/>
   </compounddef>
 </doxygen>

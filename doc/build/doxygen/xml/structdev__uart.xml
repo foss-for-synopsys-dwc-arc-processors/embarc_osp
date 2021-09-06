@@ -1,21 +1,22 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
-  <compounddef id="structdev__uart" kind="struct" prot="public">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structdev__uart" kind="struct" language="C++" prot="public">
     <compoundname>dev_uart</compoundname>
     <includes refid="dev__uart_8h" local="no">dev_uart.h</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structdev__uart_a2d149949181bf8ea15253f4523a681d4_1a2d149949181bf8ea15253f4523a681d4" prot="public" static="no" mutable="no">
-        <type><ref refid="group__DEVICE__HAL__UART__DEVSTRUCT_gad3367f6deb377a74d2856e07762424bc_1gad3367f6deb377a74d2856e07762424bc" kindref="member">DEV_UART_INFO</ref></type>
+        <type><ref refid="group__DEVICE__HAL__UART__DEVSTRUCT_gacd54ea1582eb423dd98784e5250815f6_1gacd54ea1582eb423dd98784e5250815f6" kindref="member">DEV_UART_INFO</ref></type>
         <definition>DEV_UART_INFO dev_uart::uart_info</definition>
         <argsstring></argsstring>
         <name>uart_info</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>UART device information </para>        </detaileddescription>
+<para>UART device information </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="382" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="382" bodyend="-1"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/include/device/ip_hal/dev_uart.h" line="382" column="15" bodyfile="/home/runner/work/embarc_osp/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="382" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__DEVICE__HAL__UART__DEVSTRUCT_ga00f4f8769a030124d548f65895d2ff87_1ga00f4f8769a030124d548f65895d2ff87" prot="public" static="no" mutable="no">
         <type>int32_t(*</type>
@@ -25,12 +26,14 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Open uart device</para><para>open an uart device with defined baudrate <parameterlist kind="param"><parameteritem>
+<para>Open uart device</para>
+<para>open an uart device with defined baudrate <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">baud</parametername>
 </parameternamelist>
 <parameterdescription>
-<para><ref refid="group__DEVICE__HAL__UART__BAUD" kindref="compound">initial baudrate of uart</ref>, must &gt; 0 </para></parameterdescription>
+<para><ref refid="group__DEVICE__HAL__UART__BAUD" kindref="compound">initial baudrate of uart</ref>, must &gt; 0 </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
 <parameterlist kind="retval"><parameteritem>
@@ -38,41 +41,47 @@
 <parametername>E_OK</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Open successfully without any issues </para></parameterdescription>
+<para>Open successfully without any issues </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>E_OPNED</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>If device was opened before with different parameters, then just increase the <ref refid="structdev__uart__info_a3dc91d7432c950b83b6376ab95f0eb8e_1a3dc91d7432c950b83b6376ab95f0eb8e" kindref="member">opn_cnt</ref> and return <ref refid="group__EMBARC__ERROR_gaa5935765e74b9d1a7e72c9c8f9018b42_1gaa5935765e74b9d1a7e72c9c8f9018b42" kindref="member">E_OPNED</ref> </para></parameterdescription>
+<para>If device was opened before with different parameters, then just increase the <ref refid="structdev__uart__info_1a3dc91d7432c950b83b6376ab95f0eb8e" kindref="member">opn_cnt</ref> and return <ref refid="group__EMBARC__ERROR_gaa5935765e74b9d1a7e72c9c8f9018b42_1gaa5935765e74b9d1a7e72c9c8f9018b42" kindref="member">E_OPNED</ref> </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>E_OBJ</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Device object is not valid </para></parameterdescription>
+<para>Device object is not valid </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>E_PAR</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Parameter is not valid </para></parameterdescription>
+<para>Parameter is not valid </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>E_NOSPT</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Open settings are not supported </para></parameterdescription>
+<para>Open settings are not supported </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="383" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="383" bodyend="-1"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/include/device/ip_hal/dev_uart.h" line="383" column="1" bodyfile="/home/runner/work/embarc_osp/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="383" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__DEVICE__HAL__UART__DEVSTRUCT_gae615fe682e9ce8147c0f31b40dfc6438_1gae615fe682e9ce8147c0f31b40dfc6438" prot="public" static="no" mutable="no">
         <type>int32_t(*</type>
@@ -82,32 +91,37 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Close uart device</para><para>close an uart device, just decrease the <ref refid="structdev__uart__info_a3dc91d7432c950b83b6376ab95f0eb8e_1a3dc91d7432c950b83b6376ab95f0eb8e" kindref="member">opn_cnt</ref>, if <ref refid="structdev__uart__info_a3dc91d7432c950b83b6376ab95f0eb8e_1a3dc91d7432c950b83b6376ab95f0eb8e" kindref="member">opn_cnt</ref> equals 0, then close the device <parameterlist kind="retval"><parameteritem>
+<para>Close uart device</para>
+<para>close an uart device, just decrease the <ref refid="structdev__uart__info_1a3dc91d7432c950b83b6376ab95f0eb8e" kindref="member">opn_cnt</ref>, if <ref refid="structdev__uart__info_1a3dc91d7432c950b83b6376ab95f0eb8e" kindref="member">opn_cnt</ref> equals 0, then close the device <parameterlist kind="retval"><parameteritem>
 <parameternamelist>
 <parametername>E_OK</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Close successfully without any issues(including scenario that device is already closed) </para></parameterdescription>
+<para>Close successfully without any issues(including scenario that device is already closed) </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>E_OPNED</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Device is still opened, the device <ref refid="structdev__uart__info_a3dc91d7432c950b83b6376ab95f0eb8e_1a3dc91d7432c950b83b6376ab95f0eb8e" kindref="member">opn_cnt</ref> decreased by 1 </para></parameterdescription>
+<para>Device is still opened, the device <ref refid="structdev__uart__info_1a3dc91d7432c950b83b6376ab95f0eb8e" kindref="member">opn_cnt</ref> decreased by 1 </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>E_OBJ</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Device object is not valid </para></parameterdescription>
+<para>Device object is not valid </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="384" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="384" bodyend="-1"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/include/device/ip_hal/dev_uart.h" line="384" column="1" bodyfile="/home/runner/work/embarc_osp/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="384" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__DEVICE__HAL__UART__DEVSTRUCT_ga7cd1bf12f5d9ca4663980883d01c092a_1ga7cd1bf12f5d9ca4663980883d01c092a" prot="public" static="no" mutable="no">
         <type>int32_t(*</type>
@@ -117,19 +131,22 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Control uart device</para><para>control an uart device by ctrl_cmd, with passed param. you can control uart device using predefined uart control commands defined using <ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref> (which must be implemented by bsp developer), such as <ref refid="group__DEVICE__HAL__UART__CTRLCMD_ga764fa9e43d0e6386328e6123469dfd05_1ga764fa9e43d0e6386328e6123469dfd05" kindref="member">change baudrate</ref>, <ref refid="group__DEVICE__HAL__UART__CTRLCMD_gae4fafef76cb1216e06523779ef842847_1gae4fafef76cb1216e06523779ef842847" kindref="member">flush output</ref> and <ref refid="group__DEVICE__HAL__UART__CTRLCMD" kindref="compound">more</ref>. And you can also control uart device using your own specified commands defined using <ref refid="group__DEVICE__HAL__COMMON__DEFCMD_gafe70e244452c1c2f5235b85cadf602bb_1gafe70e244452c1c2f5235b85cadf602bb" kindref="member">DEV_SET_USRCMD</ref>, but these specified commands should be defined in your own uart device driver implementation. <parameterlist kind="param"><parameteritem>
+<para>Control uart device</para>
+<para>control an uart device by ctrl_cmd, with passed param. you can control uart device using predefined uart control commands defined using <ref refid="group__DEVICE__HAL__COMMON__DEFCMD_ga5560787ca52a8f1846d0aa7457ef45ee_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref> (which must be implemented by bsp developer), such as <ref refid="group__DEVICE__HAL__UART__CTRLCMD_ga764fa9e43d0e6386328e6123469dfd05_1ga764fa9e43d0e6386328e6123469dfd05" kindref="member">change baudrate</ref>, <ref refid="group__DEVICE__HAL__UART__CTRLCMD_gae4fafef76cb1216e06523779ef842847_1gae4fafef76cb1216e06523779ef842847" kindref="member">flush output</ref> and <ref refid="group__DEVICE__HAL__UART__CTRLCMD" kindref="compound">more</ref>. And you can also control uart device using your own specified commands defined using <ref refid="group__DEVICE__HAL__COMMON__DEFCMD_gafe70e244452c1c2f5235b85cadf602bb_1gafe70e244452c1c2f5235b85cadf602bb" kindref="member">DEV_SET_USRCMD</ref>, but these specified commands should be defined in your own uart device driver implementation. <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">ctrl_cmd</parametername>
 </parameternamelist>
 <parameterdescription>
-<para><ref refid="group__DEVICE__HAL__UART__CTRLCMD" kindref="compound">control command</ref>, to change or get some thing related to uart </para></parameterdescription>
+<para><ref refid="group__DEVICE__HAL__UART__CTRLCMD" kindref="compound">control command</ref>, to change or get some thing related to uart </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername direction="inout">param</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>parameters that maybe argument of the command, or return values of the command </para></parameterdescription>
+<para>parameters that maybe argument of the command, or return values of the command </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
 <parameterlist kind="retval"><parameteritem>
@@ -137,55 +154,63 @@
 <parametername>E_OK</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Control device successfully </para></parameterdescription>
+<para>Control device successfully </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>E_CLSED</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Device is not opened </para></parameterdescription>
+<para>Device is not opened </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>E_OBJ</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Device object is not valid or not exists </para></parameterdescription>
+<para>Device object is not valid or not exists </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>E_PAR</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Parameter is not valid for current control command </para></parameterdescription>
+<para>Parameter is not valid for current control command </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>E_SYS</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Control device failed, due to hardware issues, such as device is disabled </para></parameterdescription>
+<para>Control device failed, due to hardware issues, such as device is disabled </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>E_CTX</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Control device failed, due to different reasons like in transfer state </para></parameterdescription>
+<para>Control device failed, due to different reasons like in transfer state </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>E_NOSPT</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Control command is not supported or not valid </para></parameterdescription>
+<para>Control command is not supported or not valid </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="385" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="385" bodyend="-1"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/include/device/ip_hal/dev_uart.h" line="385" column="1" bodyfile="/home/runner/work/embarc_osp/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="385" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__DEVICE__HAL__UART__DEVSTRUCT_gadb3f65e65636442af53578c64f2ea2a4_1gadb3f65e65636442af53578c64f2ea2a4" prot="public" static="no" mutable="no">
         <type>int32_t(*</type>
@@ -195,19 +220,22 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Send data by uart device(blocked)</para><para>send data through uart with defined len(blocked). <parameterlist kind="param"><parameteritem>
+<para>Send data by uart device(blocked)</para>
+<para>send data through uart with defined len(blocked). <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">data</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>pointer to data need to send by uart, must not be NULL </para></parameterdescription>
+<para>pointer to data need to send by uart, must not be NULL </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername direction="in">len</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>length of data to be sent, must &gt; 0 </para></parameterdescription>
+<para>length of data to be sent, must &gt; 0 </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
 <parameterlist kind="retval"><parameteritem>
@@ -215,34 +243,39 @@
 <parametername>&gt;0</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Byte count that was successfully sent for poll method </para></parameterdescription>
+<para>Byte count that was successfully sent for poll method </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>E_OBJ</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Device object is not valid or not exists </para></parameterdescription>
+<para>Device object is not valid or not exists </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>E_PAR</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Parameter is not valid </para></parameterdescription>
+<para>Parameter is not valid </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>E_SYS</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Can&apos;t write data to hardware due to hardware issues, such as device is disabled </para></parameterdescription>
+<para>Can&apos;t write data to hardware due to hardware issues, such as device is disabled </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="386" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="386" bodyend="-1"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/include/device/ip_hal/dev_uart.h" line="386" column="1" bodyfile="/home/runner/work/embarc_osp/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="386" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__DEVICE__HAL__UART__DEVSTRUCT_ga8fa470ea11eca6e728e802b64501cbb5_1ga8fa470ea11eca6e728e802b64501cbb5" prot="public" static="no" mutable="no">
         <type>int32_t(*</type>
@@ -252,19 +285,22 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Read data from uart device(blocked)</para><para>receive data of defined len through uart(blocked). <parameterlist kind="param"><parameteritem>
+<para>Read data from uart device(blocked)</para>
+<para>receive data of defined len through uart(blocked). <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="out">data</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>pointer to data need to received by uart, must not be NULL </para></parameterdescription>
+<para>pointer to data need to received by uart, must not be NULL </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername direction="in">len</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>length of data to be received, must &gt; 0 </para></parameterdescription>
+<para>length of data to be received, must &gt; 0 </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
 <parameterlist kind="retval"><parameteritem>
@@ -272,77 +308,85 @@
 <parametername>&gt;0</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Byte count that was successfully received for poll method </para></parameterdescription>
+<para>Byte count that was successfully received for poll method </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>E_OBJ</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Device object is not valid or not exists </para></parameterdescription>
+<para>Device object is not valid or not exists </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>E_PAR</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Parameter is not valid </para></parameterdescription>
+<para>Parameter is not valid </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>E_SYS</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Can&apos;t receive data from hardware due to hardware issues, such as device is disabled </para></parameterdescription>
+<para>Can&apos;t receive data from hardware due to hardware issues, such as device is disabled </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="387" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="387" bodyend="-1"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/include/device/ip_hal/dev_uart.h" line="387" column="1" bodyfile="/home/runner/work/embarc_osp/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="387" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>UART device interface definition. </para>    </briefdescription>
+<para>UART device interface definition. </para>
+    </briefdescription>
     <detaileddescription>
-<para>Define uart device interface, like uart information structure, provide functions to open/close/control uart, send/receive data by uart <simplesect kind="note"><para>All this details are implemented by user in user porting code </para></simplesect>
-</para>    </detaileddescription>
+<para>Define uart device interface, like uart information structure, provide functions to open/close/control uart, send/receive data by uart <simplesect kind="note"><para>All this details are implemented by user in user porting code </para>
+</simplesect>
+</para>
+    </detaileddescription>
     <collaborationgraph>
-      <node id="155">
+      <node id="2">
         <label>dev_uart_info</label>
         <link refid="structdev__uart__info"/>
-        <childnode refid="156" relation="usage">
+        <childnode refid="3" relation="usage">
           <edgelabel>tx_buf</edgelabel>
           <edgelabel>rx_buf</edgelabel>
         </childnode>
-        <childnode refid="157" relation="usage">
+        <childnode refid="4" relation="usage">
           <edgelabel>uart_cbs</edgelabel>
         </childnode>
-        <childnode refid="158" relation="usage">
+        <childnode refid="5" relation="usage">
           <edgelabel>dps_format</edgelabel>
         </childnode>
       </node>
-      <node id="154">
+      <node id="1">
         <label>dev_uart</label>
         <link refid="structdev__uart"/>
-        <childnode refid="155" relation="usage">
+        <childnode refid="2" relation="usage">
           <edgelabel>uart_info</edgelabel>
         </childnode>
       </node>
-      <node id="158">
+      <node id="5">
         <label>uart_dps_format</label>
         <link refid="structuart__dps__format"/>
       </node>
-      <node id="156">
+      <node id="3">
         <label>dev_buffer</label>
         <link refid="structdev__buffer"/>
       </node>
-      <node id="157">
+      <node id="4">
         <label>dev_uart_cbs</label>
         <link refid="structdev__uart__cbs"/>
       </node>
     </collaborationgraph>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" line="381" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="381" bodyend="388"/>
+    <location file="/home/runner/work/embarc_osp/embarc_osp/include/device/ip_hal/dev_uart.h" line="381" column="23" bodyfile="/home/runner/work/embarc_osp/embarc_osp/include/device/ip_hal/dev_uart.h" bodystart="381" bodyend="388"/>
     <listofallmembers>
       <member refid="group__DEVICE__HAL__UART__DEVSTRUCT_gae615fe682e9ce8147c0f31b40dfc6438_1gae615fe682e9ce8147c0f31b40dfc6438" prot="public" virt="non-virtual"><scope>dev_uart</scope><name>uart_close</name></member>
       <member refid="group__DEVICE__HAL__UART__DEVSTRUCT_ga7cd1bf12f5d9ca4663980883d01c092a_1ga7cd1bf12f5d9ca4663980883d01c092a" prot="public" virt="non-virtual"><scope>dev_uart</scope><name>uart_control</name></member>

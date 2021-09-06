@@ -1,37 +1,37 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
-  <compounddef id="nsim_2drivers_2ntshell_2ntshell__io_8c" kind="file">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="nsim_2drivers_2ntshell_2ntshell__io_8c" kind="file" language="C++">
     <compoundname>ntshell_io.c</compoundname>
     <includes refid="embARC__toolchain_8h" local="yes">embARC_toolchain.h</includes>
     <incdepgraph>
-      <node id="2087">
+      <node id="6">
         <label>stdbool.h</label>
       </node>
-      <node id="2084">
+      <node id="3">
         <label>stdint.h</label>
       </node>
-      <node id="2086">
+      <node id="5">
         <label>stddef.h</label>
       </node>
-      <node id="2083">
-        <label>embARC_toolchain.h</label>
-        <link refid="embARC__toolchain_8h"/>
-        <childnode refid="2084" relation="include">
-        </childnode>
-        <childnode refid="2085" relation="include">
-        </childnode>
-        <childnode refid="2086" relation="include">
-        </childnode>
-        <childnode refid="2087" relation="include">
-        </childnode>
-      </node>
-      <node id="2085">
+      <node id="4">
         <label>limits.h</label>
       </node>
-      <node id="2082">
-        <label>/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/nsim/drivers/ntshell/ntshell_io.c</label>
-        <link refid="nsim/drivers/ntshell/ntshell_io.c"/>
-        <childnode refid="2083" relation="include">
+      <node id="2">
+        <label>embARC_toolchain.h</label>
+        <link refid="embARC__toolchain_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/embarc_osp/embarc_osp/board/nsim/drivers/ntshell/ntshell_io.c</label>
+        <link refid="nsim_2drivers_2ntshell_2ntshell__io_8c"/>
+        <childnode refid="2" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -71,18 +71,18 @@
 <codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/>---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="embARC__toolchain_8h" kindref="compound">embARC_toolchain.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MID_NTSHELL<sp/></highlight><highlight class="comment">/*<sp/>only<sp/>available<sp/>when<sp/>enable<sp/>ntshell<sp/>middleware<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="33"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;ntshell_io.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MID_NTSHELL<sp/></highlight><highlight class="comment">/*<sp/>only<sp/>available<sp/>when<sp/>enable<sp/>ntshell<sp/>middleware<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ntshell_io.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal">NTSHELL_IO<sp/>*get_ntshell_io(uint32_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="37"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(USE_NSIM_NTSHELL_UART_1)</highlight></codeline>
-<codeline lineno="40"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="nsim_2drivers_2ntshell_2ntshell__io_8h_a2259a47172c359c151e418a0d3547eb7_1a2259a47172c359c151e418a0d3547eb7" kindref="member">NSIM_NTSHELL_0_ID</ref>:</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(USE_NSIM_NTSHELL_UART_1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="nsim_2drivers_2ntshell_2ntshell__io_8h_a2259a47172c359c151e418a0d3547eb7_1a2259a47172c359c151e418a0d3547eb7" kindref="member">NSIM_NTSHELL_0_ID</ref>:</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;ntshell_uart_1;</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="44"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
@@ -90,6 +90,6 @@
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/nsim/drivers/ntshell/ntshell_io.c"/>
+    <location file="/home/runner/work/embarc_osp/embarc_osp/board/nsim/drivers/ntshell/ntshell_io.c"/>
   </compounddef>
 </doxygen>

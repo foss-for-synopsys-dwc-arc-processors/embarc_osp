@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
-  <compounddef id="struct__dma__state" kind="struct" prot="public">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="struct__dma__state" kind="struct" language="C++" prot="public">
     <compoundname>_dma_state</compoundname>
     <includes refid="arc__udma_8h" local="no">arc_udma.h</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="struct__dma__state_a23e49f53a79e020c963fc3f0df72ef6b_1a23e49f53a79e020c963fc3f0df72ef6b" prot="public" static="no" mutable="no">
-        <type><ref refid="group__ARC__HAL__MISC__UDMA_ga0d1854ef6ca92f26e35a4e869f8a157f_1ga0d1854ef6ca92f26e35a4e869f8a157f" kindref="member">dma_channel_t</ref> *</type>
+        <type><ref refid="group__ARC__HAL__MISC__UDMA_ga177d69261a87caeda13c153e2d1e8a52_1ga177d69261a87caeda13c153e2d1e8a52" kindref="member">dma_channel_t</ref> *</type>
         <definition>volatile dma_channel_t* _dma_state::dma_chns[2]</definition>
         <argsstring>[2]</argsstring>
         <name>dma_chns</name>
@@ -15,11 +15,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="265" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="265" bodyend="-1"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/include/arc/arc_udma.h" line="265" column="24" bodyfile="/home/runner/work/embarc_osp/embarc_osp/include/arc/arc_udma.h" bodystart="265" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="struct__dma__state_acf272e3994230b7f55bf950b058a9ea7_1acf272e3994230b7f55bf950b058a9ea7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="struct__dma__state_acf272e3994230b7f55bf950b058a9ea7_1acf272e3994230b7f55bf950b058a9ea7" prot="public" static="no" const="no" explicit="no" inline="no" volatile="yes" virt="non-virtual">
         <type></type>
         <definition>_dma_state::EMBARC_ALIGNED</definition>
         <argsstring>(32) volatile uint32_t mem_dma_ptrs[2]</argsstring>
@@ -30,37 +30,39 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>All uDMA channel resources </para>        </detaileddescription>
+<para>All uDMA channel resources </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="262" column="1"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/include/arc/arc_udma.h" line="262" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>DMA state to maintain uDMA resources </para>    </detaileddescription>
+<para>DMA state to maintain uDMA resources </para>
+    </detaileddescription>
     <collaborationgraph>
-      <node id="13">
+      <node id="3">
         <label>_dma_desc</label>
         <link refid="struct__dma__desc"/>
       </node>
-      <node id="11">
+      <node id="1">
         <label>_dma_state</label>
         <link refid="struct__dma__state"/>
-        <childnode refid="12" relation="usage">
+        <childnode refid="2" relation="usage">
           <edgelabel>dma_chns</edgelabel>
         </childnode>
       </node>
-      <node id="12">
+      <node id="2">
         <label>_dma_channel</label>
         <link refid="struct__dma__channel"/>
-        <childnode refid="13" relation="usage">
+        <childnode refid="3" relation="usage">
           <edgelabel>desc</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" line="256" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/arc/arc_udma.h" bodystart="256" bodyend="270"/>
+    <location file="/home/runner/work/embarc_osp/embarc_osp/include/arc/arc_udma.h" line="256" column="25" bodyfile="/home/runner/work/embarc_osp/embarc_osp/include/arc/arc_udma.h" bodystart="256" bodyend="270"/>
     <listofallmembers>
       <member refid="struct__dma__state_a23e49f53a79e020c963fc3f0df72ef6b_1a23e49f53a79e020c963fc3f0df72ef6b" prot="public" virt="non-virtual"><scope>_dma_state</scope><name>dma_chns</name></member>
       <member refid="struct__dma__state_acf272e3994230b7f55bf950b058a9ea7_1acf272e3994230b7f55bf950b058a9ea7" prot="public" virt="non-virtual"><scope>_dma_state</scope><name>EMBARC_ALIGNED</name></member>

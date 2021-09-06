@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="group__DEVICE__HAL__COMMON" kind="group">
     <compoundname>DEVICE_HAL_COMMON</compoundname>
     <title>Common Device Layer Definitions</title>
@@ -12,31 +12,33 @@
     <innergroup refid="group__DEVICE__HAL__COMMON__DEVMTHD">Common Device Working Method</innergroup>
     <innergroup refid="group__DEVICE__HAL__COMMON__DEVMODE">Common Device Working Mode</innergroup>
       <sectiondef kind="typedef">
-      <memberdef kind="typedef" id="group__DEVICE__HAL__COMMON_1ga1e2d2bd78cfc19bba910da7448cc6fdc" prot="public" static="no">
+      <memberdef kind="typedef" id="group__DEVICE__HAL__COMMON_1gaa85b2ceb8ac5e17971db8656589f54ae" prot="public" static="no">
         <type>struct <ref refid="structdev__buffer" kindref="compound">dev_buffer</ref></type>
-        <definition>typedef struct dev_buffer  DEV_BUFFER</definition>
+        <definition>typedef struct dev_buffer DEV_BUFFER</definition>
         <argsstring></argsstring>
         <name>DEV_BUFFER</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Common Device Buffer Structure </para>        </detaileddescription>
+<para>Common Device Buffer Structure </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_common.h" line="189" column="1"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/include/device/dev_common.h" line="189" column="12"/>
       </memberdef>
-      <memberdef kind="typedef" id="group__DEVICE__HAL__COMMON_1ga91091c2a8f895b2d00ae61e6b607335e" prot="public" static="no">
+      <memberdef kind="typedef" id="group__DEVICE__HAL__COMMON_1gad799b59590746b2af9531e870ae176c8" prot="public" static="no">
         <type>void(*</type>
-        <definition>typedef void(* DEV_CALLBACK)(void *ptr)</definition>
+        <definition>typedef void(* DEV_CALLBACK) (void *ptr)</definition>
         <argsstring>)(void *ptr)</argsstring>
         <name>DEV_CALLBACK</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Device callback function typedef. This is usually used in device callback settings, and ptr should be the device object pointer, such as DEV_IIC * </para>        </detaileddescription>
+<para>Device callback function typedef. This is usually used in device callback settings, and ptr should be the device object pointer, such as DEV_IIC * </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_common.h" line="203" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_common.h" bodystart="203" bodyend="-1"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/include/device/dev_common.h" line="203" column="9" bodyfile="/home/runner/work/embarc_osp/embarc_osp/include/device/dev_common.h" bodystart="203" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="define">
@@ -46,17 +48,18 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Invalid Interrupt Vector Number When interrupt number is set to this value, all interrupt related function in the device driver source code shouldn&apos;t be called, that means the interrupt processing maybe done in outside of device driver, maybe done in the device object instantiation </para>        </detaileddescription>
+<para>Invalid Interrupt Vector Number When interrupt number is set to this value, all interrupt related function in the device driver source code shouldn&apos;t be called, that means the interrupt processing maybe done in outside of device driver, maybe done in the device object instantiation </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_common.h" line="155" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_common.h" bodystart="155" bodyend="-1"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/include/device/dev_common.h" line="155" column="9" bodyfile="/home/runner/work/embarc_osp/embarc_osp/include/device/dev_common.h" bodystart="155" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__DEVICE__HAL__COMMON_1ga116434ee0f8c4f969194decd4fae00a7" prot="public" static="no">
         <name>DEV_BUFFER_INIT</name>
         <param><defname>devbuf</defname></param>
         <param><defname>buffer</defname></param>
         <param><defname>size</defname></param>
-        <initializer>{ \
+        <initializer>		{ \
 		(devbuf)-&gt;buf = (void *)(buffer); \
 		(devbuf)-&gt;len = (uint32_t)(size); \
 		(devbuf)-&gt;ofs = (uint32_t)(0);	  \
@@ -64,14 +67,16 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Init device buffer </para>        </detaileddescription>
+<para>Init device buffer </para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_common.h" line="192" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/include/device/dev_common.h" bodystart="192" bodyend="-1"/>
+        <location file="/home/runner/work/embarc_osp/embarc_osp/include/device/dev_common.h" line="192" column="9" bodyfile="/home/runner/work/embarc_osp/embarc_osp/include/device/dev_common.h" bodystart="192" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>common definitions for device layer (<ref refid="dev__common_8h" kindref="compound">dev_common.h</ref>) </para>    </briefdescription>
+<para>common definitions for device layer (<ref refid="dev__common_8h" kindref="compound">dev_common.h</ref>) </para>
+    </briefdescription>
     <detaileddescription>
     </detaileddescription>
   </compounddef>

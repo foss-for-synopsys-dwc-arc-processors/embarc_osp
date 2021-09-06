@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
-  <compounddef id="fatfs__dirent_8c" kind="file">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="fatfs__dirent_8c" kind="file" language="C++">
     <compoundname>fatfs_dirent.c</compoundname>
     <briefdescription>
     </briefdescription>
@@ -37,8 +37,8 @@
 <codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
 <codeline lineno="29"><highlight class="comment">---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MID_FATFS</highlight></codeline>
-<codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MID_FATFS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fatfs__dirent_8h" kindref="compound">fatfs_dirent.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -54,7 +54,7 @@
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>res<sp/>=<sp/>f_opendir(&amp;dp-&gt;<ref refid="structFATFS__DIR_a39bf311d7814c03b97f61f1ad887b0ff_1a39bf311d7814c03b97f61f1ad887b0ff" kindref="member">dir</ref>,<sp/>path);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>res<sp/>=<sp/>f_opendir(&amp;dp-&gt;<ref refid="structFATFS__DIR_1a39bf311d7814c03b97f61f1ad887b0ff" kindref="member">dir</ref>,<sp/>path);</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(res<sp/>!=<sp/>FR_OK)<sp/>{</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="malloc_8c_af07d89f5ceaea0c7c8252cc41fd75f37_1af07d89f5ceaea0c7c8252cc41fd75f37" kindref="member">free</ref>(dp);</highlight></codeline>
@@ -71,27 +71,27 @@
 <codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>FRESULT<sp/>res;</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>FILINFO<sp/>info;</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>_USE_LFN</highlight></codeline>
-<codeline lineno="66"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/>info.lfname<sp/>=<sp/>dp-&gt;<ref refid="structFATFS__DIR_af3d22dcf3565c2709f9f53f6874589f3_1af3d22dcf3565c2709f9f53f6874589f3" kindref="member">d_dirent</ref>.<ref refid="structdirent_a54014f1f61c6ce2c55b1bc34353d0c9a_1a54014f1f61c6ce2c55b1bc34353d0c9a" kindref="member">d_name</ref>;</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>info.lfsize<sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(dp-&gt;<ref refid="structFATFS__DIR_af3d22dcf3565c2709f9f53f6874589f3_1af3d22dcf3565c2709f9f53f6874589f3" kindref="member">d_dirent</ref>.<ref refid="structdirent_a54014f1f61c6ce2c55b1bc34353d0c9a_1a54014f1f61c6ce2c55b1bc34353d0c9a" kindref="member">d_name</ref>);</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="69"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/>res<sp/>=<sp/>f_readdir(&amp;dp-&gt;<ref refid="structFATFS__DIR_a39bf311d7814c03b97f61f1ad887b0ff_1a39bf311d7814c03b97f61f1ad887b0ff" kindref="member">dir</ref>,<sp/>&amp;info);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>_USE_LFN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>info.lfname<sp/>=<sp/>dp-&gt;<ref refid="structFATFS__DIR_1af3d22dcf3565c2709f9f53f6874589f3" kindref="member">d_dirent</ref>.<ref refid="structdirent_1a54014f1f61c6ce2c55b1bc34353d0c9a" kindref="member">d_name</ref>;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>info.lfsize<sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(dp-&gt;<ref refid="structFATFS__DIR_1af3d22dcf3565c2709f9f53f6874589f3" kindref="member">d_dirent</ref>.<ref refid="structdirent_1a54014f1f61c6ce2c55b1bc34353d0c9a" kindref="member">d_name</ref>);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>res<sp/>=<sp/>f_readdir(&amp;dp-&gt;<ref refid="structFATFS__DIR_1a39bf311d7814c03b97f61f1ad887b0ff" kindref="member">dir</ref>,<sp/>&amp;info);</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(res<sp/>!=<sp/>FR_OK<sp/>||<sp/>info.fname[0]<sp/>==<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><sp/>NULL;</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>_USE_LFN</highlight></codeline>
-<codeline lineno="76"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*(info.lfname)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dp-&gt;<ref refid="structFATFS__DIR_af3d22dcf3565c2709f9f53f6874589f3_1af3d22dcf3565c2709f9f53f6874589f3" kindref="member">d_dirent</ref>.<ref refid="structdirent_a383442cd96a79cdb5cdc8bc91080099e_1a383442cd96a79cdb5cdc8bc91080099e" kindref="member">d_namlen</ref><sp/>=<sp/>13;<sp/></highlight><highlight class="comment">/*<sp/>8.3<sp/>format<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(dp-&gt;<ref refid="structFATFS__DIR_af3d22dcf3565c2709f9f53f6874589f3_1af3d22dcf3565c2709f9f53f6874589f3" kindref="member">d_dirent</ref>.<ref refid="structdirent_a54014f1f61c6ce2c55b1bc34353d0c9a_1a54014f1f61c6ce2c55b1bc34353d0c9a" kindref="member">d_name</ref>,<sp/>info.fname,<sp/>13);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>_USE_LFN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*(info.lfname)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dp-&gt;<ref refid="structFATFS__DIR_1af3d22dcf3565c2709f9f53f6874589f3" kindref="member">d_dirent</ref>.<ref refid="structdirent_1a383442cd96a79cdb5cdc8bc91080099e" kindref="member">d_namlen</ref><sp/>=<sp/>13;<sp/></highlight><highlight class="comment">/*<sp/>8.3<sp/>format<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(dp-&gt;<ref refid="structFATFS__DIR_1af3d22dcf3565c2709f9f53f6874589f3" kindref="member">d_dirent</ref>.<ref refid="structdirent_1a54014f1f61c6ce2c55b1bc34353d0c9a" kindref="member">d_name</ref>,<sp/>info.fname,<sp/>13);</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
-<codeline lineno="81"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/>dp-&gt;<ref refid="structFATFS__DIR_af3d22dcf3565c2709f9f53f6874589f3_1af3d22dcf3565c2709f9f53f6874589f3" kindref="member">d_dirent</ref>.<ref refid="structdirent_a383442cd96a79cdb5cdc8bc91080099e_1a383442cd96a79cdb5cdc8bc91080099e" kindref="member">d_namlen</ref><sp/>=<sp/>13;<sp/></highlight><highlight class="comment">/*<sp/>8.3<sp/>format<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(dp-&gt;<ref refid="structFATFS__DIR_af3d22dcf3565c2709f9f53f6874589f3_1af3d22dcf3565c2709f9f53f6874589f3" kindref="member">d_dirent</ref>.<ref refid="structdirent_a54014f1f61c6ce2c55b1bc34353d0c9a_1a54014f1f61c6ce2c55b1bc34353d0c9a" kindref="member">d_name</ref>,<sp/>info.fname,<sp/>13);</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="84"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;(dp-&gt;<ref refid="structFATFS__DIR_af3d22dcf3565c2709f9f53f6874589f3_1af3d22dcf3565c2709f9f53f6874589f3" kindref="member">d_dirent</ref>);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>dp-&gt;<ref refid="structFATFS__DIR_1af3d22dcf3565c2709f9f53f6874589f3" kindref="member">d_dirent</ref>.<ref refid="structdirent_1a383442cd96a79cdb5cdc8bc91080099e" kindref="member">d_namlen</ref><sp/>=<sp/>13;<sp/></highlight><highlight class="comment">/*<sp/>8.3<sp/>format<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(dp-&gt;<ref refid="structFATFS__DIR_1af3d22dcf3565c2709f9f53f6874589f3" kindref="member">d_dirent</ref>.<ref refid="structdirent_1a54014f1f61c6ce2c55b1bc34353d0c9a" kindref="member">d_name</ref>,<sp/>info.fname,<sp/>13);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;(dp-&gt;<ref refid="structFATFS__DIR_1af3d22dcf3565c2709f9f53f6874589f3" kindref="member">d_dirent</ref>);</highlight></codeline>
 <codeline lineno="86"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"></highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="fatfs__dirent_8h_a110a86aa3a95d25abf7bb1639319be1c_1a110a86aa3a95d25abf7bb1639319be1c" kindref="member">closedir</ref>(<ref refid="structFATFS__DIR" kindref="compound">FATFS_DIR</ref>*<sp/>dp)</highlight></codeline>
@@ -100,7 +100,7 @@
 <codeline lineno="91"><highlight class="normal"></highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!dp)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>res<sp/>=<sp/>f_closedir(&amp;dp-&gt;<ref refid="structFATFS__DIR_a39bf311d7814c03b97f61f1ad887b0ff_1a39bf311d7814c03b97f61f1ad887b0ff" kindref="member">dir</ref>);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>res<sp/>=<sp/>f_closedir(&amp;dp-&gt;<ref refid="structFATFS__DIR_1a39bf311d7814c03b97f61f1ad887b0ff" kindref="member">dir</ref>);</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="malloc_8c_af07d89f5ceaea0c7c8252cc41fd75f37_1af07d89f5ceaea0c7c8252cc41fd75f37" kindref="member">free</ref>(dp);</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"></highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(res<sp/>!=<sp/>FR_OK)<sp/>{</highlight></codeline>
@@ -115,17 +115,17 @@
 <codeline lineno="106"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>FRESULT<sp/>res;</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"></highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>res<sp/>=<sp/>f_stat(path,<sp/>&amp;(buf-&gt;<ref refid="structfatfs__stat_a985e4a9dca9a1e4aa79e33f741ea5d65_1a985e4a9dca9a1e4aa79e33f741ea5d65" kindref="member">fatfs_filinfo</ref>));</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>res<sp/>=<sp/>f_stat(path,<sp/>&amp;(buf-&gt;<ref refid="structfatfs__stat_1a985e4a9dca9a1e4aa79e33f741ea5d65" kindref="member">fatfs_filinfo</ref>));</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"></highlight></codeline>
 <codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(res<sp/>!=<sp/>FR_OK)<sp/>{</highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>buf-&gt;<ref refid="structfatfs__stat_a09ca394091e851a40c4674d1894199f8_1a09ca394091e851a40c4674d1894199f8" kindref="member">st_mode</ref><sp/>=<sp/>buf-&gt;<ref refid="structfatfs__stat_a985e4a9dca9a1e4aa79e33f741ea5d65_1a985e4a9dca9a1e4aa79e33f741ea5d65" kindref="member">fatfs_filinfo</ref>.fattrib;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>buf-&gt;<ref refid="structfatfs__stat_1a09ca394091e851a40c4674d1894199f8" kindref="member">st_mode</ref><sp/>=<sp/>buf-&gt;<ref refid="structfatfs__stat_1a985e4a9dca9a1e4aa79e33f741ea5d65" kindref="member">fatfs_filinfo</ref>.fattrib;</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="117"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/clib/fatfs_dirent.c"/>
+    <location file="/home/runner/work/embarc_osp/embarc_osp/library/clib/fatfs_dirent.c"/>
   </compounddef>
 </doxygen>

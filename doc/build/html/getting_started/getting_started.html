@@ -1,39 +1,42 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Getting Started &mdash; embARC OSP Project Documentation</title>
   
 
   
-  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
+
   
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Software Requirement" href="software_requirement.html" />
@@ -78,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -125,6 +129,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -159,18 +164,20 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Getting Started</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
     
@@ -230,13 +237,13 @@ to build an embARC OSP application. Please use the
 appropriate commands for your OS.</p>
 <ol class="arabic simple">
 <li><p>Make sure the ARC GNU toolchain is installed in your environment, see <a class="reference internal" href="software_requirement.html#software-requirement"><span class="std std-ref">Software Requirement</span></a>.</p></li>
-<li><p>Navigate to <a class="reference internal" href="../example/example/baremetal/blinky/README.html#example-blinky"><span class="std std-ref">Blinky</span></a> example located at embARC OSP directory.</p></li>
+<li><p>Navigate to <span class="xref std std-ref">example_blinky</span> example located at embARC OSP directory.</p></li>
 </ol>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd embarc_osp\example\baremetal\blinky</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li><p>Build the <a class="reference internal" href="../example/example/baremetal/blinky/README.html#example-blinky"><span class="std std-ref">Blinky</span></a> example for the EMSK 2.3 board and ARC EM11D.</p></li>
+<li><p>Build the <span class="xref std std-ref">example_blinky</span> example for the EMSK 2.3 board and ARC EM11D.</p></li>
 </ol>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make TOOLCHAIN=gnu BOARD=emsk BD_VER=23 CUR_CORE=arcem11d</span>
 </pre></div>
@@ -269,7 +276,7 @@ appropriate commands for your OS.</p>
 <ol class="arabic simple">
 <li><p>Make sure the <em>blinky</em> example has been built successfully in <a class="reference internal" href="#building-a-sample-application"><span class="std std-ref">Building a Sample Application</span></a>. Get the .elf file <code class="docutils literal notranslate"><span class="pre">blinky_gnu_arcem11d.elf</span></code> in <code class="docutils literal notranslate"><span class="pre">&lt;blinky&gt;\obj_emsk_23\gnu_arcem11d</span></code>.</p></li>
 <li><p>Follow to steps in <a class="reference internal" href="../board/emsk.html#getting-started-with-em-starter-kit"><span class="std std-ref">Programming and Debugging</span></a> to set and connect EMSK 2.3 with EM11D to your local machine.</p></li>
-<li><p>Navigate to the embARC OSP directory and run <a class="reference internal" href="../example/example/baremetal/blinky/README.html#example-blinky"><span class="std std-ref">Blinky</span></a> example.</p></li>
+<li><p>Navigate to the embARC OSP directory and run <span class="xref std std-ref">example_blinky</span> example.</p></li>
 </ol>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd embarc_osp\example\baremetal\blinky</span>
 <span class="go">make TOOLCHAIN=gnu BOARD=emsk BD_VER=23 CUR_CORE=arcem11d run</span>
@@ -297,22 +304,20 @@ appropriate commands for your OS.</p>
            
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Synopsys
+        &#169; Copyright 2019, Synopsys.
       <span class="lastupdated">
-        Last updated on Aug 04, 2021.
+        Last updated on Sep 06, 2021.
       </span>
 
     </p>
   </div> 
 
 </footer>
-
         </div>
       </div>
 
@@ -320,7 +325,6 @@ appropriate commands for your OS.</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

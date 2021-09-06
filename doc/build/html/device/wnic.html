@@ -1,39 +1,42 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>WNIC HAL &mdash; embARC OSP Project Documentation</title>
   
 
   
-  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
+
   
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="TRNG HAL" href="trng.html" />
@@ -78,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -128,6 +132,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -162,11 +167,13 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="device.html">Devices</a> &raquo;</li>
         
@@ -175,7 +182,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
     
@@ -196,115 +203,115 @@ driver to implement. Here is a diagram for the gpio interface.</p>
 <h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h2>
 <dl class="group">
 <dt>
-<span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT"></span><em>group</em> <code class="sig-name descname">DEVICE_HAL_WNIC_DEVSTRUCT</code></dt>
+<span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT"></span><em><span class="pre">group</span></em> <code class="sig-name descname"><span class="pre">DEVICE_HAL_WNIC_DEVSTRUCT</span></code></dt>
 <dd><p>contains definitions of wnic device structure. </p>
 <p>this structure will be used in user implemented code, which was called Device Driver Implement Layer for wnic to realize in user code. </p>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Defines</p>
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="cpp macro">
 <dt id="c.WNIC_SET_ON_INIT_SUCCESS">
-<span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1gaa4885d48831865ce2c35d3de3e20f528"></span><code class="sig-name descname">WNIC_SET_ON_INIT_SUCCESS</code><span class="sig-paren">(</span><em>wnic_ptr</em>, <em>on_ops</em><span class="sig-paren">)</span><a class="headerlink" href="#c.WNIC_SET_ON_INIT_SUCCESS" title="Permalink to this definition">¶</a><br /></dt>
+<span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1gaa4885d48831865ce2c35d3de3e20f528"></span><code class="sig-name descname"><span class="pre">WNIC_SET_ON_INIT_SUCCESS</span></code><span class="sig-paren">(</span><em><span class="pre">wnic_ptr</span></em>, <em><span class="pre">on_ops</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.WNIC_SET_ON_INIT_SUCCESS" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>WNIC SET ON OPERATIONS. </p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt id="c.WNIC_SET_ON_INIT_FAIL">
-<span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1ga0ccd0db347b2a33736152d0893b42e98"></span><code class="sig-name descname">WNIC_SET_ON_INIT_FAIL</code><span class="sig-paren">(</span><em>wnic_ptr</em>, <em>on_ops</em><span class="sig-paren">)</span><a class="headerlink" href="#c.WNIC_SET_ON_INIT_FAIL" title="Permalink to this definition">¶</a><br /></dt>
+<span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1ga0ccd0db347b2a33736152d0893b42e98"></span><code class="sig-name descname"><span class="pre">WNIC_SET_ON_INIT_FAIL</span></code><span class="sig-paren">(</span><em><span class="pre">wnic_ptr</span></em>, <em><span class="pre">on_ops</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.WNIC_SET_ON_INIT_FAIL" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp macro">
 <dt id="c.WNIC_SET_ON_CONNECTED">
-<span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1ga48a6f4114becd91bb59de73ea99075ab"></span><code class="sig-name descname">WNIC_SET_ON_CONNECTED</code><span class="sig-paren">(</span><em>wnic_ptr</em>, <em>on_ops</em><span class="sig-paren">)</span><a class="headerlink" href="#c.WNIC_SET_ON_CONNECTED" title="Permalink to this definition">¶</a><br /></dt>
+<span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1ga48a6f4114becd91bb59de73ea99075ab"></span><code class="sig-name descname"><span class="pre">WNIC_SET_ON_CONNECTED</span></code><span class="sig-paren">(</span><em><span class="pre">wnic_ptr</span></em>, <em><span class="pre">on_ops</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.WNIC_SET_ON_CONNECTED" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp macro">
 <dt id="c.WNIC_SET_ON_DISCONNECTED">
-<span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1gaff6f43710ba02dc3271236e6f240553c"></span><code class="sig-name descname">WNIC_SET_ON_DISCONNECTED</code><span class="sig-paren">(</span><em>wnic_ptr</em>, <em>on_ops</em><span class="sig-paren">)</span><a class="headerlink" href="#c.WNIC_SET_ON_DISCONNECTED" title="Permalink to this definition">¶</a><br /></dt>
+<span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1gaff6f43710ba02dc3271236e6f240553c"></span><code class="sig-name descname"><span class="pre">WNIC_SET_ON_DISCONNECTED</span></code><span class="sig-paren">(</span><em><span class="pre">wnic_ptr</span></em>, <em><span class="pre">on_ops</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.WNIC_SET_ON_DISCONNECTED" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp macro">
 <dt id="c.WNIC_SET_ON_MAC_UPDATED">
-<span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1ga8aedacca47209d6fee674140a60fcac8"></span><code class="sig-name descname">WNIC_SET_ON_MAC_UPDATED</code><span class="sig-paren">(</span><em>wnic_ptr</em>, <em>on_ops</em><span class="sig-paren">)</span><a class="headerlink" href="#c.WNIC_SET_ON_MAC_UPDATED" title="Permalink to this definition">¶</a><br /></dt>
+<span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1ga8aedacca47209d6fee674140a60fcac8"></span><code class="sig-name descname"><span class="pre">WNIC_SET_ON_MAC_UPDATED</span></code><span class="sig-paren">(</span><em><span class="pre">wnic_ptr</span></em>, <em><span class="pre">on_ops</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.WNIC_SET_ON_MAC_UPDATED" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp macro">
 <dt id="c.WNIC_SET_ON_SCAN_FINISHED">
-<span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1gaf24bc3a78deae657922bcebf02e25198"></span><code class="sig-name descname">WNIC_SET_ON_SCAN_FINISHED</code><span class="sig-paren">(</span><em>wnic_ptr</em>, <em>on_ops</em><span class="sig-paren">)</span><a class="headerlink" href="#c.WNIC_SET_ON_SCAN_FINISHED" title="Permalink to this definition">¶</a><br /></dt>
+<span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1gaf24bc3a78deae657922bcebf02e25198"></span><code class="sig-name descname"><span class="pre">WNIC_SET_ON_SCAN_FINISHED</span></code><span class="sig-paren">(</span><em><span class="pre">wnic_ptr</span></em>, <em><span class="pre">on_ops</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.WNIC_SET_ON_SCAN_FINISHED" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp macro">
 <dt id="c.WNIC_SET_ON_RXDATA_COMES">
-<span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1ga8611ea8b19ecd050911098b1f7a146b4"></span><code class="sig-name descname">WNIC_SET_ON_RXDATA_COMES</code><span class="sig-paren">(</span><em>wnic_ptr</em>, <em>on_ops</em><span class="sig-paren">)</span><a class="headerlink" href="#c.WNIC_SET_ON_RXDATA_COMES" title="Permalink to this definition">¶</a><br /></dt>
+<span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1ga8611ea8b19ecd050911098b1f7a146b4"></span><code class="sig-name descname"><span class="pre">WNIC_SET_ON_RXDATA_COMES</span></code><span class="sig-paren">(</span><em><span class="pre">wnic_ptr</span></em>, <em><span class="pre">on_ops</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.WNIC_SET_ON_RXDATA_COMES" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp macro">
 <dt id="c.WNIC_SET_ON_DEV_ASSERTED">
-<span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1gaf4f76884a28236ccb45718788bbbb51c"></span><code class="sig-name descname">WNIC_SET_ON_DEV_ASSERTED</code><span class="sig-paren">(</span><em>wnic_ptr</em>, <em>on_ops</em><span class="sig-paren">)</span><a class="headerlink" href="#c.WNIC_SET_ON_DEV_ASSERTED" title="Permalink to this definition">¶</a><br /></dt>
+<span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1gaf4f76884a28236ccb45718788bbbb51c"></span><code class="sig-name descname"><span class="pre">WNIC_SET_ON_DEV_ASSERTED</span></code><span class="sig-paren">(</span><em><span class="pre">wnic_ptr</span></em>, <em><span class="pre">on_ops</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.WNIC_SET_ON_DEV_ASSERTED" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Typedefs</p>
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
 <dl class="cpp type">
 <dt id="_CPPv48DEV_WNIC">
-<span id="_CPPv38DEV_WNIC"></span><span id="_CPPv28DEV_WNIC"></span><span id="DEV_WNIC"></span><span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1ga331469c5eeebf80940a6bfef0658b342"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv48dev_wnic" title="dev_wnic">dev_wnic</a> <code class="sig-name descname">DEV_WNIC</code><a class="headerlink" href="#_CPPv48DEV_WNIC" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv38DEV_WNIC"></span><span id="_CPPv28DEV_WNIC"></span><span id="DEV_WNIC"></span><span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1ga331469c5eeebf80940a6bfef0658b342"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv48dev_wnic" title="dev_wnic"><span class="pre">dev_wnic</span></a> <code class="sig-name descname"><span class="pre">DEV_WNIC</span></code><a class="headerlink" href="#_CPPv48DEV_WNIC" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp type">
 <dt id="_CPPv412DEV_WNIC_PTR">
-<span id="_CPPv312DEV_WNIC_PTR"></span><span id="_CPPv212DEV_WNIC_PTR"></span><span id="DEV_WNIC_PTR"></span><span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1gac35eb119dfb9902e12513c52cc6cb120"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv48dev_wnic" title="dev_wnic">dev_wnic</a> *<code class="sig-name descname">DEV_WNIC_PTR</code><a class="headerlink" href="#_CPPv412DEV_WNIC_PTR" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv312DEV_WNIC_PTR"></span><span id="_CPPv212DEV_WNIC_PTR"></span><span id="DEV_WNIC_PTR"></span><span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1gac35eb119dfb9902e12513c52cc6cb120"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv48dev_wnic" title="dev_wnic"><span class="pre">dev_wnic</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">DEV_WNIC_PTR</span></code><a class="headerlink" href="#_CPPv412DEV_WNIC_PTR" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp type">
 <dt id="_CPPv411ON_WNIC_OPS">
-<span id="_CPPv311ON_WNIC_OPS"></span><span id="_CPPv211ON_WNIC_OPS"></span><span id="ON_WNIC_OPS"></span><span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1gab5f0d17dd7fd48476196b3c44ce40422"></span><em class="property">typedef </em>int32_t (*<code class="sig-name descname">ON_WNIC_OPS</code>)<span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48DEV_WNIC" title="DEV_WNIC">DEV_WNIC</a> *wnic_ptr<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411ON_WNIC_OPS" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv311ON_WNIC_OPS"></span><span id="_CPPv211ON_WNIC_OPS"></span><span id="ON_WNIC_OPS"></span><span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1ga1023daed026275c961184c3287625abb"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">int32_t</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">ON_WNIC_OPS</span></code><span class="pre">)</span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48DEV_WNIC" title="DEV_WNIC"><span class="pre">DEV_WNIC</span></a> <span class="pre">*</span><span class="pre">wnic_ptr</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411ON_WNIC_OPS" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp type">
 <dt id="_CPPv415DEV_WNIC_ON_OPS">
-<span id="_CPPv315DEV_WNIC_ON_OPS"></span><span id="_CPPv215DEV_WNIC_ON_OPS"></span><span id="DEV_WNIC_ON_OPS"></span><span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1gaefac53a14f230c7cd6526817a2f9befb"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv415dev_wnic_on_ops" title="dev_wnic_on_ops">dev_wnic_on_ops</a> <code class="sig-name descname">DEV_WNIC_ON_OPS</code><a class="headerlink" href="#_CPPv415DEV_WNIC_ON_OPS" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv315DEV_WNIC_ON_OPS"></span><span id="_CPPv215DEV_WNIC_ON_OPS"></span><span id="DEV_WNIC_ON_OPS"></span><span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1ga1b5475e3020874876c380ba714b9db1d"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv415dev_wnic_on_ops" title="dev_wnic_on_ops"><span class="pre">dev_wnic_on_ops</span></a> <code class="sig-name descname"><span class="pre">DEV_WNIC_ON_OPS</span></code><a class="headerlink" href="#_CPPv415DEV_WNIC_ON_OPS" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>wnic on state operations such as init success, init failed hardware assert, connected, disconnected, mac updated, scan finished </p>
 </dd></dl>
 
 <dl class="cpp type">
 <dt id="_CPPv419DEV_WNIC_ON_OPS_PTR">
-<span id="_CPPv319DEV_WNIC_ON_OPS_PTR"></span><span id="_CPPv219DEV_WNIC_ON_OPS_PTR"></span><span id="DEV_WNIC_ON_OPS_PTR"></span><span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1ga1c5fb841775d05f59f42c49439fff3e7"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv415dev_wnic_on_ops" title="dev_wnic_on_ops">dev_wnic_on_ops</a> *<code class="sig-name descname">DEV_WNIC_ON_OPS_PTR</code><a class="headerlink" href="#_CPPv419DEV_WNIC_ON_OPS_PTR" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv319DEV_WNIC_ON_OPS_PTR"></span><span id="_CPPv219DEV_WNIC_ON_OPS_PTR"></span><span id="DEV_WNIC_ON_OPS_PTR"></span><span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1ga1c5fb841775d05f59f42c49439fff3e7"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv415dev_wnic_on_ops" title="dev_wnic_on_ops"><span class="pre">dev_wnic_on_ops</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">DEV_WNIC_ON_OPS_PTR</span></code><a class="headerlink" href="#_CPPv419DEV_WNIC_ON_OPS_PTR" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp type">
 <dt id="_CPPv413DEV_WNIC_INFO">
-<span id="_CPPv313DEV_WNIC_INFO"></span><span id="_CPPv213DEV_WNIC_INFO"></span><span id="DEV_WNIC_INFO"></span><span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1gaba6c69016d03043288ad39b93fd96d25"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv413dev_wnic_info" title="dev_wnic_info">dev_wnic_info</a> <code class="sig-name descname">DEV_WNIC_INFO</code><a class="headerlink" href="#_CPPv413DEV_WNIC_INFO" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv313DEV_WNIC_INFO"></span><span id="_CPPv213DEV_WNIC_INFO"></span><span id="DEV_WNIC_INFO"></span><span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1ga3202299bc04b559353d3f3f8a3db4162"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv413dev_wnic_info" title="dev_wnic_info"><span class="pre">dev_wnic_info</span></a> <code class="sig-name descname"><span class="pre">DEV_WNIC_INFO</span></code><a class="headerlink" href="#_CPPv413DEV_WNIC_INFO" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>wnic information struct definition </p>
 <p>informations about wnic open state, working state, frequence, working method </p>
 </dd></dl>
 
 <dl class="cpp type">
 <dt id="_CPPv417DEV_WNIC_INFO_PTR">
-<span id="_CPPv317DEV_WNIC_INFO_PTR"></span><span id="_CPPv217DEV_WNIC_INFO_PTR"></span><span id="DEV_WNIC_INFO_PTR"></span><span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1gaf38034b6c29e24438d48e8125c8c2600"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv413dev_wnic_info" title="dev_wnic_info">dev_wnic_info</a> *<code class="sig-name descname">DEV_WNIC_INFO_PTR</code><a class="headerlink" href="#_CPPv417DEV_WNIC_INFO_PTR" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv317DEV_WNIC_INFO_PTR"></span><span id="_CPPv217DEV_WNIC_INFO_PTR"></span><span id="DEV_WNIC_INFO_PTR"></span><span class="target" id="group__DEVICE__HAL__WNIC__DEVSTRUCT_1gaf38034b6c29e24438d48e8125c8c2600"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv413dev_wnic_info" title="dev_wnic_info"><span class="pre">dev_wnic_info</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">DEV_WNIC_INFO_PTR</span></code><a class="headerlink" href="#_CPPv417DEV_WNIC_INFO_PTR" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </div>
 <dl class="cpp struct">
 <dt id="_CPPv415dev_wnic_on_ops">
-<span id="_CPPv315dev_wnic_on_ops"></span><span id="_CPPv215dev_wnic_on_ops"></span><span id="dev_wnic_on_ops"></span><span class="target" id="structdev__wnic__on__ops"></span><em class="property">struct </em><code class="sig-name descname">dev_wnic_on_ops</code><a class="headerlink" href="#_CPPv415dev_wnic_on_ops" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv315dev_wnic_on_ops"></span><span id="_CPPv215dev_wnic_on_ops"></span><span id="dev_wnic_on_ops"></span><span class="target" id="structdev__wnic__on__ops"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">dev_wnic_on_ops</span></code><a class="headerlink" href="#_CPPv415dev_wnic_on_ops" title="Permalink to this definition">¶</a><br /></dt>
 <dd><em>#include &lt;dev_wnic.h&gt;</em><p>wnic on state operations such as init success, init failed hardware assert, connected, disconnected, mac updated, scan finished </p>
 </dd></dl>
 
 <dl class="cpp struct">
 <dt id="_CPPv413dev_wnic_info">
-<span id="_CPPv313dev_wnic_info"></span><span id="_CPPv213dev_wnic_info"></span><span id="dev_wnic_info"></span><span class="target" id="structdev__wnic__info"></span><em class="property">struct </em><code class="sig-name descname">dev_wnic_info</code><a class="headerlink" href="#_CPPv413dev_wnic_info" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv313dev_wnic_info"></span><span id="_CPPv213dev_wnic_info"></span><span id="dev_wnic_info"></span><span class="target" id="structdev__wnic__info"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">dev_wnic_info</span></code><a class="headerlink" href="#_CPPv413dev_wnic_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><em>#include &lt;dev_wnic.h&gt;</em><p>wnic information struct definition </p>
 <p>informations about wnic open state, working state, frequence, working method </p>
 </dd></dl>
 
 <dl class="cpp struct">
 <dt id="_CPPv48dev_wnic">
-<span id="_CPPv38dev_wnic"></span><span id="_CPPv28dev_wnic"></span><span id="dev_wnic"></span><span class="target" id="structdev__wnic"></span><em class="property">struct </em><code class="sig-name descname">dev_wnic</code><a class="headerlink" href="#_CPPv48dev_wnic" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv38dev_wnic"></span><span id="_CPPv28dev_wnic"></span><span id="dev_wnic"></span><span class="target" id="structdev__wnic"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">dev_wnic</span></code><a class="headerlink" href="#_CPPv48dev_wnic" title="Permalink to this definition">¶</a><br /></dt>
 <dd><em>#include &lt;dev_wnic.h&gt;</em><p>wnic device interface definition </p>
-<p>define wnic device interface, like wnic information structure, functions to get wnic info, open/close/control wnic, send/receive data by wnic <dl class="simple">
-<dt><strong>Note</strong></dt><dd><p>all this details are implemented by user in user porting code </p>
-</dd>
-</dl>
+<p>define wnic device interface, like wnic information structure, functions to get wnic info, open/close/control wnic, send/receive data by wnic <div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>all this details are implemented by user in user porting code </p>
+</div>
 </p>
 </dd></dl>
 
@@ -318,22 +325,20 @@ driver to implement. Here is a diagram for the gpio interface.</p>
            
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Synopsys
+        &#169; Copyright 2019, Synopsys.
       <span class="lastupdated">
-        Last updated on Aug 04, 2021.
+        Last updated on Sep 06, 2021.
       </span>
 
     </p>
   </div> 
 
 </footer>
-
         </div>
       </div>
 
@@ -341,7 +346,6 @@ driver to implement. Here is a diagram for the gpio interface.</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
