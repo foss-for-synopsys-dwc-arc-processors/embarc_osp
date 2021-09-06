@@ -1,0 +1,53 @@
+name: Documentation Build and Deploy
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    paths:
+    - 'doc/**'
+    - '**.rst'
+    - '**.md'
+    - '.github/workflows/doc-build.yml'
+
+jobs:
+  doc-build-html:
+    name: "Documentation Build (HTML)"
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: install-pkgs
+      run: |
+        sudo apt-get install -y doxygen
+
+    - name: cache-pip
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pip
+        key: pip-${{ hashFiles('scripts/requirements_doc.txt') }}
+
+    - name: install-pip
+      run: |
+        sudo pip3 install -U setuptools wheel pip
+        pip3 install -r scripts/requirements_doc.txt
+
+
+    - name: build-docs
+      run: |
+        ln -s example doc/documents/example/example
+        mkdir -p doc/build/doxygen/xml
+
+        SPHINXOPTS="-q -W -j auto" make -C doc doxygen
+        SPHINXOPTS="-q -W -j auto" make -C doc html
+        rm -rf doc/build/doctrees
+
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@4.1.5
+      with:
+        branch: gh-pages
+        folder: doc/build
+        target-folder: doc/build
