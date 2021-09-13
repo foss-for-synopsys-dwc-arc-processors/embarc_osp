@@ -255,7 +255,8 @@ Help information will be printed to your console.</p>
 <span class="go">&quot;  DIG_NAME=xxx                                - Specify Digilent JTAG which to be used, most useful when more than one Digilent USB-JTAG plugged in&quot;</span>
 <span class="go">&quot;  HEAPSZ=xxx                                  - Specify heap size for program, xxx stands for size in bytes&quot;</span>
 <span class="go">&quot;  STACKSZ=xxx                                 - Specify stack size for program, xxx stands for size in bytes&quot;</span>
-<span class="go">&quot;  LINKER_SCRIPT_FILE=xxx                      - Specify customized linker script (.ld .lcf), xxx stands for the relative path of linker script file to current directory&quot;</span>
+<span class="go">&quot;  LINKER_SCRIPT_FILE=xxx                      - Specify customized linker script, the script will be sent directly to linker. xxx stands for the relative path of linker script file to current directory&quot;</span>
+<span class="go">&quot;  LINKER_USE_TEMPLATE=0|1                     - If set this option to 1, then use LINKER_SCRIPT_FILE=xxx file as template and send it to compiler. Compiler only accept .ld .lcf files as template and will generate .ldf file as linker script&quot;</span>
 <span class="go">&quot;Example Usage:&quot;</span>
 <span class="go">&quot;  make all                                                                - build example in current directory using default configuration&quot;</span>
 <span class="go">&quot;  make BOARD=emsk BD_VER=22 CUR_CORE=arcem7d OLEVEL=O2 TOOLCHAIN=gnu all  - build example using configuration (emsk, 22, arcem7d, O2, gnu)&quot;</span>
@@ -377,7 +378,7 @@ Then it will try to download the project to the board and start running it. If n
     <p>
         &#169; Copyright 2019, Synopsys.
       <span class="lastupdated">
-        Last updated on Sep 06, 2021.
+        Last updated on Sep 13, 2021.
       </span>
 
     </p>
