@@ -25,6 +25,9 @@ VALID_TOOLCHAIN = $(call check_item_exist, $(TOOLCHAIN), $(SUPPORTED_TOOLCHAINS)
 ifneq ($(VALID_TOOLCHAIN), )
 COMMON_COMPILE_PREREQUISITES += $(EMBARC_ROOT)/options/toolchain/toolchain_$(VALID_TOOLCHAIN).mk
 include $(EMBARC_ROOT)/options/toolchain/toolchain_$(VALID_TOOLCHAIN).mk
+ifeq ($(LINKER_SCRIPT_FILE), )
+LINKER_USE_TEMPLATE ?= 1
+endif
 LINKER_SCRIPT_FILE ?= $(EMBARC_ROOT)/options/toolchain/linker_template_$(VALID_TOOLCHAIN).ld
 else
 $(info TOOLCHAIN - $(SUPPORTED_TOOLCHAINS) are supported)

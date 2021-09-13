@@ -135,7 +135,8 @@ help :
 	@$(ECHO) '  DIG_NUM=xxx                                 - Specify device serial number which to be used for OpenOCD, most useful when more than one device plugged in'
 	@$(ECHO) '  HEAPSZ=xxx                                  - Specify heap size for program, xxx stands for size in bytes'
 	@$(ECHO) '  STACKSZ=xxx                                 - Specify stack size for program, xxx stands for size in bytes'
-	@$(ECHO) '  LINKER_SCRIPT_FILE=xxx                      - Specify customized linker script (.ld .lcf), xxx stands for the relative path of linker script file to current directory'
+	@$(ECHO) '  LINKER_SCRIPT_FILE=xxx                      - Specify customized linker script, the script will be sent directly to linker. xxx stands for the relative path of linker script file to current directory'
+	@$(ECHO) '  LINKER_USE_TEMPLATE=0|1                     - If set this option to 1, then use LINKER_SCRIPT_FILE=xxx file as template and send it to compiler. Compiler only accept .ld .lcf files as template and will generate .ldf file as linker script'
 	@$(ECHO) 'Example Usage:'
 	@$(ECHO) '  make all                                                                - build example in current directory using default configuration'
 	@$(ECHO) '  make BOARD=emsk BD_VER=22 CUR_CORE=arcem7d OLEVEL=O2 TOOLCHAIN=gnu all  - build example using configuration (emsk, 22, arcem7d, O2, gnu)'
@@ -326,10 +327,14 @@ $(EMBARC_GENERATED_DIR)/$(GENE_MEMORY_X): $(EMBARC_GENERATED_DIR)/$(GENE_TCF)
 
 
 #####RULES FOR GENERATING LINK FILE FROM TEMPLATE#####
+ifeq ($(LINKER_USE_TEMPLATE), 1)
 .SECONDEXPANSION:
 $(APPL_LINK_FILE): $(LINKER_SCRIPT_FILE) $$(COMMON_COMPILE_PREREQUISITES)
 	$(TRACE_GEN_LINKFILE)
 	$(Q)$(CC) -c $(ALL_DEFINES) $(LINK_FILE_OPT) $< -o $@
+else
+APPL_LINK_FILE = $(LINKER_SCRIPT_FILE)
+endif
 
 #####RULES FOR GENERATING ELF FILE#####
 .SECONDEXPANSION:
