@@ -25,8 +25,11 @@ JTAG, or the .bin  files through SD card by secondary bootloader.
    Example Directory                                        Example Document Link
    =======================================================  =============================================
    example/baremetal/arc_feature/cache                      :ref:`example_arc_feature_cache`
+   example/baremetal/arc_feature/memory_protection          :ref:`example_arc_feature_memory_protection`
+   example/baremetal/arc_feature/multicore                  :ref:`example_arc_feature_smp`
    example/baremetal/arc_feature/timer_interrupt            :ref:`example_arc_feature_timer_interrupt`
    example/baremetal/arc_feature/udma                       :ref:`example_arc_feature_udma`
+   example/baremetal/arc_feature/xymem                      :ref:`example_arc_feature_xymem`
    example/baremetal/ble_hm1x                               :ref:`example_ble_hm1x`
    example/baremetal/blinky                                 :ref:`example_blinky`
    example/baremetal/bootloader                             :ref:`example_bootloader`
@@ -37,6 +40,7 @@ JTAG, or the .bin  files through SD card by secondary bootloader.
    example/baremetal/openthread/cli                         :ref:`example_openthread_cli`
    example/baremetal/openthread/ncp                         :ref:`example_openthread_ncp`
    example/freertos/esp8266_wifi                            :ref:`example_esp8266_wifi`
+   example/freertos/freertos_blinky                         :ref:`example_freertos_blinky`
    example/freertos/iot/coap/coap_server                    :ref:`example_iot_coap_coap_server`
    example/freertos/iot/lwm2m/lwm2m_client                  :ref:`example_iot_lwm2m_lwm2m_client`
    example/freertos/iot/lwm2m/lwm2m_server                  :ref:`example_iot_lwm2m_lwm2m_server`

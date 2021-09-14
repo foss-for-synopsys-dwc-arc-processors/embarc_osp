@@ -1,5 +1,5 @@
 /* ------------------------------------------
- * Copyright (c) 2017, Synopsys, Inc. All rights reserved.
+ * Copyright (c) 2021, Synopsys, Inc. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
@@ -43,9 +43,8 @@ int main(void)
 
 	EMBARC_PRINTF("[main] Helloworld! This is a freertos demo!\r\n");
 	xTaskCreate(task_blinky, "blinky", configMINIMAL_STACK_SIZE, NULL, (tskIDLE_PRIORITY + 3), NULL);
-	// vTaskStartScheduler();
-	// should not reach here
-	return E_SYS;
+
+	return E_OK;
 }
 
 static void task_blinky(void *par)

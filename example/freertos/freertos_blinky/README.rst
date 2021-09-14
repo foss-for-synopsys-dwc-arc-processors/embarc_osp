@@ -1,4 +1,4 @@
-.. _example_freertos_demo:
+.. _example_freertos_blinky:
 
 FreeRTOS Demo
 #############
@@ -38,27 +38,16 @@ to run this example are as follows:
 
 .. code-block:: console
 
-    $ cd <embarc_root>/example/freertos_demo
-    $ make BOARD=emsk BD_VER=11 CUR_CORE=arcem6 TOOLCHAIN=gnu run
+    $ cd <embarc_root>/example/freertos/freertos_blinky
+    $ make BOARD=emsk run
 
 If you do not have an EMSK development board, you can use the nSIM simulator
 which have been installed in MetaWare IDE.
 
 .. code-block:: console
 
-    $ cd <embarc_root>/example/freertos_demo
-    $ gmake BOARD=nsim BD_VER=1506 CUR_CORE=arcemfull TOOLCHAIN=mw run
-
-.. note:: Make sure you have selected the correct configuration of EMSK via dipswitches and that you have reset the board (button above “R”) to confirme its configuration
-
-If you wish to run ARC v1 series cores on nSIM simulator
-which have been installed in MetaWare IDE.
-Core here is specified to arc610d, other choices are arc605, arc710d
-
-.. code-block:: console
-
-    $ cd <embarc_root>/example/freertos_demo
-    $ gmake BOARD=nsim CUR_CORE=arc610d TOOLCHAIN=mw_mcc run
+    $ cd <embarc_root>/example/freertos/freertos_blinky
+    $ gmake BOARD=nsim run
 
 Sample Output
 =============
@@ -69,9 +58,11 @@ download is successful.
 
 .. code-block:: console
 
-    C:\embarc_bsp\example\freertos_demo> gmake BOARD=nsim CUR_CORE=arc610d TOOLCHAIN=mw_mcc run
-    "Download & Run obj_nsim_10/mw_mcc_arc610d/freertos_demo_mw_mcc_arc610d.elf"
-    mdb -nooptions -nogoifmain -toggle=include_local_symbols=1 -nsim -off=binary_stdin -off=binary_stdout  -on=load_at_paddr -on=reset_upon_restart -off=flush_pipe -off=cr_for_more -OKN  @obj_nsim_10/mw_mcc_arc610d/embARC_generated/mdb.arg -run obj_nsim_10/mw_mcc_arc610d/freertos_demo_mw_mcc_arc610d.elf
+    C:\embarc_bsp\example\freertos/freertos_blinky> gmake BOARD=nsim run
+    "Download & Run obj_nsim_10/mw_arcem/freertos_blinky_mw_arcem.elf"
+    mdb -nooptions -nogoifmain -toggle=include_local_symbols=1 -nsim -off=binary_stdin -off=binary_stdout  -on=load_at_paddr -on=reset_upon_restart -off=flush_pipe -off=cr_for_more -OKN  -prop=nsim_mem-dev=uart0,kind=dwuart,base=0xf0000000,irq=24 @obj_nsim_10/mw_arcem/embARC_generated/mdb.arg -run obj_nsim_10/mw_arcem/freertos_blinky_mw_arcem.elf
+    11:19:04.575058 WARN:[IO-DEVMGR] SYS device uart0: Unhandled property: kind
+    Console now belongs to UART, hit CRTL-] to return to simulator.
     -----------------------------------------------------------
      ____                                _ ____
     |  _ \ _____      _____ _ __ ___  __| | __ ) _   _
@@ -86,11 +77,13 @@ download is successful.
           \___|_| |_| |_|_.__/_/   \_\_| \_\\____|
     ------------------------------------------------------------
 
-    embARC Build Time: Aug  4 2020, 15:43:58
-    Compiler Version: Metaware, mcc
-
+    embARC Build Time: Sep 14 2021, 10:54:36
+    Compiler Version: Metaware, Clang 11.1.0
     [main] Helloworld! This is a freertos demo!
     [task_blinky] Helloworld! This is a freertos demo!
+    led out: ff, ff
+    Exit from main function, return code: 0
+    led out: ff00, ff
     led out: ff, ff
     led out: ff00, ff
     led out: ff, ff

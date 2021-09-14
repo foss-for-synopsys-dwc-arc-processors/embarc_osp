@@ -7,6 +7,8 @@ OS_SEL ?= freertos
 #
 EMBARC_ROOT = ../../..
 
+MID_SEL = common
+
 # application source dirs
 APPL_CSRC_DIR = .
 APPL_ASMSRC_DIR = .

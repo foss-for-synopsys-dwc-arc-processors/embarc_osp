@@ -209,7 +209,7 @@ static void task_main(void *par)
 		ercd = arc_goto_main(main_arg->argc, main_arg->argv);
 	}
 
-	EMBARC_PRINTF("Exit from main function, error code:%d....\r\n", ercd);
+	EMBARC_PRINTF("Exit from main function, return code: %d \r\n", ercd);
 	while (1) {
 		vTaskSuspend(NULL);
 	}
