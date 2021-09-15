@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2019.06
+                2021.09
               </div>
             
           
@@ -266,23 +266,16 @@ driver to implement. Here is a diagram for the i2c interface.</p>
 <li><p><strong>param</strong> – <strong>[in]</strong> When mode is DEV_MASTER_MODE, param stands for speed mode, when mode is DEV_SLAVE_MODE, param stands for slave device 7bit address </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns E_OK</dt>
-<dd class="field-even"><p>Open successfully without any issues </p>
-</dd>
-<dt class="field-odd">Returns E_OPNED</dt>
-<dd class="field-odd"><p>If device was opened before with different parameters, then just increase the opn_cnt and return E_OPNED </p>
-</dd>
-<dt class="field-even">Returns E_OBJ</dt>
-<dd class="field-even"><p>Device object is not valid </p>
-</dd>
-<dt class="field-odd">Returns E_SYS</dt>
-<dd class="field-odd"><p>Device is opened for different mode before, if you want to open it with different mode, you need to fully close it first. </p>
-</dd>
-<dt class="field-even">Returns E_PAR</dt>
-<dd class="field-even"><p>Parameter is not valid </p>
-</dd>
-<dt class="field-odd">Returns E_NOSPT</dt>
-<dd class="field-odd"><p>Open settings are not supported </p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>E_OK</strong> – Open successfully without any issues </p></li>
+<li><p><strong>E_OPNED</strong> – If device was opened before with different parameters, then just increase the opn_cnt and return E_OPNED </p></li>
+<li><p><strong>E_OBJ</strong> – Device object is not valid </p></li>
+<li><p><strong>E_SYS</strong> – Device is opened for different mode before, if you want to open it with different mode, you need to fully close it first. </p></li>
+<li><p><strong>E_PAR</strong> – Parameter is not valid </p></li>
+<li><p><strong>E_NOSPT</strong> – Open settings are not supported </p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -293,14 +286,13 @@ driver to implement. Here is a diagram for the i2c interface.</p>
 <dd><p>close iic device</p>
 <p>close an iic device, just decrease the opn_cnt, if opn_cnt equals 0, then close the device </p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns E_OK</dt>
-<dd class="field-odd"><p>Close successfully without any issues(including scenario that device is already closed) </p>
-</dd>
-<dt class="field-even">Returns E_OPNED</dt>
-<dd class="field-even"><p>Device is still opened, the device opn_cnt decreased by 1 </p>
-</dd>
-<dt class="field-odd">Returns E_OBJ</dt>
-<dd class="field-odd"><p>Device object is not valid </p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>E_OK</strong> – Close successfully without any issues(including scenario that device is already closed) </p></li>
+<li><p><strong>E_OPNED</strong> – Device is still opened, the device opn_cnt decreased by 1 </p></li>
+<li><p><strong>E_OBJ</strong> – Device object is not valid </p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -317,26 +309,17 @@ driver to implement. Here is a diagram for the i2c interface.</p>
 <li><p><strong>param</strong> – <strong>[inout]</strong> parameters that maybe argument of the command, or return values of the command, must not be NULL </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns E_OK</dt>
-<dd class="field-even"><p>Control device successfully </p>
-</dd>
-<dt class="field-odd">Returns E_CLSED</dt>
-<dd class="field-odd"><p>Device is not opened </p>
-</dd>
-<dt class="field-even">Returns E_OBJ</dt>
-<dd class="field-even"><p>Device object is not valid or not exists </p>
-</dd>
-<dt class="field-odd">Returns E_PAR</dt>
-<dd class="field-odd"><p>Parameter is not valid for current control command </p>
-</dd>
-<dt class="field-even">Returns E_SYS</dt>
-<dd class="field-even"><p>Control device failed, due to hardware issues, such as device is disabled </p>
-</dd>
-<dt class="field-odd">Returns E_CTX</dt>
-<dd class="field-odd"><p>Control device failed, due to different reasons like in transfer state </p>
-</dd>
-<dt class="field-even">Returns E_NOSPT</dt>
-<dd class="field-even"><p>Control command is not supported or not valid </p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>E_OK</strong> – Control device successfully </p></li>
+<li><p><strong>E_CLSED</strong> – Device is not opened </p></li>
+<li><p><strong>E_OBJ</strong> – Device object is not valid or not exists </p></li>
+<li><p><strong>E_PAR</strong> – Parameter is not valid for current control command </p></li>
+<li><p><strong>E_SYS</strong> – Control device failed, due to hardware issues, such as device is disabled </p></li>
+<li><p><strong>E_CTX</strong> – Control device failed, due to different reasons like in transfer state </p></li>
+<li><p><strong>E_NOSPT</strong> – Control command is not supported or not valid </p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -353,20 +336,15 @@ driver to implement. Here is a diagram for the i2c interface.</p>
 <li><p><strong>len</strong> – <strong>[in]</strong> length of data to be sent </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns &gt;0</dt>
-<dd class="field-even"><p>Byte count that was successfully sent for poll method, it might can’t send that much due to different error state. </p>
-</dd>
-<dt class="field-odd">Returns E_OBJ</dt>
-<dd class="field-odd"><p>Device object is not valid or not exists </p>
-</dd>
-<dt class="field-even">Returns E_PAR</dt>
-<dd class="field-even"><p>Parameter is not valid </p>
-</dd>
-<dt class="field-odd">Returns E_CTX</dt>
-<dd class="field-odd"><p>Device is still in transfer state </p>
-</dd>
-<dt class="field-even">Returns E_SYS</dt>
-<dd class="field-even"><p>Can’t write data to hardware due to hardware issues, such as device is disabled </p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>&gt;0</strong> – Byte count that was successfully sent for poll method, it might can’t send that much due to different error state. </p></li>
+<li><p><strong>E_OBJ</strong> – Device object is not valid or not exists </p></li>
+<li><p><strong>E_PAR</strong> – Parameter is not valid </p></li>
+<li><p><strong>E_CTX</strong> – Device is still in transfer state </p></li>
+<li><p><strong>E_SYS</strong> – Can’t write data to hardware due to hardware issues, such as device is disabled </p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -383,20 +361,15 @@ driver to implement. Here is a diagram for the i2c interface.</p>
 <li><p><strong>len</strong> – <strong>[in]</strong> length of data to be received </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns &gt;0</dt>
-<dd class="field-even"><p>Byte count that was successfully received for poll method, it might can’t send that much due to different error state. </p>
-</dd>
-<dt class="field-odd">Returns E_OBJ</dt>
-<dd class="field-odd"><p>Device object is not valid or not exists </p>
-</dd>
-<dt class="field-even">Returns E_CTX</dt>
-<dd class="field-even"><p>Device is still in transfer state </p>
-</dd>
-<dt class="field-odd">Returns E_PAR</dt>
-<dd class="field-odd"><p>Parameter is not valid </p>
-</dd>
-<dt class="field-even">Returns E_SYS</dt>
-<dd class="field-even"><p>Can’t receive data from hardware due to hardware issues, such as device is disabled </p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>&gt;0</strong> – Byte count that was successfully received for poll method, it might can’t send that much due to different error state. </p></li>
+<li><p><strong>E_OBJ</strong> – Device object is not valid or not exists </p></li>
+<li><p><strong>E_CTX</strong> – Device is still in transfer state </p></li>
+<li><p><strong>E_PAR</strong> – Parameter is not valid </p></li>
+<li><p><strong>E_SYS</strong> – Can’t receive data from hardware due to hardware issues, such as device is disabled </p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -435,9 +408,9 @@ driver to implement. Here is a diagram for the i2c interface.</p>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2019, Synopsys.
+        &#169; Copyright 2021, Synopsys.
       <span class="lastupdated">
-        Last updated on Sep 14, 2021.
+        Last updated on Sep 15, 2021.
       </span>
 
     </p>
