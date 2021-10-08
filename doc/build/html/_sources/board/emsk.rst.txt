@@ -258,9 +258,9 @@ Running
 
    cd embarc_osp\example\baremetal\blinky
    # for ARC GNU toolchain
-   make TOOLCHAIN=gnu  BOARD=emsk BD_VER=22 CUR_CORE=arcem7d
+   make TOOLCHAIN=gnu  BOARD=emsk BD_VER=22 CUR_CORE=arcem7d run
    # for MWDT toolchain
-   make TOOLCHAIN=mw  BOARD=emsk BD_VER=22 CUR_CORE=arcem7d
+   make TOOLCHAIN=mw  BOARD=emsk BD_VER=22 CUR_CORE=arcem7d run
 
 Debugging
 *********
@@ -269,9 +269,9 @@ Debugging
 
    cd embarc_osp\example\baremetal\blinky
    # for ARC GNU toolchain
-   make TOOLCHAIN=gnu  BOARD=emsk BD_VER=22 CUR_CORE=arcem7d
+   make TOOLCHAIN=gnu  BOARD=emsk BD_VER=22 CUR_CORE=arcem7d gui
    # for MWDT toolchain
-   make TOOLCHAIN=mw  BOARD=emsk BD_VER=22 CUR_CORE=arcem7d
+   make TOOLCHAIN=mw  BOARD=emsk BD_VER=22 CUR_CORE=arcem7d gui
 
 Flashing
 ********
