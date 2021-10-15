@@ -1,0 +1,143 @@
+name: Examples Build
+
+env:
+  GIT_AUTHOR_NAME: svc-arcoss_auto arc
+  GIT_COMMITTER_NAME: svc-arcoss_auto arc
+  GIT_AUTHOR_EMAIL: svc-arcoss_auto@synopsys.com
+  GIT_COMMITTER_EMAIL: svc-arcoss_auto@synopsys.com
+  TOOLCHAIN: gnu
+  TOOLCHAIN_VER: 2020.09
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  example-build-on-emsk-11:
+    name: "Build examples on emsk version 11"
+    runs-on: ubuntu-latest
+    env:
+      BOARD: emsk
+      BD_VER: 11
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: install-dependencies
+      run: |
+        bash ./scripts/.ci/before_install.sh
+
+    - name: build
+      run: |
+        bash ./scripts/.ci/script.sh
+
+  example-build-on-emsk-22:
+    name: "Build examples on emsk version 22"
+    runs-on: ubuntu-latest
+    env:
+      BOARD: emsk
+      BD_VER: 22
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: install-dependencies
+      run: |
+        bash ./scripts/.ci/before_install.sh
+
+    - name: build
+      run: |
+        bash ./scripts/.ci/script.sh
+
+  example-build-on-emsk-23:
+    name: "Build examples on emsk version 23"
+    runs-on: ubuntu-latest
+    env:
+      BOARD: emsk
+      BD_VER: 23
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: install-dependencies
+      run: |
+        bash ./scripts/.ci/before_install.sh
+
+    - name: build
+      run: |
+        bash ./scripts/.ci/script.sh
+
+  example-build-on-hsdk:
+    name: "Build examples on hsdk"
+    runs-on: ubuntu-latest
+    env:
+      BOARD: hsdk
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: install-dependencies
+      run: |
+        bash ./scripts/.ci/before_install.sh
+
+    - name: build
+      run: |
+        bash ./scripts/.ci/script.sh
+
+  example-build-on-iotdk:
+    name: "Build examples on iotdk"
+    runs-on: ubuntu-latest
+    env:
+      BOARD: iotdk
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: install-dependencies
+      run: |
+        bash ./scripts/.ci/before_install.sh
+
+    - name: build
+      run: |
+        bash ./scripts/.ci/script.sh
+
+  example-build-on-emsdp:
+    name: "Build examples on emsdp"
+    runs-on: ubuntu-latest
+    env:
+      BOARD: emsdp
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: install-dependencies
+      run: |
+        bash ./scripts/.ci/before_install.sh
+
+    - name: build
+      run: |
+        bash ./scripts/.ci/script.sh
+
+  example-build-on-nsim:
+    name: "Build examples on nsim"
+    runs-on: ubuntu-latest
+    env:
+      BOARD: nsim
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: install-dependencies
+      run: |
+        bash ./scripts/.ci/before_install.sh
+
+    - name: build
+      run: |
+        bash ./scripts/.ci/script.sh

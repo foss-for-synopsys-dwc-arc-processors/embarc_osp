@@ -17,7 +17,7 @@ prepare_env() {
 
     TOOLCHAIN_CACHE_FOLDER=".cache/toolchain"
 
-    [ "${TRAVIS}" == "true" ] && {
+    [ "${TRAVIS}" == "true" || "${GITHUB_ACTIONS}" == "true" ] && {
         if [ "${TOOLCHAIN}" == "gnu" ] ; then
             python scripts/.ci/toolchain.py -v $TOOLCHAIN_VER -c $TOOLCHAIN_CACHE_FOLDER  || die
             if [ -d $TOOLCHAIN_CACHE_FOLDER ] ; then
@@ -60,11 +60,10 @@ parse_logs() {
     # get rid of MAC \r and change it to UNIX \n
     sed -i 's/\r/\n/g' $test_log
 
-    METRICS=$(cat $test_log | grep "test configurations passed" | sed -n 's/^.*-\(.*\)*$/\1/p')
-    COMMENT="$BOARD ${BD_VER:-} test results: $METRICS. [Details](https://travis-ci.org/$TRAVIS_REPO_SLUG/jobs/$TRAVIS_JOB_ID)"
-
-    curl --user "$EMBARC_BOT" --request POST https://api.github.com/repos/$TRAVIS_REPO_SLUG/commits/$TRAVIS_COMMIT/comments \
-    --data '{"body":"'"${COMMENT}"'"}'
+    METRICS=$(cat $test_log | grep "test configurations passed" | sed -n 's/^.* \([0-9]\+\) of.*, \([0-9]\+\).*failed, \([0-9]\+\).*in \([0-9]\+\).*$/\1 \2 \3 \4/p')
+    if ! ([ ${#METRICS[@]} -eq 4 ] && [ ${METRICS[1]} == "0" ]); then
+        exit 1
+    fi 
 }
 
 main() {
