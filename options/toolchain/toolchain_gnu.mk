@@ -156,7 +156,7 @@ ifeq ($(findstring $(MAKECMDGOALS),run gui),)
 endif
 endif
 else
-    OPENOCD_SCRIPT_ROOT = $(OPENOCD_EXECUTABLE_ROOT)/share/openocd/scripts
+    OPENOCD_SCRIPT_ROOT = $(OPENOCD_EXECUTABLE_ROOT)/../share/openocd/scripts
 endif
 
 ## Don't change this line
