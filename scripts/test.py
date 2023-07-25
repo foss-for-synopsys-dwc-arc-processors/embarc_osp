@@ -1081,10 +1081,8 @@ class ProjectBuilder:
 
 
 class TestSuite(DisablePyTestCollectionMixin):
-    tc_white_black_list = yaml.safe_load(
-        open(os.path.join(EMBARC_ROOT, "example", "examples.yaml"))
-    )
-
+    SAMPLE_WHITE_BLACK_LIST = "examples.yaml"
+    TEST_WHITE_BLACK_LIST = "testcase.yaml"  # for external tests
     def __init__(self, testcase_roots=[], toolchain="mw", outdir=None):
 
         self.roots = testcase_roots
@@ -1110,6 +1108,7 @@ class TestSuite(DisablePyTestCollectionMixin):
         self.pipeline = None
         self.version = "NA"
         self.duts = []
+        self.testcase_filter = dict()
 
     def check_embarc_osp_version(self):
         try:
@@ -1124,12 +1123,22 @@ class TestSuite(DisablePyTestCollectionMixin):
             logger.error("Cannot read embarc_osp version.")
 
     def add_testcases(self, testcase_filter=[]):
-        supported_tc = list(self.tc_white_black_list["examples"].keys())
         for root in self.roots:
             root = os.path.abspath(root)
-            logger.debug("Reading test case configuration files under %s..." % root)
-
             for dirpath, _, filenames in os.walk(root, topdown=True):
+                if self.SAMPLE_WHITE_BLACK_LIST in filenames:
+                    logger.debug("Reading test case configuration files under %s..." % dirpath)
+                    tc_white_black = yaml.safe_load(
+                        open(os.path.join(dirpath, self.SAMPLE_WHITE_BLACK_LIST))
+                    )
+                    self.testcase_filter.update(tc_white_black["examples"])
+                if self.TEST_WHITE_BLACK_LIST in filenames:
+                    logger.debug("Reading test case configuration files under %s..." % dirpath)
+                    tc_white_black = yaml.safe_load(
+                        open(os.path.join(dirpath, self.TEST_WHITE_BLACK_LIST))
+                    )
+                    self.testcase_filter.update(tc_white_black["testcases"])
+                supported_tc = list(self.testcase_filter.keys())
                 for makefile in MAKEFILENAMES:
                     if makefile in filenames:
                         if is_embarc_osp_makefile(os.path.join(dirpath, makefile)):
@@ -1139,7 +1148,7 @@ class TestSuite(DisablePyTestCollectionMixin):
                                 name = workdir.replace(os.path.sep, '/').replace("/", ".")
                                 if name in supported_tc:
                                     tc = TestCase(root, workdir, name)
-                                    tc_filter = self.tc_white_black_list["examples"][name]
+                                    tc_filter = self.testcase_filter[name]
                                     if tc_filter.get("tags", list()):
                                         tc.tags = tc_filter["tags"].split()
                                     tc.skip = tc_filter.get("skip", False)
