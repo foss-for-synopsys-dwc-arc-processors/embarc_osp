@@ -434,7 +434,7 @@ Inline uint32_t arc_in_user_mode(void)
     : "i" (AUX_STATUS32)
     : "memory");
 
-  return !(status & AUX_STATUS_MASK_US) ? 1 : 0;
+  return (status & AUX_STATUS_MASK_U) ? 1 : 0;
 }
 
 /**
