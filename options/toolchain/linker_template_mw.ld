@@ -71,6 +71,7 @@ SECTIONS {
 			_f_text = .;
 			*(TYPE text)
 			*(.text*)
+			. = ALIGN(4);
 			_e_text = .;
 		}
 
@@ -89,6 +90,7 @@ SECTIONS {
 
 			*(TYPE lit)
 
+			. = ALIGN(4);
 			_e_rodata = .;
 		}
 
@@ -101,11 +103,13 @@ SECTIONS {
 			_f_sdata = .;
 			*(.sdata)
 			*(.sbss)
+			. = ALIGN(4);
 			_e_sdata = .;
 			*(TYPE data)
 		}
 		.tls ALIGN(8): {
 			*(.tls*)
+			. = ALIGN(4);
 			_e_data = .;
 		}
 	} > REGION_RAM
@@ -114,6 +118,7 @@ SECTIONS {
 		.bss ALIGN(8): {
 			_f_bss = .;
 			*(TYPE bss)
+			. = ALIGN(4);
 			_e_bss = .;
 		}
 		.stack ALIGN(4) SIZE(_STACKSIZE): {}

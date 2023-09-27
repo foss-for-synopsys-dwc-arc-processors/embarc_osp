@@ -65,6 +65,7 @@ SECTIONS
 	{
 		_f_text = .;
 		*(.text .text.* .gnu.linkonce.t.*)
+		. = ALIGN(4);
 		_e_text = .;
 	} > REGION_ROM
 
@@ -92,6 +93,7 @@ SECTIONS
 		__DTOR_END__ = .;
 
 		*(.rodata .rodata.* .gnu.linkonce.r.*)
+		. = ALIGN(4);
 		_e_rodata = .;
 	} > REGION_ROM
 
@@ -111,6 +113,7 @@ SECTIONS
 		_e_sbss = .;
 		PROVIDE (__sbss_end = .);
 		PROVIDE (___sbss_end = .);
+		. = ALIGN(4);
 		_e_sdata = .;
 		_e_data = .;
 	} > REGION_RAM AT > REGION_ROM
@@ -121,6 +124,7 @@ SECTIONS
 		*(.dynbss)
 		*(.bss .bss.* .gnu.linkonce.b.*)
 		*(COMMON)
+		. = ALIGN(4);
 		_e_bss = .;
 	} > REGION_RAM
 
@@ -129,6 +133,7 @@ SECTIONS
 		. = ALIGN(4);
 		_f_stack = .;
 		. = . + _STACKSIZE;
+		. = ALIGN(4);
 		_e_stack = .;
 	} > REGION_RAM
 
@@ -138,6 +143,7 @@ SECTIONS
 		__start_heap = . ;
 		_f_heap = .;
 		. = . + _HEAPSIZE;
+		. = ALIGN(4);
 		_e_heap = .;
 		__end_heap = . ;
 	} > REGION_RAM
