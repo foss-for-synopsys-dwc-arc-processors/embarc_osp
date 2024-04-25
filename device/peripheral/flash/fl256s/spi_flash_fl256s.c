@@ -320,7 +320,7 @@ int32_t fl256s_erase(FL256S_DEF_PTR dev, uint32_t address, uint32_t size)
 	DEV_SPI_TRANSFER cmd_xfer;
 
 	// start address of last sector
-	last_address = (address + size) & (~(dev->sector_sz - 1));
+	last_address = (address + size - 1) & (~(dev->sector_sz - 1));
 
 	// start address of first sector
 	address &= ~(dev->sector_sz - 1);

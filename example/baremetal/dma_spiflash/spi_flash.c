@@ -442,7 +442,7 @@ int32_t spiflash_erase(uint32_t address, uint32_t size)
 	SPI_XFER cmd_xfer;
 
 	// start address of last sector
-	last_address = (address + size) & (~(FLASH_SECTOR_SIZE - 1));
+	last_address = (address + size - 1) & (~(FLASH_SECTOR_SIZE - 1));
 
 	// start address of first sector
 	address &= ~(FLASH_SECTOR_SIZE - 1);
