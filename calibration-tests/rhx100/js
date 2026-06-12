@@ -1,0 +1,9 @@
+
+
+# Opts testing to see if I can prevent javascript from using 6 cpus
+OPTS="-XX:CICompilerCount=2 -XX:+UseSerialGC"
+OPTS=
+JAR=/slowfs/us01dwt2p448/tom/bin
+JAVA=/global/apps/architect_2022.09/ARChitect/jre/linux64/11/bin/java
+# echo JAVA is $JAVA
+$JAVA $OPTS -jar $JAR/js.jar -version 170 -opt 3 "$@"
